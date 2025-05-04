@@ -7,7 +7,6 @@ import 'package:tracking_app/core/di/di.dart';
 import 'package:tracking_app/core/provider/app_config_provider.dart';
 import 'package:tracking_app/core/utils/application_theme.dart';
 import 'package:tracking_app/core/utils/services/screen_size_service.dart';
-
 import 'package:tracking_app/generated/codegen_loader.g.dart';
 
 void main() async {
@@ -34,6 +33,7 @@ class Tracking extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // to handle responsive design
     ScreenSizeService.init(context);
     return MaterialApp(
       localizationsDelegates: context.localizationDelegates,
