@@ -6,14 +6,14 @@ abstract class  LocaleKeys {
   static const local = 'local';
   static const WelcomeToFloweryRiderApp = 'WelcomeToFloweryRiderApp';
   static const forgetPassword = 'forgetPassword';
-  static const PleaseEnterYourEmailAssociatedToYourAccount = 'PleaseEnterYourEmailAssociatedToYourAccount';
+  static const pleaseEnterYourEmailAssociatedToYourAccount = 'pleaseEnterYourEmailAssociatedToYourAccount';
   static const email = 'email';
   static const confirm = 'confirm';
   static const enterYourEmail = 'enterYourEmail';
   static const thisEmailIsNotValid = 'thisEmailIsNotValid';
   static const password = 'password';
   static const emailVerification = 'emailVerification';
-  static const pleaseEnterYourCodeThatSendToYourEmailAddress = 'pleaseEnterYourCodeThatSendToYourEmailAddress';
+  static const pleaseEnterYourCode = 'pleaseEnterYourCode';
   static const didntReceiveTheCode = 'didntReceiveTheCode';
   static const resend = 'resend';
 

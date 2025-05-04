@@ -19,13 +19,16 @@ class ForgetPasswordBody extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
+               responsiveHeightWidget(10),
             Text(LocaleKeys.forgetPassword.tr(), style: AppTextStyles.instance.textStyle18
-                .copyWith(fontWeight: FontWeight.w600)),
+                .copyWith(fontWeight: FontWeight.w500)),
              responsiveHeightWidget(10),
-            Text(LocaleKeys.PleaseEnterYourEmailAssociatedToYourAccount.tr(), 
+            Text(LocaleKeys.pleaseEnterYourEmailAssociatedToYourAccount.tr(), 
                 style: AppTextStyles.instance.textStyle14.copyWith(
                   color: PalletsColors.gray,  
-                )),
+                ),
+                textAlign: TextAlign.center,
+                ),
                    responsiveHeightWidget(20),
                 Padding(
                   padding:  EdgeInsets.symmetric(

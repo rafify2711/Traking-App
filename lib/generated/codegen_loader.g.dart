@@ -18,14 +18,14 @@ class CodegenLoader extends AssetLoader{
   "local": "ar",
   "WelcomeToFloweryRiderApp": "مرحبًا بكم في تطبيق سائق فلويري",
   "forgetPassword": "نسيت كلمة المرور",
-  "PleaseEnterYourEmailAssociatedToYourAccount": "يرجى إدخال بريدك الإلكتروني \nالمرتبط بحسابك",
+  "pleaseEnterYourEmailAssociatedToYourAccount": "يرجى ادخال بريدك الإلكتروني المرتبط \nبهذا الحساب",
   "email": "البريد الإلكتروني",
   "confirm": "تأكيد",
   "enterYourEmail": "أدخل بريدك الإلكتروني",
   "thisEmailIsNotValid": "هذا البريد الإلكتروني غير صالح",
   "password": "كلمة المرور",
   "emailVerification": "تحقق البريد الإلكتروني",
-  "pleaseEnterYourCodeThatSendToYourEmailAddress": "يرجى ادخال الكود الذي تم ارساله لبريدك الإلكتروني",
+  "pleaseEnterYourCode": "يرجى ادخال الكود الذي تم ارساله\n لبريدك الإلكتروني",
   "didntReceiveTheCode": "لم تستلم الكود؟",
   "resend": "اعادة الارسال"
 };
@@ -33,14 +33,14 @@ static const Map<String,dynamic> _en = {
   "local": "en",
   "WelcomeToFloweryRiderApp": "Welcome to Flowery rider app",
   "forgetPassword": "Forget password",
-  "Please enter your email associatedto your account": "Please enter your email associated\n to your account",
+  "pleaseEnterYourEmailAssociatedToYourAccount": "Please enter your email associated to \n your account",
   "email": "Email",
   "confirm": "Confirm",
   "enterYourEmail": "Enter your email",
   "thisEmailIsNotValid": "This email is not valid",
   "password": "Password",
   "emailVerification": "Email verification",
-  "pleaseEnterYourCodeThatSendToYourEmailAddress": "Please Enter Your Code That Send To Your Email Address",
+  "pleaseEnterYourCode": "Please Enter Your Code That Send To Your\n Email Address",
   "didntReceiveTheCode": "Didn't receive the code ?",
   "resend": "Resend"
 };
