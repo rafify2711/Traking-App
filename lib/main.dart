@@ -32,6 +32,7 @@ class Tracking extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // to handle responsive design
     ScreenSizeService.init(context);
     return MaterialApp(
       localizationsDelegates: context.localizationDelegates,
