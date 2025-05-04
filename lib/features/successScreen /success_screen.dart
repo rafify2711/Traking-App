@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:tracking_app/core/config/routes_name.dart';
 import 'package:tracking_app/core/utils/app_text_styles.dart';
+import 'package:tracking_app/generated/locale_keys.g.dart';
 
 class SuccessScreen extends StatelessWidget {
   const SuccessScreen({super.key});
@@ -17,20 +19,16 @@ class SuccessScreen extends StatelessWidget {
               Image.asset("assets/images/check-circle.png", scale: 5),
               SizedBox(height: 24),
               Text(
-                "Your application has been ",
+                LocaleKeys.applicationSubmittedTitle.tr(),
                 style: AppTextStyles.instance.textStyle18.copyWith(
                   fontWeight: FontWeight.bold,
                 ),
+                textAlign: TextAlign.center,
               ),
-              Text(
-                "submitted!",
-                style: AppTextStyles.instance.textStyle18.copyWith(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+
               SizedBox(height: 16),
               Text(
-                "Thank you for providing your application, we will review your application and will get back to you soon.",
+                LocaleKeys.applicationSubmittedBody.tr(),
                 style: AppTextStyles.instance.textStyle16,
                 textAlign: TextAlign.center,
               ),
@@ -39,7 +37,10 @@ class SuccessScreen extends StatelessWidget {
                 onPressed: () {
                   Navigator.pushNamed(context, RoutesName.loginView);
                 },
-                child: Text("Login", style: AppTextStyles.instance.textStyle16),
+                child: Text(
+                  LocaleKeys.login.tr(),
+                  style: AppTextStyles.instance.textStyle16,
+                ),
               ),
             ],
           ),

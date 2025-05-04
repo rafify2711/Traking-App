@@ -1,4 +1,7 @@
 {
     "local": "ar",
-    "WelcomeToFloweryRiderApp": "مرحبًا بكم في تطبيق سائق فلويري"
+    "WelcomeToFloweryRiderApp": "مرحبًا بكم في تطبيق سائق فلويري",
+    "applicationSubmittedTitle": "تم تقديم طلبك!",
+    "applicationSubmittedBody": "شكرًا لتقديمك الطلب، سنقوم بمراجعته وسنعود إليك قريبًا.",
+    "login": "تسجيل الدخول"
 }

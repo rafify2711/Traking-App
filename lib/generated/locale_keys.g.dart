@@ -5,5 +5,8 @@
 abstract class  LocaleKeys {
   static const local = 'local';
   static const WelcomeToFloweryRiderApp = 'WelcomeToFloweryRiderApp';
+  static const applicationSubmittedTitle = 'applicationSubmittedTitle';
+  static const applicationSubmittedBody = 'applicationSubmittedBody';
+  static const login = 'login';
 
 }

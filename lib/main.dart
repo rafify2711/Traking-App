@@ -15,9 +15,9 @@ void main() async {
   configureDependencies();
   runApp(
     EasyLocalization(
-      supportedLocales: [Locale('en', 'US'), Locale('ar', 'EG')],
+      supportedLocales: const [Locale('en'), Locale('ar')],
       path: 'assets/translations',
-      fallbackLocale: Locale('_languageCode'),
+      fallbackLocale: const Locale("_languageCode"),
       assetLoader: const CodegenLoader(),
       child: ChangeNotifierProvider(
         create: (_) => getIt<AppConfigProvider>(),
@@ -27,13 +27,23 @@ void main() async {
   );
 }
 
-class Tracking extends StatelessWidget {
+class Tracking extends StatefulWidget {
   const Tracking({super.key});
+
+  @override
+  State<Tracking> createState() => _TrackingState();
+}
+
+class _TrackingState extends State<Tracking> {
+  late AppConfigProvider appConfigProvider;
 
   @override
   Widget build(BuildContext context) {
     // to handle responsive design
     ScreenSizeService.init(context);
+
+    appConfigProvider = Provider.of<AppConfigProvider>(context);
+
     return MaterialApp(
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
