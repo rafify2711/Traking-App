@@ -40,7 +40,7 @@ class Tracking extends StatelessWidget {
       locale: context.locale,
 
       debugShowCheckedModeBanner: false,
-      initialRoute: RoutesName.onBoarding,
+      initialRoute: RoutesName.forgetPassword,
       onGenerateRoute: RouteGenerator.onGenerator,
       theme: ApplicationTheme.themeData,
     );

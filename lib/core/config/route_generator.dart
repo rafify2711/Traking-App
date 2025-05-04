@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tracking_app/core/config/routes_name.dart';
+import 'package:tracking_app/features/auth/forget_password/presentation/view/forget_password_screen.dart';
+import 'package:tracking_app/features/auth/forget_password/presentation/view/verification_screen.dart';
 import 'package:tracking_app/features/splash/presentation/views/widgets/on_boarding_view.dart';
 
 class RouteGenerator {
@@ -8,6 +10,16 @@ class RouteGenerator {
       case RoutesName.onBoarding:
         return MaterialPageRoute(
           builder: (context) => const OnBoardingView(),
+          settings: settings,
+        );
+          case RoutesName.forgetPassword:
+        return MaterialPageRoute(
+          builder: (context) => const ForgetPasswordScreen(),
+          settings: settings,
+        );
+        case RoutesName.verificationScreen:
+        return MaterialPageRoute(
+          builder: (context) => const VerificationScreen(),
           settings: settings,
         );
 

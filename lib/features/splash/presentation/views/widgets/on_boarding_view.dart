@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:tracking_app/generated/local_keys.g.dart';
+import 'package:tracking_app/generated/locale_keys.g.dart';
 
 class OnBoardingView extends StatelessWidget {
   const OnBoardingView({super.key});
