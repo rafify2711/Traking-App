@@ -26,11 +26,11 @@ extension GetItInjectableX on _i174.GetIt {
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final dioModule = _$DioModule();
-    gh.singleton<_i361.LogInterceptor>(() => dioModule.provideLogger());
     gh.singleton<_i291.AppConfigProvider>(() => _i291.AppConfigProvider());
     gh.singleton<_i665.SecureStorageService>(
       () => _i665.SecureStorageService(),
     );
+    gh.singleton<_i361.LogInterceptor>(() => dioModule.provideLogger());
     gh.singleton<_i361.Dio>(
       () => dioModule.provideDio(
         gh<_i361.LogInterceptor>(),
