@@ -14,6 +14,6 @@ class BaseError<T> extends BaseState<T> {
   BaseError(this.errorMessage, {this.exception});
 }
 class BaseSuccess<T> extends BaseState<T> {
-  final T data;
-  BaseSuccess(this.data);
+  final T? data;
+  BaseSuccess({this.data});
 }
