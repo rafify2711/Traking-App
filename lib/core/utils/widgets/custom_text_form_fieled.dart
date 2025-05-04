@@ -10,7 +10,8 @@ class CustomTextFormFieled extends StatelessWidget {
   final String? Function(String?)? validator;
   final Widget? suffix;
   final bool? readOnly;
- final Function(String)? onChanged;
+  final TextInputType? keyboardType;
+  final Function(String)? onChanged;
 
   const CustomTextFormFieled({
     super.key,
@@ -20,13 +21,18 @@ class CustomTextFormFieled extends StatelessWidget {
     required this.isObsecureText,
     this.validator,
     this.suffix,
-    this.readOnly, this.onChanged,
+    this.readOnly,
+    this.onChanged,
+    this.keyboardType,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      onChanged:onChanged ,
+      
+      keyboardType: keyboardType,
+      onChanged: onChanged,
+
       readOnly: readOnly ?? false,
       validator: validator,
       controller: textEditingController,
@@ -36,7 +42,12 @@ class CustomTextFormFieled extends StatelessWidget {
         color: PalletsColors.white70,
       ),
       decoration: InputDecoration(
-        contentPadding: EdgeInsets.all(16),
+         labelText: labelText,
+        labelStyle: ApplicationTheme.themeData.textTheme.bodySmall?.copyWith(
+          color: PalletsColors.white90,
+        ),
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+        contentPadding: EdgeInsets.all(18),
         suffix: suffix,
 
         errorBorder: const OutlineInputBorder(
@@ -51,10 +62,7 @@ class CustomTextFormFieled extends StatelessWidget {
         border: const OutlineInputBorder(
           borderSide: BorderSide(color: PalletsColors.gray),
         ),
-        labelText: labelText,
-        labelStyle: ApplicationTheme.themeData.textTheme.bodySmall?.copyWith(
-          color: PalletsColors.white90,
-        ),
+       
         hintText: hintText,
         hintStyle: ApplicationTheme.themeData.textTheme.bodyLarge?.copyWith(
           color: PalletsColors.white70,
