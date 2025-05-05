@@ -3,10 +3,12 @@ part of 'verify_code_cubit.dart';
 
 class VerifyCodeState extends Equatable {
   BaseState? verifyCodeState;
-  VerifyCodeState({this.verifyCodeState});
-  VerifyCodeState copyWith({BaseState? verifyCodeState}) {
+  OtpResponse? otpResponse ;
+  VerifyCodeState({this.verifyCodeState,this.otpResponse});
+  VerifyCodeState copyWith({BaseState? verifyCodeState, OtpResponse? otpResponse}) {
     return VerifyCodeState(
       verifyCodeState: verifyCodeState ?? this.verifyCodeState,
+      otpResponse: otpResponse ?? this.otpResponse,
     );
   }
 

@@ -84,14 +84,12 @@ class ForgetPasswordBody extends StatelessWidget {
                       listener: (context, state) {
                         if (state.forgetPasswordState
                             is BaseSuccess<ForgetPasswordResponse>) {
-                          print(
-                            "Listener called with state: ${state.forgetPasswordState.runtimeType}",
-                          );
+                        
                           showSnackBar(
                             context,
                             'Code is sent ,check your email!',
                           );
-                          print("Success detected in UI!");
+                        
                           Navigator.pushNamed(
                             context,
                             RoutesName.verificationScreen,

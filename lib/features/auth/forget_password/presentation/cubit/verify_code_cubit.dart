@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/widgets.dart';
 import 'package:tracking_app/core/base/api_result.dart';
 import 'package:tracking_app/core/base/base_state.dart';
 import 'package:tracking_app/features/auth/forget_password/data/models/request/otp_request.dart';
@@ -10,6 +11,7 @@ part 'verify_code_state.dart';
 
 class VerifyCodeCubit extends Cubit<VerifyCodeState> {
   VerifyCodeCubit(this.useCase) : super(VerifyCodeState());
+  var otpController = TextEditingController();
   SenVerifyCodeUseCase useCase;
   sendVerifyCode(OtpRequest otpRequest) async {
     emit(state.copyWith(verifyCodeState: BaseLoading()));

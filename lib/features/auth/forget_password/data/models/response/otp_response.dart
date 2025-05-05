@@ -6,8 +6,9 @@ part 'otp_response.g.dart';
 class OtpResponse {
   @JsonKey(name: 'status')
   String? status;
-
-  OtpResponse({this.status});
+@JsonKey(name: 'error')
+  String? error;
+  OtpResponse({this.status,this.error});
 
   factory OtpResponse.fromJson(Map<String, dynamic> json) => _$OtpResponseFromJson(json);
 
