@@ -1,3 +1,9 @@
+import 'package:tracking_app/core/base/api_result.dart';
+import 'package:tracking_app/features/auth/forget_password/data/models/request/forget_password_request.dart';
+import 'package:tracking_app/features/auth/forget_password/data/models/response/forget_password_response.dart';
+
 abstract class ForgetPasswordDataSource {
-  
+  Future<ApiResult<ForgetPasswordResponse>> forgetPassword(
+    ForgetPasswordRequest forgetPasswordRequest,
+  );
 }

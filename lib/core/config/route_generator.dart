@@ -14,7 +14,7 @@ class RouteGenerator {
         );
           case RoutesName.forgetPassword:
         return MaterialPageRoute(
-          builder: (context) => const ForgetPasswordScreen(),
+          builder: (context) =>  ForgetPasswordScreen(),
           settings: settings,
         );
         case RoutesName.verificationScreen:
