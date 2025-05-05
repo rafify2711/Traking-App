@@ -21,7 +21,6 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
     GlobalKey<FormState> formKey = GlobalKey<FormState>();
   Future<void> forgetPassword(
     ForgetPasswordRequest forgetPasswordRequest,
-    BuildContext context
   ) async {
     if(formKey.currentState!.validate() == false) return;
     emit(state.copyWith(forgetPasswordState: BaseLoading()));
@@ -36,7 +35,6 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
           ),
         ),
       );
-    Navigator.pushNamed(context, RoutesName.verificationScreen);
 
     } else if (result is ApiError<ForgetPasswordResponse>) {
       emit(

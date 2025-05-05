@@ -19,7 +19,7 @@ class RouteGenerator {
         );
         case RoutesName.verificationScreen:
         return MaterialPageRoute(
-          builder: (context) => const VerificationScreen(),
+          builder: (context) =>  VerificationScreen(),
           settings: settings,
         );
 

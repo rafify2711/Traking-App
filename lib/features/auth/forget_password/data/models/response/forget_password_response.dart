@@ -4,12 +4,14 @@ part 'forget_password_response.g.dart';
 
 @JsonSerializable()
 class ForgetPasswordResponse {
+  @JsonKey(name: 'error')
+  String? error;
   @JsonKey(name: 'message')
   String? message;
   @JsonKey(name: 'info')
   String? info;
 
-  ForgetPasswordResponse({this.message, this.info});
+  ForgetPasswordResponse({this.message, this.info, this.error});
 
   factory ForgetPasswordResponse.fromJson(Map<String, dynamic> json) => _$ForgetPasswordResponseFromJson(json);
 

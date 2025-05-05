@@ -2,16 +2,14 @@
 part of 'forget_password_cubit.dart';
 
 class ForgetPasswordState extends Equatable {
-  const ForgetPasswordState({
-    this.forgetPasswordState,
-  });
+  const ForgetPasswordState({this.forgetPasswordState, this.forgetPasswordResponse});
 
-  final BaseState? forgetPasswordState;
-
-  ForgetPasswordState copyWith({BaseState? forgetPasswordState, }) {
+  final BaseState<ForgetPasswordResponse>? forgetPasswordState;
+  final ForgetPasswordResponse? forgetPasswordResponse;
+  ForgetPasswordState copyWith({BaseState<ForgetPasswordResponse>? forgetPasswordState, ForgetPasswordResponse? forgetPasswordResponse}) {
     return ForgetPasswordState(
       forgetPasswordState: forgetPasswordState ?? this.forgetPasswordState,
-      
+      forgetPasswordResponse: forgetPasswordResponse ?? this.forgetPasswordResponse,
     );
   }
 

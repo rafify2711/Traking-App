@@ -2,23 +2,20 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pinput/pinput.dart';
+import 'package:tracking_app/core/di/di.dart';
 import 'package:tracking_app/core/utils/app_text_styles.dart';
 import 'package:tracking_app/core/utils/colors.dart';
 import 'package:tracking_app/core/utils/services/get_responsive_height_and_width.dart';
+import 'package:tracking_app/features/auth/forget_password/domain/use_cases/sen_verify_code_use_case.dart';
+import 'package:tracking_app/features/auth/forget_password/presentation/cubit/verify_code_cubit.dart';
 import 'package:tracking_app/features/auth/forget_password/presentation/widgets/app_bar_section.dart';
 import 'package:tracking_app/features/auth/forget_password/presentation/widgets/resend_code.dart';
 import 'package:tracking_app/generated/locale_keys.g.dart';
 
 class VerificationBody extends StatelessWidget {
   VerificationBody({super.key});
-  final List<TextEditingController> controllers = List.generate(
-    6,
-    (_) => TextEditingController(),
-  );
-  final List<FocusNode> focusNodes = List.generate(6, (_) => FocusNode());
-  String otpCode() {
-    return controllers.map((controller) => controller.text).join();
-  }
+  var cubit =VerifyCodeCubit(getIt<SenVerifyCodeUseCase>());
+
 
   @override
   Widget build(BuildContext context) {

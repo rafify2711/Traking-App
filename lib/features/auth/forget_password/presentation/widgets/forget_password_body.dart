@@ -3,24 +3,21 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tracking_app/core/base/base_state.dart';
 import 'package:tracking_app/core/config/routes_name.dart';
-import 'package:tracking_app/core/di/di.dart';
-
 import 'package:tracking_app/core/utils/app_text_styles.dart';
 import 'package:tracking_app/core/utils/colors.dart';
+import 'package:tracking_app/core/utils/helper_func/snack_bar.dart';
 import 'package:tracking_app/core/utils/services/get_responsive_height_and_width.dart';
 import 'package:tracking_app/core/utils/validator.dart';
 import 'package:tracking_app/core/utils/widgets/custom_text_form_fieled.dart';
 import 'package:tracking_app/features/auth/forget_password/data/models/request/forget_password_request.dart';
-import 'package:tracking_app/features/auth/forget_password/domain/use_cases/forget_password_use_case.dart';
+import 'package:tracking_app/features/auth/forget_password/data/models/response/forget_password_response.dart';
 import 'package:tracking_app/features/auth/forget_password/presentation/cubit/forget_password_cubit.dart';
 import 'package:tracking_app/features/auth/forget_password/presentation/widgets/app_bar_section.dart';
 import 'package:tracking_app/generated/locale_keys.g.dart';
 
 class ForgetPasswordBody extends StatelessWidget {
   ForgetPasswordBody({super.key});
-  ForgetPasswordCubit forgetPasswordCubit = ForgetPasswordCubit(
-    getIt<ForgetPasswordUseCase>(),
-  );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,7 +45,8 @@ class ForgetPasswordBody extends StatelessWidget {
             ),
             responsiveHeightWidget(20),
             Form(
-              key: forgetPasswordCubit.formKey,
+              key: context.read<ForgetPasswordCubit>().formKey,
+
               child: Column(
                 children: [
                   Padding(
@@ -60,7 +58,9 @@ class ForgetPasswordBody extends StatelessWidget {
                       hintText: LocaleKeys.enterYourEmail.tr(),
                       labelText: LocaleKeys.email.tr(),
                       textEditingController:
-                          forgetPasswordCubit.forgetPasswordController,
+                          context
+                              .read<ForgetPasswordCubit>()
+                              .forgetPasswordController,
                       isObsecureText: false,
                       validator: Validator.validateEmail,
                     ),
@@ -71,24 +71,65 @@ class ForgetPasswordBody extends StatelessWidget {
                       horizontal: resposiveHeight(15),
                       vertical: resposiveWidth(10),
                     ),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        forgetPasswordCubit.forgetPassword(
-                          ForgetPasswordRequest(
-                            email:
-                                forgetPasswordCubit
-                                    .forgetPasswordController
-                                    .text,
-                          ),
-                          context,
+                    child: BlocConsumer<
+                      ForgetPasswordCubit,
+                      ForgetPasswordState
+                    >(
+                      listenWhen: (previous, current) =>
+                          previous.forgetPasswordState !=
+                          current.forgetPasswordState,
+                          buildWhen: (previous, current) =>
+                          previous.forgetPasswordState !=
+                          current.forgetPasswordState,
+                      listener: (context, state) {
+                        if (state.forgetPasswordState
+                            is BaseSuccess<ForgetPasswordResponse>) {
+                          print(
+                            "Listener called with state: ${state.forgetPasswordState.runtimeType}",
+                          );
+                          showSnackBar(
+                            context,
+                            'Code is sent ,check your email!',
+                          );
+                          print("Success detected in UI!");
+                          Navigator.pushNamed(
+                            context,
+                            RoutesName.verificationScreen,
+                          );
+                        } else if (state.forgetPasswordState
+                            is BaseError<ForgetPasswordResponse>) {
+                          showErrorSnackBar(
+                            context,
+                            state.forgetPasswordResponse?.error ??
+                                'email not found',
+                          );
+                        }
+                      },
+                      builder: (context, state) {
+                        return ElevatedButton(
+                          onPressed: () {
+                            context.read<ForgetPasswordCubit>().forgetPassword(
+                              ForgetPasswordRequest(
+                                email:
+                                    context
+                                        .read<ForgetPasswordCubit>()
+                                        .forgetPasswordController
+                                        .text,
+                              ),
+                            );
+                          },
+                          child:
+                              state.forgetPasswordState is BaseLoading
+                                  ? CircularProgressIndicator(
+                                    color: PalletsColors.whiteBase,
+                                  )
+                                  : Text(
+                                    LocaleKeys.confirm.tr(),
+                                    style: AppTextStyles.instance.textStyle16
+                                        .copyWith(color: PalletsColors.white10),
+                                  ),
                         );
                       },
-                      child: Text(
-                        LocaleKeys.confirm.tr(),
-                        style: AppTextStyles.instance.textStyle16.copyWith(
-                          color: PalletsColors.white10,
-                        ),
-                      ),
                     ),
                   ),
                 ],
