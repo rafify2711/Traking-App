@@ -9,7 +9,7 @@ import 'package:tracking_app/features/auth/forget_password/presentation/cubit/fo
 import 'package:tracking_app/generated/locale_keys.g.dart';
 
 class ResendCode extends StatefulWidget {
-  const ResendCode({Key? key}) : super(key: key);
+  const ResendCode({super.key});
 
   @override
   State<ResendCode> createState() => _ResendCodeState();
