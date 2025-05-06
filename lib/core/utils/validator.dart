@@ -1,12 +1,15 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:tracking_app/generated/locale_keys.g.dart';
+
 class Validator {
   static String? validateEmail(String? val) {
     final RegExp emailRegex = RegExp(
       r"^[a-zA-Z0-9.a-zA-Z0-9!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
     );
     if (val == null || val.trim().isEmpty) {
-      return 'Enter your email address.';
+      return LocaleKeys.validationEmailEmpty.tr();
     } else if (!emailRegex.hasMatch(val)) {
-      return 'This Email is not valid (e.g., example@example.com).';
+      return LocaleKeys.validationEmailInvalid.tr();
     } else {
       return null;
     }
@@ -14,7 +17,15 @@ class Validator {
 
   static String? validateName(String? val) {
     if (val == null || val.isEmpty) {
-      return 'This field is required';
+      return LocaleKeys.validationRequiredField.tr();
+    } else {
+      return null;
+    }
+  }
+
+  static String? emptyValidation(String? val) {
+    if (val == null || val.isEmpty) {
+      return LocaleKeys.validationRequiredField.tr();
     } else {
       return null;
     }
@@ -22,14 +33,10 @@ class Validator {
 
   static String? validatePhoneNumber(String? val) {
     if (val == null || val.isEmpty) {
-      return 'This field is required';
+      return LocaleKeys.validationRequiredField.tr();
     } else if (int.tryParse(val.trim()) == null) {
-      return 'Enter numbers only';
-    }
-    // else if (val.trim().length != 11) {
-    //   return 'Invalid phone number format for any country';
-    // }
-    else {
+      return LocaleKeys.validationNumbersOnly.tr();
+    } else {
       return null;
     }
   }
@@ -37,9 +44,9 @@ class Validator {
   static String? validatePassword(String? val) {
     final RegExp passwordRegex = RegExp(r'^(?=.*[A-Z])(?=.*[0-9]).{8,}$');
     if (val == null || val.isEmpty) {
-      return 'This field is required';
+      return LocaleKeys.validationRequiredField.tr();
     } else if (!passwordRegex.hasMatch(val)) {
-      return 'Password must be at least 8 characters long and include at least one uppercase letter and one number';
+      return LocaleKeys.validationPasswordInvalid.tr();
     } else {
       return null;
     }
@@ -47,9 +54,28 @@ class Validator {
 
   static String? validateConfirmPassword(String? val, String? password) {
     if (val == null || val.isEmpty) {
-      return 'this field is required';
+      return LocaleKeys.validationRequiredField.tr();
     } else if (val != password) {
-      return "password doesn't match";
+      return LocaleKeys.validationPasswordMismatch.tr();
+    } else {
+      return null;
+    }
+  }
+
+  static String? validateVehicleNumber(String? val) {
+    final RegExp vehicleRegex = RegExp(r'^[A-Z]{3}-\d{3}$');
+    if (val == null || val.trim().isEmpty) {
+      return LocaleKeys.validationRequiredField.tr();
+    } else if (!vehicleRegex.hasMatch(val.trim().toUpperCase())) {
+      return LocaleKeys.validationVehicleNumberInvalid.tr();
+    } else {
+      return null;
+    }
+  }
+
+  static String? validateIdNumber(String? val) {
+    if (val == null || val.length != 14) {
+      return LocaleKeys.validationIdNumberInvalid.tr();
     } else {
       return null;
     }

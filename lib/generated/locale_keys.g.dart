@@ -2,7 +2,7 @@
 
 // ignore_for_file: constant_identifier_names
 
-abstract class LocaleKeys {
+abstract class  LocaleKeys {
   static const local = 'local';
   static const welcomeToFloweryRiderApp = 'welcomeToFloweryRiderApp';
   static const country = 'country';
@@ -26,5 +26,14 @@ abstract class LocaleKeys {
   static const password = 'password';
   static const enterPassword = 'enterPassword';
   static const confirmPassword = 'confirmPassword';
-  static const gender = 'Gender';
+  static const gender = 'gender';
+  static const validationRequiredField = 'validationRequiredField';
+  static const validationEmailEmpty = 'validationEmailEmpty';
+  static const validationEmailInvalid = 'validationEmailInvalid';
+  static const validationNumbersOnly = 'validationNumbersOnly';
+  static const validationPasswordInvalid = 'validationPasswordInvalid';
+  static const validationPasswordMismatch = 'validationPasswordMismatch';
+  static const validationVehicleNumberInvalid = 'validationVehicleNumberInvalid';
+  static const validationIdNumberInvalid = 'validationIdNumberInvalid';
+
 }

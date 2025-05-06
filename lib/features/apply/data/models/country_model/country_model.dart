@@ -53,7 +53,7 @@ class CountryModel {
     return parseCountry(data);
   }
 
- static Future<int> getEgyptIndex(BuildContext context) async {
+  static Future<int> getEgyptIndex(BuildContext context) async {
     List<CountryModel> countryList = await getCountryFromAssets(context);
     return countryList.indexWhere((e) => e.name == "Egypt");
   }

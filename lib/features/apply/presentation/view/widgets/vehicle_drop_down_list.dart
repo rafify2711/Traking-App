@@ -45,7 +45,7 @@ class VehicleDropDownList extends StatelessWidget {
               .toList(),
 
       decoration: InputDecoration(
-         labelText: labelText,
+        labelText: labelText,
         labelStyle: ApplicationTheme.themeData.textTheme.bodySmall?.copyWith(
           color: PalletsColors.white90,
         ),
@@ -55,13 +55,11 @@ class VehicleDropDownList extends StatelessWidget {
         ),
         contentPadding: EdgeInsets.all(18),
         border: OutlineInputBorder(
-          
           borderSide: BorderSide(color: PalletsColors.gray),
         ),
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(color: PalletsColors.gray),
         ),
-       
       ),
     );
   }

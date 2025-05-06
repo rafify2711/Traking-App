@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tracking_app/core/config/routes_name.dart';
-import 'package:tracking_app/features/apply/presentation/view/apply_view.dart';
+import 'package:tracking_app/features/apply/presentation/view/apply_screen.dart';
 import 'package:tracking_app/features/on_boarding/presentation/views/widgets/on_boarding_view.dart';
 
 class RouteGenerator {
@@ -13,7 +13,7 @@ class RouteGenerator {
         );
       case RoutesName.applyView:
         return MaterialPageRoute(
-          builder: (context) => const ApplyView(),
+          builder: (context) => const ApplyScreen(),
           settings: settings,
         );
 
