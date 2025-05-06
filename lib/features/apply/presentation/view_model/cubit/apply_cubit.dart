@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -39,9 +40,14 @@ class ApplyCubit extends Cubit<ApplyState> {
   }
 
   void setIdImage(File? file) {
-    idImageFile = file;
-    idImageController.text = file?.path.split("/").last ?? "";
-    emit(state.copyWith());
+    if (file?.path.split('/').last == 'jpg') {
+      log('not jpg');
+      idImageFile = file;
+      idImageController.text = file?.path.split("/").last ?? "";
+      emit(state.copyWith());
+    } else {
+      log('not jpg');
+    }
   }
 
   Future<void> loadCountries(BuildContext context) async {
@@ -74,12 +80,14 @@ class ApplyCubit extends Cubit<ApplyState> {
   }
 
   Future<void> apply(ApplyData applyData) async {
-
-
-     if (vehicleLicenseFile == null || idImageFile == null) {
-      emit(state.copyWith(
-        applyState: BaseError<ApplyResponse>("Please upload all required images"),
-      ));
+    if (vehicleLicenseFile == null || idImageFile == null) {
+      emit(
+        state.copyWith(
+          applyState: BaseError<ApplyResponse>(
+            "Please upload all required images",
+          ),
+        ),
+      );
       return;
     }
 

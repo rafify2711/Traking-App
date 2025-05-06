@@ -13,7 +13,10 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   AuthRemoteDataSourceImpl({required this.apiService});
   @override
   Future<ApplyResponse> apply(ApplyData applyData) async {
+    log('applayData in AuthRemoteDataSourceImpl apply method ${applyData.country} ${applyData.email}${applyData.vehicleType}');
+
     final formData = await applyData.toFormData();
+    
     final response = await apiService.apply(formData);
     log("data in AuthRemoteDataSourceImpl apply method $response");
     return response;

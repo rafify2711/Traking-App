@@ -87,12 +87,21 @@ class _ApplyScreenBodyState extends State<ApplyScreenBody> {
               ),
               SizedBox(height: responsiveHeight(24)),
 
-              VehicleDropDownList(
-                labelText: LocaleKeys.vehicleType.tr(),
-                onChanged: (value) => cubit.setVehicleType(value!),
-                selectedItem: state.selectedVehicleType ?? "Car",
-                items: cubit.items,
+              CustomTextFormFieled(
+                textEditingController: TextEditingController(text: '676b31a45d05310ca82657ac'),
+                labelText: '',
+                hintText: '',
+                isObsecureText: false,
+                validator: (val) => Validator.validateName(val),
               ),
+              SizedBox(height: responsiveHeight(24)),
+
+              // VehicleDropDownList(
+              //   labelText: LocaleKeys.vehicleType.tr(),
+              //   onChanged: (value) => cubit.setVehicleType(value!),
+              //   selectedItem: state.selectedVehicleType ?? "Car",
+              //   items: cubit.items,
+              // ),
               SizedBox(height: responsiveHeight(24)),
 
               CustomTextFormFieled(
@@ -249,7 +258,7 @@ class _ApplyScreenBodyState extends State<ApplyScreenBody> {
                         country: state.selectedCountry?.name ?? "",
                         firstName: cubit.firstNameController.text,
                         lastName: cubit.secondNameController.text,
-                        vehicleType: state.selectedVehicleType ?? "",
+                        vehicleType: '676b31a45d05310ca82657ac',
                         vehicleNumber: cubit.vehicleNumberController.text,
                         vehicleLicense: cubit.vehicleLicenseFile!,
                         email: cubit.emailController.text,
