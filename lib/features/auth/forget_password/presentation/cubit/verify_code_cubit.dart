@@ -16,25 +16,30 @@ class VerifyCodeCubit extends Cubit<VerifyCodeState> {
   var otpController = TextEditingController();
   ForgetPasswordUseCase forgetPasswordUseCase = getIt<ForgetPasswordUseCase>();
   SenVerifyCodeUseCase useCase;
-  
-     Future<void> close() {
-       otpController.dispose();
-       return super.close();
-     }
+
+  @override
+  Future<void> close() {
+    otpController.dispose();
+    return super.close();
+  }
+
   sendVerifyCode(OtpRequest otpRequest) async {
     emit(state.copyWith(verifyCodeState: BaseLoading<OtpResponse>()));
     final result = await useCase.invoke(otpRequest);
     if (result is ApiSuccess<OtpResponse>) {
-      emit(state.copyWith(verifyCodeState: BaseSuccess<OtpResponse>(data: result.data)));
+      emit(
+        state.copyWith(
+          verifyCodeState: BaseSuccess<OtpResponse>(data: result.data),
+        ),
+      );
     } else if (result is ApiError<OtpResponse>) {
       emit(
         state.copyWith(
-          verifyCodeState: BaseError<OtpResponse>(result.failure?.errorMessage ?? "Something went wrong"),
+          verifyCodeState: BaseError<OtpResponse>(
+            result.failure?.errorMessage ?? "Something went wrong",
+          ),
         ),
       );
     }
-
-    
   }
- 
-} 
+}

@@ -13,6 +13,7 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
   ForgetPasswordCubit(this.forgetPasswordUseCase)
     : super(ForgetPasswordState());
   TextEditingController forgetPasswordController = TextEditingController();
+  @override
   Future<void> close() {
     forgetPasswordController.dispose();
     return super.close();

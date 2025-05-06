@@ -15,13 +15,13 @@ import 'package:tracking_app/features/auth/forget_password/presentation/widgets/
 import 'package:tracking_app/generated/locale_keys.g.dart';
 
 class VerificationBody extends StatelessWidget {
-  VerificationBody({super.key,});
+  const VerificationBody({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(50),
+        preferredSize: const Size.fromHeight(50),
         child: AppBarSection(text: LocaleKeys.password.tr()),
       ),
       body: Center(
@@ -47,11 +47,10 @@ class VerificationBody extends StatelessWidget {
             BlocConsumer<VerifyCodeCubit, VerifyCodeState>(
               listener: (context, state) {
                 if (state.verifyCodeState is BaseError) {
-                showErrorSnackBar(
-                            context,
-                            state.otpResponse?.error ??
-                                'Something went wrong',
-                          );
+                  showErrorSnackBar(
+                    context,
+                    state.otpResponse?.error ?? 'Something went wrong',
+                  );
                 }
                 if (state.verifyCodeState is BaseSuccess) {
                   showSnackBar(context, 'Success');
@@ -87,7 +86,7 @@ class VerificationBody extends StatelessWidget {
               },
             ),
             responsiveHeightWidget(20),
-            ResendCode(),
+            const ResendCode(),
           ],
         ),
       ),

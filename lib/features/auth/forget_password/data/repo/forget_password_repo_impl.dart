@@ -12,16 +12,16 @@ import 'package:tracking_app/features/auth/forget_password/domain/repo/forget_pa
 @Injectable(as: ForgetPasswordRepo)
 class ForgetPasswordRepoImpl implements ForgetPasswordRepo {
   ForgetPasswordDataSource dataSource;
-  ForgetPasswordRepoImpl({
-    required this.dataSource,
-  });
+  ForgetPasswordRepoImpl({required this.dataSource});
   @override
-  Future<ApiResult<ForgetPasswordResponse>> forgetPassword(ForgetPasswordRequest forgetPasswordRequest) async {
+  Future<ApiResult<ForgetPasswordResponse>> forgetPassword(
+    ForgetPasswordRequest forgetPasswordRequest,
+  ) async {
     return await dataSource.forgetPassword(forgetPasswordRequest);
   }
 
   @override
   Future<ApiResult<OtpResponse>> sendVerifyCode(OtpRequest otpRequest) async {
-  return await dataSource.sendVerifyCode(otpRequest);
+    return await dataSource.sendVerifyCode(otpRequest);
   }
 }

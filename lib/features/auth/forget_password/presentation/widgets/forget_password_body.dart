@@ -15,14 +15,14 @@ import 'package:tracking_app/features/auth/forget_password/presentation/widgets/
 import 'package:tracking_app/generated/locale_keys.g.dart';
 
 class ForgetPasswordBody extends StatelessWidget {
-  ForgetPasswordBody({super.key});
+  const ForgetPasswordBody({super.key});
 
   @override
   Widget build(BuildContext context) {
   var cubit = context.read<ForgetPasswordCubit>();
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(50),
+        preferredSize: const Size.fromHeight(50),
         child: AppBarSection(text: LocaleKeys.password.tr()),
       ),
       body: Center(
@@ -111,7 +111,7 @@ class ForgetPasswordBody extends StatelessWidget {
                           },
                           child:
                               state.forgetPasswordState is BaseLoading
-                                  ? CircularProgressIndicator(
+                                  ? const CircularProgressIndicator(
                                     color: PalletsColors.whiteBase,
                                   )
                                   : Text(

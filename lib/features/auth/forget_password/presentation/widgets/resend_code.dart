@@ -9,7 +9,7 @@ import 'package:tracking_app/features/auth/forget_password/presentation/cubit/fo
 import 'package:tracking_app/generated/locale_keys.g.dart';
 
 class ResendCode extends StatefulWidget {
-  ResendCode({Key? key, }) : super(key: key);
+  const ResendCode({Key? key}) : super(key: key);
 
   @override
   State<ResendCode> createState() => _ResendCodeState();
@@ -61,11 +61,8 @@ class _ResendCodeState extends State<ResendCode> {
                       ? () {
                         final cubit = context.read<ForgetPasswordCubit>();
 
-                        
-
                         cubit.forgetPassword();
                         startTimer();
-                        print('resend code success');
                       }
                       : null,
 
