@@ -1,5 +1,6 @@
 {
-    "local": "en" ,
-    "WelcomeToFloweryRiderApp" : "Welcome to Flowery rider app"
-    
+    "local": "en",
+    "welcomeText": "Welcome to\nFlowery rider app",
+    "applyNow": "Apply now",
+    "login": "Login"
 }

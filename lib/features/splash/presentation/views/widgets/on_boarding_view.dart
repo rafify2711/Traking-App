@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:tracking_app/core/utils/app_text_styles.dart';
+import 'package:tracking_app/generated/locale_keys.g.dart';
 
 class OnBoardingView extends StatefulWidget {
   const OnBoardingView({super.key});
@@ -15,25 +17,22 @@ class _OnBoardingViewState extends State<OnBoardingView> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.only(right: 16, left: 16, top: 8),
+          padding: const EdgeInsets.only(right: 10, left: 16, top: 8),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
+              // mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  height: 444,
-                  width: double.infinity,
-                  child: Container(
-                    child: Lottie.asset(
-                      'assets/json/on_boarding.json',
-                      fit: BoxFit.fill,
-                    ),
+                  child: Lottie.asset(
+                    'assets/json/on_boarding.json',
+                    fit: BoxFit.fill,
                   ),
                 ),
 
                 const SizedBox(height: 16),
                 Text(
-                  "Welcome to \nFlowery rider app",
+                  LocaleKeys.welcomeText.tr(),
                   style: AppTextStyles.instance.textStyle20.copyWith(
                     fontWeight: FontWeight.w500,
                   ),
@@ -42,7 +41,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                 ElevatedButton(
                   onPressed: () {},
                   child: Text(
-                    "Login",
+                    LocaleKeys.login.tr(),
                     style: AppTextStyles.instance.textStyle16.copyWith(
                       fontWeight: FontWeight.w500,
                     ),
@@ -52,7 +51,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                 OutlinedButton(
                   onPressed: () {},
                   child: Text(
-                    "Apply now",
+                    LocaleKeys.applyNow.tr(),
                     style: AppTextStyles.instance.textStyle16.copyWith(
                       fontWeight: FontWeight.w500,
                     ),
