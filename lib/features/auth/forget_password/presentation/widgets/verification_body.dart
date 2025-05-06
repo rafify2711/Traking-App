@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pinput/pinput.dart';
 import 'package:tracking_app/core/base/base_state.dart';
+import 'package:tracking_app/core/config/routes_name.dart';
 import 'package:tracking_app/core/di/di.dart';
 import 'package:tracking_app/core/utils/app_text_styles.dart';
 import 'package:tracking_app/core/utils/colors.dart';
@@ -50,15 +51,14 @@ class VerificationBody extends StatelessWidget {
             BlocConsumer<VerifyCodeCubit, VerifyCodeState>(
               listener: (context, state) {
                 if (state.verifyCodeState is BaseError) {
-                showErrorSnackBar(
-                            context,
-                            state.otpResponse?.error ??
-                                'Something went wrong',
-                          );
+                  showErrorSnackBar(
+                    context,
+                    state.otpResponse?.error ?? 'Something went wrong',
+                  );
                 }
                 if (state.verifyCodeState is BaseSuccess) {
                   showSnackBar(context, 'Success');
-                  Navigator.pop(context);
+                  Navigator.pushNamed(context, RoutesName.resetPasswordScreen);
                 }
               },
               builder: (context, state) {
