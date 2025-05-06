@@ -5,7 +5,8 @@ import 'package:tracking_app/features/auth/forget_password/data/models/response/
 import 'package:tracking_app/features/auth/forget_password/data/models/response/otp_response.dart';
 
 abstract class ForgetPasswordRepo {
-  Future<ApiResult<ForgetPasswordResponse>> forgetPassword(ForgetPasswordRequest forgetPasswordRequest);
-    Future<ApiResult<OtpResponse>> sendVerifyCode(OtpRequest otpRequest);
-  
+  Future<ApiResult<ForgetPasswordResponse>> forgetPassword(
+    ForgetPasswordRequest forgetPasswordRequest,
+  );
+  Future<ApiResult<OtpResponse>> sendVerifyCode(OtpRequest otpRequest);
 }
