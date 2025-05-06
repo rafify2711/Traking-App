@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
+import 'package:tracking_app/core/base/api_result.dart';
 import 'package:tracking_app/core/utils/error_handler.dart';
 import 'package:tracking_app/features/auth/login/data/data_source/login_remote_data_source.dart';
 import 'package:tracking_app/features/auth/login/data/model/login_request.dart';
@@ -12,22 +13,14 @@ import 'package:tracking_app/features/auth/login/domain/repository_icontract/log
 
 @Injectable(as: LoginContract)
 class LoginRepositoryImplementation implements LoginContract {
-  final LoginRemoteDataSource loginRemoteDataSource;
-  LoginRepositoryImplementation({required this.loginRemoteDataSource});
+  final LoginRemoteDataSource _loginRemoteDataSource;
+  LoginRepositoryImplementation({required LoginRemoteDataSource loginRemoteDataSource}) : _loginRemoteDataSource = loginRemoteDataSource;
 
   @override
-  Future<Either<Failure, LoginResponse>> login({
+  Future<ApiResult<LoginResponse>> login({
     required LoginRequest loginRequest,
   }) async {
-    try {
-      final data = await loginRemoteDataSource.login(loginRequest: loginRequest);
-      return Right(data);
-    } catch (e) {
-      if (e is DioException) {
-        return left(ServerFailure.fromDioException(e));
-      } else {
-        return left(ServerFailure(errorMessage: e.toString()));
-      }
-    }
+    return await _loginRemoteDataSource.login(loginRequest: loginRequest);
+
   }
 }

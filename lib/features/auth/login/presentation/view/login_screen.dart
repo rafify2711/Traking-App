@@ -2,18 +2,17 @@ import 'package:easy_localization/easy_localization.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tracking_app/core/config/routes_name.dart';
+import 'package:tracking_app/core/base/base_state.dart';
 import 'package:tracking_app/core/di/di.dart';
 import 'package:tracking_app/core/utils/colors.dart';
 import 'package:tracking_app/core/utils/constants.dart';
 import 'package:tracking_app/core/utils/helper_func/snack_bar.dart';
 import 'package:tracking_app/core/utils/services/secure_sotrage_service.dart';
 import 'package:tracking_app/core/utils/validator.dart';
-import 'package:tracking_app/core/utils/widgets/custom_elevated_button.dart';
 import 'package:tracking_app/core/utils/widgets/custom_text_form_fieled.dart';
+import 'package:tracking_app/features/auth/login/data/model/login_response.dart';
 import 'package:tracking_app/features/auth/login/domain/usecases/login_usecase.dart';
 import 'package:tracking_app/features/auth/login/presentation/view_model/login_cubit.dart';
-import 'package:tracking_app/features/auth/login/presentation/view_model/login_state.dart';
 import 'package:tracking_app/generated/local_keys.g.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -127,9 +126,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    child: BlocConsumer<LoginCubit, LoginState>(
+                    child: BlocConsumer<LoginCubit, BaseState<LoginResponse>>(
                       listener: (context, state) {
-                        if (state is LoginSuccess) {
+                        if (state is BaseSuccess<LoginResponse>) {
                           showSnackBar(
                             context,
                             LocaleKeys.loggedInSuccessfully.tr(),
@@ -144,13 +143,13 @@ class _LoginScreenState extends State<LoginScreen> {
                           //   context,
                           //   RoutesName.layout,
                           // );
-                        } else if (state is LoginFailure) {
+                        } else if (state is BaseError<LoginResponse>) {
                           showErrorSnackBar(context, state.errorMessage);
                         }
                       },
                       builder: (context, state) {
                         return Center(
-                          child: state is LoginLoading
+                          child: state is BaseLoading<LoginResponse>
                               ? SizedBox(
                             height: 24,
                             width: 24,
