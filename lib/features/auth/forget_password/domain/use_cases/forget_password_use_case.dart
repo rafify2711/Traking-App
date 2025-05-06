@@ -8,7 +8,9 @@ import 'package:tracking_app/features/auth/forget_password/domain/repo/forget_pa
 class ForgetPasswordUseCase {
   ForgetPasswordRepo repo;
   ForgetPasswordUseCase(this.repo);
-Future<ApiResult<ForgetPasswordResponse>>   invoke(ForgetPasswordRequest forgetPasswordRequest) async {
+  Future<ApiResult<ForgetPasswordResponse>> invoke(
+    ForgetPasswordRequest forgetPasswordRequest,
+  ) async {
     return await repo.forgetPassword(forgetPasswordRequest);
   }
 }

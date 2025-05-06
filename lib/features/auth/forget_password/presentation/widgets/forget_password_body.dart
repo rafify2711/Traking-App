@@ -19,7 +19,7 @@ class ForgetPasswordBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  var cubit = context.read<ForgetPasswordCubit>();
+    var cubit = context.read<ForgetPasswordCubit>();
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(50),
@@ -75,21 +75,22 @@ class ForgetPasswordBody extends StatelessWidget {
                       ForgetPasswordCubit,
                       ForgetPasswordState
                     >(
-                      listenWhen: (previous, current) =>
-                          previous.forgetPasswordState !=
-                          current.forgetPasswordState,
-                          buildWhen: (previous, current) =>
-                          previous.forgetPasswordState !=
-                          current.forgetPasswordState,
+                      listenWhen:
+                          (previous, current) =>
+                              previous.forgetPasswordState !=
+                              current.forgetPasswordState,
+                      buildWhen:
+                          (previous, current) =>
+                              previous.forgetPasswordState !=
+                              current.forgetPasswordState,
                       listener: (context, state) {
                         if (state.forgetPasswordState
                             is BaseSuccess<ForgetPasswordResponse>) {
-                        
                           showSnackBar(
                             context,
                             'Code is sent ,check your email!',
                           );
-                        
+
                           Navigator.pushNamed(
                             context,
                             RoutesName.verificationScreen,
@@ -106,7 +107,8 @@ class ForgetPasswordBody extends StatelessWidget {
                       builder: (context, state) {
                         return ElevatedButton(
                           onPressed: () {
-                            if(cubit.formKey.currentState!.validate() == false) return;
+                            if (cubit.formKey.currentState!.validate() == false)
+                              return;
                             cubit.forgetPassword();
                           },
                           child:

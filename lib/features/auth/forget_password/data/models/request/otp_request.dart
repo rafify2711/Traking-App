@@ -1,4 +1,3 @@
-
 import 'package:json_annotation/json_annotation.dart';
 part 'otp_request.g.dart';
 
@@ -9,7 +8,8 @@ class OtpRequest {
 
   OtpRequest({this.resetCode});
 
-  factory OtpRequest.fromJson(Map<String, dynamic> json) => _$OtpRequestFromJson(json);
+  factory OtpRequest.fromJson(Map<String, dynamic> json) =>
+      _$OtpRequestFromJson(json);
 
   static List<OtpRequest> fromList(List<Map<String, dynamic>> list) {
     return list.map(OtpRequest.fromJson).toList();

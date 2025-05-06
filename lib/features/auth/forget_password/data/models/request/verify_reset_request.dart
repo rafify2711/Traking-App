@@ -1,4 +1,3 @@
-
 import 'package:json_annotation/json_annotation.dart';
 part 'verify_reset_request.g.dart';
 
@@ -9,7 +8,8 @@ class VerifyResetRequest {
 
   VerifyResetRequest({this.resetCode});
 
-  factory VerifyResetRequest.fromJson(Map<String, dynamic> json) => _$VerifyResetRequestFromJson(json);
+  factory VerifyResetRequest.fromJson(Map<String, dynamic> json) =>
+      _$VerifyResetRequestFromJson(json);
 
   static List<VerifyResetRequest> fromList(List<Map<String, dynamic>> list) {
     return list.map(VerifyResetRequest.fromJson).toList();

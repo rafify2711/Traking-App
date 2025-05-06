@@ -5,14 +5,11 @@ import 'package:tracking_app/core/utils/colors.dart';
 
 class AppBarSection extends StatelessWidget {
   final String text;
-  const AppBarSection({
-    Key? key,
-    required this.text,
-  }) : super(key: key);
+  const AppBarSection({Key? key, required this.text}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-      return AppBar(
+    return AppBar(
       scrolledUnderElevation: 0,
       elevation: 0,
       // shadowColor: Colors.transparent,
@@ -26,13 +23,9 @@ class AppBarSection extends StatelessWidget {
             },
             icon: const Icon(Icons.arrow_back_ios),
           ),
-           Text(
-            text,
-          
-          ),
+          Text(text),
         ],
       ),
     );
-  
   }
 }

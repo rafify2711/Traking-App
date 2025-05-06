@@ -45,7 +45,7 @@ void main() {
         message: 'Network error',
         failure: ServerFailure(errorMessage: 'Network error'),
       );
-        provideDummy<ApiResult<OtpResponse>>(expected);
+      provideDummy<ApiResult<OtpResponse>>(expected);
 
       when(mockRepo.sendVerifyCode(request)).thenAnswer((_) async => expected);
 

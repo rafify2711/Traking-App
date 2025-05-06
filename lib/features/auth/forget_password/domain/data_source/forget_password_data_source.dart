@@ -8,6 +8,5 @@ abstract class ForgetPasswordDataSource {
   Future<ApiResult<ForgetPasswordResponse>> forgetPassword(
     ForgetPasswordRequest forgetPasswordRequest,
   );
-    Future<ApiResult<OtpResponse>> sendVerifyCode(OtpRequest otpRequest);
-
+  Future<ApiResult<OtpResponse>> sendVerifyCode(OtpRequest otpRequest);
 }

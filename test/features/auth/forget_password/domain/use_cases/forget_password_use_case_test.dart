@@ -40,11 +40,11 @@ void main() {
     () async {
       //arrange
       final request = ForgetPasswordRequest(email: 'email');
-        final expected = ApiError<ForgetPasswordResponse>(
+      final expected = ApiError<ForgetPasswordResponse>(
         message: 'Network error',
         failure: ServerFailure(errorMessage: 'Network error'),
       );
-        provideDummy<ApiResult<ForgetPasswordResponse>>(expected);
+      provideDummy<ApiResult<ForgetPasswordResponse>>(expected);
 
       when(repo.forgetPassword(request)).thenAnswer((_) async => expected);
       //act

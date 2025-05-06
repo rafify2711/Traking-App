@@ -3,10 +3,12 @@ import 'package:tracking_app/core/utils/error_handler.dart';
 sealed class ApiResult<T> {
   const ApiResult();
 }
+
 class ApiSuccess<T> extends ApiResult<T> {
   final T? data;
   const ApiSuccess({this.data});
 }
+
 class ApiError<T> extends ApiResult<T> {
   final String? message;
   final Failure? failure;

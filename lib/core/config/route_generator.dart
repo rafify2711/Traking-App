@@ -12,14 +12,14 @@ class RouteGenerator {
           builder: (context) => const OnBoardingView(),
           settings: settings,
         );
-          case RoutesName.forgetPassword:
+      case RoutesName.forgetPassword:
         return MaterialPageRoute(
-          builder: (context) =>  ForgetPasswordScreen(),
+          builder: (context) => ForgetPasswordScreen(),
           settings: settings,
         );
-        case RoutesName.verificationScreen:
+      case RoutesName.verificationScreen:
         return MaterialPageRoute(
-          builder: (context) =>  VerificationScreen(),
+          builder: (context) => VerificationScreen(),
           settings: settings,
         );
 
