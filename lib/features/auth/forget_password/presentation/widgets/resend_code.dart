@@ -60,12 +60,10 @@ class _ResendCodeState extends State<ResendCode> {
                   canResend
                       ? () {
                         final cubit = context.read<ForgetPasswordCubit>();
-
                         cubit.forgetPassword();
                         startTimer();
                       }
                       : null,
-
               child: Text(
                 LocaleKeys.resend.tr(),
                 style: TextStyle(

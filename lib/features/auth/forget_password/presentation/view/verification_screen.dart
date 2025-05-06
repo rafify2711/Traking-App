@@ -13,14 +13,12 @@ class VerificationScreen extends StatelessWidget {
   var forgetCubit = ForgetPasswordCubit(getIt<ForgetPasswordUseCase>());
   @override
   Widget build(BuildContext context) {
-    // var args = ModalRoute.of(context)!.settings.arguments as ForgetPasswordResponse;
-
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => cubit),
         BlocProvider(create: (context) => forgetCubit),
       ],
-      child: VerificationBody(),
+      child: const VerificationBody(),
     );
   }
 }
