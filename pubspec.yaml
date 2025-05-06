@@ -8,6 +8,7 @@ environment:
   sdk: ^3.7.2
 
 dependencies:
+  flutter_lints: ^3.0.0
   analyzer: ^6.0.0
   awesome_dialog: ^3.2.1
   bloc: ^9.0.0
