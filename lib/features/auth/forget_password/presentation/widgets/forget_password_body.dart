@@ -9,7 +9,6 @@ import 'package:tracking_app/core/utils/helper_func/snack_bar.dart';
 import 'package:tracking_app/core/utils/services/get_responsive_height_and_width.dart';
 import 'package:tracking_app/core/utils/validator.dart';
 import 'package:tracking_app/core/utils/widgets/custom_text_form_fieled.dart';
-import 'package:tracking_app/features/auth/forget_password/data/models/request/forget_password_request.dart';
 import 'package:tracking_app/features/auth/forget_password/data/models/response/forget_password_response.dart';
 import 'package:tracking_app/features/auth/forget_password/presentation/cubit/forget_password_cubit.dart';
 import 'package:tracking_app/features/auth/forget_password/presentation/widgets/app_bar_section.dart';
@@ -20,6 +19,7 @@ class ForgetPasswordBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+  var cubit = context.read<ForgetPasswordCubit>();
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(50),
@@ -106,15 +106,8 @@ class ForgetPasswordBody extends StatelessWidget {
                       builder: (context, state) {
                         return ElevatedButton(
                           onPressed: () {
-                            context.read<ForgetPasswordCubit>().forgetPassword(
-                              ForgetPasswordRequest(
-                                email:
-                                    context
-                                        .read<ForgetPasswordCubit>()
-                                        .forgetPasswordController
-                                        .text,
-                              ),
-                            );
+                            if(cubit.formKey.currentState!.validate() == false) return;
+                            cubit.forgetPassword();
                           },
                           child:
                               state.forgetPasswordState is BaseLoading

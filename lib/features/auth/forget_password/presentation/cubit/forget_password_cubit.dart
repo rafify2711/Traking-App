@@ -18,14 +18,21 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
     : super(ForgetPasswordState());
     TextEditingController forgetPasswordController = TextEditingController(text:
      'mariamkamel791@gmail.com');
+     Future<void> close() {
+       forgetPasswordController.dispose();
+       return super.close();
+       
+     }
     GlobalKey<FormState> formKey = GlobalKey<FormState>();
   Future<void> forgetPassword(
-    ForgetPasswordRequest forgetPasswordRequest,
+    // ForgetPasswordRequest forgetPasswordRequest,
   ) async {
-    if(formKey.currentState!.validate() == false) return;
+    
     emit(state.copyWith(forgetPasswordState: BaseLoading()));
 
-    final result = await forgetPasswordUseCase.invoke(forgetPasswordRequest);
+    final result = await forgetPasswordUseCase.invoke(ForgetPasswordRequest(
+      email: forgetPasswordController.text,
+    ));
 
     if (result is ApiSuccess<ForgetPasswordResponse>) {
       emit(
