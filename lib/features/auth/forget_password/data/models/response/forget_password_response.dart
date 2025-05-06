@@ -1,4 +1,3 @@
-
 import 'package:json_annotation/json_annotation.dart';
 part 'forget_password_response.g.dart';
 
@@ -13,9 +12,12 @@ class ForgetPasswordResponse {
 
   ForgetPasswordResponse({this.message, this.info, this.error});
 
-  factory ForgetPasswordResponse.fromJson(Map<String, dynamic> json) => _$ForgetPasswordResponseFromJson(json);
+  factory ForgetPasswordResponse.fromJson(Map<String, dynamic> json) =>
+      _$ForgetPasswordResponseFromJson(json);
 
-  static List<ForgetPasswordResponse> fromList(List<Map<String, dynamic>> list) {
+  static List<ForgetPasswordResponse> fromList(
+    List<Map<String, dynamic>> list,
+  ) {
     return list.map(ForgetPasswordResponse.fromJson).toList();
   }
 

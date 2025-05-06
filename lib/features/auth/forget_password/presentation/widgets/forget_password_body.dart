@@ -9,20 +9,20 @@ import 'package:tracking_app/core/utils/helper_func/snack_bar.dart';
 import 'package:tracking_app/core/utils/services/get_responsive_height_and_width.dart';
 import 'package:tracking_app/core/utils/validator.dart';
 import 'package:tracking_app/core/utils/widgets/custom_text_form_fieled.dart';
-import 'package:tracking_app/features/auth/forget_password/data/models/request/forget_password_request.dart';
 import 'package:tracking_app/features/auth/forget_password/data/models/response/forget_password_response.dart';
 import 'package:tracking_app/features/auth/forget_password/presentation/cubit/forget_password_cubit.dart';
 import 'package:tracking_app/features/auth/forget_password/presentation/widgets/app_bar_section.dart';
 import 'package:tracking_app/generated/locale_keys.g.dart';
 
 class ForgetPasswordBody extends StatelessWidget {
-  ForgetPasswordBody({super.key});
+  const ForgetPasswordBody({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var cubit = context.read<ForgetPasswordCubit>();
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(50),
+        preferredSize: const Size.fromHeight(50),
         child: AppBarSection(text: LocaleKeys.password.tr()),
       ),
       body: Center(
@@ -75,21 +75,22 @@ class ForgetPasswordBody extends StatelessWidget {
                       ForgetPasswordCubit,
                       ForgetPasswordState
                     >(
-                      listenWhen: (previous, current) =>
-                          previous.forgetPasswordState !=
-                          current.forgetPasswordState,
-                          buildWhen: (previous, current) =>
-                          previous.forgetPasswordState !=
-                          current.forgetPasswordState,
+                      listenWhen:
+                          (previous, current) =>
+                              previous.forgetPasswordState !=
+                              current.forgetPasswordState,
+                      buildWhen:
+                          (previous, current) =>
+                              previous.forgetPasswordState !=
+                              current.forgetPasswordState,
                       listener: (context, state) {
                         if (state.forgetPasswordState
                             is BaseSuccess<ForgetPasswordResponse>) {
-                        
                           showSnackBar(
                             context,
                             'Code is sent ,check your email!',
                           );
-                        
+
                           Navigator.pushNamed(
                             context,
                             RoutesName.verificationScreen,
@@ -106,19 +107,13 @@ class ForgetPasswordBody extends StatelessWidget {
                       builder: (context, state) {
                         return ElevatedButton(
                           onPressed: () {
-                            context.read<ForgetPasswordCubit>().forgetPassword(
-                              ForgetPasswordRequest(
-                                email:
-                                    context
-                                        .read<ForgetPasswordCubit>()
-                                        .forgetPasswordController
-                                        .text,
-                              ),
-                            );
+                            if (cubit.formKey.currentState!.validate() == false)
+                              return;
+                            cubit.forgetPassword();
                           },
                           child:
                               state.forgetPasswordState is BaseLoading
-                                  ? CircularProgressIndicator(
+                                  ? const CircularProgressIndicator(
                                     color: PalletsColors.whiteBase,
                                   )
                                   : Text(

@@ -8,10 +8,7 @@ import 'package:tracking_app/core/utils/services/secure_sotrage_service.dart';
 abstract class DioModule {
   @Singleton()
   LogInterceptor provideLogger() {
-    return LogInterceptor(
-      requestBody: true,
-      responseBody: true,
-    );
+    return LogInterceptor(requestBody: true, responseBody: true);
   }
 
   @Singleton()

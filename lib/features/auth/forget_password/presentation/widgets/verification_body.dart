@@ -5,27 +5,24 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pinput/pinput.dart';
 import 'package:tracking_app/core/base/base_state.dart';
 import 'package:tracking_app/core/config/routes_name.dart';
-import 'package:tracking_app/core/di/di.dart';
 import 'package:tracking_app/core/utils/app_text_styles.dart';
 import 'package:tracking_app/core/utils/colors.dart';
 import 'package:tracking_app/core/utils/helper_func/snack_bar.dart';
 import 'package:tracking_app/core/utils/services/get_responsive_height_and_width.dart';
 import 'package:tracking_app/features/auth/forget_password/data/models/request/otp_request.dart';
-import 'package:tracking_app/features/auth/forget_password/domain/use_cases/sen_verify_code_use_case.dart';
 import 'package:tracking_app/features/auth/forget_password/presentation/cubit/verify_code_cubit.dart';
 import 'package:tracking_app/features/auth/forget_password/presentation/widgets/app_bar_section.dart';
 import 'package:tracking_app/features/auth/forget_password/presentation/widgets/resend_code.dart';
 import 'package:tracking_app/generated/locale_keys.g.dart';
 
 class VerificationBody extends StatelessWidget {
-  VerificationBody({super.key});
-  var cubit = VerifyCodeCubit(getIt<SenVerifyCodeUseCase>());
+  const VerificationBody({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(50),
+        preferredSize: const Size.fromHeight(50),
         child: AppBarSection(text: LocaleKeys.password.tr()),
       ),
       body: Center(
@@ -90,7 +87,7 @@ class VerificationBody extends StatelessWidget {
               },
             ),
             responsiveHeightWidget(20),
-            ResendCode(),
+            const ResendCode(),
           ],
         ),
       ),

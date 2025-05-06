@@ -10,6 +10,6 @@ class SenVerifyCodeUseCase {
   ForgetPasswordRepo repo;
   SenVerifyCodeUseCase({required this.repo});
   Future<ApiResult<OtpResponse>> invoke(OtpRequest otpRequest) async {
-    return await repo.sendVerifyCode( otpRequest);
+    return await repo.sendVerifyCode(otpRequest);
   }
 }

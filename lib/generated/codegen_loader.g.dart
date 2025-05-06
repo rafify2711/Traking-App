@@ -6,7 +6,7 @@ import 'dart:ui';
 
 import 'package:easy_localization/easy_localization.dart' show AssetLoader;
 
-class CodegenLoader extends AssetLoader{
+class CodegenLoader extends AssetLoader {
   const CodegenLoader();
 
   @override
@@ -14,35 +14,42 @@ class CodegenLoader extends AssetLoader{
     return Future.value(mapLocales[locale.toString()]);
   }
 
-  static const Map<String,dynamic> _ar = {
-  "local": "ar",
-  "WelcomeToFloweryRiderApp": "مرحبًا بكم في تطبيق سائق فلويري",
-  "forgetPassword": "نسيت كلمة المرور",
-  "pleaseEnterYourEmailAssociatedToYourAccount": "يرجى ادخال بريدك الإلكتروني المرتبط \nبهذا الحساب",
-  "email": "البريد الإلكتروني",
-  "confirm": "تأكيد",
-  "enterYourEmail": "أدخل بريدك الإلكتروني",
-  "thisEmailIsNotValid": "هذا البريد الإلكتروني غير صالح",
-  "password": "كلمة المرور",
-  "emailVerification": "تحقق البريد الإلكتروني",
-  "pleaseEnterYourCode": "يرجى ادخال الكود الذي تم ارساله\n لبريدك الإلكتروني",
-  "didntReceiveTheCode": "لم تستلم الكود؟",
-  "resend": "اعادة الارسال"
-};
-static const Map<String,dynamic> _en = {
-  "local": "en",
-  "WelcomeToFloweryRiderApp": "Welcome to Flowery rider app",
-  "forgetPassword": "Forget password",
-  "pleaseEnterYourEmailAssociatedToYourAccount": "Please enter your email associated to \n your account",
-  "email": "Email",
-  "confirm": "Confirm",
-  "enterYourEmail": "Enter your email",
-  "thisEmailIsNotValid": "This email is not valid",
-  "password": "Password",
-  "emailVerification": "Email verification",
-  "pleaseEnterYourCode": "Please Enter Your Code That Send To Your\n Email Address",
-  "didntReceiveTheCode": "Didn't receive the code ?",
-  "resend": "Resend"
-};
-static const Map<String, Map<String,dynamic>> mapLocales = {"ar": _ar, "en": _en};
+  static const Map<String, dynamic> _ar = {
+    "local": "ar",
+    "WelcomeToFloweryRiderApp": "مرحبًا بكم في تطبيق سائق فلويري",
+    "forgetPassword": "نسيت كلمة المرور",
+    "pleaseEnterYourEmailAssociatedToYourAccount":
+        "يرجى ادخال بريدك الإلكتروني المرتبط \nبهذا الحساب",
+    "email": "البريد الإلكتروني",
+    "confirm": "تأكيد",
+    "enterYourEmail": "أدخل بريدك الإلكتروني",
+    "thisEmailIsNotValid": "هذا البريد الإلكتروني غير صالح",
+    "password": "كلمة المرور",
+    "emailVerification": "تحقق البريد الإلكتروني",
+    "pleaseEnterYourCode":
+        "يرجى ادخال الكود الذي تم ارساله\n لبريدك الإلكتروني",
+    "didntReceiveTheCode": "لم تستلم الكود؟",
+    "resend": "اعادة الارسال",
+  };
+  static const Map<String, dynamic> _en = {
+    "local": "en",
+    "WelcomeToFloweryRiderApp": "Welcome to Flowery rider app",
+    "forgetPassword": "Forget password",
+    "pleaseEnterYourEmailAssociatedToYourAccount":
+        "Please enter your email associated to \n your account",
+    "email": "Email",
+    "confirm": "Confirm",
+    "enterYourEmail": "Enter your email",
+    "thisEmailIsNotValid": "This email is not valid",
+    "password": "Password",
+    "emailVerification": "Email verification",
+    "pleaseEnterYourCode":
+        "Please Enter Your Code That Send To Your\n Email Address",
+    "didntReceiveTheCode": "Didn't receive the code ?",
+    "resend": "Resend",
+  };
+  static const Map<String, Map<String, dynamic>> mapLocales = {
+    "ar": _ar,
+    "en": _en,
+  };
 }
