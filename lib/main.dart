@@ -19,14 +19,14 @@ void main() async {
   runApp(
     EasyLocalization(
       supportedLocales: [Locale('en'), Locale('ar')],
-      supportedLocales: [Locale('en'), Locale('ar')],
+      
       path: 'assets/translations',
       fallbackLocale: Locale('_languageCode'),
       assetLoader: const CodegenLoader(),
       child: ChangeNotifierProvider(
         create: (_) => getIt<AppConfigProvider>(),
         child: Tracking(),
-        child: Tracking(),
+        
       ),
     ),
   );
@@ -48,7 +48,7 @@ class Tracking extends StatelessWidget {
       supportedLocales: context.supportedLocales,
       locale: context.locale,
       debugShowCheckedModeBanner: false,
-      initialRoute: RoutesName.forgetPassword,
+      initialRoute: RoutesName.onBoarding,
       onGenerateRoute: RouteGenerator.onGenerator,
       theme: ApplicationTheme.themeData,
     );

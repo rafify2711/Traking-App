@@ -11,5 +11,7 @@
     "emailVerification": "تحقق البريد الإلكتروني",
     "pleaseEnterYourCode": "يرجى ادخال الكود الذي تم ارساله\n لبريدك الإلكتروني",
     "didntReceiveTheCode": "لم تستلم الكود؟",
-    "resend": "اعادة الارسال"
+    "resend": "اعادة الارسال",
+    "login" : "تسجيل الدخول",
+    "applyNow": "تقدم الان"
 }

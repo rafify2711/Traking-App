@@ -13,7 +13,7 @@ class RouteGenerator {
           builder: (context) => const OnBoardingView(),
           settings: settings,
         );
-      case RoutesName.forgetPassword:
+     
       case RoutesName.forgetPassword:
         return MaterialPageRoute(
           builder: (context) => ForgetPasswordScreen(),

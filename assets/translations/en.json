@@ -12,5 +12,7 @@
     "emailVerification" : "Email verification",
     "pleaseEnterYourCode" : "Please Enter Your Code That Send To Your\n Email Address",
     "didntReceiveTheCode" : "Didn't receive the code ?",
-    "resend" : "Resend"
+    "resend" : "Resend",
+    "login" : "Login"
+    
 }
