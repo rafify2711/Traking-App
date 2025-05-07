@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tracking_app/core/di/di.dart';
@@ -9,16 +11,31 @@ import 'package:tracking_app/features/auth/forget_password/presentation/widgets/
 
 class VerificationScreen extends StatelessWidget {
   VerificationScreen({super.key});
+
   var cubit = VerifyCodeCubit(getIt<SenVerifyCodeUseCase>());
+
   var forgetCubit = ForgetPasswordCubit(getIt<ForgetPasswordUseCase>());
+
+  String? email;
+
   @override
   Widget build(BuildContext context) {
+    final args = ModalRoute.of(context)?.settings.arguments;
+
+    if (args is Map<String, dynamic>) {
+      final receivedEmail = args["email"];
+      if (receivedEmail != null &&
+          receivedEmail is String &&
+          receivedEmail.isNotEmpty) {
+        email = receivedEmail;
+      }
+    }
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => cubit),
         BlocProvider(create: (context) => forgetCubit),
       ],
-      child: const VerificationBody(),
+      child: VerificationBody(email: email ?? ''),
     );
   }
 }

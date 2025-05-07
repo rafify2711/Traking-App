@@ -45,7 +45,7 @@ class ForgetPasswordBody extends StatelessWidget {
             ),
             responsiveHeightWidget(20),
             Form(
-              key: context.read<ForgetPasswordCubit>().formKey,
+              key: cubit.formKey,
 
               child: Column(
                 children: [
@@ -94,6 +94,10 @@ class ForgetPasswordBody extends StatelessWidget {
                           Navigator.pushNamed(
                             context,
                             RoutesName.verificationScreen,
+                            arguments: {
+                              "email":
+                                  cubit.forgetPasswordController.text.trim(),
+                            },
                           );
                         } else if (state.forgetPasswordState
                             is BaseError<ForgetPasswordResponse>) {

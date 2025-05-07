@@ -18,21 +18,27 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
   var confirmPasswordController = TextEditingController();
 
   Future<void> resetPassword(ResetPasswordRequest request) async {
-    emit(state.copyWith(resetPasswordState: BaseLoading()));
+    emit(
+      state.copyWith(resetPasswordState: BaseLoading<ResetPasswordResponse>()),
+    );
 
     final result = await useCase.invoke(request);
 
     if (result is ApiSuccess<ResetPasswordResponse>) {
       emit(
         state.copyWith(
-          resetPasswordState: BaseSuccess(data: result.data),
+          resetPasswordState: BaseSuccess<ResetPasswordResponse>(
+            data: result.data,
+          ),
           resetPasswordResponse: result.data,
         ),
       );
     } else if (result is ApiError<ResetPasswordResponse>) {
       emit(
         state.copyWith(
-          resetPasswordState: BaseError(result.message ?? 'Unknown error'),
+          resetPasswordState: BaseError<ResetPasswordResponse>(
+            result.message ?? 'Unknown error',
+          ),
         ),
       );
     }

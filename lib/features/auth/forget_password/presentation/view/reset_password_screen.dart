@@ -1,8 +1,12 @@
+import 'dart:developer';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tracking_app/core/di/di.dart';
+import 'package:tracking_app/features/auth/forget_password/domain/use_cases/forget_password_use_case.dart';
 import 'package:tracking_app/features/auth/forget_password/domain/use_cases/reset_password_use_case.dart';
+import 'package:tracking_app/features/auth/forget_password/presentation/cubit/forget_password_cubit.dart';
 import 'package:tracking_app/features/auth/forget_password/presentation/cubit/reset_password_cubit.dart';
 
 import 'package:tracking_app/features/auth/forget_password/presentation/widgets/reset_password_body.dart';
@@ -19,7 +23,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   var newPasswordController = TextEditingController();
   var confirmPasswordController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-
+  String? email;
   @override
   void initState() {
     newPasswordController = TextEditingController();
@@ -36,6 +40,20 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final args = ModalRoute.of(context)?.settings.arguments;
+    log(
+      "📥 Received arguments in didChangeDependencies in the ResetPassword Screen: $args",
+    );
+
+    if (args is String) {
+      final receivedEmail = args;
+      if (receivedEmail.isNotEmpty) {
+        setState(() {
+          email = receivedEmail;
+        });
+      }
+    }
+
     return BlocProvider(
       create:
           (context) => ResetPasswordCubit(getIt.get<ResetPasswordUseCase>()),
@@ -54,6 +72,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
           formKey: formKey,
           newPasswordController: newPasswordController,
           confirmPasswordController: confirmPasswordController,
+          email: email ?? '',
         ),
       ),
     );

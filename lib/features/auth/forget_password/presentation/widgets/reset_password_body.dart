@@ -11,8 +11,7 @@ import 'package:tracking_app/core/utils/services/get_responsive_height_and_width
 import 'package:tracking_app/core/utils/validator.dart';
 import 'package:tracking_app/core/utils/widgets/custom_text_form_fieled.dart';
 import 'package:tracking_app/features/auth/forget_password/data/models/request/reset_password_request.dart';
-import 'package:tracking_app/features/auth/forget_password/presentation/cubit/reset_password_cubit.dart';
-import 'package:tracking_app/generated/codegen_loader.g.dart'; // Make sure this is the correct path
+import 'package:tracking_app/features/auth/forget_password/presentation/cubit/reset_password_cubit.dart'; // Make sure this is the correct path
 import 'package:tracking_app/generated/locale_keys.g.dart'; // Add this import
 
 class ResetPasswordBody extends StatelessWidget {
@@ -21,16 +20,17 @@ class ResetPasswordBody extends StatelessWidget {
     required this.formKey,
     required this.newPasswordController,
     required this.confirmPasswordController,
+    required this.email,
   });
 
   final GlobalKey<FormState> formKey;
   final TextEditingController newPasswordController;
   final TextEditingController confirmPasswordController;
-
+  final String email;
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Form(
         key: formKey,
         child: BlocConsumer<ResetPasswordCubit, ResetPasswordState>(
@@ -95,7 +95,7 @@ class ResetPasswordBody extends StatelessWidget {
                     if (formKey.currentState!.validate()) {
                       context.read<ResetPasswordCubit>().resetPassword(
                         ResetPasswordRequest(
-                          email: "omarsalah1776@gmail.com",
+                          email: email,
                           newPassword: newPasswordController.text.trim(),
                         ),
                       );
@@ -103,7 +103,7 @@ class ResetPasswordBody extends StatelessWidget {
                   },
                   child:
                       state.resetPasswordState is BaseLoading
-                          ? CircularProgressIndicator(
+                          ? const CircularProgressIndicator(
                             color: PalletsColors.whiteBase,
                           )
                           : Text(
