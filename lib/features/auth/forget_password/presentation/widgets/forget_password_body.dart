@@ -52,8 +52,8 @@ class ForgetPasswordBody extends StatelessWidget {
                 children: [
                   Padding(
                     padding: EdgeInsets.symmetric(
-                      horizontal: resposiveHeight(15),
-                      vertical: responsiveWidth(10),
+                      horizontal: responsiveWidth(15),
+                      vertical: resposiveHeight(10),
                     ),
                     child: CustomTextFormFieled(
                       hintText: LocaleKeys.enterYourEmail.tr(),

@@ -26,11 +26,11 @@
     "female": "Female",
     "male": "Male" ,
     "validationRequiredField": "This field is required",
-  "validationEmailEmpty": "Enter your email address.",
-  "validationEmailInvalid": "This Email is not valid (e.g., example@example.com).",
-  "validationNumbersOnly": "Enter numbers only",
-  "validationPasswordInvalid": "Password must be at least 8 characters long and include at least one uppercase letter and one number",
-  "validationPasswordMismatch": "Password doesn't match",
-  "validationVehicleNumberInvalid": "Invalid vehicle number (e.g., ABC-123)",
-  "validationIdNumberInvalid": "Invalid ID number it must be 14 digits(e.g., 12345678901234)"
+    "validationEmailEmpty": "Enter your email address.",
+    "validationEmailInvalid": "This Email is not valid (e.g., example@example.com).",
+    "validationNumbersOnly": "Enter numbers only",
+    "validationPasswordInvalid": "Password must be at least 8 characters long and include at least one uppercase letter and one number",
+    "validationPasswordMismatch": "Password doesn't match",
+    "validationVehicleNumberInvalid": "Invalid vehicle number (e.g., ABC-123)",
+    "validationIdNumberInvalid": "Invalid ID number it must be 14 digits(e.g., 12345678901234)"
 }

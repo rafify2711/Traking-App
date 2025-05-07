@@ -5,87 +5,87 @@ class AppTextStyles {
 
   static AppTextStyles instance = AppTextStyles._internal();
 
-  const textStyle10 = TextStyle(
+  final textStyle10 = const TextStyle(
     fontSize: 10,
     fontWeight: FontWeight.normal,
     fontFamily: "Inter",
   );
-  const textStyle11 = TextStyle(
+  final textStyle11 = const TextStyle(
     fontSize: 11,
     fontWeight: FontWeight.normal,
     fontFamily: "Inter",
   );
-  const textStyle12 = TextStyle(
+  final textStyle12 = const TextStyle(
     fontSize: 12,
     fontWeight: FontWeight.normal,
     fontFamily: "Inter",
   );
-  const textStyle13 = TextStyle(
+  final textStyle13 =const  TextStyle(
     fontSize: 13,
     fontWeight: FontWeight.normal,
     fontFamily: "Inter",
   );
-  const textStyle14 = TextStyle(
+  final textStyle14 = const TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.normal,
     fontFamily: "Inter",
   );
-  const textStyle16 = TextStyle(
+  final textStyle16 = const TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.normal,
     fontFamily: "Inter",
   );
-  const textStyle18 = TextStyle(
+  final textStyle18 = const TextStyle(
     fontSize: 18,
     fontWeight: FontWeight.normal,
     fontFamily: "Inter",
   );
-  const textStyle19 = TextStyle(
+  final textStyle19 = const TextStyle(
     fontSize: 19,
     fontWeight: FontWeight.normal,
     fontFamily: "Inter",
   );
-  const textStyle20 = TextStyle(
+  final textStyle20 =const TextStyle(
     fontSize: 20,
     fontWeight: FontWeight.normal,
     fontFamily: "Inter",
   );
-  const textStyle22 = TextStyle(
+  final textStyle22 = const TextStyle(
     fontSize: 22,
     fontWeight: FontWeight.normal,
     fontFamily: "Inter",
   );
-  const textStyle23 = TextStyle(
+  final textStyle23 = const TextStyle(
     fontSize: 23,
     fontWeight: FontWeight.normal,
     fontFamily: "Inter",
   );
-  const textStyle24 = TextStyle(
+  final textStyle24 = const TextStyle(
     fontSize: 24,
     fontWeight: FontWeight.normal,
     fontFamily: "Inter",
   );
-  const textStyle28 = TextStyle(
+  final textStyle28 = const TextStyle(
     fontSize: 28,
     fontWeight: FontWeight.normal,
     fontFamily: "Inter",
   );
-  const textStyle30 = TextStyle(
+  final textStyle30 =const TextStyle(
     fontSize: 30,
     fontWeight: FontWeight.normal,
     fontFamily: "Inter",
   );
-  const textStyle32 = TextStyle(
+  final textStyle32 = const TextStyle(
     fontSize: 32,
     fontWeight: FontWeight.normal,
     fontFamily: "Inter",
   );
-  const textStyle34 = TextStyle(
+  final textStyle34 = const TextStyle(
     fontSize: 34,
     fontWeight: FontWeight.normal,
     fontFamily: "Inter",
   );
-  const textStyle20Fell = TextStyle(
+  final textStyle20Fell = const TextStyle(
     fontSize: 20,
     fontWeight: FontWeight.w400,
     fontFamily: "IM Fell English",

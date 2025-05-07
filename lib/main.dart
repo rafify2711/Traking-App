@@ -46,14 +46,14 @@ class _TrackingState extends State<Tracking> {
   Widget build(BuildContext context) {
     appConfigProvider = Provider.of<AppConfigProvider>(context);
     ScreenSizeService.init(context);
-    appConfigProvider = Provider.of<AppConfigProvider>(context);
+  
     return MaterialApp(
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
 
       debugShowCheckedModeBanner: false,
-      initialRoute: RoutesName.applyView,
+      initialRoute: RoutesName.onBoarding,
       onGenerateRoute: RouteGenerator.onGenerator,
       theme: ApplicationTheme.themeData,
     );
