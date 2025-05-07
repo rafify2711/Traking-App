@@ -5,4 +5,7 @@ class Constants {
   static const String forgetPasswordEndpoint = "drivers/forgotPassword";
   static const String verifyResetCodeEndpoint = "drivers/verifyResetCode";
   static const String resetPasswordEndpoint = "drivers/resetPassword";
+    static const String applyEndpoint = "drivers/apply";
+  static const String getAllVehiclesEndpoint = "vehicles";
+
 }

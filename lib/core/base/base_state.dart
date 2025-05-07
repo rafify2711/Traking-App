@@ -12,6 +12,7 @@ class BaseLoading<T> extends BaseState<T> {
   BaseLoading();
 }
 
+
 class BaseError<T> extends BaseState<T> {
   final String errorMessage;
   Failure? failure;

@@ -2,31 +2,38 @@
 
 // ignore_for_file: constant_identifier_names
 
-abstract class  LocaleKeys {
+abstract class LocaleKeys {
   static const local = 'local';
-  static const WelcomeToFloweryRiderApp = 'WelcomeToFloweryRiderApp';
-  static const forgetPassword = 'forgetPassword';
-  static const pleaseEnterYourEmailAssociatedToYourAccount = 'pleaseEnterYourEmailAssociatedToYourAccount';
+  static const welcomeToFloweryRiderApp = 'welcomeToFloweryRiderApp';
+  static const country = 'country';
+  static const firstLegalName = 'firstLegalName';
+  static const enterFirstLegalName = 'enterFirstLegalName';
+  static const secondLegalName = 'secondLegalName';
+  static const enterSecondLegalName = 'enterSecondLegalName';
+  static const vehicleType = 'vehicleType';
+  static const vehicleNumber = 'vehicleNumber';
+  static const enterVehicleNumber = 'enterVehicleNumber';
+  static const vehicleLicense = 'vehicleLicense';
+  static const uploadLicensePhoto = 'uploadLicensePhoto';
   static const email = 'email';
-  static const confirm = 'confirm';
   static const enterYourEmail = 'enterYourEmail';
-  static const thisEmailIsNotValid = 'thisEmailIsNotValid';
+  static const phoneNumber = 'phoneNumber';
+  static const enterPhoneNumber = 'enterPhoneNumber';
+  static const idNumber = 'idNumber';
+  static const enterNationalIdNumber = 'enterNationalIdNumber';
+  static const idImage = 'idImage';
+  static const uploadIdImage = 'uploadIdImage';
   static const password = 'password';
-  static const emailVerification = 'emailVerification';
-  static const pleaseEnterYourCode = 'pleaseEnterYourCode';
-  static const didntReceiveTheCode = 'didntReceiveTheCode';
-  static const resend = 'resend';
-  static const login = 'login';
-  static const applyNow = 'applyNow';
-  static const enterYourPassword = 'enterYourPassword';
+  static const enterPassword = 'enterPassword';
   static const confirmPassword = 'confirmPassword';
-  static const newPassword = 'newPassword';
-  static const resetPassword = 'resetPassword';
-  static const passwordMustBeValid = 'passwordMustBeValid';
-  static const passwordResetSuccess = 'passwordResetSuccess';
-  static const resetPasswordFailed = 'resetPasswordFailed';
-  static const errorOccurred = 'errorOccurred';
-  static const loggedInSuccessfully = 'loggedInSuccessfully';
-  static const remmemberMe = 'remmemberMe';
-
+  static const gender = 'gender';
+  static const validationRequiredField = 'validationRequiredField';
+  static const validationEmailEmpty = 'validationEmailEmpty';
+  static const validationEmailInvalid = 'validationEmailInvalid';
+  static const validationNumbersOnly = 'validationNumbersOnly';
+  static const validationPasswordInvalid = 'validationPasswordInvalid';
+  static const validationPasswordMismatch = 'validationPasswordMismatch';
+  static const validationVehicleNumberInvalid =
+      'validationVehicleNumberInvalid';
+  static const validationIdNumberInvalid = 'validationIdNumberInvalid';
 }

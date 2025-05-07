@@ -10,7 +10,7 @@ double resposiveHeight(double height) {
   return (height / ScreenSizeService.baseHeight) * screenHeight;
 }
 
-double resposiveWidth(double width) {
+double responsiveWidth(double width) {
   final screenWidth = ScreenSizeService.width;
   return (width / ScreenSizeService.baseWidth) * screenWidth;
 }

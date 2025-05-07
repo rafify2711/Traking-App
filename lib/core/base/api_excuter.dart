@@ -15,13 +15,4 @@ Future<ApiResult<T>> apiExecuter<T>(
     log('$source Error: $e');
     return ApiError(failure: ServerFailure(errorMessage: e.toString()));
   }
-  //  catch (e) {
-  //     if (e is DioException) {
-  //       return ApiError(failure:  ServerFailure.fromDioException(e));
-  //     } else {
-
-  //       return ApiError(
-  //         failure: ServerFailure(errorMessage: e.toString()));
-  //     }
-  //   }
 }
