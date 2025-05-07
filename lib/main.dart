@@ -12,6 +12,8 @@ import 'package:tracking_app/core/utils/services/screen_size_service.dart';
 import 'package:tracking_app/core/utils/services/simple_bloc_observer.dart';
 import 'package:tracking_app/features/auth/login/domain/usecases/login_usecase.dart';
 import 'package:tracking_app/features/auth/login/presentation/view_model/login_cubit.dart';
+import 'package:tracking_app/features/auth/login/domain/usecases/login_usecase.dart';
+import 'package:tracking_app/features/auth/login/presentation/view_model/login_cubit.dart';
 import 'package:tracking_app/generated/codegen_loader.g.dart';
 
 void main() async {
@@ -47,7 +49,6 @@ class _TrackingState extends State<Tracking> {
   Widget build(BuildContext context) {
     appConfigProvider = Provider.of<AppConfigProvider>(context);
     ScreenSizeService.init(context);
-
     return BlocProvider(
       create: (context) => LoginCubit(getIt.get<LoginUsecase>()),
       child: MaterialApp(
