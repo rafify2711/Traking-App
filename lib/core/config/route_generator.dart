@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tracking_app/core/config/routes_name.dart';
 import 'package:tracking_app/features/login/login_view.dart';
 import 'package:tracking_app/features/splash/presentation/views/widgets/on_boarding_view.dart';
-import 'package:tracking_app/features/successScreen%20/success_screen.dart';
+import 'package:tracking_app/features/SuccessScreen%20/success_screen.dart';
 
 class RouteGenerator {
   static Route<dynamic>? onGenerator(RouteSettings settings) {
