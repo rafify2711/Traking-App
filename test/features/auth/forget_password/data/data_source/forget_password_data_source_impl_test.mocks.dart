@@ -3,22 +3,26 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i6;
+import 'dart:async' as _i7;
 
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:tracking_app/core/api_manger/api_service.dart' as _i5;
+import 'package:tracking_app/core/api_manger/api_service.dart' as _i6;
 import 'package:tracking_app/features/auth/forget_password/data/models/request/forget_password_request.dart'
-    as _i7;
-import 'package:tracking_app/features/auth/forget_password/data/models/request/otp_request.dart'
-    as _i8;
-import 'package:tracking_app/features/auth/forget_password/data/models/request/reset_password_request.dart'
     as _i9;
+import 'package:tracking_app/features/auth/forget_password/data/models/request/otp_request.dart'
+    as _i10;
+import 'package:tracking_app/features/auth/forget_password/data/models/request/reset_password_request.dart'
+    as _i11;
 import 'package:tracking_app/features/auth/forget_password/data/models/response/forget_password_response.dart'
-    as _i2;
-import 'package:tracking_app/features/auth/forget_password/data/models/response/otp_response.dart'
     as _i3;
-import 'package:tracking_app/features/auth/forget_password/data/models/response/reset_password_response.dart'
+import 'package:tracking_app/features/auth/forget_password/data/models/response/otp_response.dart'
     as _i4;
+import 'package:tracking_app/features/auth/forget_password/data/models/response/reset_password_response.dart'
+    as _i5;
+import 'package:tracking_app/features/auth/login/data/model/login_request.dart'
+    as _i8;
+import 'package:tracking_app/features/auth/login/data/model/login_response.dart'
+    as _i2;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -34,71 +38,89 @@ import 'package:tracking_app/features/auth/forget_password/data/models/response/
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-class _FakeForgetPasswordResponse_0 extends _i1.SmartFake
-    implements _i2.ForgetPasswordResponse {
-  _FakeForgetPasswordResponse_0(Object parent, Invocation parentInvocation)
+class _FakeLoginResponse_0 extends _i1.SmartFake implements _i2.LoginResponse {
+  _FakeLoginResponse_0(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
-class _FakeOtpResponse_1 extends _i1.SmartFake implements _i3.OtpResponse {
-  _FakeOtpResponse_1(Object parent, Invocation parentInvocation)
+class _FakeForgetPasswordResponse_1 extends _i1.SmartFake
+    implements _i3.ForgetPasswordResponse {
+  _FakeForgetPasswordResponse_1(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
-class _FakeResetPasswordResponse_2 extends _i1.SmartFake
-    implements _i4.ResetPasswordResponse {
-  _FakeResetPasswordResponse_2(Object parent, Invocation parentInvocation)
+class _FakeOtpResponse_2 extends _i1.SmartFake implements _i4.OtpResponse {
+  _FakeOtpResponse_2(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
+}
+
+class _FakeResetPasswordResponse_3 extends _i1.SmartFake
+    implements _i5.ResetPasswordResponse {
+  _FakeResetPasswordResponse_3(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
 /// A class which mocks [ApiService].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockApiService extends _i1.Mock implements _i5.ApiService {
+class MockApiService extends _i1.Mock implements _i6.ApiService {
   MockApiService() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i6.Future<_i2.ForgetPasswordResponse> forgetPassword(
-    _i7.ForgetPasswordRequest? forgetPasswordRequest,
+  _i7.Future<_i2.LoginResponse> loginUser(_i8.LoginRequest? loginRequest) =>
+      (super.noSuchMethod(
+            Invocation.method(#loginUser, [loginRequest]),
+            returnValue: _i7.Future<_i2.LoginResponse>.value(
+              _FakeLoginResponse_0(
+                this,
+                Invocation.method(#loginUser, [loginRequest]),
+              ),
+            ),
+          )
+          as _i7.Future<_i2.LoginResponse>);
+
+  @override
+  _i7.Future<_i3.ForgetPasswordResponse> forgetPassword(
+    _i9.ForgetPasswordRequest? forgetPasswordRequest,
   ) =>
       (super.noSuchMethod(
             Invocation.method(#forgetPassword, [forgetPasswordRequest]),
-            returnValue: _i6.Future<_i2.ForgetPasswordResponse>.value(
-              _FakeForgetPasswordResponse_0(
+            returnValue: _i7.Future<_i3.ForgetPasswordResponse>.value(
+              _FakeForgetPasswordResponse_1(
                 this,
                 Invocation.method(#forgetPassword, [forgetPasswordRequest]),
               ),
             ),
           )
-          as _i6.Future<_i2.ForgetPasswordResponse>);
+          as _i7.Future<_i3.ForgetPasswordResponse>);
 
   @override
-  _i6.Future<_i3.OtpResponse> verifyResetCode(_i8.OtpRequest? otpRequest) =>
+  _i7.Future<_i4.OtpResponse> verifyResetCode(_i10.OtpRequest? otpRequest) =>
       (super.noSuchMethod(
             Invocation.method(#verifyResetCode, [otpRequest]),
-            returnValue: _i6.Future<_i3.OtpResponse>.value(
-              _FakeOtpResponse_1(
+            returnValue: _i7.Future<_i4.OtpResponse>.value(
+              _FakeOtpResponse_2(
                 this,
                 Invocation.method(#verifyResetCode, [otpRequest]),
               ),
             ),
           )
-          as _i6.Future<_i3.OtpResponse>);
+          as _i7.Future<_i4.OtpResponse>);
 
   @override
-  _i6.Future<_i4.ResetPasswordResponse> resetPassword(
-    _i9.ResetPasswordRequest? ResetPasswordRequest,
+  _i7.Future<_i5.ResetPasswordResponse> resetPassword(
+    _i11.ResetPasswordRequest? ResetPasswordRequest,
   ) =>
       (super.noSuchMethod(
             Invocation.method(#resetPassword, [ResetPasswordRequest]),
-            returnValue: _i6.Future<_i4.ResetPasswordResponse>.value(
-              _FakeResetPasswordResponse_2(
+            returnValue: _i7.Future<_i5.ResetPasswordResponse>.value(
+              _FakeResetPasswordResponse_3(
                 this,
                 Invocation.method(#resetPassword, [ResetPasswordRequest]),
               ),
             ),
           )
-          as _i6.Future<_i4.ResetPasswordResponse>);
+          as _i7.Future<_i5.ResetPasswordResponse>);
 }

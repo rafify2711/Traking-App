@@ -4,7 +4,8 @@ import 'package:tracking_app/features/auth/forget_password/presentation/view/for
 import 'package:tracking_app/features/auth/forget_password/presentation/view/reset_password_screen.dart';
 import 'package:tracking_app/features/auth/forget_password/presentation/view/verification_screen.dart';
 import 'package:tracking_app/features/auth/login/presentation/view/login_screen.dart';
-import 'package:tracking_app/features/splash/presentation/views/widgets/on_boarding_view.dart';
+import 'package:tracking_app/features/on_boarding/presentation/views/widgets/on_boarding_view.dart';
+
 
 class RouteGenerator {
   static Route<dynamic>? onGenerator(RouteSettings settings) {
