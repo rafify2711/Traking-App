@@ -1,0 +1,26 @@
+import 'dart:developer';
+
+
+import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
+import 'package:tracking_app/core/base/api_result.dart';
+import 'package:tracking_app/core/utils/error_handler.dart';
+import 'package:tracking_app/features/auth/login/data/data_source/login_remote_data_source.dart';
+import 'package:tracking_app/features/auth/login/data/model/login_request.dart';
+import 'package:tracking_app/features/auth/login/data/model/login_response.dart';
+import 'package:tracking_app/features/auth/login/domain/repository_icontract/login_contract.dart';
+
+@Injectable(as: LoginContract)
+class LoginRepositoryImplementation implements LoginContract {
+  final LoginRemoteDataSource _loginRemoteDataSource;
+  LoginRepositoryImplementation({required LoginRemoteDataSource loginRemoteDataSource}) : _loginRemoteDataSource = loginRemoteDataSource;
+
+  @override
+  Future<ApiResult<LoginResponse>> login({
+    required LoginRequest loginRequest,
+  }) async {
+    return await _loginRemoteDataSource.login(loginRequest: loginRequest);
+
+  }
+}
