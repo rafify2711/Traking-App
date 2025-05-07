@@ -53,7 +53,6 @@ class _TrackingState extends State<Tracking> {
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,
         locale: context.locale,
-
         debugShowCheckedModeBanner: false,
         initialRoute: RoutesName.onBoarding,
         onGenerateRoute: RouteGenerator.onGenerator,
