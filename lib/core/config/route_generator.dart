@@ -7,6 +7,7 @@ import 'package:tracking_app/features/auth/login/home_screen.dart';
 import 'package:tracking_app/features/auth/login/presentation/view/login_screen.dart';
 import 'package:tracking_app/features/apply/presentation/view/apply_screen.dart';
 import 'package:tracking_app/features/on_boarding/presentation/views/widgets/on_boarding_view.dart';
+import 'package:tracking_app/features/success_screen/success_screen.dart';
 
 
 
@@ -47,6 +48,11 @@ class RouteGenerator {
         case RoutesName.homeView:
         return MaterialPageRoute(
           builder: (context) => const HomeScreen(),
+          settings: settings,
+        );
+        case RoutesName.successScreen:
+        return MaterialPageRoute(
+          builder: (context) => const SuccessScreen(),
           settings: settings,
         );
       default:

@@ -55,5 +55,7 @@ abstract class  LocaleKeys {
   static const validationPasswordMismatch = 'validationPasswordMismatch';
   static const validationVehicleNumberInvalid = 'validationVehicleNumberInvalid';
   static const validationIdNumberInvalid = 'validationIdNumberInvalid';
+  static const applicationSubmittedTitle = 'applicationSubmittedTitle';
+  static const applicationSubmittedBody = 'applicationSubmittedBody';
 
 }
