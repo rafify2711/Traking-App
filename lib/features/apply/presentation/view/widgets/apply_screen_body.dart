@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,6 +14,7 @@ import 'package:tracking_app/features/apply/data/models/apply_model/apply_data.d
 import 'package:tracking_app/features/apply/data/models/apply_model/apply_response/apply_response.dart';
 import 'package:tracking_app/features/apply/presentation/view/widgets/country_drop_down_list.dart';
 import 'package:tracking_app/features/apply/presentation/view/widgets/vehicle_drop_down_list.dart';
+
 import 'package:tracking_app/features/apply/presentation/view/widgets/welcome_text_in_apply_view.dart';
 import 'package:tracking_app/features/apply/presentation/view_model/cubit/apply_cubit.dart';
 import 'package:tracking_app/features/apply/presentation/view_model/cubit/apply_state.dart';
@@ -99,8 +98,7 @@ class _ApplyScreenBodyState extends State<ApplyScreenBody> {
                   });
                 },
                 selectedItem: state.selectedVehicle,
-                items: state.vehicles??[],
-                 // علشان نعرض الاسم في الـ dropdown
+                items: state.vehicles ?? [],
               ),
 
               SizedBox(height: responsiveHeight(24)),
@@ -264,14 +262,8 @@ class _ApplyScreenBodyState extends State<ApplyScreenBody> {
                         country: state.selectedCountry?.name ?? "",
                         firstName: cubit.firstNameController.text,
                         lastName: cubit.secondNameController.text,
-                        vehicleType:
-                            state.vehicles
-                                ?.firstWhere(
-                                  (element) =>
-                                      element.id == state.selectedVehicle,
-                                )
-                                .id ??
-                            "",
+                        vehicleType: state.selectedVehicle?.id ?? "",
+
                         vehicleNumber: cubit.vehicleNumberController.text,
                         vehicleLicense: cubit.vehicleLicenseFile!,
                         email: cubit.emailController.text,
@@ -302,7 +294,11 @@ class _ApplyScreenBodyState extends State<ApplyScreenBody> {
                     }
                   },
                   builder: (context, state) {
-                    return const Text("Continue");
+                    return state.applyState is BaseLoading<ApplyResponse>
+                        ? CircularProgressIndicator(
+                          color: PalletsColors.white10,
+                        )
+                        : const Text("Continue");
                   },
                 ),
               ),
