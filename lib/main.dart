@@ -26,7 +26,7 @@ void main() async {
       assetLoader: const CodegenLoader(),
       child: ChangeNotifierProvider(
         create: (_) => getIt<AppConfigProvider>(),
-        child: Tracking(),
+        child: const Tracking(),
         
       ),
     ),
@@ -53,7 +53,7 @@ class _TrackingState extends State<Tracking> {
       locale: context.locale,
 
       debugShowCheckedModeBanner: false,
-      initialRoute: RoutesName.applyView,
+      initialRoute: RoutesName.onBoarding,
       onGenerateRoute: RouteGenerator.onGenerator,
       theme: ApplicationTheme.themeData,
     );

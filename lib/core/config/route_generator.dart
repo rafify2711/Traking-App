@@ -3,6 +3,7 @@ import 'package:tracking_app/core/config/routes_name.dart';
 import 'package:tracking_app/features/auth/forget_password/presentation/view/forget_password_screen.dart';
 import 'package:tracking_app/features/auth/forget_password/presentation/view/reset_password_screen.dart';
 import 'package:tracking_app/features/auth/forget_password/presentation/view/verification_screen.dart';
+import 'package:tracking_app/features/auth/login/home_screen.dart';
 import 'package:tracking_app/features/auth/login/presentation/view/login_screen.dart';
 import 'package:tracking_app/features/apply/presentation/view/apply_screen.dart';
 import 'package:tracking_app/features/on_boarding/presentation/views/widgets/on_boarding_view.dart';
@@ -34,12 +35,17 @@ class RouteGenerator {
         );
       case RoutesName.resetPasswordScreen:
         return MaterialPageRoute(
-          builder: (context) => ResetPasswordScreen(),
+          builder: (context) => const ResetPasswordScreen(),
           settings: settings,
         );
       case RoutesName.loginScreen:
         return MaterialPageRoute(
           builder: (context) => const LoginScreen(),
+          settings: settings,
+        );
+        case RoutesName.homeView:
+        return MaterialPageRoute(
+          builder: (context) => const HomeScreen(),
           settings: settings,
         );
       default:
