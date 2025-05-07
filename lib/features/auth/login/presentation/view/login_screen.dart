@@ -130,10 +130,18 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: ElevatedButton(
                     onPressed: () async {
                       if (formKey.currentState!.validate()) {
-                        await context.read<LoginCubit>().login(
+                         context.read<LoginCubit>().login(
                           email: emailController.text.trim(),
                           password: passwordController.text.trim(),
                         );
+                          showSnackBar(
+                            context,
+                            LocaleKeys.loggedInSuccessfully.tr(),
+                          );
+                            Navigator.pushReplacementNamed(
+                            context,
+                            RoutesName.homeView,
+                          );
 
                         autoValidateMode = AutovalidateMode.disabled;
                       } else {
@@ -148,20 +156,14 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: BlocConsumer<LoginCubit, BaseState<LoginResponse>>(
                       listener: (context, state) {
                         if (state is BaseSuccess<LoginResponse>) {
-                          showSnackBar(
-                            context,
-                            LocaleKeys.loggedInSuccessfully.tr(),
-                          );
+                        
 
                            SecureStorageService().writeSecureData(
                             Constants.userToken,
                             state.data!.token,
                           );
 
-                          Navigator.pushReplacementNamed(
-                            context,
-                            RoutesName.homeView,
-                          );
+                        
                         } else if (state is BaseError<LoginResponse>) {
                           showErrorSnackBar(context, state.errorMessage);
                         }

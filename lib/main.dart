@@ -10,6 +10,8 @@ import 'package:tracking_app/core/provider/app_config_provider.dart';
 import 'package:tracking_app/core/utils/application_theme.dart';
 import 'package:tracking_app/core/utils/services/screen_size_service.dart';
 import 'package:tracking_app/core/utils/services/simple_bloc_observer.dart';
+import 'package:tracking_app/features/auth/login/domain/usecases/login_usecase.dart';
+import 'package:tracking_app/features/auth/login/presentation/view_model/login_cubit.dart';
 import 'package:tracking_app/generated/codegen_loader.g.dart';
 
 void main() async {
@@ -27,7 +29,6 @@ void main() async {
       child: ChangeNotifierProvider(
         create: (_) => getIt<AppConfigProvider>(),
         child: const Tracking(),
-        
       ),
     ),
   );
@@ -46,16 +47,18 @@ class _TrackingState extends State<Tracking> {
   Widget build(BuildContext context) {
     appConfigProvider = Provider.of<AppConfigProvider>(context);
     ScreenSizeService.init(context);
-    appConfigProvider = Provider.of<AppConfigProvider>(context);
-    return MaterialApp(
-      localizationsDelegates: context.localizationDelegates,
-      supportedLocales: context.supportedLocales,
-      locale: context.locale,
+    return BlocProvider(
+      create: (context) => LoginCubit(getIt.get<LoginUsecase>()),
+      child: MaterialApp(
+        localizationsDelegates: context.localizationDelegates,
+        supportedLocales: context.supportedLocales,
+        locale: context.locale,
 
-      debugShowCheckedModeBanner: false,
-      initialRoute: RoutesName.onBoarding,
-      onGenerateRoute: RouteGenerator.onGenerator,
-      theme: ApplicationTheme.themeData,
+        debugShowCheckedModeBanner: false,
+        initialRoute: RoutesName.onBoarding,
+        onGenerateRoute: RouteGenerator.onGenerator,
+        theme: ApplicationTheme.themeData,
+      ),
     );
   }
 }

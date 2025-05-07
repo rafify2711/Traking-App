@@ -19,7 +19,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.only(right: 10, left: 16, top: 8),
+          padding: const EdgeInsets.only(right: 10, left: 16, top: 100),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
