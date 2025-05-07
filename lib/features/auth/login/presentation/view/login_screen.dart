@@ -13,7 +13,8 @@ import 'package:tracking_app/core/utils/widgets/custom_text_form_fieled.dart';
 import 'package:tracking_app/features/auth/login/data/model/login_response.dart';
 import 'package:tracking_app/features/auth/login/domain/usecases/login_usecase.dart';
 import 'package:tracking_app/features/auth/login/presentation/view_model/login_cubit.dart';
-import 'package:tracking_app/generated/local_keys.g.dart';
+
+import '../../../../../generated/locale_keys.g.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -64,13 +65,13 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
         ),
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 12),
+          padding: const EdgeInsets.symmetric(horizontal: 12),
           child: Form(
             key: formKey,
             autovalidateMode: autoValidateMode,
             child: Column(
               children: [
-                SizedBox(height: 36),
+                const SizedBox(height: 36),
                 CustomTextFormFieled(
                   hintText: LocaleKeys.enterYourEmail.tr(),
                   labelText: LocaleKeys.email.tr(),
@@ -78,7 +79,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   validator: (value) => Validator.validateEmail(value),
                   isObsecureText: false,
                 ),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
                 CustomTextFormFieled(
                   hintText: LocaleKeys.enterYourPassword.tr(),
                   labelText: LocaleKeys.password.tr(),
@@ -86,7 +87,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   validator: (value) => Validator.validatePassword(value),
                   isObsecureText: true,
                 ),
-                SizedBox(height: 4),
+                const SizedBox(height: 4),
               Row(
                 children: [
                   Checkbox(
@@ -121,46 +122,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 ],
               )
               ,
-                SizedBox(height: 40),
-                Spacer(flex: 3,),
+                const SizedBox(height: 40),
+                const Spacer(flex: 3,),
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    child: BlocConsumer<LoginCubit, BaseState<LoginResponse>>(
-                      listener: (context, state) {
-                        if (state is BaseSuccess<LoginResponse>) {
-                          showSnackBar(
-                            context,
-                            LocaleKeys.loggedInSuccessfully.tr(),
-                          );
-
-                           SecureStorageService().writeSecureData(
-                            Constants.userToken,
-                            state.data.token,
-                          );
-
-                          // Navigator.pushReplacementNamed(
-                          //   context,
-                          //   RoutesName.layout,
-                          // );
-                        } else if (state is BaseError<LoginResponse>) {
-                          showErrorSnackBar(context, state.errorMessage);
-                        }
-                      },
-                      builder: (context, state) {
-                        return Center(
-                          child: state is BaseLoading<LoginResponse>
-                              ? SizedBox(
-                            height: 24,
-                            width: 24,
-                            child: CircularProgressIndicator(
-                              color: PalletsColors.white10,
-                            ),
-                          )
-                              : Text(LocaleKeys.login.tr()),
-                        );
-                      },
-                    ),
                     onPressed: () async {
                       if (formKey.currentState!.validate()) {
                         await context.read<LoginCubit>().login(
@@ -177,10 +143,45 @@ class _LoginScreenState extends State<LoginScreen> {
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor:isFilled?PalletsColors.mainColorBase:PalletsColors.black30
-                  ),)
+                  ),
+                    child: BlocConsumer<LoginCubit, BaseState<LoginResponse>>(
+                      listener: (context, state) {
+                        if (state is BaseSuccess<LoginResponse>) {
+                          showSnackBar(
+                            context,
+                            LocaleKeys.loggedInSuccessfully.tr(),
+                          );
+
+                           SecureStorageService().writeSecureData(
+                            Constants.userToken,
+                            state.data!.token,
+                          );
+
+                          // Navigator.pushReplacementNamed(
+                          //   context,
+                          //   RoutesName.layout,
+                          // );
+                        } else if (state is BaseError<LoginResponse>) {
+                          showErrorSnackBar(context, state.errorMessage);
+                        }
+                      },
+                      builder: (context, state) {
+                        return Center(
+                          child: state is BaseLoading<LoginResponse>
+                              ? const SizedBox(
+                            height: 24,
+                            width: 24,
+                            child: CircularProgressIndicator(
+                              color: PalletsColors.white10,
+                            ),
+                          )
+                              : Text(LocaleKeys.login.tr()),
+                        );
+                      },
+                    ),)
 
                 ),
-                Spacer()
+                const Spacer()
 
             ]),
 

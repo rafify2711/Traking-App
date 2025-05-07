@@ -19,7 +19,7 @@ class LoginCubit extends Cubit<BaseState<LoginResponse>> {
     final result = await loginUseCase.invoke(loginRequest: LoginRequest(email: email, password: password));
     switch(result){
       case ApiSuccess():{
-        emit(BaseSuccess(result.data!));
+        emit(BaseSuccess(data:  result.data!));
 
       }
       case ApiError():{
