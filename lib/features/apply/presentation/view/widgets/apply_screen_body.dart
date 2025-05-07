@@ -32,10 +32,15 @@ class _ApplyScreenBodyState extends State<ApplyScreenBody> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
 
+  final Map<String, String> vehicleTypeMap = {
+    'Car': '676b31a45d05310ca82657ac',
+    'Truck': '676b31a45d05310ca82657ad',
+    'Bike': '676b31a45d05310ca82657ae',
+  };
+
   @override
   void initState() {
     context.read<ApplyCubit>().loadCountries(context);
-
     super.initState();
   }
 
@@ -55,6 +60,7 @@ class _ApplyScreenBodyState extends State<ApplyScreenBody> {
       child: SingleChildScrollView(
         child: Form(
           key: formKey,
+          autovalidateMode: autovalidateMode,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -87,21 +93,12 @@ class _ApplyScreenBodyState extends State<ApplyScreenBody> {
               ),
               SizedBox(height: responsiveHeight(24)),
 
-              CustomTextFormFieled(
-                textEditingController: TextEditingController(text: '676b31a45d05310ca82657ac'),
-                labelText: '',
-                hintText: '',
-                isObsecureText: false,
-                validator: (val) => Validator.validateName(val),
+              VehicleDropDownList(
+                labelText: LocaleKeys.vehicleType.tr(),
+                onChanged: (value) => cubit.setVehicleType(value!),
+                selectedItem: state.selectedVehicleType ?? "Car",
+                items: vehicleTypeMap.keys.toList(),
               ),
-              SizedBox(height: responsiveHeight(24)),
-
-              // VehicleDropDownList(
-              //   labelText: LocaleKeys.vehicleType.tr(),
-              //   onChanged: (value) => cubit.setVehicleType(value!),
-              //   selectedItem: state.selectedVehicleType ?? "Car",
-              //   items: cubit.items,
-              // ),
               SizedBox(height: responsiveHeight(24)),
 
               CustomTextFormFieled(
@@ -193,11 +190,10 @@ class _ApplyScreenBodyState extends State<ApplyScreenBody> {
                       labelText: LocaleKeys.confirmPassword.tr(),
                       hintText: LocaleKeys.confirmPassword.tr(),
                       isObsecureText: true,
-                      validator:
-                          (val) => Validator.validateConfirmPassword(
-                            val,
-                            cubit.passwordController.text,
-                          ),
+                      validator: (val) => Validator.validateConfirmPassword(
+                        val,
+                        cubit.passwordController.text,
+                      ),
                     ),
                   ),
                 ],
@@ -215,16 +211,16 @@ class _ApplyScreenBodyState extends State<ApplyScreenBody> {
                   Radio<Gender>(
                     value: Gender.female,
                     groupValue: state.selectedGender,
-                    onChanged: (value) => cubit.setGender(value!),
+                    onChanged: (value) =>
+                        cubit.setGender(value ?? Gender.female),
                     activeColor: PalletsColors.mainColorBase,
                   ),
                   Text(
                     "Female",
                     style: AppTextStyles.instance.textStyle14.copyWith(
-                      color:
-                          state.selectedGender == Gender.female
-                              ? PalletsColors.blackBase
-                              : PalletsColors.gray,
+                      color: state.selectedGender == Gender.female
+                          ? PalletsColors.blackBase
+                          : PalletsColors.gray,
                     ),
                   ),
                   Radio<Gender>(
@@ -236,10 +232,9 @@ class _ApplyScreenBodyState extends State<ApplyScreenBody> {
                   Text(
                     "Male",
                     style: AppTextStyles.instance.textStyle14.copyWith(
-                      color:
-                          state.selectedGender == Gender.male
-                              ? PalletsColors.blackBase
-                              : PalletsColors.gray,
+                      color: state.selectedGender == Gender.male
+                          ? PalletsColors.blackBase
+                          : PalletsColors.gray,
                     ),
                   ),
                 ],
@@ -249,16 +244,19 @@ class _ApplyScreenBodyState extends State<ApplyScreenBody> {
               ElevatedButton(
                 onPressed: () async {
                   if (formKey.currentState!.validate()) {
-                    if (cubit.vehicleLicenseFile == null || cubit.idImageFile == null) {
-      showErrorSnackBar(context, "Please upload all required files");
-      return; // Stop if files are missing
-    }
+                    if (cubit.vehicleLicenseFile == null ||
+                        cubit.idImageFile == null) {
+                      showErrorSnackBar(
+                          context, "Please upload all required files");
+                      return;
+                    }
                     await cubit.apply(
                       ApplyData(
                         country: state.selectedCountry?.name ?? "",
                         firstName: cubit.firstNameController.text,
                         lastName: cubit.secondNameController.text,
-                        vehicleType: '676b31a45d05310ca82657ac',
+                        vehicleType:
+                        vehicleTypeMap[state.selectedVehicleType] ?? '',
                         vehicleNumber: cubit.vehicleNumberController.text,
                         vehicleLicense: cubit.vehicleLicenseFile!,
                         email: cubit.emailController.text,
@@ -267,20 +265,22 @@ class _ApplyScreenBodyState extends State<ApplyScreenBody> {
                         idImage: cubit.idImageFile!,
                         password: cubit.passwordController.text,
                         confirmPassword: cubit.confirmPasswordController.text,
-                        gender: state.selectedGender.toString(),
+                        gender: state.selectedGender.name,
                       ),
                     );
                     autovalidateMode = AutovalidateMode.disabled;
-                    
+                  } else {
+                    setState(() {
+                      autovalidateMode = AutovalidateMode.always;
+                    });
                   }
-                  autovalidateMode = AutovalidateMode.always;
                 },
                 child: BlocConsumer<ApplyCubit, ApplyState>(
                   listener: (context, state) {
                     if (state.applyState is BaseError<ApplyResponse>) {
                       showErrorSnackBar(
                         context,
-                        state.applyResponse?.message ?? "Something went ",
+                        state.applyResponse?.message ?? "Something went wrong",
                       );
                     } else if (state.applyState is BaseSuccess<ApplyResponse>) {
                       showSnackBar(context, state.applyResponse?.message ?? "");

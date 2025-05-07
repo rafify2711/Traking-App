@@ -40,13 +40,11 @@ class ApplyCubit extends Cubit<ApplyState> {
   }
 
   void setIdImage(File? file) {
-    if (file?.path.split('/').last == 'jpg') {
-      log('not jpg');
+     {
+
       idImageFile = file;
       idImageController.text = file?.path.split("/").last ?? "";
       emit(state.copyWith());
-    } else {
-      log('not jpg');
     }
   }
 
