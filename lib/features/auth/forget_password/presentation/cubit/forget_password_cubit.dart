@@ -11,7 +11,7 @@ part 'forget_password_state.dart';
 class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
   ForgetPasswordUseCase forgetPasswordUseCase;
   ForgetPasswordCubit(this.forgetPasswordUseCase)
-    : super(ForgetPasswordState());
+    : super(const ForgetPasswordState());
   TextEditingController forgetPasswordController = TextEditingController();
   @override
   Future<void> close() {

@@ -111,8 +111,9 @@ class ForgetPasswordBody extends StatelessWidget {
                       builder: (context, state) {
                         return ElevatedButton(
                           onPressed: () {
-                            if (cubit.formKey.currentState!.validate() == false)
+                            if (cubit.formKey.currentState!.validate() == false) {
                               return;
+                            }
                             cubit.forgetPassword();
                           },
                           child:

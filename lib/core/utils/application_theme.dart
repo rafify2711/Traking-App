@@ -3,7 +3,7 @@ import 'package:tracking_app/core/utils/colors.dart';
 
 abstract class ApplicationTheme {
   static ThemeData themeData = ThemeData(
-    appBarTheme: AppBarTheme(
+    appBarTheme: const AppBarTheme(
       titleTextStyle: TextStyle(
         fontFamily: "Inter",
         fontWeight: FontWeight.w500,
@@ -12,7 +12,7 @@ abstract class ApplicationTheme {
       ),
       centerTitle: false,
     ),
-    textTheme: TextTheme(
+    textTheme: const TextTheme(
       bodySmall: TextStyle(
         fontFamily: "Inter",
         fontSize: 12,
@@ -44,17 +44,17 @@ abstract class ApplicationTheme {
 
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        padding: EdgeInsets.symmetric(vertical: 15),
+        padding: const EdgeInsets.symmetric(vertical: 15),
         backgroundColor: PalletsColors.mainColorBase,
         foregroundColor: PalletsColors.whiteBase,
         disabledBackgroundColor: PalletsColors.gray,
         disabledForegroundColor: PalletsColors.whiteBase,
-        textStyle: TextStyle(
+        textStyle: const TextStyle(
           fontFamily: "Inter",
           fontSize: 16,
           fontWeight: FontWeight.w500,
         ),
-        minimumSize: Size(double.infinity, 48),
+        minimumSize: const Size(double.infinity, 48),
       ),
     ),
     outlinedButtonTheme: OutlinedButtonThemeData(

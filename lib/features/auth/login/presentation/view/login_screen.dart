@@ -64,13 +64,13 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
         ),
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 12),
+          padding: const EdgeInsets.symmetric(horizontal: 12),
           child: Form(
             key: formKey,
             autovalidateMode: autoValidateMode,
             child: Column(
               children: [
-                SizedBox(height: 36),
+                const SizedBox(height: 36),
                 CustomTextFormFieled(
                   hintText: LocaleKeys.enterYourEmail.tr(),
                   labelText: LocaleKeys.email.tr(),
@@ -78,7 +78,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   validator: (value) => Validator.validateEmail(value),
                   isObsecureText: false,
                 ),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
                 CustomTextFormFieled(
                   hintText: LocaleKeys.enterYourPassword.tr(),
                   labelText: LocaleKeys.password.tr(),
@@ -86,7 +86,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   validator: (value) => Validator.validatePassword(value),
                   isObsecureText: true,
                 ),
-                SizedBox(height: 4),
+                const SizedBox(height: 4),
               Row(
                 children: [
                   Checkbox(
@@ -121,11 +121,28 @@ class _LoginScreenState extends State<LoginScreen> {
                 ],
               )
               ,
-                SizedBox(height: 40),
-                Spacer(flex: 3,),
+                const SizedBox(height: 40),
+                const Spacer(flex: 3,),
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
+                    onPressed: () async {
+                      if (formKey.currentState!.validate()) {
+                        await context.read<LoginCubit>().login(
+                          email: emailController.text.trim(),
+                          password: passwordController.text.trim(),
+                        );
+
+                        autoValidateMode = AutovalidateMode.disabled;
+                      } else {
+                        setState(() {
+                          autoValidateMode = AutovalidateMode.always;
+                        });
+                      }
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor:isFilled?PalletsColors.mainColorBase:PalletsColors.black30
+                  ),
                     child: BlocConsumer<LoginCubit, BaseState<LoginResponse>>(
                       listener: (context, state) {
                         if (state is BaseSuccess<LoginResponse>) {
@@ -160,27 +177,10 @@ class _LoginScreenState extends State<LoginScreen> {
                               : Text(LocaleKeys.login.tr()),
                         );
                       },
-                    ),
-                    onPressed: () async {
-                      if (formKey.currentState!.validate()) {
-                        await context.read<LoginCubit>().login(
-                          email: emailController.text.trim(),
-                          password: passwordController.text.trim(),
-                        );
-
-                        autoValidateMode = AutovalidateMode.disabled;
-                      } else {
-                        setState(() {
-                          autoValidateMode = AutovalidateMode.always;
-                        });
-                      }
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor:isFilled?PalletsColors.mainColorBase:PalletsColors.black30
-                  ),)
+                    ),)
 
                 ),
-                Spacer()
+                const Spacer()
 
             ]),
 

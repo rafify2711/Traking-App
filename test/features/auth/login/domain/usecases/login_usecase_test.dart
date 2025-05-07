@@ -3,7 +3,6 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:tracking_app/core/utils/error_handler.dart';
 
-import 'package:tracking_app/features/auth/login/domain/usecases/login_usecase.dart';
 import 'package:tracking_app/features/auth/login/data/model/login_request.dart';
 import 'package:tracking_app/features/auth/login/data/model/login_response.dart';
 import 'package:tracking_app/core/base/api_result.dart';

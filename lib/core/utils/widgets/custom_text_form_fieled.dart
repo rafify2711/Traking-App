@@ -37,7 +37,7 @@ class CustomTextFormFieled extends StatelessWidget {
         color: PalletsColors.white70,
       ),
       decoration: InputDecoration(
-        contentPadding: EdgeInsets.all(16),
+        contentPadding: const EdgeInsets.all(16),
         suffix: suffix,
 
         errorBorder: const OutlineInputBorder(

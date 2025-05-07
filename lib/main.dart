@@ -19,10 +19,10 @@ void main() async {
   Bloc.observer = SimpleBlocObserver();
   runApp(
     EasyLocalization(
-      supportedLocales: [Locale('en'), Locale('ar')],
+      supportedLocales: const [Locale('en'), Locale('ar')],
       
       path: 'assets/translations',
-      fallbackLocale: Locale('_languageCode'),
+      fallbackLocale: const Locale('_languageCode'),
       assetLoader: const CodegenLoader(),
       child: ChangeNotifierProvider(
         create: (_) => getIt<AppConfigProvider>(),

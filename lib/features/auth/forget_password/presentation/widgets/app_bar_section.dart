@@ -5,7 +5,7 @@ import 'package:tracking_app/core/utils/colors.dart';
 
 class AppBarSection extends StatelessWidget {
   final String text;
-  const AppBarSection({Key? key, required this.text}) : super(key: key);
+  const AppBarSection({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {
