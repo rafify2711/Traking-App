@@ -17,7 +17,7 @@ import 'package:tracking_app/features/auth/forget_password/presentation/widgets/
 import 'package:tracking_app/generated/locale_keys.g.dart';
 
 class VerificationBody extends StatelessWidget {
-  const VerificationBody({Key? key, required this.email}) : super(key: key);
+  const VerificationBody({super.key, required this.email});
 
   final String email;
 

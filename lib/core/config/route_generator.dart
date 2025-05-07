@@ -9,6 +9,7 @@ import 'package:tracking_app/features/apply/presentation/view/apply_screen.dart'
 import 'package:tracking_app/features/on_boarding/presentation/views/widgets/on_boarding_view.dart';
 
 
+
 class RouteGenerator {
   static Route<dynamic>? onGenerator(RouteSettings settings) {
     switch (settings.name) {
