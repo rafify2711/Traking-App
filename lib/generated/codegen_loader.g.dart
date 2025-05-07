@@ -30,6 +30,15 @@ class CodegenLoader extends AssetLoader {
         "يرجى ادخال الكود الذي تم ارساله\n لبريدك الإلكتروني",
     "didntReceiveTheCode": "لم تستلم الكود؟",
     "resend": "اعادة الارسال",
+    "resetPassword": "إعادة تعيين كلمة المرور",
+    "passwordMustBeValid":
+        "يجب ألا تكون كلمة المرور فارغة ويجب أن تحتوي على 6 أحرف على الأقل مع حرف كبير ورقم واحد على الأقل.",
+    "enterYourPassword": "أدخل كلمة المرور الخاصة بك",
+    "newPassword": "كلمة المرور الجديدة",
+    "confirmPassword": "تأكيد كلمة المرور",
+    "passwordResetSuccess": "تمت إعادة تعيين كلمة المرور بنجاح!",
+    "resetPasswordFailed": "فشل إعادة تعيين كلمة المرور",
+    "errorOccurred": "حدث خطأ",
   };
   static const Map<String, dynamic> _en = {
     "local": "en",
@@ -47,6 +56,15 @@ class CodegenLoader extends AssetLoader {
         "Please Enter Your Code That Send To Your\n Email Address",
     "didntReceiveTheCode": "Didn't receive the code ?",
     "resend": "Resend",
+    "resetPassword": "Reset Password",
+    "passwordMustBeValid":
+        "Password must not be empty and must contain 6 characters with an uppercase letter and one number at least.",
+    "enterYourPassword": "Enter Your Password",
+    "newPassword": "New Password",
+    "confirmPassword": "Confirm Password",
+    "passwordResetSuccess": "Password reset successfully!",
+    "resetPasswordFailed": "Reset password failed",
+    "errorOccurred": "Error occurred",
   };
   static const Map<String, Map<String, dynamic>> mapLocales = {
     "ar": _ar,

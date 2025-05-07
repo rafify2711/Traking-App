@@ -87,7 +87,7 @@ class VerificationBody extends StatelessWidget {
               },
             ),
             responsiveHeightWidget(20),
-            const ResendCode(),
+            ResendCode(),
           ],
         ),
       ),

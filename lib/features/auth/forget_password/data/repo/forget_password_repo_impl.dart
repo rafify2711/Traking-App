@@ -15,6 +15,7 @@ import 'package:tracking_app/features/auth/forget_password/domain/repo/forget_pa
 class ForgetPasswordRepoImpl implements ForgetPasswordRepo {
   ForgetPasswordDataSource dataSource;
   ForgetPasswordRepoImpl({required this.dataSource});
+
   @override
   Future<ApiResult<ForgetPasswordResponse>> forgetPassword(
     ForgetPasswordRequest forgetPasswordRequest,
