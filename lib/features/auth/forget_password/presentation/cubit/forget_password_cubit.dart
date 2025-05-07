@@ -1,0 +1,50 @@
+import 'package:bloc/bloc.dart';
+import 'package:equatable/equatable.dart';
+import 'package:flutter/widgets.dart';
+import 'package:tracking_app/core/base/api_result.dart';
+import 'package:tracking_app/core/base/base_state.dart';
+import 'package:tracking_app/features/auth/forget_password/data/models/request/forget_password_request.dart';
+import 'package:tracking_app/features/auth/forget_password/data/models/response/forget_password_response.dart';
+import 'package:tracking_app/features/auth/forget_password/domain/use_cases/forget_password_use_case.dart';
+part 'forget_password_state.dart';
+
+class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
+  ForgetPasswordUseCase forgetPasswordUseCase;
+  ForgetPasswordCubit(this.forgetPasswordUseCase)
+    : super(ForgetPasswordState());
+  TextEditingController forgetPasswordController = TextEditingController();
+  @override
+  Future<void> close() {
+    forgetPasswordController.dispose();
+    return super.close();
+  }
+
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  Future<void> forgetPassword(
+    // ForgetPasswordRequest forgetPasswordRequest,
+  ) async {
+    emit(state.copyWith(forgetPasswordState: BaseLoading()));
+
+    final result = await forgetPasswordUseCase.invoke(
+      ForgetPasswordRequest(email: forgetPasswordController.text),
+    );
+
+    if (result is ApiSuccess<ForgetPasswordResponse>) {
+      emit(
+        state.copyWith(
+          forgetPasswordState: BaseSuccess<ForgetPasswordResponse>(
+            data: result.data,
+          ),
+        ),
+      );
+    } else if (result is ApiError<ForgetPasswordResponse>) {
+      emit(
+        state.copyWith(
+          forgetPasswordState: BaseError<ForgetPasswordResponse>(
+            result.message ?? "Something went wrong",
+          ),
+        ),
+      );
+    }
+  }
+}

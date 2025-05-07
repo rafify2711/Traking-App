@@ -1,6 +1,15 @@
 {
     "local": "ar",
-    "welcomeText": "مرحبًا بك في\nتطبيق فلاوري رايدر",
-    "applyNow": "قدّم الآن",
-    "login": "تسجيل الدخول"
+    "WelcomeToFloweryRiderApp": "مرحبًا بكم في تطبيق سائق فلويري",
+    "forgetPassword": "نسيت كلمة المرور",
+    "pleaseEnterYourEmailAssociatedToYourAccount": "يرجى ادخال بريدك الإلكتروني المرتبط \nبهذا الحساب",
+    "email": "البريد الإلكتروني",
+    "confirm": "تأكيد",
+    "enterYourEmail": "أدخل بريدك الإلكتروني",
+    "thisEmailIsNotValid": "هذا البريد الإلكتروني غير صالح",
+    "password": "كلمة المرور",
+    "emailVerification": "تحقق البريد الإلكتروني",
+    "pleaseEnterYourCode": "يرجى ادخال الكود الذي تم ارساله\n لبريدك الإلكتروني",
+    "didntReceiveTheCode": "لم تستلم الكود؟",
+    "resend": "اعادة الارسال"
 }

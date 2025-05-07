@@ -1,6 +1,16 @@
 {
-    "local": "en",
-    "welcomeText": "Welcome to\nFlowery rider app",
+    "local": "en" ,
     "applyNow": "Apply now",
-    "login": "Login"
+    "WelcomeToFloweryRiderApp" : "Welcome to Flowery rider app",
+    "forgetPassword" : "Forget password",
+    "pleaseEnterYourEmailAssociatedToYourAccount" : "Please enter your email associated to \n your account",
+    "email" : "Email",
+    "confirm" : "Confirm",
+    "enterYourEmail" : "Enter your email",
+    "thisEmailIsNotValid" : "This email is not valid",
+    "password" : "Password",
+    "emailVerification" : "Email verification",
+    "pleaseEnterYourCode" : "Please Enter Your Code That Send To Your\n Email Address",
+    "didntReceiveTheCode" : "Didn't receive the code ?",
+    "resend" : "Resend"
 }
