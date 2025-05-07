@@ -3,16 +3,21 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i7;
+import 'dart:async' as _i9;
 
+import 'package:dio/dio.dart' as _i14;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:tracking_app/core/api_manger/api_service.dart' as _i6;
+import 'package:tracking_app/core/api_manger/api_service.dart' as _i8;
+import 'package:tracking_app/features/apply/data/models/apply_model/apply_response/apply_response.dart'
+    as _i6;
+import 'package:tracking_app/features/apply/data/models/get_all_vehicles_response/get_all_vehicles_response.dart'
+    as _i7;
 import 'package:tracking_app/features/auth/forget_password/data/models/request/forget_password_request.dart'
-    as _i9;
-import 'package:tracking_app/features/auth/forget_password/data/models/request/otp_request.dart'
-    as _i10;
-import 'package:tracking_app/features/auth/forget_password/data/models/request/reset_password_request.dart'
     as _i11;
+import 'package:tracking_app/features/auth/forget_password/data/models/request/otp_request.dart'
+    as _i12;
+import 'package:tracking_app/features/auth/forget_password/data/models/request/reset_password_request.dart'
+    as _i13;
 import 'package:tracking_app/features/auth/forget_password/data/models/response/forget_password_response.dart'
     as _i3;
 import 'package:tracking_app/features/auth/forget_password/data/models/response/otp_response.dart'
@@ -20,7 +25,7 @@ import 'package:tracking_app/features/auth/forget_password/data/models/response/
 import 'package:tracking_app/features/auth/forget_password/data/models/response/reset_password_response.dart'
     as _i5;
 import 'package:tracking_app/features/auth/login/data/model/login_request.dart'
-    as _i8;
+    as _i10;
 import 'package:tracking_app/features/auth/login/data/model/login_response.dart'
     as _i2;
 
@@ -60,67 +65,101 @@ class _FakeResetPasswordResponse_3 extends _i1.SmartFake
     : super(parent, parentInvocation);
 }
 
+class _FakeApplyResponse_4 extends _i1.SmartFake implements _i6.ApplyResponse {
+  _FakeApplyResponse_4(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
+}
+
+class _FakeGetAllVehiclesResponse_5 extends _i1.SmartFake
+    implements _i7.GetAllVehiclesResponse {
+  _FakeGetAllVehiclesResponse_5(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
+}
+
 /// A class which mocks [ApiService].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockApiService extends _i1.Mock implements _i6.ApiService {
+class MockApiService extends _i1.Mock implements _i8.ApiService {
   MockApiService() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i7.Future<_i2.LoginResponse> loginUser(_i8.LoginRequest? loginRequest) =>
+  _i9.Future<_i2.LoginResponse> loginUser(_i10.LoginRequest? loginRequest) =>
       (super.noSuchMethod(
             Invocation.method(#loginUser, [loginRequest]),
-            returnValue: _i7.Future<_i2.LoginResponse>.value(
+            returnValue: _i9.Future<_i2.LoginResponse>.value(
               _FakeLoginResponse_0(
                 this,
                 Invocation.method(#loginUser, [loginRequest]),
               ),
             ),
           )
-          as _i7.Future<_i2.LoginResponse>);
+          as _i9.Future<_i2.LoginResponse>);
 
   @override
-  _i7.Future<_i3.ForgetPasswordResponse> forgetPassword(
-    _i9.ForgetPasswordRequest? forgetPasswordRequest,
+  _i9.Future<_i3.ForgetPasswordResponse> forgetPassword(
+    _i11.ForgetPasswordRequest? forgetPasswordRequest,
   ) =>
       (super.noSuchMethod(
             Invocation.method(#forgetPassword, [forgetPasswordRequest]),
-            returnValue: _i7.Future<_i3.ForgetPasswordResponse>.value(
+            returnValue: _i9.Future<_i3.ForgetPasswordResponse>.value(
               _FakeForgetPasswordResponse_1(
                 this,
                 Invocation.method(#forgetPassword, [forgetPasswordRequest]),
               ),
             ),
           )
-          as _i7.Future<_i3.ForgetPasswordResponse>);
+          as _i9.Future<_i3.ForgetPasswordResponse>);
 
   @override
-  _i7.Future<_i4.OtpResponse> verifyResetCode(_i10.OtpRequest? otpRequest) =>
+  _i9.Future<_i4.OtpResponse> verifyResetCode(_i12.OtpRequest? otpRequest) =>
       (super.noSuchMethod(
             Invocation.method(#verifyResetCode, [otpRequest]),
-            returnValue: _i7.Future<_i4.OtpResponse>.value(
+            returnValue: _i9.Future<_i4.OtpResponse>.value(
               _FakeOtpResponse_2(
                 this,
                 Invocation.method(#verifyResetCode, [otpRequest]),
               ),
             ),
           )
-          as _i7.Future<_i4.OtpResponse>);
+          as _i9.Future<_i4.OtpResponse>);
 
   @override
-  _i7.Future<_i5.ResetPasswordResponse> resetPassword(
-    _i11.ResetPasswordRequest? ResetPasswordRequest,
+  _i9.Future<_i5.ResetPasswordResponse> resetPassword(
+    _i13.ResetPasswordRequest? ResetPasswordRequest,
   ) =>
       (super.noSuchMethod(
             Invocation.method(#resetPassword, [ResetPasswordRequest]),
-            returnValue: _i7.Future<_i5.ResetPasswordResponse>.value(
+            returnValue: _i9.Future<_i5.ResetPasswordResponse>.value(
               _FakeResetPasswordResponse_3(
                 this,
                 Invocation.method(#resetPassword, [ResetPasswordRequest]),
               ),
             ),
           )
-          as _i7.Future<_i5.ResetPasswordResponse>);
+          as _i9.Future<_i5.ResetPasswordResponse>);
+
+  @override
+  _i9.Future<_i6.ApplyResponse> apply(_i14.FormData? formData) =>
+      (super.noSuchMethod(
+            Invocation.method(#apply, [formData]),
+            returnValue: _i9.Future<_i6.ApplyResponse>.value(
+              _FakeApplyResponse_4(this, Invocation.method(#apply, [formData])),
+            ),
+          )
+          as _i9.Future<_i6.ApplyResponse>);
+
+  @override
+  _i9.Future<_i7.GetAllVehiclesResponse> getAllVehicles() =>
+      (super.noSuchMethod(
+            Invocation.method(#getAllVehicles, []),
+            returnValue: _i9.Future<_i7.GetAllVehiclesResponse>.value(
+              _FakeGetAllVehiclesResponse_5(
+                this,
+                Invocation.method(#getAllVehicles, []),
+              ),
+            ),
+          )
+          as _i9.Future<_i7.GetAllVehiclesResponse>);
 }

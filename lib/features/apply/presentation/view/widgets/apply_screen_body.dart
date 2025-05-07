@@ -60,16 +60,16 @@ class _ApplyScreenBodyState extends State<ApplyScreenBody> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: responsiveHeight(24)),
+              SizedBox(height: resposiveHeight(24)),
               const WelcomeTextInApplyView(),
-              SizedBox(height: responsiveHeight(32)),
+              SizedBox(height: resposiveHeight(32)),
 
               CountryDropDownList(
                 onChanged: (value) => cubit.setSelectedCountry(value!),
                 selectedCountry: state.selectedCountry!,
                 countries: state.countries,
               ),
-              SizedBox(height: responsiveHeight(24)),
+              SizedBox(height: resposiveHeight(24)),
 
               CustomTextFormFieled(
                 textEditingController: cubit.firstNameController,
@@ -78,7 +78,7 @@ class _ApplyScreenBodyState extends State<ApplyScreenBody> {
                 isObsecureText: false,
                 validator: (val) => Validator.validateName(val),
               ),
-              SizedBox(height: responsiveHeight(24)),
+              SizedBox(height: resposiveHeight(24)),
 
               CustomTextFormFieled(
                 textEditingController: cubit.secondNameController,
@@ -87,7 +87,7 @@ class _ApplyScreenBodyState extends State<ApplyScreenBody> {
                 isObsecureText: false,
                 validator: (val) => Validator.validateName(val),
               ),
-              SizedBox(height: responsiveHeight(24)),
+              SizedBox(height: resposiveHeight(24)),
 
               VehicleDropDownList(
                 labelText: LocaleKeys.vehicleType.tr(),
@@ -101,7 +101,7 @@ class _ApplyScreenBodyState extends State<ApplyScreenBody> {
                 items: state.vehicles ?? [],
               ),
 
-              SizedBox(height: responsiveHeight(24)),
+              SizedBox(height: resposiveHeight(24)),
 
               CustomTextFormFieled(
                 textEditingController: cubit.vehicleNumberController,
@@ -110,7 +110,7 @@ class _ApplyScreenBodyState extends State<ApplyScreenBody> {
                 isObsecureText: false,
                 validator: (val) => Validator.validateVehicleNumber(val),
               ),
-              SizedBox(height: responsiveHeight(24)),
+              SizedBox(height: resposiveHeight(24)),
 
               CustomTextFormFieled(
                 suffix: const Icon(Icons.file_upload_outlined),
@@ -126,7 +126,7 @@ class _ApplyScreenBodyState extends State<ApplyScreenBody> {
                   }
                 },
               ),
-              SizedBox(height: responsiveHeight(24)),
+              SizedBox(height: resposiveHeight(24)),
 
               CustomTextFormFieled(
                 keyboardType: TextInputType.emailAddress,
@@ -136,7 +136,7 @@ class _ApplyScreenBodyState extends State<ApplyScreenBody> {
                 isObsecureText: false,
                 validator: (val) => Validator.validateEmail(val),
               ),
-              SizedBox(height: responsiveHeight(24)),
+              SizedBox(height: resposiveHeight(24)),
 
               CustomTextFormFieled(
                 keyboardType: TextInputType.phone,
@@ -146,7 +146,7 @@ class _ApplyScreenBodyState extends State<ApplyScreenBody> {
                 isObsecureText: false,
                 validator: (val) => Validator.validatePhoneNumber(val),
               ),
-              SizedBox(height: responsiveHeight(24)),
+              SizedBox(height: resposiveHeight(24)),
 
               CustomTextFormFieled(
                 textEditingController: cubit.idNumberController,
@@ -155,7 +155,7 @@ class _ApplyScreenBodyState extends State<ApplyScreenBody> {
                 isObsecureText: false,
                 validator: (val) => Validator.validateIdNumber(val),
               ),
-              SizedBox(height: responsiveHeight(24)),
+              SizedBox(height: resposiveHeight(24)),
 
               CustomTextFormFieled(
                 suffix: const Icon(Icons.file_upload_outlined),
@@ -171,7 +171,7 @@ class _ApplyScreenBodyState extends State<ApplyScreenBody> {
                   }
                 },
               ),
-              SizedBox(height: responsiveHeight(24)),
+              SizedBox(height: resposiveHeight(24)),
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -201,7 +201,7 @@ class _ApplyScreenBodyState extends State<ApplyScreenBody> {
                   ),
                 ],
               ),
-              SizedBox(height: responsiveHeight(24)),
+              SizedBox(height: resposiveHeight(24)),
 
               Row(
                 children: [
@@ -244,7 +244,7 @@ class _ApplyScreenBodyState extends State<ApplyScreenBody> {
                   ),
                 ],
               ),
-              SizedBox(height: responsiveHeight(24)),
+              SizedBox(height: resposiveHeight(24)),
 
               ElevatedButton(
                 onPressed: () async {
@@ -302,7 +302,7 @@ class _ApplyScreenBodyState extends State<ApplyScreenBody> {
                   },
                 ),
               ),
-              SizedBox(height: responsiveHeight(24)),
+              SizedBox(height: resposiveHeight(24)),
             ],
           ),
         ),

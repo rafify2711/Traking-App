@@ -84,7 +84,7 @@ class ApplyCubit extends Cubit<ApplyState> {
       emit(
         state.copyWith(
           applyState: BaseError<ApplyResponse>(
-             errorMessage: "Please upload all required images",
+           "Please upload all required images",
           ),
         ),
       );
@@ -105,7 +105,7 @@ class ApplyCubit extends Cubit<ApplyState> {
     } else if (result is ApiError<ApplyResponse>) {
       emit(
         state.copyWith(
-          applyState: BaseError<ApplyResponse>(errorMessage: result.message ?? "Something went wrong"),
+          applyState: BaseError<ApplyResponse>(result.message ?? "Something went wrong"),
             
           
         ),
@@ -122,7 +122,7 @@ class ApplyCubit extends Cubit<ApplyState> {
                   vehiclesResponse: result.data?.vehicles,
         applyState: BaseSuccess<List<Vehicle>>(data: result.data?.vehicles)));
     } else if (result is ApiError<GetAllVehiclesResponse>) {
-      emit(state.copyWith(applyState: BaseError<String>(errorMessage: result.message ?? "Something went wrong")));
+      emit(state.copyWith(applyState: BaseError<String>( result.message ?? "Something went wrong")));
     }
   }
 

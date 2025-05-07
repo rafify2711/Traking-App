@@ -16,7 +16,7 @@ class WelcomeTextInApplyView extends StatelessWidget {
             fontWeight: FontWeight.w500,
           ),
         ),
-        SizedBox(height: responsiveHeight(8)),
+        SizedBox(height: resposiveHeight(8)),
         Text(
           'You want to be a delivery man?',
           style: AppTextStyles.instance.textStyle16.copyWith(

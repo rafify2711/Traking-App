@@ -13,6 +13,15 @@ import 'package:dio/dio.dart' as _i361;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
+import '../../features/apply/data/data_source/auth_remote_data_source.dart'
+    as _i785;
+import '../../features/apply/data/data_source/auth_remote_data_source_impl.dart'
+    as _i965;
+import '../../features/apply/data/repos/auth_repo_impl.dart' as _i1040;
+import '../../features/apply/domain/repos/auth_repo.dart' as _i1051;
+import '../../features/apply/domain/use_case/apply_use_case.dart' as _i231;
+import '../../features/apply/domain/use_case/get_vehicle_use_case.dart'
+    as _i251;
 import '../../features/auth/forget_password/data/data_source/forget_password_data_source_impl.dart'
     as _i224;
 import '../../features/auth/forget_password/data/repo/forget_password_repo_impl.dart'
@@ -36,15 +45,6 @@ import '../../features/auth/login/data/repository_implementation/login_repositor
 import '../../features/auth/login/domain/repository_icontract/login_contract.dart'
     as _i96;
 import '../../features/auth/login/domain/usecases/login_usecase.dart' as _i401;
-import '../../features/apply/data/data_source/auth_remote_data_source.dart'
-    as _i785;
-import '../../features/apply/data/data_source/auth_remote_data_source_impl.dart'
-    as _i965;
-import '../../features/apply/data/repos/auth_repo_impl.dart' as _i1040;
-import '../../features/apply/domain/repos/auth_repo.dart' as _i1051;
-import '../../features/apply/domain/use_case/apply_use_case.dart' as _i231;
-import '../../features/apply/domain/use_case/get_vehicle_use_case.dart'
-    as _i251;
 import '../api_manger/api_service.dart' as _i525;
 import '../api_manger/dio_module.dart' as _i508;
 import '../provider/app_config_provider.dart' as _i291;
@@ -72,8 +72,22 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i525.ApiService>(
       () => dioModule.provideApiService(gh<_i361.Dio>()),
     );
+    gh.factory<_i785.AuthRemoteDataSource>(
+      () => _i965.AuthRemoteDataSourceImpl(apiService: gh<_i525.ApiService>()),
+    );
+    gh.factory<_i1051.AuthRepo>(
+      () => _i1040.AuthRepoImpl(
+        authRemoteDataSource: gh<_i785.AuthRemoteDataSource>(),
+      ),
+    );
     gh.factory<_i520.LoginRemoteDataSource>(
       () => _i1015.LoginRemoteDataSourceImp(apiService: gh<_i525.ApiService>()),
+    );
+    gh.factory<_i231.ApplyUseCase>(
+      () => _i231.ApplyUseCase(authRepo: gh<_i1051.AuthRepo>()),
+    );
+    gh.factory<_i251.GetVehiclesUseCase>(
+      () => _i251.GetVehiclesUseCase(gh<_i1051.AuthRepo>()),
     );
     gh.factory<_i762.ForgetPasswordDataSource>(
       () => _i224.ForgetPasswordDataSourceImpl(gh<_i525.ApiService>()),
@@ -99,20 +113,6 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i22.ResetPasswordUseCase>(
       () => _i22.ResetPasswordUseCase(gh<_i484.ForgetPasswordRepo>()),
-    );
-    gh.factory<_i785.AuthRemoteDataSource>(
-      () => _i965.AuthRemoteDataSourceImpl(apiService: gh<_i525.ApiService>()),
-    );
-    gh.factory<_i1051.AuthRepo>(
-      () => _i1040.AuthRepoImpl(
-        authRemoteDataSource: gh<_i785.AuthRemoteDataSource>(),
-      ),
-    );
-    gh.factory<_i231.ApplyUseCase>(
-      () => _i231.ApplyUseCase(authRepo: gh<_i1051.AuthRepo>()),
-    );
-    gh.factory<_i251.GetVehiclesUseCase>(
-      () => _i251.GetVehiclesUseCase(gh<_i1051.AuthRepo>()),
     );
     return this;
   }
