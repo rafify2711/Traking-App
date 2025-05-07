@@ -5,8 +5,10 @@ import 'package:tracking_app/core/base/api_result.dart';
 import 'package:tracking_app/core/utils/error_handler.dart';
 import 'package:tracking_app/features/auth/forget_password/data/models/request/forget_password_request.dart';
 import 'package:tracking_app/features/auth/forget_password/data/models/request/otp_request.dart';
+import 'package:tracking_app/features/auth/forget_password/data/models/request/reset_password_request.dart';
 import 'package:tracking_app/features/auth/forget_password/data/models/response/forget_password_response.dart';
 import 'package:tracking_app/features/auth/forget_password/data/models/response/otp_response.dart';
+import 'package:tracking_app/features/auth/forget_password/data/models/response/reset_password_response.dart';
 import 'package:tracking_app/features/auth/forget_password/data/repo/forget_password_repo_impl.dart';
 import 'package:tracking_app/features/auth/forget_password/domain/data_source/forget_password_data_source.dart';
 import 'package:tracking_app/features/auth/forget_password/domain/repo/forget_password_repo.dart';
@@ -90,5 +92,59 @@ void main() {
       verify(mockRepo.forgetPassword(request)).called(1);
       expect(actual, equals(expected));
     });
+  });
+
+  group('test reset password repo impl', () {
+    test(
+      'when call resetPassword should return ApiSuccess<ResetPasswordResponse>',
+      () async {
+        // arrange
+        final resetRequest = ResetPasswordRequest(
+          email: 'test@example.com',
+          newPassword: 'Test@1234',
+        );
+        final resetResponse = ResetPasswordResponse();
+        final result = ApiSuccess<ResetPasswordResponse>(data: resetResponse);
+
+        provideDummy<ApiResult<ResetPasswordResponse>>(result);
+        when(
+          mockRepo.resetPassword(resetRequest),
+        ).thenAnswer((_) async => result);
+
+        // act
+        final actual = await repo.resetPassword(resetRequest);
+
+        // assert
+        verify(mockRepo.resetPassword(resetRequest)).called(1);
+        expect(actual, result);
+      },
+    );
+
+    test(
+      'should return ApiError<ResetPasswordResponse> when data source fails',
+      () async {
+        // arrange
+        final resetRequest = ResetPasswordRequest(
+          email: 'test@example.com',
+          newPassword: 'Test@1234',
+        );
+        final expected = ApiError<ResetPasswordResponse>(
+          message: 'Reset failed',
+          failure: ServerFailure(errorMessage: 'Reset failed'),
+        );
+
+        provideDummy<ApiResult<ResetPasswordResponse>>(expected);
+        when(
+          mockRepo.resetPassword(resetRequest),
+        ).thenAnswer((_) async => expected);
+
+        // act
+        final actual = await repo.resetPassword(resetRequest);
+
+        // assert
+        verify(mockRepo.resetPassword(resetRequest)).called(1);
+        expect(actual, expected);
+      },
+    );
   });
 }

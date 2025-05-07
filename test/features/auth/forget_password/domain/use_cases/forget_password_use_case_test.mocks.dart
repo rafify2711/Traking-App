@@ -12,10 +12,14 @@ import 'package:tracking_app/features/auth/forget_password/data/models/request/f
     as _i6;
 import 'package:tracking_app/features/auth/forget_password/data/models/request/otp_request.dart'
     as _i9;
+import 'package:tracking_app/features/auth/forget_password/data/models/request/reset_password_request.dart'
+    as _i11;
 import 'package:tracking_app/features/auth/forget_password/data/models/response/forget_password_response.dart'
     as _i5;
 import 'package:tracking_app/features/auth/forget_password/data/models/response/otp_response.dart'
     as _i8;
+import 'package:tracking_app/features/auth/forget_password/data/models/response/reset_password_response.dart'
+    as _i10;
 import 'package:tracking_app/features/auth/forget_password/domain/repo/forget_password_repo.dart'
     as _i2;
 
@@ -72,4 +76,20 @@ class MockForgetPasswordRepo extends _i1.Mock
             ),
           )
           as _i3.Future<_i4.ApiResult<_i8.OtpResponse>>);
+
+  @override
+  _i3.Future<_i4.ApiResult<_i10.ResetPasswordResponse>> resetPassword(
+    _i11.ResetPasswordRequest? resetPasswordRequest,
+  ) =>
+      (super.noSuchMethod(
+            Invocation.method(#resetPassword, [resetPasswordRequest]),
+            returnValue:
+                _i3.Future<_i4.ApiResult<_i10.ResetPasswordResponse>>.value(
+                  _i7.dummyValue<_i4.ApiResult<_i10.ResetPasswordResponse>>(
+                    this,
+                    Invocation.method(#resetPassword, [resetPasswordRequest]),
+                  ),
+                ),
+          )
+          as _i3.Future<_i4.ApiResult<_i10.ResetPasswordResponse>>);
 }

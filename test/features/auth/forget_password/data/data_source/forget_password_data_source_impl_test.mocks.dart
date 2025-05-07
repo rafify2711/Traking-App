@@ -3,18 +3,22 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i5;
+import 'dart:async' as _i6;
 
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:tracking_app/core/api_manger/api_service.dart' as _i4;
+import 'package:tracking_app/core/api_manger/api_service.dart' as _i5;
 import 'package:tracking_app/features/auth/forget_password/data/models/request/forget_password_request.dart'
-    as _i6;
-import 'package:tracking_app/features/auth/forget_password/data/models/request/otp_request.dart'
     as _i7;
+import 'package:tracking_app/features/auth/forget_password/data/models/request/otp_request.dart'
+    as _i8;
+import 'package:tracking_app/features/auth/forget_password/data/models/request/reset_password_request.dart'
+    as _i9;
 import 'package:tracking_app/features/auth/forget_password/data/models/response/forget_password_response.dart'
     as _i2;
 import 'package:tracking_app/features/auth/forget_password/data/models/response/otp_response.dart'
     as _i3;
+import 'package:tracking_app/features/auth/forget_password/data/models/response/reset_password_response.dart'
+    as _i4;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -41,39 +45,60 @@ class _FakeOtpResponse_1 extends _i1.SmartFake implements _i3.OtpResponse {
     : super(parent, parentInvocation);
 }
 
+class _FakeResetPasswordResponse_2 extends _i1.SmartFake
+    implements _i4.ResetPasswordResponse {
+  _FakeResetPasswordResponse_2(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
+}
+
 /// A class which mocks [ApiService].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockApiService extends _i1.Mock implements _i4.ApiService {
+class MockApiService extends _i1.Mock implements _i5.ApiService {
   MockApiService() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i5.Future<_i2.ForgetPasswordResponse> forgetPassword(
-    _i6.ForgetPasswordRequest? forgetPasswordRequest,
+  _i6.Future<_i2.ForgetPasswordResponse> forgetPassword(
+    _i7.ForgetPasswordRequest? forgetPasswordRequest,
   ) =>
       (super.noSuchMethod(
             Invocation.method(#forgetPassword, [forgetPasswordRequest]),
-            returnValue: _i5.Future<_i2.ForgetPasswordResponse>.value(
+            returnValue: _i6.Future<_i2.ForgetPasswordResponse>.value(
               _FakeForgetPasswordResponse_0(
                 this,
                 Invocation.method(#forgetPassword, [forgetPasswordRequest]),
               ),
             ),
           )
-          as _i5.Future<_i2.ForgetPasswordResponse>);
+          as _i6.Future<_i2.ForgetPasswordResponse>);
 
   @override
-  _i5.Future<_i3.OtpResponse> verifyResetCode(_i7.OtpRequest? otpRequest) =>
+  _i6.Future<_i3.OtpResponse> verifyResetCode(_i8.OtpRequest? otpRequest) =>
       (super.noSuchMethod(
             Invocation.method(#verifyResetCode, [otpRequest]),
-            returnValue: _i5.Future<_i3.OtpResponse>.value(
+            returnValue: _i6.Future<_i3.OtpResponse>.value(
               _FakeOtpResponse_1(
                 this,
                 Invocation.method(#verifyResetCode, [otpRequest]),
               ),
             ),
           )
-          as _i5.Future<_i3.OtpResponse>);
+          as _i6.Future<_i3.OtpResponse>);
+
+  @override
+  _i6.Future<_i4.ResetPasswordResponse> resetPassword(
+    _i9.ResetPasswordRequest? ResetPasswordRequest,
+  ) =>
+      (super.noSuchMethod(
+            Invocation.method(#resetPassword, [ResetPasswordRequest]),
+            returnValue: _i6.Future<_i4.ResetPasswordResponse>.value(
+              _FakeResetPasswordResponse_2(
+                this,
+                Invocation.method(#resetPassword, [ResetPasswordRequest]),
+              ),
+            ),
+          )
+          as _i6.Future<_i4.ResetPasswordResponse>);
 }

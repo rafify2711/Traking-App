@@ -7,8 +7,10 @@ import 'package:tracking_app/core/utils/error_handler.dart';
 import 'package:tracking_app/features/auth/forget_password/data/data_source/forget_password_data_source_impl.dart';
 import 'package:tracking_app/features/auth/forget_password/data/models/request/forget_password_request.dart';
 import 'package:tracking_app/features/auth/forget_password/data/models/request/otp_request.dart';
+import 'package:tracking_app/features/auth/forget_password/data/models/request/reset_password_request.dart';
 import 'package:tracking_app/features/auth/forget_password/data/models/response/forget_password_response.dart';
 import 'package:tracking_app/features/auth/forget_password/data/models/response/otp_response.dart';
+import 'package:tracking_app/features/auth/forget_password/data/models/response/reset_password_response.dart';
 import 'package:tracking_app/features/auth/forget_password/domain/data_source/forget_password_data_source.dart';
 
 import 'forget_password_data_source_impl_test.mocks.dart';
@@ -68,4 +70,44 @@ void main() {
       expect(actual, isA<ApiError<OtpResponse>>());
     });
   });
+  group(
+    " test the reset password method in the forget password data source ",
+    () {
+      test(
+        'should return ResetPasswordResponse when data source success',
+        () async {
+          final request = ResetPasswordRequest(
+            email: 'email@example.com',
+            newPassword: 'NewPass@123',
+          );
+          final expected = ResetPasswordResponse();
+
+          when(
+            apiService.resetPassword(request),
+          ).thenAnswer((_) async => expected);
+
+          final actual = await dataSource.resetPassword(request);
+
+          verify(apiService.resetPassword(request)).called(1);
+          expect(actual, isA<ApiSuccess<ResetPasswordResponse>>());
+        },
+      );
+
+      test('should return ApiError when reset password fails', () async {
+        final request = ResetPasswordRequest(
+          email: 'email@example.com',
+          newPassword: 'NewPass@123',
+        );
+
+        when(
+          apiService.resetPassword(request),
+        ).thenThrow(ServerFailure(errorMessage: 'error'));
+
+        final actual = await dataSource.resetPassword(request);
+
+        verify(apiService.resetPassword(request)).called(1);
+        expect(actual, isA<ApiError<ResetPasswordResponse>>());
+      });
+    },
+  );
 }
