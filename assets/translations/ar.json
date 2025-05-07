@@ -1,4 +1,6 @@
 {
     "local": "ar",
-    "WelcomeToFloweryRiderApp": "مرحبًا بكم في تطبيق سائق فلويري"
+    "welcomeText": "مرحبًا بك في\nتطبيق فلاوري رايدر",
+    "applyNow": "قدّم الآن",
+    "login": "تسجيل الدخول"
 }

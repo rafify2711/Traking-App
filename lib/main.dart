@@ -15,25 +15,28 @@ void main() async {
   configureDependencies();
   runApp(
     EasyLocalization(
-      supportedLocales: [Locale('en', 'US'), Locale('ar', 'EG')],
+      supportedLocales: [Locale('en'), Locale('ar')],
       path: 'assets/translations',
       fallbackLocale: Locale('_languageCode'),
       assetLoader: const CodegenLoader(),
       child: ChangeNotifierProvider(
         create: (_) => getIt<AppConfigProvider>(),
-        child: const Tracking(),
+        child: Tracking(),
       ),
     ),
   );
 }
 
 class Tracking extends StatelessWidget {
-  const Tracking({super.key});
+  Tracking({super.key});
+  late AppConfigProvider appConfigProvider;
 
   @override
   Widget build(BuildContext context) {
     // to handle responsive design
     ScreenSizeService.init(context);
+
+    appConfigProvider = Provider.of<AppConfigProvider>(context);
     return MaterialApp(
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,

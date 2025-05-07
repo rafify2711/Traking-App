@@ -3,9 +3,9 @@ import 'package:injectable/injectable.dart';
 
 @singleton
 class AppConfigProvider extends ChangeNotifier {
-  String currentLanguge = "ar";
+  String currentLanguge = "en";
 
-   void changeCurrentLanguge(String newLanguge) {
+  void changeCurrentLanguge(String newLanguge) {
     if (currentLanguge == newLanguge) return;
     currentLanguge = newLanguge;
     notifyListeners();
