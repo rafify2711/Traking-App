@@ -18,12 +18,14 @@ class ApplyScreen extends StatelessWidget {
           titleSpacing: 0,
           leading: IconButton(
             padding: const EdgeInsets.all(0),
-            onPressed: () {},
-            icon: Icon(Icons.arrow_back_ios),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(Icons.arrow_back_ios),
           ),
-          title: Text("Apply"),
+          title: const Text("Apply"),
         ),
-        body: ApplyScreenBody(),
+        body: const ApplyScreenBody(),
       ),
     );
   }

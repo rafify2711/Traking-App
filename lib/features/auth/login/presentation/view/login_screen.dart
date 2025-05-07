@@ -108,7 +108,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   const Spacer(),
                   GestureDetector(
                     onTap: () {
-                      // Navigator.pushNamed(context, RoutesName.forgetPassword);
+                      Navigator.pushNamed(context, RoutesName.forgetPassword);
                     },
                     child: Text(
                       LocaleKeys.forgetPassword.tr(),

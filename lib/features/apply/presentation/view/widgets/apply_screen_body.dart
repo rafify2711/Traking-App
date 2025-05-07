@@ -292,7 +292,7 @@ class _ApplyScreenBodyState extends State<ApplyScreenBody> {
                       );
                     } else if (state.applyState is BaseSuccess<ApplyResponse>) {
                       showSnackBar(context, state.applyResponse?.message ?? "");
-                      Navigator.pushNamed(context, RoutesName.homeView);
+                      Navigator.pushNamed(context, RoutesName.loginScreen);
                     }
                   },
                   builder: (context, state) {

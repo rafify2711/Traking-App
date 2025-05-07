@@ -53,7 +53,9 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                 ),
                 const SizedBox(height: 16),
                 OutlinedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, RoutesName.applyView);
+                  },
                   child: Text(
                     LocaleKeys.applyNow.tr(),
                     style: AppTextStyles.instance.textStyle16.copyWith(
