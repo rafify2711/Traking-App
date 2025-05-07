@@ -7,7 +7,7 @@ class ApplyData {
   final String country;
   final String firstName;
   final String lastName;
-  String? vehicleType;
+  final String vehicleType;
   final String vehicleNumber;
   final File vehicleLicense;
   final String email;
@@ -59,7 +59,10 @@ class ApplyData {
       "vehicleNumber": vehicleNumber,
       "vehicleLicense": await MultipartFile.fromFile(
         vehicleLicense.path,
-        contentType: MediaType(vehicleMediaTypeParts[0], vehicleMediaTypeParts[1]),
+        contentType: MediaType(
+          vehicleMediaTypeParts[0],
+          vehicleMediaTypeParts[1],
+        ),
       ),
       "NIDImg": await MultipartFile.fromFile(
         idImage.path,

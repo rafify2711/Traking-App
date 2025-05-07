@@ -20,7 +20,7 @@ Future<File?> showImageSourcePicker(BuildContext context) async {
               onTap: () async {
                 final image = await pickImage(source: ImageSource.camera);
                 log(" ---------------------------------${image?.path ?? ""}");
-                Navigator.pop(context , image);
+                Navigator.pop(context, image);
               },
             ),
             ListTile(
@@ -28,7 +28,7 @@ Future<File?> showImageSourcePicker(BuildContext context) async {
               title: const Text('Gallery'),
               onTap: () async {
                 final image = await pickImage(source: ImageSource.gallery);
-                Navigator.pop(context ,image);
+                Navigator.pop(context, image);
               },
             ),
           ],

@@ -31,16 +31,13 @@ class ApplyScreenBody extends StatefulWidget {
 class _ApplyScreenBodyState extends State<ApplyScreenBody> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
-
-  final Map<String, String> vehicleTypeMap = {
-    'Car': '676b31a45d05310ca82657ac',
-    'Truck': '676b31a45d05310ca82657ad',
-    'Bike': '676b31a45d05310ca82657ae',
-  };
+  String? selectedVehicle;
+  List<String> vehiclesType = [];
 
   @override
   void initState() {
     context.read<ApplyCubit>().loadCountries(context);
+    context.read<ApplyCubit>().getVehicles();
     super.initState();
   }
 
@@ -95,9 +92,13 @@ class _ApplyScreenBodyState extends State<ApplyScreenBody> {
 
               VehicleDropDownList(
                 labelText: LocaleKeys.vehicleType.tr(),
-                onChanged: (value) => cubit.setVehicleType(value!),
-                selectedItem: state.selectedVehicleType ?? "Car",
-                items: vehicleTypeMap.keys.toList(),
+                onChanged: (value) async {
+                  selectedVehicle = value;
+                  setState(() {});
+                },
+                selectedItem: selectedVehicle ?? 'Car',
+                items:
+                    state.vehiclesResponse?.map((v) => v.type!).toList() ?? [],
               ),
               SizedBox(height: responsiveHeight(24)),
 
@@ -190,10 +191,11 @@ class _ApplyScreenBodyState extends State<ApplyScreenBody> {
                       labelText: LocaleKeys.confirmPassword.tr(),
                       hintText: LocaleKeys.confirmPassword.tr(),
                       isObsecureText: true,
-                      validator: (val) => Validator.validateConfirmPassword(
-                        val,
-                        cubit.passwordController.text,
-                      ),
+                      validator:
+                          (val) => Validator.validateConfirmPassword(
+                            val,
+                            cubit.passwordController.text,
+                          ),
                     ),
                   ),
                 ],
@@ -211,16 +213,17 @@ class _ApplyScreenBodyState extends State<ApplyScreenBody> {
                   Radio<Gender>(
                     value: Gender.female,
                     groupValue: state.selectedGender,
-                    onChanged: (value) =>
-                        cubit.setGender(value ?? Gender.female),
+                    onChanged:
+                        (value) => cubit.setGender(value ?? Gender.female),
                     activeColor: PalletsColors.mainColorBase,
                   ),
                   Text(
                     "Female",
                     style: AppTextStyles.instance.textStyle14.copyWith(
-                      color: state.selectedGender == Gender.female
-                          ? PalletsColors.blackBase
-                          : PalletsColors.gray,
+                      color:
+                          state.selectedGender == Gender.female
+                              ? PalletsColors.blackBase
+                              : PalletsColors.gray,
                     ),
                   ),
                   Radio<Gender>(
@@ -232,9 +235,10 @@ class _ApplyScreenBodyState extends State<ApplyScreenBody> {
                   Text(
                     "Male",
                     style: AppTextStyles.instance.textStyle14.copyWith(
-                      color: state.selectedGender == Gender.male
-                          ? PalletsColors.blackBase
-                          : PalletsColors.gray,
+                      color:
+                          state.selectedGender == Gender.male
+                              ? PalletsColors.blackBase
+                              : PalletsColors.gray,
                     ),
                   ),
                 ],
@@ -247,7 +251,9 @@ class _ApplyScreenBodyState extends State<ApplyScreenBody> {
                     if (cubit.vehicleLicenseFile == null ||
                         cubit.idImageFile == null) {
                       showErrorSnackBar(
-                          context, "Please upload all required files");
+                        context,
+                        "Please upload all required files",
+                      );
                       return;
                     }
                     await cubit.apply(
@@ -256,7 +262,13 @@ class _ApplyScreenBodyState extends State<ApplyScreenBody> {
                         firstName: cubit.firstNameController.text,
                         lastName: cubit.secondNameController.text,
                         vehicleType:
-                        vehicleTypeMap[state.selectedVehicleType] ?? '',
+                            state.vehiclesResponse
+                                ?.firstWhere(
+                                  (element) =>
+                                      element.id == state.selectedVehicle,
+                                )
+                                .id ??
+                            "",
                         vehicleNumber: cubit.vehicleNumberController.text,
                         vehicleLicense: cubit.vehicleLicenseFile!,
                         email: cubit.emailController.text,

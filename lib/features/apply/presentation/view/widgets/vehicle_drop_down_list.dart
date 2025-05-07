@@ -4,7 +4,7 @@ import 'package:tracking_app/core/utils/colors.dart';
 
 class VehicleDropDownList extends StatelessWidget {
   final String selectedItem;
-  final List<String> items;
+  final List<dynamic> items;
   final ValueChanged<String?> onChanged;
   final String? labelText;
   final String? hintText;

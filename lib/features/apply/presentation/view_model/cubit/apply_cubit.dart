@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -9,13 +8,17 @@ import 'package:tracking_app/core/utils/enums/gender_enum.dart';
 import 'package:tracking_app/features/apply/data/models/apply_model/apply_data.dart';
 import 'package:tracking_app/features/apply/data/models/apply_model/apply_response/apply_response.dart';
 import 'package:tracking_app/features/apply/data/models/country_model/country_model.dart';
+import 'package:tracking_app/features/apply/data/models/get_all_vehicles_response/get_all_vehicles_response.dart';
+import 'package:tracking_app/features/apply/data/models/get_all_vehicles_response/vehicle.dart';
 import 'package:tracking_app/features/apply/domain/use_case/apply_use_case.dart';
+import 'package:tracking_app/features/apply/domain/use_case/get_vehicle_use_case.dart';
 import 'package:tracking_app/features/apply/presentation/view_model/cubit/apply_state.dart';
 
 class ApplyCubit extends Cubit<ApplyState> {
   final ApplyUseCase applyUseCase;
-
-  ApplyCubit(this.applyUseCase) : super(const ApplyState());
+  final GetVehiclesUseCase getVehiclesUseCase;
+  ApplyCubit(this.applyUseCase, this.getVehiclesUseCase)
+    : super( ApplyState());
 
   final countryController = TextEditingController();
   final firstNameController = TextEditingController();
@@ -31,7 +34,7 @@ class ApplyCubit extends Cubit<ApplyState> {
   final confirmPasswordController = TextEditingController();
   File? vehicleLicenseFile;
   File? idImageFile;
-  List<String> items = const ["Bike", "Car", "Motorcycles", "Scooter"];
+
   void setVehicleImage(File? file) {
     vehicleLicenseFile = file;
     // vehicleLicenseController.text (.text mean) da ell text content which appear inside the text field
@@ -40,8 +43,7 @@ class ApplyCubit extends Cubit<ApplyState> {
   }
 
   void setIdImage(File? file) {
-     {
-
+    {
       idImageFile = file;
       idImageController.text = file?.path.split("/").last ?? "";
       emit(state.copyWith());
@@ -73,37 +75,21 @@ class ApplyCubit extends Cubit<ApplyState> {
     emit(state.copyWith(selectedCountry: country));
   }
 
-  void setVehicleType(String vehicleType) {
-    emit(state.copyWith(selectedVehicleType: vehicleType));
-  }
+  // void setVehicleType(String vehicleType) {
+  //   emit(state.copyWith(selectedVehicle: vehicleType));
+  // }
 
   Future<void> apply(ApplyData applyData) async {
     if (vehicleLicenseFile == null || idImageFile == null) {
       emit(
         state.copyWith(
           applyState: BaseError<ApplyResponse>(
-            "Please upload all required images",
+             errorMessage: "Please upload all required images",
           ),
         ),
       );
       return;
     }
-
-    // final applyData = ApplyData(
-    //   country: s?.name ?? '',
-    //   firstName: firstNameController.text,
-    //   lastName: secondNameController.text,
-    //   vehicleType: state.selectedVehicleType ?? '',
-    //   vehicleNumber: vehicleNumberController.text,
-    //   vehicleLicense: vehicleLicenseFile!,
-    //   email: emailController.text,
-    //   phoneNumber: phoneNumberController.text,
-    //   idNumber: idNumberController.text,
-    //   idImage: idImageFile!,
-    //   password: passwordController.text,
-    //   confirmPassword: confirmPasswordController.text,
-    //   gender: state.selectedGender.toString().split('.').last,
-    // );
 
     emit(state.copyWith(applyState: BaseLoading()));
     final result = await applyUseCase.apply(applyData);
@@ -118,11 +104,22 @@ class ApplyCubit extends Cubit<ApplyState> {
     } else if (result is ApiError<ApplyResponse>) {
       emit(
         state.copyWith(
-          applyState: BaseError<ApplyResponse>(
-            result.message ?? "Something went wrong",
-          ),
+          applyState: BaseError<ApplyResponse>(errorMessage: result.message ?? "Something went wrong"),
+            
+          
         ),
       );
+    }
+  }
+
+  Future<void> getVehicles() async {
+    emit(state.copyWith(applyState: BaseLoading()));
+    final result = await getVehiclesUseCase.call();
+    
+    if (result is ApiSuccess<GetAllVehiclesResponse>) {
+      emit(state.copyWith(applyState: BaseSuccess<List<Vehicle>>(data: result.data?.vehicles)));
+    } else if (result is ApiError<GetAllVehiclesResponse>) {
+      emit(state.copyWith(applyState: BaseError<String>(errorMessage: result.message ?? "Something went wrong")));
     }
   }
 

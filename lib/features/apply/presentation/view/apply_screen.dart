@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tracking_app/core/di/di.dart';
 import 'package:tracking_app/features/apply/domain/use_case/apply_use_case.dart';
+import 'package:tracking_app/features/apply/domain/use_case/get_vehicle_use_case.dart';
 import 'package:tracking_app/features/apply/presentation/view/widgets/apply_screen_body.dart';
 import 'package:tracking_app/features/apply/presentation/view_model/cubit/apply_cubit.dart';
 
@@ -10,7 +11,7 @@ class ApplyScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>ApplyCubit(getIt.get<ApplyUseCase>()),
+      create: (context) => ApplyCubit(getIt.get<ApplyUseCase>() , getIt.get<GetVehiclesUseCase>() ),
       child: Scaffold(
         appBar: AppBar(
           titleSpacing: 0,

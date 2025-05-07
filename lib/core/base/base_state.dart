@@ -14,8 +14,8 @@ class BaseLoading<T> extends BaseState<T> {
 
 class BaseError<T> extends BaseState<T> {
   final String errorMessage;
-  
-  BaseError(this.errorMessage);
+
+  BaseError({required this.errorMessage});
 }
 
 class BaseSuccess<T> extends BaseState<T> {

@@ -1,37 +1,47 @@
-
-
 import 'package:equatable/equatable.dart';
 import 'package:tracking_app/core/base/base_state.dart';
 import 'package:tracking_app/core/utils/enums/gender_enum.dart';
 import 'package:tracking_app/features/apply/data/models/apply_model/apply_response/apply_response.dart';
 import 'package:tracking_app/features/apply/data/models/country_model/country_model.dart';
+import 'package:tracking_app/features/apply/data/models/get_all_vehicles_response/get_all_vehicles_response.dart';
+import 'package:tracking_app/features/apply/data/models/get_all_vehicles_response/vehicle.dart';
 
 class ApplyState extends Equatable {
-  const ApplyState({
+   ApplyState(   {
+    this.errorMessage,
+    this.selectedVehicle,
     this.applyState,
     this.applyResponse,
     this.selectedGender = Gender.female,
     this.selectedCountry,
     this.countries = const [],
-    this.selectedVehicleType,
+    this.vehiclesResponse,
     this.isLoading = false,
+    
+    
   });
 
-  final BaseState<ApplyResponse>? applyState;
+  final BaseState? applyState;
   final ApplyResponse? applyResponse;
+  final List<Vehicle>? vehiclesResponse;
   final Gender selectedGender;
   final CountryModel? selectedCountry;
   final List<CountryModel> countries;
-  final String? selectedVehicleType;
+  String? selectedVehicle;
+  final String? errorMessage;
+
   final bool isLoading;
 
   ApplyState copyWith({
-    BaseState<ApplyResponse>? applyState,
+    BaseState? applyState,
     ApplyResponse? applyResponse,
+    String? selectedVehicle,
+    String? errorMessage,
     Gender? selectedGender,
     CountryModel? selectedCountry,
     List<CountryModel>? countries,
-    String? selectedVehicleType,
+    List<Vehicle>? vehiclesResponse,
+   
     bool? isLoading,
   }) {
     return ApplyState(
@@ -40,19 +50,23 @@ class ApplyState extends Equatable {
       selectedGender: selectedGender ?? this.selectedGender,
       selectedCountry: selectedCountry ?? this.selectedCountry,
       countries: countries ?? this.countries,
-      selectedVehicleType: selectedVehicleType ?? this.selectedVehicleType,
+      vehiclesResponse: vehiclesResponse ?? this.vehiclesResponse,
       isLoading: isLoading ?? this.isLoading,
+      selectedVehicle: selectedVehicle ?? this.selectedVehicle,
+      errorMessage:  errorMessage ?? this.errorMessage,
     );
   }
 
   @override
   List<Object?> get props => [
-        applyState,
-        applyResponse,
-        selectedGender,
-        selectedCountry,
-        countries,
-        selectedVehicleType,
-        isLoading,
-      ];
+    applyState,
+    applyResponse,
+    selectedGender,
+    selectedCountry,
+    countries,
+    vehiclesResponse,
+    isLoading,
+   selectedVehicle,
+    errorMessage
+  ];
 }

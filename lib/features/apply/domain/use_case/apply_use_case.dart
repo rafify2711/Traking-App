@@ -1,4 +1,3 @@
-
 import 'package:injectable/injectable.dart';
 import 'package:tracking_app/core/base/api_result.dart';
 import 'package:tracking_app/features/apply/data/models/apply_model/apply_data.dart';
@@ -11,7 +10,7 @@ class ApplyUseCase {
 
   ApplyUseCase({required this.authRepo});
 
-  Future<ApiResult<ApplyResponse>> apply(ApplyData applyData) async{
+  Future<ApiResult<ApplyResponse>> apply(ApplyData applyData) async {
     return await authRepo.apply(applyData);
   }
 }

@@ -20,6 +20,8 @@ import '../../features/apply/data/data_source/auth_remote_data_source_impl.dart'
 import '../../features/apply/data/repos/auth_repo_impl.dart' as _i1040;
 import '../../features/apply/domain/repos/auth_repo.dart' as _i1051;
 import '../../features/apply/domain/use_case/apply_use_case.dart' as _i231;
+import '../../features/apply/domain/use_case/get_vehicle_use_case.dart'
+    as _i251;
 import '../api_manger/api_service.dart' as _i525;
 import '../api_manger/dio_module.dart' as _i508;
 import '../provider/app_config_provider.dart' as _i291;
@@ -57,6 +59,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i231.ApplyUseCase>(
       () => _i231.ApplyUseCase(authRepo: gh<_i1051.AuthRepo>()),
+    );
+    gh.factory<_i251.GetVehiclesUseCase>(
+      () => _i251.GetVehiclesUseCase(gh<_i1051.AuthRepo>()),
     );
     return this;
   }
