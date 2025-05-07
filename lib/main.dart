@@ -20,13 +20,13 @@ void main() async {
 
   runApp(
     EasyLocalization(
-      supportedLocales: const [Locale('en'), Locale('ar')],
+      supportedLocales: [Locale('en'), Locale('ar')],
       path: 'assets/translations',
-      fallbackLocale: const Locale("_languageCode"),
+      fallbackLocale: Locale('_languageCode'),
       assetLoader: const CodegenLoader(),
       child: ChangeNotifierProvider(
         create: (_) => getIt<AppConfigProvider>(),
-        child: Tracking(),
+        child: const Tracking(),
         
       ),
     ),

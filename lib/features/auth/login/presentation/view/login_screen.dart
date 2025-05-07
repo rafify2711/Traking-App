@@ -3,6 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tracking_app/core/base/base_state.dart';
+import 'package:tracking_app/core/config/routes_name.dart';
 import 'package:tracking_app/core/di/di.dart';
 import 'package:tracking_app/core/utils/colors.dart';
 import 'package:tracking_app/core/utils/constants.dart';
@@ -107,7 +108,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   const Spacer(),
                   GestureDetector(
                     onTap: () {
-                      // Navigator.pushNamed(context, RoutesName.forgetPassword);
+                      Navigator.pushNamed(context, RoutesName.forgetPassword);
                     },
                     child: Text(
                       LocaleKeys.forgetPassword.tr(),
@@ -157,10 +158,10 @@ class _LoginScreenState extends State<LoginScreen> {
                             state.data!.token,
                           );
 
-                          // Navigator.pushReplacementNamed(
-                          //   context,
-                          //   RoutesName.layout,
-                          // );
+                          Navigator.pushReplacementNamed(
+                            context,
+                            RoutesName.homeView,
+                          );
                         } else if (state is BaseError<LoginResponse>) {
                           showErrorSnackBar(context, state.errorMessage);
                         }

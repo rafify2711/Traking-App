@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tracking_app/core/base/base_state.dart';
+import 'package:tracking_app/core/config/routes_name.dart';
 import 'package:tracking_app/core/utils/app_text_styles.dart';
 import 'package:tracking_app/core/utils/colors.dart';
 import 'package:tracking_app/core/utils/enums/gender_enum.dart';
@@ -291,11 +292,12 @@ class _ApplyScreenBodyState extends State<ApplyScreenBody> {
                       );
                     } else if (state.applyState is BaseSuccess<ApplyResponse>) {
                       showSnackBar(context, state.applyResponse?.message ?? "");
+                      Navigator.pushNamed(context, RoutesName.loginScreen);
                     }
                   },
                   builder: (context, state) {
                     return state.applyState is BaseLoading<ApplyResponse>
-                        ? CircularProgressIndicator(
+                        ? const CircularProgressIndicator(
                           color: PalletsColors.white10,
                         )
                         : const Text("Continue");
