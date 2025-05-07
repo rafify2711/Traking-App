@@ -92,14 +92,17 @@ class _ApplyScreenBodyState extends State<ApplyScreenBody> {
 
               VehicleDropDownList(
                 labelText: LocaleKeys.vehicleType.tr(),
-                onChanged: (value) async {
-                  selectedVehicle = value;
-                  setState(() {});
+                onChanged: (vehicle) {
+                  cubit.setVehicleType(vehicle);
+                  setState(() {
+                    state.selectedVehicle = vehicle;
+                  });
                 },
-                selectedItem: selectedVehicle ?? 'Car',
-                items:
-                    state.vehiclesResponse?.map((v) => v.type!).toList() ?? [],
+                selectedItem: state.selectedVehicle,
+                items: state.vehicles??[],
+                 // علشان نعرض الاسم في الـ dropdown
               ),
+
               SizedBox(height: responsiveHeight(24)),
 
               CustomTextFormFieled(
@@ -262,7 +265,7 @@ class _ApplyScreenBodyState extends State<ApplyScreenBody> {
                         firstName: cubit.firstNameController.text,
                         lastName: cubit.secondNameController.text,
                         vehicleType:
-                            state.vehiclesResponse
+                            state.vehicles
                                 ?.firstWhere(
                                   (element) =>
                                       element.id == state.selectedVehicle,

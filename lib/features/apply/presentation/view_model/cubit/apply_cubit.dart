@@ -75,9 +75,9 @@ class ApplyCubit extends Cubit<ApplyState> {
     emit(state.copyWith(selectedCountry: country));
   }
 
-  // void setVehicleType(String vehicleType) {
-  //   emit(state.copyWith(selectedVehicle: vehicleType));
-  // }
+  void setVehicleType(Vehicle? vehicleType) {
+    emit(state.copyWith(selectedVehicle: vehicleType));
+  }
 
   Future<void> apply(ApplyData applyData) async {
     if (vehicleLicenseFile == null || idImageFile == null) {
@@ -99,6 +99,7 @@ class ApplyCubit extends Cubit<ApplyState> {
         state.copyWith(
           applyState: BaseSuccess<ApplyResponse>(data: result.data),
           applyResponse: result.data,
+          
         ),
       );
     } else if (result is ApiError<ApplyResponse>) {
@@ -117,7 +118,9 @@ class ApplyCubit extends Cubit<ApplyState> {
     final result = await getVehiclesUseCase.call();
     
     if (result is ApiSuccess<GetAllVehiclesResponse>) {
-      emit(state.copyWith(applyState: BaseSuccess<List<Vehicle>>(data: result.data?.vehicles)));
+      emit(state.copyWith(
+                  vehiclesResponse: result.data?.vehicles,
+        applyState: BaseSuccess<List<Vehicle>>(data: result.data?.vehicles)));
     } else if (result is ApiError<GetAllVehiclesResponse>) {
       emit(state.copyWith(applyState: BaseError<String>(errorMessage: result.message ?? "Something went wrong")));
     }

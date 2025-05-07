@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:tracking_app/core/utils/application_theme.dart';
 import 'package:tracking_app/core/utils/colors.dart';
+import 'package:tracking_app/features/apply/data/models/get_all_vehicles_response/vehicle.dart';
 
 class VehicleDropDownList extends StatelessWidget {
-  final String selectedItem;
-  final List<dynamic> items;
-  final ValueChanged<String?> onChanged;
+  final Vehicle? selectedItem;
+  final List<Vehicle> items;
+  final ValueChanged<Vehicle?> onChanged;
   final String? labelText;
   final String? hintText;
 
@@ -20,7 +21,7 @@ class VehicleDropDownList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DropdownButtonFormField<String>(
+    return DropdownButtonFormField<Vehicle>(
       icon: Icon(
         Icons.keyboard_arrow_down_rounded,
         color: PalletsColors.white90,
@@ -28,21 +29,18 @@ class VehicleDropDownList extends StatelessWidget {
       value: selectedItem,
       onChanged: onChanged,
       isExpanded: true,
-      items:
-          items
-              .map(
-                (e) => DropdownMenuItem<String>(
-                  value: e,
-                  child: Text(
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    e,
-                    style: ApplicationTheme.themeData.textTheme.bodyLarge
-                        ?.copyWith(color: PalletsColors.blackBase),
-                  ),
-                ),
-              )
-              .toList(),
+         items: items.map(
+        (v) => DropdownMenuItem<Vehicle>(
+          value: v,
+          child: Text(
+            v.type ?? "",
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: ApplicationTheme.themeData.textTheme.bodyLarge
+                ?.copyWith(color: PalletsColors.blackBase),
+          ),
+        ),
+      ).toList(),
 
       decoration: InputDecoration(
         labelText: labelText,

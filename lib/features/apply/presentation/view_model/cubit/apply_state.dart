@@ -15,7 +15,7 @@ class ApplyState extends Equatable {
     this.selectedGender = Gender.female,
     this.selectedCountry,
     this.countries = const [],
-    this.vehiclesResponse,
+    this.vehicles,
     this.isLoading = false,
     
     
@@ -23,11 +23,11 @@ class ApplyState extends Equatable {
 
   final BaseState? applyState;
   final ApplyResponse? applyResponse;
-  final List<Vehicle>? vehiclesResponse;
+  final List<Vehicle>? vehicles;
   final Gender selectedGender;
   final CountryModel? selectedCountry;
   final List<CountryModel> countries;
-  String? selectedVehicle;
+  Vehicle? selectedVehicle;
   final String? errorMessage;
 
   final bool isLoading;
@@ -35,7 +35,7 @@ class ApplyState extends Equatable {
   ApplyState copyWith({
     BaseState? applyState,
     ApplyResponse? applyResponse,
-    String? selectedVehicle,
+    Vehicle? selectedVehicle,
     String? errorMessage,
     Gender? selectedGender,
     CountryModel? selectedCountry,
@@ -50,7 +50,7 @@ class ApplyState extends Equatable {
       selectedGender: selectedGender ?? this.selectedGender,
       selectedCountry: selectedCountry ?? this.selectedCountry,
       countries: countries ?? this.countries,
-      vehiclesResponse: vehiclesResponse ?? this.vehiclesResponse,
+      vehicles: vehiclesResponse ?? this.vehicles,
       isLoading: isLoading ?? this.isLoading,
       selectedVehicle: selectedVehicle ?? this.selectedVehicle,
       errorMessage:  errorMessage ?? this.errorMessage,
@@ -64,7 +64,7 @@ class ApplyState extends Equatable {
     selectedGender,
     selectedCountry,
     countries,
-    vehiclesResponse,
+    vehicles,
     isLoading,
    selectedVehicle,
     errorMessage
