@@ -13,7 +13,8 @@ import 'package:tracking_app/core/utils/widgets/custom_text_form_fieled.dart';
 import 'package:tracking_app/features/auth/login/data/model/login_response.dart';
 import 'package:tracking_app/features/auth/login/domain/usecases/login_usecase.dart';
 import 'package:tracking_app/features/auth/login/presentation/view_model/login_cubit.dart';
-import 'package:tracking_app/generated/local_keys.g.dart';
+
+import '../../../../../generated/locale_keys.g.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -153,7 +154,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                            SecureStorageService().writeSecureData(
                             Constants.userToken,
-                            state.data.token,
+                            state.data!.token,
                           );
 
                           // Navigator.pushReplacementNamed(
@@ -167,7 +168,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       builder: (context, state) {
                         return Center(
                           child: state is BaseLoading<LoginResponse>
-                              ? SizedBox(
+                              ? const SizedBox(
                             height: 24,
                             width: 24,
                             child: CircularProgressIndicator(

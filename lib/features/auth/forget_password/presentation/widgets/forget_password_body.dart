@@ -12,7 +12,8 @@ import 'package:tracking_app/core/utils/widgets/custom_text_form_fieled.dart';
 import 'package:tracking_app/features/auth/forget_password/data/models/response/forget_password_response.dart';
 import 'package:tracking_app/features/auth/forget_password/presentation/cubit/forget_password_cubit.dart';
 import 'package:tracking_app/features/auth/forget_password/presentation/widgets/app_bar_section.dart';
-import 'package:tracking_app/generated/locale_keys.g.dart';
+
+import '../../../../../generated/locale_keys.g.dart';
 
 class ForgetPasswordBody extends StatelessWidget {
   const ForgetPasswordBody({super.key});

@@ -29,7 +29,17 @@ class CodegenLoader extends AssetLoader{
   "didntReceiveTheCode": "لم تستلم الكود؟",
   "resend": "اعادة الارسال",
   "login": "تسجيل الدخول",
-  "applyNow": "تقدم الان"
+  "applyNow": "تقدم الان",
+  "enterYourPassword": "ادخل كلمة المرور",
+  "confirmPassword": "تأكيد كلمة المرور",
+  "newPassword": "كلمة المرور الجديدة",
+  "resetPassword": "إعادة تعيين كلمة المرور",
+  "passwordMustBeValid": "يجب أن تكون كلمة المرور صحيحة",
+  "passwordResetSuccess": "تم إعادة تعيين كلمة المرور بنجاح",
+  "resetPasswordFailed": "فشل في إعادة تعيين كلمة المرور",
+  "errorOccurred": "حدث خطأ ما",
+  "loggedInSuccessfully": "تم تسجيل الدخول بنجاح",
+  "remmemberMe": "تذكرني"
 };
 static const Map<String,dynamic> _en = {
   "local": "en",
@@ -46,7 +56,17 @@ static const Map<String,dynamic> _en = {
   "pleaseEnterYourCode": "Please Enter Your Code That Send To Your\n Email Address",
   "didntReceiveTheCode": "Didn't receive the code ?",
   "resend": "Resend",
-  "login": "Login"
+  "login": "Login",
+  "enterYourPassword": "Enter your password",
+  "confirmPassword": "Confirm password",
+  "newPassword": "New password",
+  "resetPassword": "Reset password",
+  "passwordMustBeValid": "Password must be valid",
+  "passwordResetSuccess": "Password reset successfully",
+  "resetPasswordFailed": "Reset password failed",
+  "errorOccurred": "An error occurred",
+  "loggedInSuccessfully": "Logged in successfully",
+  "remmemberMe": "Remember me"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": _ar, "en": _en};
 }

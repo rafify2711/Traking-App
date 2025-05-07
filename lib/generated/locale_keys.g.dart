@@ -18,5 +18,15 @@ abstract class  LocaleKeys {
   static const resend = 'resend';
   static const login = 'login';
   static const applyNow = 'applyNow';
+  static const enterYourPassword = 'enterYourPassword';
+  static const confirmPassword = 'confirmPassword';
+  static const newPassword = 'newPassword';
+  static const resetPassword = 'resetPassword';
+  static const passwordMustBeValid = 'passwordMustBeValid';
+  static const passwordResetSuccess = 'passwordResetSuccess';
+  static const resetPasswordFailed = 'resetPasswordFailed';
+  static const errorOccurred = 'errorOccurred';
+  static const loggedInSuccessfully = 'loggedInSuccessfully';
+  static const remmemberMe = 'remmemberMe';
 
 }
