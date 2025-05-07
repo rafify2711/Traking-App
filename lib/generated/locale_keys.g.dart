@@ -28,5 +28,32 @@ abstract class  LocaleKeys {
   static const errorOccurred = 'errorOccurred';
   static const loggedInSuccessfully = 'loggedInSuccessfully';
   static const remmemberMe = 'remmemberMe';
+  static const welcomeToFloweryRiderApp = 'welcomeToFloweryRiderApp';
+  static const country = 'country';
+  static const firstLegalName = 'firstLegalName';
+  static const enterFirstLegalName = 'enterFirstLegalName';
+  static const secondLegalName = 'secondLegalName';
+  static const enterSecondLegalName = 'enterSecondLegalName';
+  static const vehicleType = 'vehicleType';
+  static const vehicleNumber = 'vehicleNumber';
+  static const enterVehicleNumber = 'enterVehicleNumber';
+  static const vehicleLicense = 'vehicleLicense';
+  static const uploadLicensePhoto = 'uploadLicensePhoto';
+  static const phoneNumber = 'phoneNumber';
+  static const enterPhoneNumber = 'enterPhoneNumber';
+  static const idNumber = 'idNumber';
+  static const enterNationalIdNumber = 'enterNationalIdNumber';
+  static const idImage = 'idImage';
+  static const uploadIdImage = 'uploadIdImage';
+  static const enterPassword = 'enterPassword';
+  static const gender = 'gender';
+  static const validationRequiredField = 'validationRequiredField';
+  static const validationEmailEmpty = 'validationEmailEmpty';
+  static const validationEmailInvalid = 'validationEmailInvalid';
+  static const validationNumbersOnly = 'validationNumbersOnly';
+  static const validationPasswordInvalid = 'validationPasswordInvalid';
+  static const validationPasswordMismatch = 'validationPasswordMismatch';
+  static const validationVehicleNumberInvalid = 'validationVehicleNumberInvalid';
+  static const validationIdNumberInvalid = 'validationIdNumberInvalid';
 
 }

@@ -6,7 +6,7 @@ import 'dart:ui';
 
 import 'package:easy_localization/easy_localization.dart' show AssetLoader;
 
-class CodegenLoader extends AssetLoader{
+class CodegenLoader extends AssetLoader {
   const CodegenLoader();
 
   @override
@@ -14,59 +14,86 @@ class CodegenLoader extends AssetLoader{
     return Future.value(mapLocales[locale.toString()]);
   }
 
-  static const Map<String,dynamic> _ar = {
-  "local": "ar",
-  "WelcomeToFloweryRiderApp": "مرحبًا بكم في تطبيق سائق فلويري",
-  "forgetPassword": "نسيت كلمة المرور",
-  "pleaseEnterYourEmailAssociatedToYourAccount": "يرجى ادخال بريدك الإلكتروني المرتبط \nبهذا الحساب",
-  "email": "البريد الإلكتروني",
-  "confirm": "تأكيد",
-  "enterYourEmail": "أدخل بريدك الإلكتروني",
-  "thisEmailIsNotValid": "هذا البريد الإلكتروني غير صالح",
-  "password": "كلمة المرور",
-  "emailVerification": "تحقق البريد الإلكتروني",
-  "pleaseEnterYourCode": "يرجى ادخال الكود الذي تم ارساله\n لبريدك الإلكتروني",
-  "didntReceiveTheCode": "لم تستلم الكود؟",
-  "resend": "اعادة الارسال",
-  "login": "تسجيل الدخول",
-  "applyNow": "تقدم الان",
-  "enterYourPassword": "ادخل كلمة المرور",
-  "confirmPassword": "تأكيد كلمة المرور",
-  "newPassword": "كلمة المرور الجديدة",
-  "resetPassword": "إعادة تعيين كلمة المرور",
-  "passwordMustBeValid": "يجب أن تكون كلمة المرور صحيحة",
-  "passwordResetSuccess": "تم إعادة تعيين كلمة المرور بنجاح",
-  "resetPasswordFailed": "فشل في إعادة تعيين كلمة المرور",
-  "errorOccurred": "حدث خطأ ما",
-  "loggedInSuccessfully": "تم تسجيل الدخول بنجاح",
-  "remmemberMe": "تذكرني"
-};
-static const Map<String,dynamic> _en = {
-  "local": "en",
-  "applyNow": "Apply now",
-  "WelcomeToFloweryRiderApp": "Welcome to Flowery rider app",
-  "forgetPassword": "Forget password",
-  "pleaseEnterYourEmailAssociatedToYourAccount": "Please enter your email associated to \n your account",
-  "email": "Email",
-  "confirm": "Confirm",
-  "enterYourEmail": "Enter your email",
-  "thisEmailIsNotValid": "This email is not valid",
-  "password": "Password",
-  "emailVerification": "Email verification",
-  "pleaseEnterYourCode": "Please Enter Your Code That Send To Your\n Email Address",
-  "didntReceiveTheCode": "Didn't receive the code ?",
-  "resend": "Resend",
-  "login": "Login",
-  "enterYourPassword": "Enter your password",
-  "confirmPassword": "Confirm password",
-  "newPassword": "New password",
-  "resetPassword": "Reset password",
-  "passwordMustBeValid": "Password must be valid",
-  "passwordResetSuccess": "Password reset successfully",
-  "resetPasswordFailed": "Reset password failed",
-  "errorOccurred": "An error occurred",
-  "loggedInSuccessfully": "Logged in successfully",
-  "remmemberMe": "Remember me"
-};
-static const Map<String, Map<String,dynamic>> mapLocales = {"ar": _ar, "en": _en};
+  static const Map<String, dynamic> _ar = {
+    "local": "ar",
+    "welcomeToFloweryRiderApp": "مرحبًا بك في تطبيق فلوراي رايدر",
+    "country": "البلد",
+    "firstLegalName": "الاسم القانوني الأول",
+    "enterFirstLegalName": "أدخل الاسم القانوني الأول",
+    "secondLegalName": "الاسم القانوني الثاني",
+    "enterSecondLegalName": "أدخل الاسم القانوني الثاني",
+    "vehicleType": "نوع المركبة",
+    "vehicleNumber": "رقم المركبة",
+    "enterVehicleNumber": "أدخل رقم المركبة",
+    "vehicleLicense": "رخصة المركبة",
+    "uploadLicensePhoto": "رفع صورة الرخصة",
+    "email": "البريد الإلكتروني",
+    "enterYourEmail": "أدخل بريدك الإلكتروني",
+    "phoneNumber": "رقم الهاتف",
+    "enterPhoneNumber": "أدخل رقم الهاتف",
+    "idNumber": "رقم الهوية",
+    "enterNationalIdNumber": "أدخل رقم الهوية الوطنية",
+    "idImage": "صورة الهوية",
+    "uploadIdImage": "رفع صورة الهوية",
+    "password": "كلمة المرور",
+    "enterPassword": "أدخل كلمة المرور",
+    "confirmPassword": "تأكيد كلمة المرور",
+    "gender": "الجنس",
+    "female": "أنثى",
+    "male": "ذكر",
+    "validationRequiredField": "هذا الحقل مطلوب",
+    "validationEmailEmpty": "أدخل عنوان البريد الإلكتروني الخاص بك",
+    "validationEmailInvalid":
+        "البريد الإلكتروني غير صالح (مثال: example@example.com)",
+    "validationNumbersOnly": "يُسمح بإدخال أرقام فقط",
+    "validationPasswordInvalid":
+        "يجب أن تحتوي كلمة المرور على 8 أحرف على الأقل، مع حرف كبير ورقم واحد على الأقل",
+    "validationPasswordMismatch": "كلمة المرور غير متطابقة",
+    "validationVehicleNumberInvalid": "رقم المركبة غير صالح (مثال: ABC-123)",
+    "validationIdNumberInvalid":
+        "رقم الهوية غير صالح، يجب أن يتكون من 14 رقمًا (مثال: 12345678901234)",
+  };
+  static const Map<String, dynamic> _en = {
+    "local": "en",
+    "welcomeToFloweryRiderApp": "Welcome to Flowery rider app",
+    "country": "Country",
+    "firstLegalName": "First legal name",
+    "enterFirstLegalName": "Enter first legal name",
+    "secondLegalName": "Second legal name",
+    "enterSecondLegalName": "Enter second legal name",
+    "vehicleType": "Vehicle type",
+    "vehicleNumber": "Vehicle number",
+    "vehicleLicense": "Vehicle license",
+    "enterVehicleNumber": "Enter vehicle number",
+    "uploadLicensePhoto": "Upload license photo",
+    "email": "Email",
+    "enterYourEmail": "Enter your email",
+    "phoneNumber": "Phone number",
+    "enterPhoneNumber": "Enter phone number",
+    "idNumber": "ID number",
+    "enterNationalIdNumber": "Enter national ID number",
+    "idImage": "ID image",
+    "uploadIdImage": "Upload ID image",
+    "password": "Password",
+    "enterPassword": "Enter password",
+    "confirmPassword": "Confirm password",
+    "gender": "Gender",
+    "female": "Female",
+    "male": "Male",
+    "validationRequiredField": "This field is required",
+    "validationEmailEmpty": "Enter your email address.",
+    "validationEmailInvalid":
+        "This Email is not valid (e.g., example@example.com).",
+    "validationNumbersOnly": "Enter numbers only",
+    "validationPasswordInvalid":
+        "Password must be at least 8 characters long and include at least one uppercase letter and one number",
+    "validationPasswordMismatch": "Password doesn't match",
+    "validationVehicleNumberInvalid": "Invalid vehicle number (e.g., ABC-123)",
+    "validationIdNumberInvalid":
+        "Invalid ID number it must be 14 digits(e.g., 12345678901234)",
+  };
+  static const Map<String, Map<String, dynamic>> mapLocales = {
+    "ar": _ar,
+    "en": _en,
+  };
 }

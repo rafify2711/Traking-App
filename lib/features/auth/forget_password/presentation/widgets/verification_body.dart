@@ -79,7 +79,7 @@ class VerificationBody extends StatelessWidget {
                     );
                   },
                   defaultPinTheme: PinTheme(
-                    width: resposiveWidth(48),
+                    width: responsiveWidth(48),
                     height: resposiveHeight(48),
 
                     decoration: BoxDecoration(

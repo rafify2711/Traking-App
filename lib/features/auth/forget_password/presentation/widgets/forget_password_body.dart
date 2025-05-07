@@ -53,7 +53,7 @@ class ForgetPasswordBody extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.symmetric(
                       horizontal: resposiveHeight(15),
-                      vertical: resposiveWidth(10),
+                      vertical: responsiveWidth(10),
                     ),
                     child: CustomTextFormFieled(
                       hintText: LocaleKeys.enterYourEmail.tr(),
@@ -70,7 +70,7 @@ class ForgetPasswordBody extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.symmetric(
                       horizontal: resposiveHeight(15),
-                      vertical: resposiveWidth(10),
+                      vertical: responsiveWidth(10),
                     ),
                     child: BlocConsumer<
                       ForgetPasswordCubit,

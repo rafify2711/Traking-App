@@ -4,4 +4,5 @@ class RoutesName {
   static const String verificationScreen = "/verification";
   static const String resetPasswordScreen = "/resetPassword";
   static const String loginScreen = "/loginScreen";
+  static const String applyView = "applyview";
 }
