@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tracking_app/core/utils/app_text_styles.dart';
 import 'package:tracking_app/core/utils/colors.dart';
 
 abstract class ApplicationTheme {
@@ -59,6 +60,11 @@ abstract class ApplicationTheme {
     ),
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(foregroundColor: PalletsColors.gray),
+    ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      selectedItemColor: PalletsColors.mainColorBase,
+      unselectedItemColor: PalletsColors.white80,
+      selectedLabelStyle: TextStyle(fontSize: 12),
     ),
   );
 }
