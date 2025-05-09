@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tracking_app/core/utils/colors.dart';
 import 'package:tracking_app/features/home/presentation/home_view.dart';
 import 'package:tracking_app/features/orders/presentation/orders_view.dart';
 import 'package:tracking_app/features/profile/presentation/profile_view.dart';
@@ -33,9 +32,8 @@ class _LayOutState extends State<LayOut> {
         type: BottomNavigationBarType.fixed,
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
-        // selectedItemColor: PalletsColors.mainColorBase,
-        // unselectedItemColor: PalletsColors.gray,
-        items: [
+
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home_outlined),
             label: "home",
