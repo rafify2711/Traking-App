@@ -1,5 +1,4 @@
 import 'package:easy_localization/easy_localization.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tracking_app/core/base/base_state.dart';
@@ -63,9 +62,12 @@ class _LoginScreenState extends State<LoginScreen> {
       create: (context) => LoginCubit(getIt.get<LoginUsecase>()),
       child: Scaffold(
         appBar: AppBar(
-          leading:  IconButton(onPressed: (){
-            Navigator.pop(context);
-          }, icon: const Icon(Icons.arrow_back_ios)),
+          leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(Icons.arrow_back_ios),
+          ),
           titleSpacing: 0,
           title: Text(
             LocaleKeys.login.tr(),
@@ -141,6 +143,11 @@ class _LoginScreenState extends State<LoginScreen> {
                           (state.loginState as BaseError<LoginResponse>)
                                   .errorMessage ??
                               "",
+                        );
+
+                        SecureStorageService().writeSecureData(
+                          Constants.userToken,
+                          state.loginResponse!.token,
                         );
                       } else if (state.loginState
                           is BaseSuccess<LoginResponse>) {
