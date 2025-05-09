@@ -7,6 +7,7 @@ import 'package:tracking_app/features/auth/login/home_screen.dart';
 import 'package:tracking_app/features/auth/login/presentation/view/login_screen.dart';
 import 'package:tracking_app/features/apply/presentation/view/apply_screen.dart';
 import 'package:tracking_app/features/on_boarding/presentation/views/widgets/on_boarding_view.dart';
+import 'package:tracking_app/features/order_status/presentation/view/order_status_screen.dart';
 import 'package:tracking_app/features/success_screen/success_screen.dart';
 
 
@@ -53,6 +54,11 @@ class RouteGenerator {
         case RoutesName.successScreen:
         return MaterialPageRoute(
           builder: (context) => const SuccessScreen(),
+          settings: settings,
+        );
+        case RoutesName.orderStatusUpdate:
+        return MaterialPageRoute(
+          builder: (context) => const OrderStatusScreen(),
           settings: settings,
         );
       default:
