@@ -36,55 +36,73 @@ class ServerFailure extends Failure {
     }
   }
   factory ServerFailure.fromResponse(int statusCode, dynamic jsonData) {
-  String? message = jsonData["message"]?.toString();
-  String? error = jsonData["error"]?.toString();
-
-  switch (statusCode) {
-    case 400:
-    case 401:
-    case 403:
-      // شرط الباسورد
-      if (message != null &&
-          message.contains("fails to match the required pattern")) {
+    switch (statusCode) {
+      case 400:
+      case 401:
+      case 403:
+        if (jsonData["message"] != null &&
+            jsonData["message"].toString().contains(
+              "fails to match the required pattern",
+            )) {
+          return ServerFailure(
+            errorMessage:
+                "Password must contain at least:\n - 8 characters\n - One uppercase letter\n - One lowercase letter\n - One number\n - One special character.",
+          );
+        } else if (jsonData["error"]?.toString().contains(
+              'Reset code is invalid or has expired',
+            ) ??
+            false) {
+          return ServerFailure(
+            errorMessage:
+                jsonData["message"]?.toString() ??
+                jsonData["error"]?.toString() ??
+                "Unknown error",
+          );
+        }
         return ServerFailure(
           errorMessage:
-              "Password must contain at least:\n - 8 characters\n - One uppercase letter\n - One lowercase letter\n - One number\n - One special character.",
+              jsonData["message"]?.toString() ??
+              jsonData["error"]?.toString() ??
+              "Unknown error",
         );
-      }
 
-      // شرط reset code
-      if ((error ?? "").contains("Reset code is invalid or has expired")) {
+      case 404:
+        if (jsonData["message"] != null &&
+            jsonData["message"].toString().contains(
+              'There is no account with this email address',
+            )) {
+          return ServerFailure(
+            errorMessage:
+                jsonData["message"]?.toString() ??
+                jsonData["error"]?.toString() ??
+                "Unknown error",
+          );
+        } else if (jsonData["error"]?.toString().contains(
+              "There is no account with this email address",
+            ) ??
+            false) {
+          return ServerFailure(
+            errorMessage:
+                jsonData["message"]?.toString() ??
+                jsonData["error"]?.toString() ??
+                "Unknown error",
+          );
+        } else {
+          return ServerFailure(errorMessage: 'Requested resource not found.');
+        }
+
+      case 409:
+        return ServerFailure(errorMessage: 'Account Already Exists.');
+
+      case 500:
         return ServerFailure(
-          errorMessage: error!,
+          errorMessage: 'Internal server error. Please try again later.',
         );
-      }
 
-      // أي حاجة تانية
-      return ServerFailure(
-        errorMessage: error ?? message ?? "Unknown error",
-      );
-
-    case 404:
-      if ((message ?? error)?.contains("There is no account with this email address") ?? false) {
+      default:
         return ServerFailure(
-          errorMessage: message ?? error!,
+          errorMessage: 'Unexpected error. Status Code: $statusCode',
         );
-      } else {
-        return ServerFailure(errorMessage: 'Requested resource not found.');
-      }
-
-    case 409:
-      return ServerFailure(errorMessage: 'Account Already Exists.');
-
-    case 500:
-      return ServerFailure(
-        errorMessage: 'Internal server error. Please try again later.',
-      );
-
-    default:
-      return ServerFailure(
-        errorMessage: 'Unexpected error. Status Code: $statusCode',
-      );
+    }
   }
-}
 }
