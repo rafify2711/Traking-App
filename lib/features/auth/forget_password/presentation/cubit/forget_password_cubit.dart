@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/widgets.dart';
@@ -12,7 +14,7 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
   ForgetPasswordUseCase forgetPasswordUseCase;
   ForgetPasswordCubit(this.forgetPasswordUseCase)
     : super(const ForgetPasswordState());
-  TextEditingController forgetPasswordController = TextEditingController();
+  TextEditingController forgetPasswordController = TextEditingController( );
   @override
   Future<void> close() {
     forgetPasswordController.dispose();
@@ -41,10 +43,13 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
       emit(
         state.copyWith(
           forgetPasswordState: BaseError<ForgetPasswordResponse>(
-            result.message ?? "Something went wrong",
+            errorMessage: 
+            result.failure?.errorMessage ?? "Something went wrong",
           ),
+
         ),
       );
+      log('${result.message} error message');
     }
   }
 }

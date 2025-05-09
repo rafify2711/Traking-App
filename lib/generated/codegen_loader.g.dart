@@ -68,7 +68,9 @@ class CodegenLoader extends AssetLoader{
   "validationPasswordInvalid": "يجب أن تحتوي كلمة المرور على 8 أحرف على الأقل، مع حرف كبير ورقم واحد على الأقل",
   "validationPasswordMismatch": "كلمة المرور غير متطابقة",
   "validationVehicleNumberInvalid": "رقم المركبة غير صالح (مثال: ABC-123)",
-  "validationIdNumberInvalid": "رقم الهوية غير صالح، يجب أن يتكون من 14 رقمًا (مثال: 12345678901234)"
+  "validationIdNumberInvalid": "رقم الهوية غير صالح، يجب أن يتكون من 14 رقمًا (مثال: 12345678901234)",
+  "applicationSubmittedTitle": "تم تقديم طلبك!",
+  "applicationSubmittedBody": "شكرًا لتقديمك الطلب، سنقوم بمراجعته وسنعود إليك قريبًا."
 };
 static const Map<String,dynamic> _en = {
   "local": "en",
@@ -104,7 +106,9 @@ static const Map<String,dynamic> _en = {
   "validationPasswordInvalid": "Password must be at least 8 characters long and include at least one uppercase letter and one number",
   "validationPasswordMismatch": "Password doesn't match",
   "validationVehicleNumberInvalid": "Invalid vehicle number (e.g., ABC-123)",
-  "validationIdNumberInvalid": "Invalid ID number it must be 14 digits(e.g., 12345678901234)"
+  "validationIdNumberInvalid": "Invalid ID number it must be 14 digits(e.g., 12345678901234)",
+  "applicationSubmittedTitle": "Your application has been\nsubmitted!",
+  "applicationSubmittedBody": "Thank you for providing your application, we will review your application and will get back to you soon."
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": _ar, "en": _en};
 }
