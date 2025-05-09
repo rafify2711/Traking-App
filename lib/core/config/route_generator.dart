@@ -7,6 +7,7 @@ import 'package:tracking_app/features/auth/login/home_screen.dart';
 import 'package:tracking_app/features/auth/login/presentation/view/login_screen.dart';
 import 'package:tracking_app/features/apply/presentation/view/apply_screen.dart';
 import 'package:tracking_app/features/home/presentation/home_view.dart';
+import 'package:tracking_app/features/home/presentation/order_details_view.dart';
 import 'package:tracking_app/features/layOut/presentation/lay_out.dart';
 import 'package:tracking_app/features/on_boarding/presentation/views/widgets/on_boarding_view.dart';
 import 'package:tracking_app/features/orders/presentation/orders_view.dart';
@@ -78,6 +79,12 @@ class RouteGenerator {
       case RoutesName.profile:
         return MaterialPageRoute(
           builder: (context) => const ProfileView(),
+          settings: settings,
+        );
+
+      case RoutesName.OrderDetailsView:
+        return MaterialPageRoute(
+          builder: (context) => const OrderDetailsView(),
           settings: settings,
         );
 

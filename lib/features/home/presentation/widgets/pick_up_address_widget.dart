@@ -4,7 +4,8 @@ import 'package:tracking_app/core/utils/app_text_styles.dart';
 import 'package:tracking_app/core/utils/colors.dart';
 
 class PickUpAddressWidget extends StatelessWidget {
-  const PickUpAddressWidget({super.key});
+  bool withTrailing;
+  PickUpAddressWidget({super.key, required this.withTrailing});
 
   @override
   Widget build(BuildContext context) {
@@ -51,29 +52,33 @@ class PickUpAddressWidget extends StatelessWidget {
                 ),
               ],
             ),
-            trailing: FittedBox(
-              fit: BoxFit.scaleDown,
-              child: Row(
-                children: [
-                  InkWell(
-                    onTap: () {},
-                    child: Icon(
-                      Icons.local_phone_outlined,
-                      color: PalletsColors.mainColorBase,
-                      size: 16,
-                    ),
-                  ),
-                  IconButton(
-                    icon: FaIcon(
-                      FontAwesomeIcons.whatsapp,
-                      color: PalletsColors.mainColorBase,
-                      size: 16,
-                    ),
-                    onPressed: () {},
-                  ),
-                ],
-              ),
-            ),
+
+            trailing:
+                withTrailing
+                    ? FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Row(
+                        children: [
+                          InkWell(
+                            onTap: () {},
+                            child: Icon(
+                              Icons.local_phone_outlined,
+                              color: PalletsColors.mainColorBase,
+                              size: 16,
+                            ),
+                          ),
+                          IconButton(
+                            icon: FaIcon(
+                              FontAwesomeIcons.whatsapp,
+                              color: PalletsColors.mainColorBase,
+                              size: 16,
+                            ),
+                            onPressed: () {},
+                          ),
+                        ],
+                      ),
+                    )
+                    : Text(""),
           ),
         ),
       ],
