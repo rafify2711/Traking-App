@@ -1,4 +1,4 @@
-import 'package:tracking_app/core/utils/error_handler.dart';
+import 'package:tracking_app/core/utils/Errors/error_handler.dart';
 
 sealed class ApiResult<T> {
   const ApiResult();

@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:tracking_app/core/base/api_result.dart';
-import 'package:tracking_app/core/utils/error_handler.dart';
+import 'package:tracking_app/core/utils/Errors/error_handler.dart';
 
 Future<ApiResult<T>> apiExecuter<T>(
   Future<T> Function() apiCall,
