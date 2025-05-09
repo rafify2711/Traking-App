@@ -12,14 +12,14 @@ class HomeView extends StatelessWidget {
         backgroundColor: PalletsColors.whiteBase,
         appBar: AppBar(
           backgroundColor: PalletsColors.whiteBase,
-          title: Text(
+          title: const Text(
             "Flowery rider",
             style: TextStyle(color: PalletsColors.mainColorBase),
           ),
         ),
-        body: SingleChildScrollView(
+        body: const SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(8.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [FlowerOrderCard(), FlowerOrderCard()],

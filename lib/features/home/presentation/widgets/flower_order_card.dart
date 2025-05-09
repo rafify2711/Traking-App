@@ -31,13 +31,13 @@ class FlowerOrderCard extends StatelessWidget {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 16, bottom: 8),
+              const Padding(
+                padding: EdgeInsets.only(left: 16, bottom: 8),
                 child: Text("Pickup address"),
               ),
               PickUpAddressWidget(withTrailing: false),
-              Padding(
-                padding: const EdgeInsets.only(left: 16),
+              const Padding(
+                padding: EdgeInsets.only(left: 16),
                 child: Text("User address"),
               ),
               UserAddressWidget(withTrailing: false),
@@ -57,7 +57,7 @@ class FlowerOrderCard extends StatelessWidget {
                       width: 111,
                       child: OutlinedButton(
                         onPressed: () {},
-                        child: Text("Reject"),
+                        child: const Text("Reject"),
                       ),
                     ),
                     SizedBox(
@@ -65,7 +65,7 @@ class FlowerOrderCard extends StatelessWidget {
                       // flex: 1,
                       child: ElevatedButton(
                         onPressed: () {},
-                        child: Text("Accept"),
+                        child: const Text("Accept"),
                       ),
                     ),
                   ],

@@ -64,7 +64,7 @@ abstract class ApplicationTheme {
         minimumSize: const Size(double.infinity, 48),
       ),
     ),
-    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       backgroundColor: PalletsColors.whiteBase,
       selectedItemColor: PalletsColors.mainColorBase,
       unselectedItemColor: PalletsColors.white80,

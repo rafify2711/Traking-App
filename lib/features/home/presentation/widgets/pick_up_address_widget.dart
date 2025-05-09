@@ -14,14 +14,14 @@ class PickUpAddressWidget extends StatelessWidget {
 
       children: [
         Container(
-          margin: EdgeInsets.all(10),
-          padding: EdgeInsets.all(5),
+          margin: const EdgeInsets.all(10),
+          padding: const EdgeInsets.all(5),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             color: Colors.white,
           ),
           child: ListTile(
-            leading: CircleAvatar(
+            leading: const CircleAvatar(
               backgroundImage: AssetImage("assets/images/Flowery logo.png"),
               radius: 16,
             ),
@@ -35,15 +35,15 @@ class PickUpAddressWidget extends StatelessWidget {
                     color: PalletsColors.gray,
                   ),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Row(
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.location_on_outlined,
                       size: 16,
                       color: PalletsColors.black70,
                     ),
-                    SizedBox(width: 10),
+                    const SizedBox(width: 10),
                     Text(
                       "20th st, Sheikh Zayed, Giza ",
                       style: AppTextStyles.instance.textStyle13,
@@ -61,14 +61,14 @@ class PickUpAddressWidget extends StatelessWidget {
                         children: [
                           InkWell(
                             onTap: () {},
-                            child: Icon(
+                            child: const Icon(
                               Icons.local_phone_outlined,
                               color: PalletsColors.mainColorBase,
                               size: 16,
                             ),
                           ),
                           IconButton(
-                            icon: FaIcon(
+                            icon: const FaIcon(
                               FontAwesomeIcons.whatsapp,
                               color: PalletsColors.mainColorBase,
                               size: 16,
@@ -78,7 +78,7 @@ class PickUpAddressWidget extends StatelessWidget {
                         ],
                       ),
                     )
-                    : Text(""),
+                    : const Text(""),
           ),
         ),
       ],

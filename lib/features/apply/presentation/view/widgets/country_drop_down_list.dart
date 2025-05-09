@@ -23,7 +23,7 @@ class CountryDropDownList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DropdownButtonFormField<CountryModel>(
-      icon: Icon(
+      icon: const Icon(
         Icons.keyboard_arrow_down_rounded,
         color: PalletsColors.white90,
       ),
@@ -64,11 +64,11 @@ class CountryDropDownList extends StatelessWidget {
         hintStyle: ApplicationTheme.themeData.textTheme.bodyLarge?.copyWith(
           color: PalletsColors.white70,
         ),
-        contentPadding: EdgeInsets.all(18),
-        border: OutlineInputBorder(
+        contentPadding: const EdgeInsets.all(18),
+        border: const OutlineInputBorder(
           borderSide: BorderSide(color: PalletsColors.gray),
         ),
-        focusedBorder: OutlineInputBorder(
+        focusedBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: PalletsColors.gray),
         ),
       ),
