@@ -59,7 +59,7 @@ class _TrackingState extends State<Tracking> {
       supportedLocales: context.supportedLocales,
       locale: context.locale,
       debugShowCheckedModeBanner: false,
-      initialRoute: RoutesName.successScreen,
+      initialRoute: RoutesName.layOut,
       onGenerateRoute: RouteGenerator.onGenerator,
       theme: ApplicationTheme.themeData,
     );

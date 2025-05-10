@@ -70,7 +70,25 @@ class CodegenLoader extends AssetLoader{
   "validationVehicleNumberInvalid": "رقم المركبة غير صالح (مثال: ABC-123)",
   "validationIdNumberInvalid": "رقم الهوية غير صالح، يجب أن يتكون من 14 رقمًا (مثال: 12345678901234)",
   "applicationSubmittedTitle": "تم تقديم طلبك!",
-  "applicationSubmittedBody": "شكرًا لتقديمك الطلب، سنقوم بمراجعته وسنعود إليك قريبًا."
+  "applicationSubmittedBody": "شكرًا لتقديمك الطلب، سنقوم بمراجعته وسنعود إليك قريبًا.",
+  "home": "الصفحة الرئيسية",
+  "profile": "الملف الشخصي",
+  "orders": "الطلبات",
+  "floweryrider": "تطبيق فلوراي رايدر",
+  "flowerorder": "طلبات النبات",
+  "orderdetails": "تفاصيل الطلب",
+  "pickUpAddress": "عنوان التسليم",
+  "userAddress": "عنوان المستخدم",
+  "orderStatus": "حالة الطلب",
+  "accept": "قبول",
+  "reject": "رفض",
+  "flowerstore": "متجر النباتات",
+  "status": "الحالة",
+  "orderId": "رقم الطلب",
+  "total": "المجموع",
+  "paymentMethod": "طريقة الدفع",
+  "cachOnDelivery": "الدفع عند التسليم",
+  "arrivedAtPickupPoint": "وصل في نقطة التسليم"
 };
 static const Map<String,dynamic> _en = {
   "local": "en",
@@ -108,7 +126,25 @@ static const Map<String,dynamic> _en = {
   "validationVehicleNumberInvalid": "Invalid vehicle number (e.g., ABC-123)",
   "validationIdNumberInvalid": "Invalid ID number it must be 14 digits(e.g., 12345678901234)",
   "applicationSubmittedTitle": "Your application has been\nsubmitted!",
-  "applicationSubmittedBody": "Thank you for providing your application, we will review your application and will get back to you soon."
+  "applicationSubmittedBody": "Thank you for providing your application, we will review your application and will get back to you soon.",
+  "home": "Home",
+  "profile": "Profile",
+  "orders": "Orders",
+  "floweryrider": "Flowery rider app",
+  "flowerorder": "Flower orders",
+  "orderdetails": "Order details",
+  "pickUpAddress": "Pick up address",
+  "userAddress": "User address",
+  "orderStatus": "Order status",
+  "accept": "Accept",
+  "reject": "Reject",
+  "flowerstore": "Flower store",
+  "status": "Status",
+  "orderId": "Order ID",
+  "total": "Total",
+  "paymentMethod": "Payment method",
+  "cachOnDelivery": "Cash on delivery",
+  "arrivedAtPickupPoint": "Arrived at pickup point"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": _ar, "en": _en};
 }

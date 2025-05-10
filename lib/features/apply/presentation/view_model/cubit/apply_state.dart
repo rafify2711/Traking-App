@@ -3,11 +3,10 @@ import 'package:tracking_app/core/base/base_state.dart';
 import 'package:tracking_app/core/utils/enums/gender_enum.dart';
 import 'package:tracking_app/features/apply/data/models/apply_model/apply_response/apply_response.dart';
 import 'package:tracking_app/features/apply/data/models/country_model/country_model.dart';
-import 'package:tracking_app/features/apply/data/models/get_all_vehicles_response/get_all_vehicles_response.dart';
 import 'package:tracking_app/features/apply/data/models/get_all_vehicles_response/vehicle.dart';
 
 class ApplyState extends Equatable {
-   ApplyState(   {
+  ApplyState({
     this.errorMessage,
     this.selectedVehicle,
     this.applyState,
@@ -17,8 +16,6 @@ class ApplyState extends Equatable {
     this.countries = const [],
     this.vehicles,
     this.isLoading = false,
-    
-    
   });
 
   final BaseState? applyState;
@@ -41,7 +38,7 @@ class ApplyState extends Equatable {
     CountryModel? selectedCountry,
     List<CountryModel>? countries,
     List<Vehicle>? vehiclesResponse,
-   
+
     bool? isLoading,
   }) {
     return ApplyState(
@@ -50,10 +47,10 @@ class ApplyState extends Equatable {
       selectedGender: selectedGender ?? this.selectedGender,
       selectedCountry: selectedCountry ?? this.selectedCountry,
       countries: countries ?? this.countries,
-      vehicles: vehiclesResponse ?? this.vehicles,
+      vehicles: vehiclesResponse ?? vehicles,
       isLoading: isLoading ?? this.isLoading,
       selectedVehicle: selectedVehicle ?? this.selectedVehicle,
-      errorMessage:  errorMessage ?? this.errorMessage,
+      errorMessage: errorMessage ?? this.errorMessage,
     );
   }
 
@@ -66,7 +63,7 @@ class ApplyState extends Equatable {
     countries,
     vehicles,
     isLoading,
-   selectedVehicle,
-    errorMessage
+    selectedVehicle,
+    errorMessage,
   ];
 }

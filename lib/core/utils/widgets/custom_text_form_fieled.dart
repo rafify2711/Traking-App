@@ -48,7 +48,7 @@ class CustomTextFormFieled extends StatelessWidget {
           color: PalletsColors.white90,
         ),
         floatingLabelBehavior: FloatingLabelBehavior.always,
-        contentPadding: EdgeInsets.all(18),
+        contentPadding: const EdgeInsets.all(18),
         suffixIcon: suffix,
 
         errorBorder: const OutlineInputBorder(

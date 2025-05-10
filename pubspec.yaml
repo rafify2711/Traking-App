@@ -23,7 +23,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^9.1.0
-
+  font_awesome_flutter: ^10.7.0
   flutter_secure_storage: ^9.2.4
   flutter_settings_ui: ^3.0.1
   flutter_svg: ^2.0.17
@@ -50,6 +50,7 @@ dependencies:
   bloc_test: ^10.0.0
   flutter_localizations:
     sdk: flutter
+  step_progress_indicator: ^1.0.2
   firebase_core: ^3.13.0
 
 dev_dependencies:
