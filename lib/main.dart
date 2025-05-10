@@ -54,17 +54,14 @@ class _TrackingState extends State<Tracking> {
   Widget build(BuildContext context) {
     appConfigProvider = Provider.of<AppConfigProvider>(context);
     ScreenSizeService.init(context);
-    return BlocProvider(
-      create: (context) => LoginCubit(getIt.get<LoginUsecase>()),
-      child: MaterialApp(
-        localizationsDelegates: context.localizationDelegates,
-        supportedLocales: context.supportedLocales,
-        locale: context.locale,
-        debugShowCheckedModeBanner: false,
-        initialRoute: RoutesName.loginScreen,
-        onGenerateRoute: RouteGenerator.onGenerator,
-        theme: ApplicationTheme.themeData,
-      ),
+    return MaterialApp(
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
+      debugShowCheckedModeBanner: false,
+      initialRoute: RoutesName.successScreen,
+      onGenerateRoute: RouteGenerator.onGenerator,
+      theme: ApplicationTheme.themeData,
     );
   }
 }
