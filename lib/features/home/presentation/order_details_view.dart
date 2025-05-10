@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 import 'package:tracking_app/core/utils/app_text_styles.dart';
@@ -5,6 +6,7 @@ import 'package:tracking_app/core/utils/colors.dart';
 import 'package:tracking_app/features/home/presentation/widgets/order_details_widget.dart';
 import 'package:tracking_app/features/home/presentation/widgets/pick_up_address_widget.dart';
 import 'package:tracking_app/features/home/presentation/widgets/user_address_widget.dart';
+import 'package:tracking_app/generated/locale_keys.g.dart';
 
 class OrderDetailsView extends StatelessWidget {
   const OrderDetailsView({super.key});
@@ -14,12 +16,12 @@ class OrderDetailsView extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         backgroundColor: PalletsColors.whiteBase,
-        appBar: AppBar(title: const Text("Order Details")),
+        appBar: AppBar(title:  Text(LocaleKeys.orderdetails.tr())),
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              StepProgressIndicator(
+              const StepProgressIndicator(
                 totalSteps: 5,
                 currentStep: 3,
                 selectedColor: PalletsColors.success,
@@ -34,13 +36,13 @@ class OrderDetailsView extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Text(
-                        "Status : Accepted ",
+                        "${LocaleKeys.status.tr()} : ${LocaleKeys.accept.tr()}",
                         style: AppTextStyles.instance.textStyle16.copyWith(
                           color: PalletsColors.success,
                         ),
                       ),
                       Text(
-                        "Order ID : # 123456",
+                        "${LocaleKeys.orderId.tr()}: # 123456",
                         style: AppTextStyles.instance.textStyle16.copyWith(
                           color: PalletsColors.blackBase,
                         ),
@@ -58,7 +60,7 @@ class OrderDetailsView extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 16),
                 child: Text(
-                  "Pickup address",
+                  LocaleKeys.pickUpAddress.tr(),
                   style: AppTextStyles.instance.textStyle18.copyWith(
                     color: PalletsColors.blackBase,
                     fontWeight: FontWeight.w500,
@@ -69,7 +71,7 @@ class OrderDetailsView extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 16),
                 child: Text(
-                  "User address",
+                  LocaleKeys.userAddress.tr(),
                   style: AppTextStyles.instance.textStyle18.copyWith(
                     color: PalletsColors.blackBase,
                     fontWeight: FontWeight.w500,
@@ -80,7 +82,7 @@ class OrderDetailsView extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 16),
                 child: Text(
-                  "Order details",
+                  LocaleKeys.orderdetails.tr(),
                   style: AppTextStyles.instance.textStyle18.copyWith(
                     color: PalletsColors.blackBase,
                     fontWeight: FontWeight.w500,
@@ -98,7 +100,7 @@ class OrderDetailsView extends StatelessWidget {
                     child: Row(
                       children: [
                         Text(
-                          "Total",
+                          LocaleKeys.total.tr(),
                           style: AppTextStyles.instance.textStyle16.copyWith(
                             color: PalletsColors.blackBase,
                             fontWeight: FontWeight.bold,
@@ -125,7 +127,7 @@ class OrderDetailsView extends StatelessWidget {
                     child: Row(
                       children: [
                         Text(
-                          "Payment method",
+                          LocaleKeys.paymentMethod.tr(),
                           style: AppTextStyles.instance.textStyle16.copyWith(
                             color: PalletsColors.blackBase,
                             fontWeight: FontWeight.bold,
@@ -133,7 +135,7 @@ class OrderDetailsView extends StatelessWidget {
                         ),
                         const Spacer(),
                         Text(
-                          "Cash on delivery",
+                          LocaleKeys.cachOnDelivery.tr(),
                           style: AppTextStyles.instance.textStyle14.copyWith(
                             color: PalletsColors.gray,
                           ),
@@ -147,7 +149,7 @@ class OrderDetailsView extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 16, right: 16),
                 child: ElevatedButton(
                   onPressed: () {},
-                  child: const Text("Arrived at Pickup point"),
+                  child:  Text(LocaleKeys.arrivedAtPickupPoint.tr()),
                 ),
               ),
             ],

@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tracking_app/core/utils/app_text_styles.dart';
 import 'package:tracking_app/core/utils/colors.dart';
+import 'package:tracking_app/generated/locale_keys.g.dart';
 
 class PickUpAddressWidget extends StatelessWidget {
   bool withTrailing;
@@ -23,14 +25,14 @@ class PickUpAddressWidget extends StatelessWidget {
           child: ListTile(
             leading: const CircleAvatar(
               backgroundImage: AssetImage("assets/images/Flowery logo.png"),
-              radius: 16,
+              radius: 25,
             ),
 
             title: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Text(
-                  "Flowery store",
+                  LocaleKeys.flowerstore.tr(),
                   style: AppTextStyles.instance.textStyle13.copyWith(
                     color: PalletsColors.gray,
                   ),
@@ -44,9 +46,11 @@ class PickUpAddressWidget extends StatelessWidget {
                       color: PalletsColors.black70,
                     ),
                     const SizedBox(width: 10),
-                    Text(
-                      "20th st, Sheikh Zayed, Giza ",
-                      style: AppTextStyles.instance.textStyle13,
+                    Expanded(
+                      child: Text(
+                        "20th st, Sheikh Zayed, Giza ",
+                        style: AppTextStyles.instance.textStyle13,
+                      ),
                     ),
                   ],
                 ),
@@ -64,14 +68,14 @@ class PickUpAddressWidget extends StatelessWidget {
                             child: const Icon(
                               Icons.local_phone_outlined,
                               color: PalletsColors.mainColorBase,
-                              size: 16,
+                              size: 20,
                             ),
                           ),
                           IconButton(
                             icon: const FaIcon(
                               FontAwesomeIcons.whatsapp,
                               color: PalletsColors.mainColorBase,
-                              size: 16,
+                              size: 20,
                             ),
                             onPressed: () {},
                           ),

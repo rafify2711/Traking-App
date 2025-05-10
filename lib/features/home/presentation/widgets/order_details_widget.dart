@@ -21,7 +21,7 @@ class OrderDetailsWidget extends StatelessWidget {
           child: ListTile(
             leading: const CircleAvatar(
               backgroundImage: AssetImage("assets/images/image 2.png"),
-              radius: 16,
+              radius: 25,
             ),
 
             title: Column(

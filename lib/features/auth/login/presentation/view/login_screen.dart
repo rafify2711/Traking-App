@@ -140,7 +140,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           );
                             Navigator.pushReplacementNamed(
                             context,
-                            RoutesName.homeView,
+                            RoutesName.home,
                           );
 
                         autoValidateMode = AutovalidateMode.disabled;

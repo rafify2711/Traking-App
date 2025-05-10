@@ -57,5 +57,23 @@ abstract class  LocaleKeys {
   static const validationIdNumberInvalid = 'validationIdNumberInvalid';
   static const applicationSubmittedTitle = 'applicationSubmittedTitle';
   static const applicationSubmittedBody = 'applicationSubmittedBody';
+  static const home = 'home';
+  static const profile = 'profile';
+  static const orders = 'orders';
+  static const floweryrider = 'floweryrider';
+  static const flowerorder = 'flowerorder';
+  static const orderdetails = 'orderdetails';
+  static const pickUpAddress = 'pickUpAddress';
+  static const userAddress = 'userAddress';
+  static const orderStatus = 'orderStatus';
+  static const accept = 'accept';
+  static const reject = 'reject';
+  static const flowerstore = 'flowerstore';
+  static const status = 'status';
+  static const orderId = 'orderId';
+  static const total = 'total';
+  static const paymentMethod = 'paymentMethod';
+  static const cachOnDelivery = 'cachOnDelivery';
+  static const arrivedAtPickupPoint = 'arrivedAtPickupPoint';
 
 }

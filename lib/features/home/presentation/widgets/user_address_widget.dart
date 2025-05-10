@@ -22,7 +22,7 @@ class UserAddressWidget extends StatelessWidget {
           child: ListTile(
             leading: const CircleAvatar(
               backgroundImage: AssetImage("assets/images/Photo.png"),
-              radius: 16,
+              radius: 25,
             ),
 
             title: Column(
@@ -42,9 +42,11 @@ class UserAddressWidget extends StatelessWidget {
                       color: PalletsColors.black70,
                     ),
                     const SizedBox(width: 10),
-                    Text(
-                      "20th st, Sheikh Zayed, Giza ",
-                      style: AppTextStyles.instance.textStyle13,
+                    Expanded(
+                      child: Text(
+                        "20th st, Sheikh Zayed, Giza ",
+                        style: AppTextStyles.instance.textStyle13,
+                      ),
                     ),
                   ],
                 ),
@@ -62,14 +64,14 @@ class UserAddressWidget extends StatelessWidget {
                             child: const Icon(
                               Icons.local_phone_outlined,
                               color: PalletsColors.mainColorBase,
-                              size: 16,
+                              size: 20,
                             ),
                           ),
                           IconButton(
                             icon: const FaIcon(
                               FontAwesomeIcons.whatsapp,
                               color: PalletsColors.mainColorBase,
-                              size: 16,
+                              size: 20,
                             ),
                             onPressed: () {},
                           ),
