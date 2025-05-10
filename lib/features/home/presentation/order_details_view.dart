@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 import 'package:tracking_app/core/utils/app_text_styles.dart';
 import 'package:tracking_app/core/utils/colors.dart';
-import 'package:tracking_app/features/home/presentation/widgets/order_details_widget.dart';
-import 'package:tracking_app/features/home/presentation/widgets/pick_up_address_widget.dart';
-import 'package:tracking_app/features/home/presentation/widgets/user_address_widget.dart';
+import 'package:tracking_app/features/home/presentation/widgets/custom_card_widget.dart';
 import 'package:tracking_app/generated/locale_keys.g.dart';
 
 class OrderDetailsView extends StatelessWidget {
@@ -16,7 +14,7 @@ class OrderDetailsView extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         backgroundColor: PalletsColors.whiteBase,
-        appBar: AppBar(title:  Text(LocaleKeys.orderdetails.tr())),
+        appBar: AppBar(title: Text(LocaleKeys.orderdetails.tr())),
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -67,7 +65,13 @@ class OrderDetailsView extends StatelessWidget {
                   ),
                 ),
               ),
-              PickUpAddressWidget(withTrailing: true),
+              CustomCardWidget(
+                withTrailing: true,
+                title: "Flowe Store",
+                addressOrPriceText: "20th st, Sheikh Zayed, Giza ",
+                imagePath: "assets/images/Flowery logo.png",
+                numberOfOrder: "",
+              ),
               Padding(
                 padding: const EdgeInsets.only(left: 16),
                 child: Text(
@@ -78,7 +82,13 @@ class OrderDetailsView extends StatelessWidget {
                   ),
                 ),
               ),
-              UserAddressWidget(withTrailing: true),
+              CustomCardWidget(
+                withTrailing: true,
+                title: "Flowe Store",
+                addressOrPriceText: "20th st, Sheikh Zayed, Giza ",
+                imagePath: "assets/images/Photo.png",
+                numberOfOrder: "",
+              ),
               Padding(
                 padding: const EdgeInsets.only(left: 16),
                 child: Text(
@@ -89,8 +99,20 @@ class OrderDetailsView extends StatelessWidget {
                   ),
                 ),
               ),
-              const OrderDetailsWidget(),
-              const OrderDetailsWidget(),
+              CustomCardWidget(
+                withTrailing: false,
+                title: "20th st, Sheikh Zayed, Giza ",
+                addressOrPriceText: "EGP 2222",
+                imagePath: "assets/images/image 2.png",
+                numberOfOrder: "x1",
+              ),
+              CustomCardWidget(
+                withTrailing: false,
+                title: "20th st, Sheikh Zayed, Giza ",
+                addressOrPriceText: "EGP 2222",
+                imagePath: "assets/images/image 2.png",
+                numberOfOrder: "x1",
+              ),
               Padding(
                 padding: const EdgeInsets.all(4),
                 child: Card(
@@ -149,7 +171,7 @@ class OrderDetailsView extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 16, right: 16),
                 child: ElevatedButton(
                   onPressed: () {},
-                  child:  Text(LocaleKeys.arrivedAtPickupPoint.tr()),
+                  child: Text(LocaleKeys.arrivedAtPickupPoint.tr()),
                 ),
               ),
             ],

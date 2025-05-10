@@ -31,19 +31,17 @@ class _LayOutState extends State<LayOut> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
-        
         type: BottomNavigationBarType.fixed,
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
 
         items: [
-           BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
+          BottomNavigationBarItem(
+            icon: const Icon(Icons.home_outlined),
             label: LocaleKeys.home.tr(),
-
           ),
 
-           BottomNavigationBarItem(
+          BottomNavigationBarItem(
             icon: const Icon(Icons.microwave_outlined),
             label: LocaleKeys.orders.tr(),
           ),

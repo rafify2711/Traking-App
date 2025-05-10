@@ -3,14 +3,26 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tracking_app/core/utils/app_text_styles.dart';
 import 'package:tracking_app/core/utils/colors.dart';
 
-class UserAddressWidget extends StatelessWidget {
+class CustomCardWidget extends StatelessWidget {
   bool withTrailing;
-  UserAddressWidget({super.key, required this.withTrailing});
+  String imagePath;
+  String title;
+  String addressOrPriceText;
+  String numberOfOrder;
+  CustomCardWidget({
+    super.key,
+    required this.withTrailing,
+    required this.imagePath,
+    required this.addressOrPriceText,
+    required this.title,
+    required this.numberOfOrder,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
+
       children: [
         Container(
           margin: const EdgeInsets.all(10),
@@ -20,8 +32,8 @@ class UserAddressWidget extends StatelessWidget {
             color: Colors.white,
           ),
           child: ListTile(
-            leading: const CircleAvatar(
-              backgroundImage: AssetImage("assets/images/Photo.png"),
+            leading: CircleAvatar(
+              backgroundImage: AssetImage(imagePath),
               radius: 25,
             ),
 
@@ -29,11 +41,13 @@ class UserAddressWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Text(
-                  "Nour mohamed",
+                  title,
+
                   style: AppTextStyles.instance.textStyle13.copyWith(
                     color: PalletsColors.gray,
                   ),
                 ),
+                const SizedBox(height: 10),
                 Row(
                   children: [
                     const Icon(
@@ -44,7 +58,7 @@ class UserAddressWidget extends StatelessWidget {
                     const SizedBox(width: 10),
                     Expanded(
                       child: Text(
-                        "20th st, Sheikh Zayed, Giza ",
+                        addressOrPriceText,
                         style: AppTextStyles.instance.textStyle13,
                       ),
                     ),
@@ -78,7 +92,10 @@ class UserAddressWidget extends StatelessWidget {
                         ],
                       ),
                     )
-                    : const Text(""),
+                    : Text(
+                      numberOfOrder,
+                      style: TextStyle(color: PalletsColors.mainColorBase),
+                    ),
           ),
         ),
       ],

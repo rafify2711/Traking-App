@@ -4,8 +4,7 @@ import 'package:tracking_app/core/config/routes_name.dart';
 import 'package:tracking_app/core/utils/app_text_styles.dart';
 import 'package:tracking_app/core/utils/colors.dart';
 import 'package:tracking_app/core/utils/services/get_responsive_height_and_width.dart';
-import 'package:tracking_app/features/home/presentation/widgets/pick_up_address_widget.dart';
-import 'package:tracking_app/features/home/presentation/widgets/user_address_widget.dart';
+import 'package:tracking_app/features/home/presentation/widgets/custom_card_widget.dart';
 import 'package:tracking_app/generated/locale_keys.g.dart';
 
 class FlowerOrderCard extends StatelessWidget {
@@ -38,12 +37,24 @@ class FlowerOrderCard extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 16, bottom: 8),
                 child: Text(LocaleKeys.pickUpAddress.tr()),
               ),
-              PickUpAddressWidget(withTrailing: false),
+              CustomCardWidget(
+                withTrailing: false,
+                title: "Flowe Store",
+                addressOrPriceText: "20th st, Sheikh Zayed, Giza ",
+                imagePath: "assets/images/Flowery logo.png",
+                numberOfOrder: "",
+              ),
               Padding(
                 padding: const EdgeInsets.only(left: 16),
                 child: Text(LocaleKeys.userAddress.tr()),
               ),
-              UserAddressWidget(withTrailing: false),
+              CustomCardWidget(
+                withTrailing: false,
+                title: "Flowe Store",
+                addressOrPriceText: "20th st, Sheikh Zayed, Giza ",
+                imagePath: "assets/images/Photo.png",
+                numberOfOrder: "",
+              ),
 
               Padding(
                 padding: const EdgeInsets.all(16),
