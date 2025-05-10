@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
@@ -14,11 +15,17 @@ import 'package:tracking_app/features/auth/login/domain/usecases/login_usecase.d
 import 'package:tracking_app/features/auth/login/presentation/view_model/login_cubit.dart';
 import 'package:tracking_app/generated/codegen_loader.g.dart';
 
+import 'firebase_options.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
   configureDependencies();
   Bloc.observer = SimpleBlocObserver();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
 
   runApp(
     EasyLocalization(
@@ -54,7 +61,7 @@ class _TrackingState extends State<Tracking> {
         supportedLocales: context.supportedLocales,
         locale: context.locale,
         debugShowCheckedModeBanner: false,
-        initialRoute: RoutesName.onBoarding,
+        initialRoute: RoutesName.loginScreen,
         onGenerateRoute: RouteGenerator.onGenerator,
         theme: ApplicationTheme.themeData,
       ),
