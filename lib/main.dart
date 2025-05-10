@@ -1,4 +1,4 @@
-import 'package:bloc/bloc.dart';
+// import 'package:bloc/bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -29,9 +29,9 @@ void main() async {
 
   runApp(
     EasyLocalization(
-      supportedLocales: [Locale('en'), Locale('ar')],
+      supportedLocales: const [Locale('en'), Locale('ar')],
       path: 'assets/translations',
-      fallbackLocale: Locale('_languageCode'),
+      fallbackLocale: const Locale('_languageCode'),
       assetLoader: const CodegenLoader(),
       child: ChangeNotifierProvider(
         create: (_) => getIt<AppConfigProvider>(),

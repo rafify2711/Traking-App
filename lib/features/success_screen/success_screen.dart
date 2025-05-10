@@ -46,7 +46,10 @@ class SuccessScreen extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: Image.asset("assets/images/bg.png"),
+      bottomNavigationBar: Image.asset(
+        "assets/images/bg.png",
+        fit: BoxFit.contain,
+      ),
     );
   }
 }
