@@ -155,7 +155,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           context,
                           LocaleKeys.loggedInSuccessfully.tr(),
                         );
-                        Navigator.pushNamed(context, RoutesName.homeView);
+                        Navigator.pushNamed(context, RoutesName.layOut);
                       }
                     },
                     builder: (context, state) {
