@@ -12,6 +12,7 @@ import 'package:tracking_app/features/auth/forget_password/data/models/request/r
 import 'package:tracking_app/features/auth/forget_password/data/models/response/forget_password_response.dart';
 import 'package:tracking_app/features/auth/forget_password/data/models/response/otp_response.dart';
 import 'package:tracking_app/features/auth/forget_password/data/models/response/reset_password_response.dart';
+import 'package:tracking_app/features/home/data/models/pending_orders_response.dart';
 part 'api_service.g.dart';
 
 @RestApi(baseUrl: Constants.baseUrl)
@@ -36,4 +37,6 @@ abstract class ApiService {
 
   @GET(Constants.getAllVehiclesEndpoint)
   Future<GetAllVehiclesResponse> getAllVehicles();
+  @GET(Constants.getAllPendingOrdersEndPoint)
+  Future<OrderResponse> getAllPendingOrders();
 }

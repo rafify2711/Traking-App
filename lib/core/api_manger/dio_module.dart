@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:tracking_app/core/api_manger/api_service.dart';
@@ -29,8 +31,10 @@ abstract class DioModule {
           final token = await secureStorageService.readSecureData(
             Constants.userToken,
           );
+          log("token : $token");
           if (token != null && token.isNotEmpty) {
             options.headers['Authorization'] = 'Bearer $token';
+            log("token : $token");
           }
           return handler.next(options);
         },
