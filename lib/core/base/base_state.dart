@@ -1,4 +1,4 @@
-import 'package:tracking_app/core/utils/error_handler.dart';
+import 'package:tracking_app/core/utils/Errors/error_handler.dart';
 
 sealed class BaseState<T> {
   BaseState();
@@ -14,9 +14,9 @@ class BaseLoading<T> extends BaseState<T> {
 
 
 class BaseError<T> extends BaseState<T> {
-  final String errorMessage;
-  Failure? failure;
-  BaseError(this.errorMessage, {this.failure});
+  final String? errorMessage;
+  
+  BaseError({ this.errorMessage,});
 }
 
 class BaseSuccess<T> extends BaseState<T> {

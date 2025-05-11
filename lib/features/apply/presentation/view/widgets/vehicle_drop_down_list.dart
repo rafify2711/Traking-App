@@ -22,25 +22,28 @@ class VehicleDropDownList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DropdownButtonFormField<Vehicle>(
-      icon: Icon(
+      icon: const Icon(
         Icons.keyboard_arrow_down_rounded,
         color: PalletsColors.white90,
       ),
       value: selectedItem,
       onChanged: onChanged,
       isExpanded: true,
-         items: items.map(
-        (v) => DropdownMenuItem<Vehicle>(
-          value: v,
-          child: Text(
-            v.type ?? "",
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-            style: ApplicationTheme.themeData.textTheme.bodyLarge
-                ?.copyWith(color: PalletsColors.blackBase),
-          ),
-        ),
-      ).toList(),
+      items:
+          items
+              .map(
+                (v) => DropdownMenuItem<Vehicle>(
+                  value: v,
+                  child: Text(
+                    v.type ?? "",
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: ApplicationTheme.themeData.textTheme.bodyLarge
+                        ?.copyWith(color: PalletsColors.blackBase),
+                  ),
+                ),
+              )
+              .toList(),
 
       decoration: InputDecoration(
         labelText: labelText,
@@ -51,11 +54,11 @@ class VehicleDropDownList extends StatelessWidget {
         hintStyle: ApplicationTheme.themeData.textTheme.bodyLarge?.copyWith(
           color: PalletsColors.white70,
         ),
-        contentPadding: EdgeInsets.all(18),
-        border: OutlineInputBorder(
+        contentPadding: const EdgeInsets.all(18),
+        border: const OutlineInputBorder(
           borderSide: BorderSide(color: PalletsColors.gray),
         ),
-        focusedBorder: OutlineInputBorder(
+        focusedBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: PalletsColors.gray),
         ),
       ),

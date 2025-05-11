@@ -36,7 +36,8 @@ class VerifyCodeCubit extends Cubit<VerifyCodeState> {
       emit(
         state.copyWith(
           verifyCodeState: BaseError<OtpResponse>(
-            result.failure?.errorMessage ?? "Something went wrong",
+            errorMessage: 
+            result.failure?.errorMessage ,
           ),
         ),
       );

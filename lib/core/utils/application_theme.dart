@@ -58,7 +58,16 @@ abstract class ApplicationTheme {
       ),
     ),
     outlinedButtonTheme: OutlinedButtonThemeData(
-      style: OutlinedButton.styleFrom(foregroundColor: PalletsColors.gray),
+      style: OutlinedButton.styleFrom(
+        foregroundColor: PalletsColors.gray,
+        minimumSize: const Size(double.infinity, 48),
+      ),
+    ),
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      backgroundColor: PalletsColors.whiteBase,
+      selectedItemColor: PalletsColors.mainColorBase,
+      unselectedItemColor: PalletsColors.white80,
+      selectedLabelStyle: TextStyle(fontSize: 12),
     ),
   );
 }

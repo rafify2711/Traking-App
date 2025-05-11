@@ -104,7 +104,7 @@ class ForgetPasswordBody extends StatelessWidget {
                             is BaseError<ForgetPasswordResponse>) {
                           showErrorSnackBar(
                             context,
-                            state.forgetPasswordResponse?.error ??
+                            (state.forgetPasswordResponse  as BaseError).errorMessage??
                                 'email not found',
                           );
                         }
@@ -119,9 +119,12 @@ class ForgetPasswordBody extends StatelessWidget {
                           },
                           child:
                               state.forgetPasswordState is BaseLoading
-                                  ? const CircularProgressIndicator(
-                                    color: PalletsColors.whiteBase,
-                                  )
+                                  ? const SizedBox(
+                                    height: 24,
+                                    width: 24,
+                                    child: CircularProgressIndicator(
+                                      color: PalletsColors.white10,
+                                    ))
                                   : Text(
                                     LocaleKeys.confirm.tr(),
                                     style: AppTextStyles.instance.textStyle16
