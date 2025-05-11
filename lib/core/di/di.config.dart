@@ -13,14 +13,14 @@ import 'package:dio/dio.dart' as _i361;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
-import '../../features/apply/data/data_source/auth_remote_data_source.dart'
+import '../../features/auth/apply/data/data_source/auth_remote_data_source.dart'
     as _i785;
-import '../../features/apply/data/data_source/auth_remote_data_source_impl.dart'
+import '../../features/auth/apply/data/data_source/auth_remote_data_source_impl.dart'
     as _i965;
-import '../../features/apply/data/repos/auth_repo_impl.dart' as _i1040;
-import '../../features/apply/domain/repos/auth_repo.dart' as _i1051;
-import '../../features/apply/domain/use_case/apply_use_case.dart' as _i231;
-import '../../features/apply/domain/use_case/get_vehicle_use_case.dart'
+import '../../features/auth/apply/data/repos/auth_repo_impl.dart' as _i1040;
+import '../../features/auth/apply/domain/repos/auth_repo.dart' as _i1051;
+import '../../features/auth/apply/domain/use_case/apply_use_case.dart' as _i231;
+import '../../features/auth/apply/domain/use_case/get_vehicle_use_case.dart'
     as _i251;
 import '../../features/auth/forget_password/data/data_source/forget_password_data_source_impl.dart'
     as _i224;

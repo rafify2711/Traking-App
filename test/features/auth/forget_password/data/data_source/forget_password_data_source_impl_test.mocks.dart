@@ -8,9 +8,9 @@ import 'dart:async' as _i9;
 import 'package:dio/dio.dart' as _i14;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:tracking_app/core/api_manger/api_service.dart' as _i8;
-import 'package:tracking_app/features/apply/data/models/apply_model/apply_response/apply_response.dart'
+import 'package:tracking_app/features/auth/apply/data/models/apply_model/apply_response/apply_response.dart'
     as _i6;
-import 'package:tracking_app/features/apply/data/models/get_all_vehicles_response/get_all_vehicles_response.dart'
+import 'package:tracking_app/features/auth/apply/data/models/get_all_vehicles_response/get_all_vehicles_response.dart'
     as _i7;
 import 'package:tracking_app/features/auth/forget_password/data/models/request/forget_password_request.dart'
     as _i11;

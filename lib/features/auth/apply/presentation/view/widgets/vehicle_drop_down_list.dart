@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tracking_app/core/utils/application_theme.dart';
 import 'package:tracking_app/core/utils/colors.dart';
-import 'package:tracking_app/features/apply/data/models/get_all_vehicles_response/vehicle.dart';
+import 'package:tracking_app/features/auth/apply/data/models/get_all_vehicles_response/vehicle.dart';
 
 class VehicleDropDownList extends StatelessWidget {
   final Vehicle? selectedItem;
