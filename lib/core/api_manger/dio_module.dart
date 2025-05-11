@@ -32,6 +32,7 @@ abstract class DioModule {
             Constants.userToken,
           );
           log("token : $token");
+          options.headers['Authorization'] = 'Bearer $token';
           if (token != null && token.isNotEmpty) {
             options.headers['Authorization'] = 'Bearer $token';
             log("token : $token");
