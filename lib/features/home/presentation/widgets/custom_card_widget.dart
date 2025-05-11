@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tracking_app/core/utils/app_text_styles.dart';
 import 'package:tracking_app/core/utils/colors.dart';
+import 'package:tracking_app/core/utils/helper_func/url_launcher.dart';
 
 class CustomCardWidget extends StatelessWidget {
-  bool withTrailing;
-  String imagePath;
-  String title;
-  String addressOrPriceText;
-  String numberOfOrder;
-  CustomCardWidget({
+  final bool withTrailing;
+  final String imagePath;
+  final String title;
+  final String addressOrPriceText;
+  final String numberOfOrder;
+  const CustomCardWidget({
     super.key,
     required this.withTrailing,
     required this.imagePath,
@@ -20,6 +21,8 @@ class CustomCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String phoneNumber = "tel:+201151442898";
+    String whatsAppUrl = "https://wa.me/201151442898";
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
 
@@ -74,7 +77,9 @@ class CustomCardWidget extends StatelessWidget {
                       child: Row(
                         children: [
                           InkWell(
-                            onTap: () {},
+                            onTap: () async {
+                              await launchCustomUrl(context, phoneNumber);
+                            },
                             child: const Icon(
                               Icons.local_phone_outlined,
                               color: PalletsColors.mainColorBase,
@@ -87,14 +92,18 @@ class CustomCardWidget extends StatelessWidget {
                               color: PalletsColors.mainColorBase,
                               size: 20,
                             ),
-                            onPressed: () {},
+                            onPressed: () async {
+                              await launchCustomUrl(context, whatsAppUrl);
+                            },
                           ),
                         ],
                       ),
                     )
                     : Text(
                       numberOfOrder,
-                      style: TextStyle(color: PalletsColors.mainColorBase),
+                      style: const TextStyle(
+                        color: PalletsColors.mainColorBase,
+                      ),
                     ),
           ),
         ),
