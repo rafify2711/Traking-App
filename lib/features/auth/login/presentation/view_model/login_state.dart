@@ -1,26 +1,26 @@
-// import 'package:equatable/equatable.dart';
-// import 'package:tracking_app/core/utils/error_handler.dart';
-// import 'package:tracking_app/features/auth/login/data/model/login_response.dart';
-//
-// sealed class LoginState extends Equatable {
-//   const LoginState();
-//
-//   @override
-//   List<Object> get props => [];
-// }
-//
-// final class LoginInitial extends LoginState {}
-//
-// final class LoginLoading extends LoginState {}
-//
-// final class LoginSuccess extends LoginState {
-//   final LoginResponse? data; // Change from Map<String, dynamic> to LoginResponse
-//
-//   const LoginSuccess({required this.data});
-// }
-//
-// final class LoginFailure extends LoginState {
-//   final String? errorMessage;
-//   final Failure? failure;
-//   const LoginFailure({required this.errorMessage,required this.failure});
-// }
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:equatable/equatable.dart';
+import 'package:tracking_app/core/base/base_state.dart';
+import 'package:tracking_app/features/auth/login/data/model/login_response.dart';
+
+class LoginState extends Equatable {
+  final BaseState<LoginResponse>? loginState;
+  LoginResponse? loginResponse; 
+  LoginState({
+     this.loginState,
+    this.loginResponse,
+  });
+  LoginState copyWith({
+    BaseState<LoginResponse>? loginState,
+    LoginResponse? loginResponse,
+  }) {
+    return LoginState(
+      loginState: loginState ?? this.loginState,
+      loginResponse: loginResponse ?? this.loginResponse,
+    );
+  }
+  
+  @override
+  List<Object?> get props => [loginState,loginResponse];
+
+}

@@ -53,7 +53,7 @@ class VerificationBody extends StatelessWidget {
                 if (state.verifyCodeState is BaseError) {
                   showErrorSnackBar(
                     context,
-                    state.otpResponse?.error ?? 'Something went wrong',
+                  (state.verifyCodeState as BaseError).errorMessage ?? '',
                   );
                 }
                 if (state.verifyCodeState is BaseSuccess) {

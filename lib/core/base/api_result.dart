@@ -1,4 +1,4 @@
-import 'package:tracking_app/core/utils/error_handler.dart';
+import 'package:tracking_app/core/utils/Errors/error_handler.dart';
 
 sealed class ApiResult<T> {
   const ApiResult();
@@ -12,5 +12,5 @@ class ApiSuccess<T> extends ApiResult<T> {
 class ApiError<T> extends ApiResult<T> {
   final String? message;
   final Failure? failure;
-  const ApiError({this.message, this.failure});
+  const ApiError({this.message, this.failure });
 }

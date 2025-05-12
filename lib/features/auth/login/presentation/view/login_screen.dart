@@ -1,5 +1,4 @@
 import 'package:easy_localization/easy_localization.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tracking_app/core/base/base_state.dart';
@@ -14,6 +13,7 @@ import 'package:tracking_app/core/utils/widgets/custom_text_form_fieled.dart';
 import 'package:tracking_app/features/auth/login/data/model/login_response.dart';
 import 'package:tracking_app/features/auth/login/domain/usecases/login_usecase.dart';
 import 'package:tracking_app/features/auth/login/presentation/view_model/login_cubit.dart';
+import 'package:tracking_app/features/auth/login/presentation/view_model/login_state.dart';
 
 import '../../../../../generated/locale_keys.g.dart';
 
@@ -62,7 +62,12 @@ class _LoginScreenState extends State<LoginScreen> {
       create: (context) => LoginCubit(getIt.get<LoginUsecase>()),
       child: Scaffold(
         appBar: AppBar(
-          leading: const Icon(Icons.arrow_back_ios),
+          leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(Icons.arrow_back_ios),
+          ),
           titleSpacing: 0,
           title: Text(
             LocaleKeys.login.tr(),
@@ -130,50 +135,54 @@ class _LoginScreenState extends State<LoginScreen> {
                 const Spacer(flex: 3),
                 SizedBox(
                   width: double.infinity,
-                  child: ElevatedButton(
-                    onPressed: () async {
-                      if (formKey.currentState!.validate()) {
-                        context.read<LoginCubit>().login(
-                          email: emailController.text.trim(),
-                          password: passwordController.text.trim(),
+                  child: BlocConsumer<LoginCubit, LoginState>(
+                    listener: (context, state) {
+                      if (state.loginState is BaseError<LoginResponse>) {
+                        showErrorSnackBar(
+                          context,
+                          (state.loginState as BaseError<LoginResponse>)
+                                  .errorMessage ??
+                              "",
                         );
+
+                        SecureStorageService().writeSecureData(
+                          Constants.userToken,
+                          state.loginResponse!.token,
+                        );
+                      } else if (state.loginState
+                          is BaseSuccess<LoginResponse>) {
                         showSnackBar(
                           context,
                           LocaleKeys.loggedInSuccessfully.tr(),
                         );
-                        Navigator.pushReplacementNamed(
-                          context,
-                          RoutesName.layOut,
-                        );
-
-                        autoValidateMode = AutovalidateMode.disabled;
-                      } else {
-                        setState(() {
-                          autoValidateMode = AutovalidateMode.always;
-                        });
+                        Navigator.pushNamed(context, RoutesName.layOut);
                       }
                     },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor:
-                          isFilled
-                              ? PalletsColors.mainColorBase
-                              : PalletsColors.black30,
-                    ),
-                    child: BlocConsumer<LoginCubit, BaseState<LoginResponse>>(
-                      listener: (context, state) {
-                        if (state is BaseSuccess<LoginResponse>) {
-                          SecureStorageService().writeSecureData(
-                            Constants.userToken,
-                            state.data!.token,
-                          );
-                        } else if (state is BaseError<LoginResponse>) {
-                          showErrorSnackBar(context, state.errorMessage);
-                        }
-                      },
-                      builder: (context, state) {
-                        return Center(
+                    builder: (context, state) {
+                      return ElevatedButton(
+                        onPressed: () async {
+                          if (formKey.currentState!.validate()) {
+                            context.read<LoginCubit>().login(
+                              email: emailController.text.trim(),
+                              password: passwordController.text.trim(),
+                            );
+
+                            autoValidateMode = AutovalidateMode.disabled;
+                          } else {
+                            setState(() {
+                              autoValidateMode = AutovalidateMode.always;
+                            });
+                          }
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor:
+                              isFilled
+                                  ? PalletsColors.mainColorBase
+                                  : PalletsColors.black30,
+                        ),
+                        child: Center(
                           child:
-                              state is BaseLoading<LoginResponse>
+                              state.loginState is BaseLoading<LoginResponse>
                                   ? const SizedBox(
                                     height: 24,
                                     width: 24,
@@ -182,9 +191,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                     ),
                                   )
                                   : Text(LocaleKeys.login.tr()),
-                        );
-                      },
-                    ),
+                        ),
+                      );
+                    },
                   ),
                 ),
                 const Spacer(),
