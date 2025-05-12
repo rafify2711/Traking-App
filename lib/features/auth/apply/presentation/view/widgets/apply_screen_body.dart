@@ -11,14 +11,14 @@ import 'package:tracking_app/core/utils/services/get_responsive_height_and_width
 import 'package:tracking_app/core/utils/services/image_picker.dart';
 import 'package:tracking_app/core/utils/validator.dart';
 import 'package:tracking_app/core/utils/widgets/custom_text_form_fieled.dart';
-import 'package:tracking_app/features/apply/data/models/apply_model/apply_data.dart';
-import 'package:tracking_app/features/apply/data/models/apply_model/apply_response/apply_response.dart';
-import 'package:tracking_app/features/apply/presentation/view/widgets/country_drop_down_list.dart';
-import 'package:tracking_app/features/apply/presentation/view/widgets/vehicle_drop_down_list.dart';
+import 'package:tracking_app/features/auth/apply/data/models/apply_model/apply_data.dart';
+import 'package:tracking_app/features/auth/apply/data/models/apply_model/apply_response/apply_response.dart';
+import 'package:tracking_app/features/auth/apply/presentation/view/widgets/country_drop_down_list.dart';
+import 'package:tracking_app/features/auth/apply/presentation/view/widgets/vehicle_drop_down_list.dart';
 
-import 'package:tracking_app/features/apply/presentation/view/widgets/welcome_text_in_apply_view.dart';
-import 'package:tracking_app/features/apply/presentation/view_model/cubit/apply_cubit.dart';
-import 'package:tracking_app/features/apply/presentation/view_model/cubit/apply_state.dart';
+import 'package:tracking_app/features/auth/apply/presentation/view/widgets/welcome_text_in_apply_view.dart';
+import 'package:tracking_app/features/auth/apply/presentation/view_model/cubit/apply_cubit.dart';
+import 'package:tracking_app/features/auth/apply/presentation/view_model/cubit/apply_state.dart';
 import 'package:tracking_app/generated/locale_keys.g.dart';
 
 class ApplyScreenBody extends StatefulWidget {

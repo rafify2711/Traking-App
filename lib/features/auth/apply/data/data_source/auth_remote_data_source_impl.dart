@@ -2,10 +2,10 @@ import 'dart:developer';
 
 import 'package:injectable/injectable.dart';
 import 'package:tracking_app/core/api_manger/api_service.dart';
-import 'package:tracking_app/features/apply/data/data_source/auth_remote_data_source.dart';
-import 'package:tracking_app/features/apply/data/models/apply_model/apply_data.dart';
-import 'package:tracking_app/features/apply/data/models/apply_model/apply_response/apply_response.dart';
-import 'package:tracking_app/features/apply/data/models/get_all_vehicles_response/get_all_vehicles_response.dart';
+import 'package:tracking_app/features/auth/apply/data/data_source/auth_remote_data_source.dart';
+import 'package:tracking_app/features/auth/apply/data/models/apply_model/apply_data.dart';
+import 'package:tracking_app/features/auth/apply/data/models/apply_model/apply_response/apply_response.dart';
+import 'package:tracking_app/features/auth/apply/data/models/get_all_vehicles_response/get_all_vehicles_response.dart';
 
 @Injectable(as: AuthRemoteDataSource)
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {

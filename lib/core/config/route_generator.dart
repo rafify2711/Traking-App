@@ -4,7 +4,7 @@ import 'package:tracking_app/features/auth/forget_password/presentation/view/for
 import 'package:tracking_app/features/auth/forget_password/presentation/view/reset_password_screen.dart';
 import 'package:tracking_app/features/auth/forget_password/presentation/view/verification_screen.dart';
 import 'package:tracking_app/features/auth/login/presentation/view/login_screen.dart';
-import 'package:tracking_app/features/apply/presentation/view/apply_screen.dart';
+import 'package:tracking_app/features/auth/apply/presentation/view/apply_screen.dart';
 import 'package:tracking_app/features/home/presentation/home_view.dart';
 import 'package:tracking_app/features/home/presentation/order_details_view.dart';
 import 'package:tracking_app/features/layOut/presentation/lay_out.dart';

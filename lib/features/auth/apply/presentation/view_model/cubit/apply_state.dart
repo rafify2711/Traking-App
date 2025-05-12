@@ -1,9 +1,9 @@
 import 'package:equatable/equatable.dart';
 import 'package:tracking_app/core/base/base_state.dart';
 import 'package:tracking_app/core/utils/enums/gender_enum.dart';
-import 'package:tracking_app/features/apply/data/models/apply_model/apply_response/apply_response.dart';
-import 'package:tracking_app/features/apply/data/models/country_model/country_model.dart';
-import 'package:tracking_app/features/apply/data/models/get_all_vehicles_response/vehicle.dart';
+import 'package:tracking_app/features/auth/apply/data/models/apply_model/apply_response/apply_response.dart';
+import 'package:tracking_app/features/auth/apply/data/models/country_model/country_model.dart';
+import 'package:tracking_app/features/auth/apply/data/models/get_all_vehicles_response/vehicle.dart';
 
 class ApplyState extends Equatable {
   ApplyState({

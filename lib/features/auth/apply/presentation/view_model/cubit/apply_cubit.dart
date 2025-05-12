@@ -5,14 +5,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tracking_app/core/base/api_result.dart';
 import 'package:tracking_app/core/base/base_state.dart';
 import 'package:tracking_app/core/utils/enums/gender_enum.dart';
-import 'package:tracking_app/features/apply/data/models/apply_model/apply_data.dart';
-import 'package:tracking_app/features/apply/data/models/apply_model/apply_response/apply_response.dart';
-import 'package:tracking_app/features/apply/data/models/country_model/country_model.dart';
-import 'package:tracking_app/features/apply/data/models/get_all_vehicles_response/get_all_vehicles_response.dart';
-import 'package:tracking_app/features/apply/data/models/get_all_vehicles_response/vehicle.dart';
-import 'package:tracking_app/features/apply/domain/use_case/apply_use_case.dart';
-import 'package:tracking_app/features/apply/domain/use_case/get_vehicle_use_case.dart';
-import 'package:tracking_app/features/apply/presentation/view_model/cubit/apply_state.dart';
+import 'package:tracking_app/features/auth/apply/data/models/apply_model/apply_data.dart';
+import 'package:tracking_app/features/auth/apply/data/models/apply_model/apply_response/apply_response.dart';
+import 'package:tracking_app/features/auth/apply/data/models/country_model/country_model.dart';
+import 'package:tracking_app/features/auth/apply/data/models/get_all_vehicles_response/get_all_vehicles_response.dart';
+import 'package:tracking_app/features/auth/apply/data/models/get_all_vehicles_response/vehicle.dart';
+import 'package:tracking_app/features/auth/apply/domain/use_case/apply_use_case.dart';
+import 'package:tracking_app/features/auth/apply/domain/use_case/get_vehicle_use_case.dart';
+import 'package:tracking_app/features/auth/apply/presentation/view_model/cubit/apply_state.dart';
 
 class ApplyCubit extends Cubit<ApplyState> {
   final ApplyUseCase applyUseCase;

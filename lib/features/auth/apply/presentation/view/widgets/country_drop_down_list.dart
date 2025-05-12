@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tracking_app/core/utils/application_theme.dart';
 import 'package:tracking_app/core/utils/colors.dart';
 import 'package:tracking_app/core/utils/services/get_responsive_height_and_width.dart';
-import 'package:tracking_app/features/apply/data/models/country_model/country_model.dart';
+import 'package:tracking_app/features/auth/apply/data/models/country_model/country_model.dart';
 
 class CountryDropDownList extends StatelessWidget {
   final CountryModel selectedCountry;
