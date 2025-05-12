@@ -36,4 +36,11 @@ abstract class ApiService {
 
   @GET(Constants.getAllVehiclesEndpoint)
   Future<GetAllVehiclesResponse> getAllVehicles();
+
+  @PUT('${Constants.updateOrderStatusEndPoint}/{id}')
+  Future<String> updateOrderStatus(
+      @Query('id') String id,
+      @Body() Map<String,dynamic> newState,
+      @Header('Authorization') String token
+      );
 }

@@ -1,7 +1,7 @@
 
 enum OrderStatus {
   pending,
-  accepted,
+  inProgress,
   arrivedAtPickup,
   picked,
   startDeliver,

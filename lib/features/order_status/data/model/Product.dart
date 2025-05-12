@@ -38,7 +38,7 @@ class Product {
       this.sold, 
       this.rateAvg, 
       this.rateCount, 
-      this.id,});
+      });
 
   Product.fromJson(dynamic json) {
     id = json['_id'];
@@ -79,7 +79,6 @@ class Product {
   num? sold;
   num? rateAvg;
   num? rateCount;
-  String? id;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
