@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:async';
+import 'dart:developer';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -61,6 +62,7 @@ class _ResendCodeState extends State<ResendCode> {
                       ? () {
                         final cubit = context.read<ForgetPasswordCubit>();
                         cubit.forgetPassword();
+                        log('resend function called');
                         startTimer();
                       }
                       : null,

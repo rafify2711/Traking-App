@@ -48,7 +48,7 @@ class ResetPasswordBody extends StatelessWidget {
               Navigator.pushNamed(context, RoutesName.loginScreen);
             } else if (status is BaseError) {
               log(LocaleKeys.resetPasswordFailed.tr());
-              showErrorSnackBar(context, LocaleKeys.errorOccurred.tr());
+              showErrorSnackBar(context, (state.resetPasswordState as BaseError).errorMessage??LocaleKeys.errorOccurred.tr());
             }
           },
           builder: (context, state) {

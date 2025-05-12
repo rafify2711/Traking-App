@@ -5,7 +5,6 @@ import 'package:tracking_app/core/config/routes_name.dart';
 import 'package:tracking_app/core/utils/app_text_styles.dart';
 import 'package:tracking_app/generated/locale_keys.g.dart';
 
-
 class OnBoardingView extends StatefulWidget {
   const OnBoardingView({super.key});
 

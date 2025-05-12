@@ -36,8 +36,8 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
     } else if (result is ApiError<ResetPasswordResponse>) {
       emit(
         state.copyWith(
-          resetPasswordState: BaseError<ResetPasswordResponse>(
-            result.message ?? 'Unknown error',
+          resetPasswordState: BaseError<ResetPasswordResponse>(errorMessage: 
+            result.failure?.errorMessage ?? 'Unknown error',
           ),
         ),
       );
