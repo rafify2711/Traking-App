@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:tracking_app/core/utils/app_text_styles.dart';
 import 'package:tracking_app/core/utils/colors.dart';
 import 'package:tracking_app/core/utils/services/get_responsive_height_and_width.dart';
+import 'package:tracking_app/generated/locale_keys.g.dart';
 
 class Success extends StatelessWidget {
   const Success({super.key});
@@ -17,7 +19,7 @@ class Success extends StatelessWidget {
               Image.asset("assets/images/Frame 1000003483.png", scale: 4),
               responsiveHeightWidget(24),
               Text(
-                " Thank you!!",
+                LocaleKeys.thankYou.tr(),
                 style: AppTextStyles.instance.textStyle24.copyWith(
                   fontWeight: FontWeight.bold,
                   color: PalletsColors.success,
@@ -26,7 +28,7 @@ class Success extends StatelessWidget {
               ),
               responsiveHeightWidget(16),
               Text(
-                "The order delivered \n successfully",
+                LocaleKeys.orderDeliveredSuccess.tr(),
                 style: AppTextStyles.instance.textStyle24,
                 textAlign: TextAlign.center,
               ),
@@ -37,7 +39,7 @@ class Success extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: () {},
                   child: Text(
-                    "Done",
+                    LocaleKeys.done.tr(),
                     style: AppTextStyles.instance.textStyle16,
                   ),
                 ),
