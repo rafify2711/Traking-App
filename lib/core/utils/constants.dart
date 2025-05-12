@@ -8,4 +8,5 @@ class Constants {
   static const String applyEndpoint = "drivers/apply";
   static const String getAllVehiclesEndpoint = "vehicles";
   static const String getAllPendingOrdersEndPoint = "orders/pending-orders";
+  static const String  startOrderEndPoint = "orders/start/{id}";
 }

@@ -4,4 +4,5 @@ import 'package:tracking_app/features/home/data/models/pending_orders_response.d
 
 abstract class HomeScreenRepo {
   Future<ApiResult<OrderResponse>> getAllPendingOrders();
+  Future<ApiResult<OrderResponse>> startOrder(String id);
 }

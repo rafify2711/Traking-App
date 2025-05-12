@@ -47,4 +47,17 @@ class MockHomeScreenRepo extends _i1.Mock implements _i2.HomeScreenRepo {
             ),
           )
           as _i3.Future<_i4.ApiResult<_i5.OrderResponse>>);
+
+  @override
+  _i3.Future<_i4.ApiResult<_i5.OrderResponse>> startOrder(String? id) =>
+      (super.noSuchMethod(
+            Invocation.method(#startOrder, [id]),
+            returnValue: _i3.Future<_i4.ApiResult<_i5.OrderResponse>>.value(
+              _i6.dummyValue<_i4.ApiResult<_i5.OrderResponse>>(
+                this,
+                Invocation.method(#startOrder, [id]),
+              ),
+            ),
+          )
+          as _i3.Future<_i4.ApiResult<_i5.OrderResponse>>);
 }

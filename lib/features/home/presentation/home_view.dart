@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tracking_app/core/base/base_state.dart';
 import 'package:tracking_app/core/di/di.dart';
-import 'package:tracking_app/core/utils/helper_func/snack_bar.dart';
 import 'package:tracking_app/features/home/data/models/pending_orders_response.dart';
 import 'package:tracking_app/features/home/domain/use_case/get_all_pending_orders_use_case.dart';
-import 'package:tracking_app/features/home/presentation/view%20model/get_all_pending_orders_cubit.dart';
+import 'package:tracking_app/features/home/domain/use_case/start_order_use_case.dart';
+import 'package:tracking_app/features/home/presentation/view%20model/orders_cubit.dart';
 import 'package:tracking_app/features/home/presentation/widgets/flower_order_card.dart';
+
+import '../../orders/domain/use_case/save_order_to_firebase_use_case.dart';
+import '../data/models/order_response.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -16,9 +19,9 @@ class HomeView extends StatelessWidget {
     return BlocProvider(
       create:
           (context) =>
-              GetAllPendingOrdersCubit(getIt.get<GetAllPendingOrdersUseCase>())
+              OrdersCubit(getIt.get<GetAllPendingOrdersUseCase>(),getIt.get<StartOrderUseCase>(),getIt.get<SaveOrderToFirebaseUseCase>())
                 ..getAllPendingOrders(),
-      child: BlocBuilder<GetAllPendingOrdersCubit, GetAllPendingOrdersState>(
+      child: BlocBuilder<OrdersCubit, OrdersState>(
         builder: (context, state) {
           final status = state.pendingOrdersState;
 
@@ -33,8 +36,8 @@ class HomeView extends StatelessWidget {
             return ListView.builder(
               itemCount: orders.length,
               itemBuilder: (context, index) {
-                final order = orders[index];
-                return const FlowerOrderCard(); // Update to accept order
+                final flowerOrder = orders[index];
+                return  FlowerOrderCard(order: flowerOrder); // Update to accept order
               },
             );
           }
@@ -45,3 +48,5 @@ class HomeView extends StatelessWidget {
     );
   }
 }
+
+

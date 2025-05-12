@@ -9,6 +9,7 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:cloud_firestore/cloud_firestore.dart' as _i974;
 import 'package:dio/dio.dart' as _i361;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
@@ -53,9 +54,15 @@ import '../../features/home/data/repo/home_screen_repo_imp.dart' as _i924;
 import '../../features/home/domain/repo/home_screen_repo.dart' as _i202;
 import '../../features/home/domain/use_case/get_all_pending_orders_use_case.dart'
     as _i968;
+import '../../features/home/domain/use_case/start_order_use_case.dart' as _i587;
+import '../../features/orders/data/repository/orders_repo_impl.dart' as _i849;
+import '../../features/orders/domain/repository/orders_repo.dart' as _i132;
+import '../../features/orders/domain/use_case/save_order_to_firebase_use_case.dart'
+    as _i73;
 import '../api_manger/api_service.dart' as _i525;
 import '../api_manger/dio_module.dart' as _i508;
 import '../provider/app_config_provider.dart' as _i291;
+import '../utils/services/fire_store_module.dart' as _i81;
 import '../utils/services/secure_sotrage_service.dart' as _i665;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -66,16 +73,24 @@ extension GetItInjectableX on _i174.GetIt {
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final dioModule = _$DioModule();
+    final firestoreModule = _$FirestoreModule();
     gh.singleton<_i361.LogInterceptor>(() => dioModule.provideLogger());
     gh.singleton<_i291.AppConfigProvider>(() => _i291.AppConfigProvider());
     gh.singleton<_i665.SecureStorageService>(
       () => _i665.SecureStorageService(),
     );
+    gh.lazySingleton<_i974.FirebaseFirestore>(() => firestoreModule.firestore);
     gh.singleton<_i361.Dio>(
       () => dioModule.provideDio(
         gh<_i361.LogInterceptor>(),
         gh<_i665.SecureStorageService>(),
       ),
+    );
+    gh.factory<_i132.OrdersRepo>(
+      () => _i849.OrdersRepoImpl(gh<_i974.FirebaseFirestore>()),
+    );
+    gh.factory<_i73.SaveOrderToFirebaseUseCase>(
+      () => _i73.SaveOrderToFirebaseUseCase(gh<_i132.OrdersRepo>()),
     );
     gh.singleton<_i525.ApiService>(
       () => dioModule.provideApiService(gh<_i361.Dio>()),
@@ -122,6 +137,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i968.GetAllPendingOrdersUseCase>(
       () => _i968.GetAllPendingOrdersUseCase(gh<_i202.HomeScreenRepo>()),
     );
+    gh.factory<_i587.StartOrderUseCase>(
+      () => _i587.StartOrderUseCase(gh<_i202.HomeScreenRepo>()),
+    );
     gh.factory<_i318.SenVerifyCodeUseCase>(
       () => _i318.SenVerifyCodeUseCase(repo: gh<_i484.ForgetPasswordRepo>()),
     );
@@ -136,3 +154,5 @@ extension GetItInjectableX on _i174.GetIt {
 }
 
 class _$DioModule extends _i508.DioModule {}
+
+class _$FirestoreModule extends _i81.FirestoreModule {}

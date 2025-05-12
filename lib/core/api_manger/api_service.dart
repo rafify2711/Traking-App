@@ -39,4 +39,7 @@ abstract class ApiService {
   Future<GetAllVehiclesResponse> getAllVehicles();
   @GET(Constants.getAllPendingOrdersEndPoint)
   Future<OrderResponse> getAllPendingOrders();
+
+  @PUT((Constants.startOrderEndPoint))
+  Future<OrderResponse> startOrder(@Path() String id);
 }
