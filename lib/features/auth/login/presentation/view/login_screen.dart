@@ -205,3 +205,14 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
+// Future<void> _saveUserToken(BaseSuccess<LoginResponse> state) async {
+//   await SecureStorageService().writeSecureData(
+//     Constants.userToken,
+//     state.data?.token ?? "",
+//   );
+//   final String? token = await SecureStorageService().readSecureData(
+//     Constants.userToken,
+//   );
+//   // print("user token $token");
+//   log("user token is $token");
+// }
