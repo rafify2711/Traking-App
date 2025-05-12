@@ -29,7 +29,7 @@ class GetAllPendingOrdersCubit extends Cubit<GetAllPendingOrdersState> {
       emit(
         state.copyWith(
           pendingOrdersState: BaseError<OrderResponse>(
-            result.message ?? 'Unknown error',
+          errorMessage:   result.failure?.errorMessage ?? 'Unknown error',
           ),
         ),
       );
