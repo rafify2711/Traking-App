@@ -11,8 +11,6 @@ import 'package:tracking_app/core/provider/app_config_provider.dart';
 import 'package:tracking_app/core/utils/application_theme.dart';
 import 'package:tracking_app/core/utils/services/screen_size_service.dart';
 import 'package:tracking_app/core/utils/services/simple_bloc_observer.dart';
-import 'package:tracking_app/features/auth/login/domain/usecases/login_usecase.dart';
-import 'package:tracking_app/features/auth/login/presentation/view_model/login_cubit.dart';
 import 'package:tracking_app/generated/codegen_loader.g.dart';
 
 import 'firebase_options.dart';
