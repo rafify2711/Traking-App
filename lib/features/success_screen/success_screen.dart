@@ -24,7 +24,7 @@ class SuccessScreen extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(
                   horizontal: responsiveWidth(30),
-                  vertical: resposiveHeight(140),
+                  vertical: responsiveHeight(140),
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,

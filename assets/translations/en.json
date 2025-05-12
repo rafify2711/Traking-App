@@ -52,5 +52,7 @@
     "total":"Total",
     "paymentMethod":"Payment method",
     "cachOnDelivery":"Cash on delivery",
-    "arrivedAtPickupPoint":"Arrived at pickup point"
+    "arrivedAtPickupPoint":"Arrived at pickup point",
+    "pickupLocation" : "Pickup location",
+    "yourLocation" : "Your location"
 }

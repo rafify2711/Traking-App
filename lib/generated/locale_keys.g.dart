@@ -75,5 +75,7 @@ abstract class  LocaleKeys {
   static const paymentMethod = 'paymentMethod';
   static const cachOnDelivery = 'cachOnDelivery';
   static const arrivedAtPickupPoint = 'arrivedAtPickupPoint';
+  static const pickupLocation = 'pickupLocation';
+  static const yourLocation = 'yourLocation';
 
 }

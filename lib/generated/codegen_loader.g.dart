@@ -88,7 +88,9 @@ class CodegenLoader extends AssetLoader{
   "total": "المجموع",
   "paymentMethod": "طريقة الدفع",
   "cachOnDelivery": "الدفع عند التسليم",
-  "arrivedAtPickupPoint": "وصل في نقطة التسليم"
+  "arrivedAtPickupPoint": "وصل في نقطة التسليم",
+  "pickupLocation": "موقع الاستلام",
+  "yourLocation": "موقعك"
 };
 static const Map<String,dynamic> _en = {
   "local": "en",
@@ -144,7 +146,9 @@ static const Map<String,dynamic> _en = {
   "total": "Total",
   "paymentMethod": "Payment method",
   "cachOnDelivery": "Cash on delivery",
-  "arrivedAtPickupPoint": "Arrived at pickup point"
+  "arrivedAtPickupPoint": "Arrived at pickup point",
+  "pickupLocation": "Pickup location",
+  "yourLocation": "Your location"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": _ar, "en": _en};
 }

@@ -1,4 +1,3 @@
-import 'package:tracking_app/core/utils/Errors/error_handler.dart';
 
 sealed class BaseState<T> {
   BaseState();
