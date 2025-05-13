@@ -15,8 +15,8 @@ class OrderRemoteDataSourceImpl implements OrderStatusRemoteDataSource {
   @override
   Future<void> updateOrderStatusToFireBase(String orderId, OrderStatus status) async {
     await firestore.collection('orders').doc(orderId).update({
-      'status': status.name,
-      'updatedAt': FieldValue.serverTimestamp(),
+      'order.state':status.name,
+      'order.updatedAt':FieldValue.serverTimestamp()
     });
   }
 
