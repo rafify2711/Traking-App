@@ -9,19 +9,20 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:cloud_firestore/cloud_firestore.dart' as _i974;
 import 'package:dio/dio.dart' as _i361;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
 import '../../features/auth/apply/data/data_source/auth_remote_data_source.dart'
-    as _i785;
+    as _i143;
 import '../../features/auth/apply/data/data_source/auth_remote_data_source_impl.dart'
-    as _i965;
-import '../../features/auth/apply/data/repos/auth_repo_impl.dart' as _i1040;
-import '../../features/auth/apply/domain/repos/auth_repo.dart' as _i1051;
-import '../../features/auth/apply/domain/use_case/apply_use_case.dart' as _i231;
+    as _i287;
+import '../../features/auth/apply/data/repos/auth_repo_impl.dart' as _i802;
+import '../../features/auth/apply/domain/repos/auth_repo.dart' as _i981;
+import '../../features/auth/apply/domain/use_case/apply_use_case.dart' as _i351;
 import '../../features/auth/apply/domain/use_case/get_vehicle_use_case.dart'
-    as _i251;
+    as _i729;
 import '../../features/auth/forget_password/data/data_source/forget_password_data_source_impl.dart'
     as _i224;
 import '../../features/auth/forget_password/data/repo/forget_password_repo_impl.dart'
@@ -45,6 +46,14 @@ import '../../features/auth/login/data/repository_implementation/login_repositor
 import '../../features/auth/login/domain/repository_icontract/login_contract.dart'
     as _i96;
 import '../../features/auth/login/domain/usecases/login_usecase.dart' as _i401;
+import '../../features/order_status/data/data_source/OrderStatusRemoteDataSource.dart'
+    as _i404;
+import '../../features/order_status/data/data_source/OrderStatusRemoteDataSourceImpl.dart'
+    as _i102;
+import '../../features/order_status/data/repo/order_repo_impl.dart' as _i928;
+import '../../features/order_status/domain/repo/order_repo.dart' as _i716;
+import '../../features/order_status/domain/use_case/update_order-status_use_case.dart'
+    as _i719;
 import '../api_manger/api_service.dart' as _i525;
 import '../api_manger/dio_module.dart' as _i508;
 import '../provider/app_config_provider.dart' as _i291;
@@ -72,25 +81,31 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i525.ApiService>(
       () => dioModule.provideApiService(gh<_i361.Dio>()),
     );
-    gh.factory<_i785.AuthRemoteDataSource>(
-      () => _i965.AuthRemoteDataSourceImpl(apiService: gh<_i525.ApiService>()),
-    );
-    gh.factory<_i1051.AuthRepo>(
-      () => _i1040.AuthRepoImpl(
-        authRemoteDataSource: gh<_i785.AuthRemoteDataSource>(),
+    gh.factory<_i404.OrderStatusRemoteDataSource>(
+      () => _i102.OrderRemoteDataSourceImpl(
+        gh<_i974.FirebaseFirestore>(),
+        gh<_i525.ApiService>(),
       ),
     );
     gh.factory<_i520.LoginRemoteDataSource>(
       () => _i1015.LoginRemoteDataSourceImp(apiService: gh<_i525.ApiService>()),
     );
-    gh.factory<_i231.ApplyUseCase>(
-      () => _i231.ApplyUseCase(authRepo: gh<_i1051.AuthRepo>()),
-    );
-    gh.factory<_i251.GetVehiclesUseCase>(
-      () => _i251.GetVehiclesUseCase(gh<_i1051.AuthRepo>()),
+    gh.factory<_i143.AuthRemoteDataSource>(
+      () => _i287.AuthRemoteDataSourceImpl(apiService: gh<_i525.ApiService>()),
     );
     gh.factory<_i762.ForgetPasswordDataSource>(
       () => _i224.ForgetPasswordDataSourceImpl(gh<_i525.ApiService>()),
+    );
+    gh.factory<_i981.AuthRepo>(
+      () => _i802.AuthRepoImpl(
+        authRemoteDataSource: gh<_i143.AuthRemoteDataSource>(),
+      ),
+    );
+    gh.factory<_i716.OrderRepository>(
+      () => _i928.OrderRepoImpl(gh<_i404.OrderStatusRemoteDataSource>()),
+    );
+    gh.factory<_i351.ApplyUseCase>(
+      () => _i351.ApplyUseCase(authRepo: gh<_i981.AuthRepo>()),
     );
     gh.factory<_i484.ForgetPasswordRepo>(
       () => _i610.ForgetPasswordRepoImpl(
@@ -105,6 +120,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i401.LoginUsecase>(
       () => _i401.LoginUsecase(login_repo: gh<_i96.LoginContract>()),
     );
+    gh.factory<_i719.UpdateOrderStatusUseCase>(
+      () => _i719.UpdateOrderStatusUseCase(gh<_i716.OrderRepository>()),
+    );
     gh.factory<_i318.SenVerifyCodeUseCase>(
       () => _i318.SenVerifyCodeUseCase(repo: gh<_i484.ForgetPasswordRepo>()),
     );
@@ -113,6 +131,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i22.ResetPasswordUseCase>(
       () => _i22.ResetPasswordUseCase(gh<_i484.ForgetPasswordRepo>()),
+    );
+    gh.factory<_i729.GetVehiclesUseCase>(
+      () => _i729.GetVehiclesUseCase(gh<_i981.AuthRepo>()),
     );
     return this;
   }

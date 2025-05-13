@@ -7,6 +7,7 @@ import 'dart:async' as _i9;
 
 import 'package:dio/dio.dart' as _i14;
 import 'package:mockito/mockito.dart' as _i1;
+import 'package:mockito/src/dummies.dart' as _i15;
 import 'package:tracking_app/core/api_manger/api_service.dart' as _i8;
 import 'package:tracking_app/features/auth/apply/data/models/apply_model/apply_response/apply_response.dart'
     as _i6;
@@ -162,4 +163,21 @@ class MockApiService extends _i1.Mock implements _i8.ApiService {
             ),
           )
           as _i9.Future<_i7.GetAllVehiclesResponse>);
+
+  @override
+  _i9.Future<String> updateOrderStatus(
+    String? id,
+    Map<String, dynamic>? newState,
+    String? token,
+  ) =>
+      (super.noSuchMethod(
+            Invocation.method(#updateOrderStatus, [id, newState, token]),
+            returnValue: _i9.Future<String>.value(
+              _i15.dummyValue<String>(
+                this,
+                Invocation.method(#updateOrderStatus, [id, newState, token]),
+              ),
+            ),
+          )
+          as _i9.Future<String>);
 }
