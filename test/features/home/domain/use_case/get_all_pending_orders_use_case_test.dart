@@ -20,18 +20,23 @@ void main() {
   });
 
   group('GetAllPendingOrdersUseCase', () {
+    const page = 1;
+
     test(
       'should return ApiSuccess<OrderResponse> when repo returns success',
       () async {
-        final response = OrderResponse(); // Add mock values if needed
+        // Arrange
+        final response = OrderResponse(); // Mock data can be added here
         final expected = ApiSuccess<OrderResponse>(data: response);
 
         provideDummy<ApiResult<OrderResponse>>(expected);
-        when(repo.getAllPendingOrders()).thenAnswer((_) async => expected);
+        when(repo.getAllPendingOrders(page)).thenAnswer((_) async => expected);
 
-        final actual = await useCase.invoke();
+        // Act
+        final actual = await useCase.invoke(page);
 
-        verify(repo.getAllPendingOrders()).called(1);
+        // Assert
+        verify(repo.getAllPendingOrders(page)).called(1);
         expect(actual, isA<ApiSuccess<OrderResponse>>());
       },
     );
@@ -39,17 +44,20 @@ void main() {
     test(
       'should return ApiError<OrderResponse> when repo returns error',
       () async {
+        // Arrange
         final expected = ApiError<OrderResponse>(
           message: 'Failed to fetch orders',
           failure: ServerFailure(errorMessage: 'Failed to fetch orders'),
         );
 
         provideDummy<ApiResult<OrderResponse>>(expected);
-        when(repo.getAllPendingOrders()).thenAnswer((_) async => expected);
+        when(repo.getAllPendingOrders(page)).thenAnswer((_) async => expected);
 
-        final actual = await useCase.invoke();
+        // Act
+        final actual = await useCase.invoke(page);
 
-        verify(repo.getAllPendingOrders()).called(1);
+        // Assert
+        verify(repo.getAllPendingOrders(page)).called(1);
         expect(actual, isA<ApiError<OrderResponse>>());
       },
     );

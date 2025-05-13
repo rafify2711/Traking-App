@@ -37,13 +37,13 @@ class MockHomeScreenDataSource extends _i1.Mock
   }
 
   @override
-  _i3.Future<_i4.ApiResult<_i5.OrderResponse>> getAllPendingOrders() =>
+  _i3.Future<_i4.ApiResult<_i5.OrderResponse>> getAllPendingOrders(int? page) =>
       (super.noSuchMethod(
-            Invocation.method(#getAllPendingOrders, []),
+            Invocation.method(#getAllPendingOrders, [page]),
             returnValue: _i3.Future<_i4.ApiResult<_i5.OrderResponse>>.value(
               _i6.dummyValue<_i4.ApiResult<_i5.OrderResponse>>(
                 this,
-                Invocation.method(#getAllPendingOrders, []),
+                Invocation.method(#getAllPendingOrders, [page]),
               ),
             ),
           )

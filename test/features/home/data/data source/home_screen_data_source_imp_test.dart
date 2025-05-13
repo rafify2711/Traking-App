@@ -7,7 +7,7 @@ import 'package:tracking_app/core/utils/Errors/error_handler.dart';
 import 'package:tracking_app/features/home/data/data%20source/home_screen_data_source_imp.dart';
 import 'package:tracking_app/features/home/data/models/pending_orders_response.dart';
 
-import '../../../auth/forget_password/data/data_source/forget_password_data_source_impl_test.mocks.dart';
+import 'home_screen_data_source_imp_test.mocks.dart';
 
 @GenerateMocks([ApiService])
 void main() {
@@ -20,20 +20,22 @@ void main() {
   });
 
   group('HomeScreenDataSourceImp', () {
+    const page = 1;
+
     test(
       'should return ApiSuccess<OrderResponse> when getAllPendingOrders succeeds',
       () async {
         // Arrange
         final expectedResponse = OrderResponse();
         when(
-          apiService.getAllPendingOrders(),
+          apiService.getAllPendingOrders(page),
         ).thenAnswer((_) async => expectedResponse);
 
         // Act
-        final result = await dataSource.getAllPendingOrders();
+        final result = await dataSource.getAllPendingOrders(page);
 
         // Assert
-        verify(apiService.getAllPendingOrders()).called(1);
+        verify(apiService.getAllPendingOrders(page)).called(1);
         expect(result, isA<ApiSuccess<OrderResponse>>());
       },
     );
@@ -43,14 +45,14 @@ void main() {
       () async {
         // Arrange
         when(
-          apiService.getAllPendingOrders(),
+          apiService.getAllPendingOrders(page),
         ).thenThrow(ServerFailure(errorMessage: 'error'));
 
         // Act
-        final result = await dataSource.getAllPendingOrders();
+        final result = await dataSource.getAllPendingOrders(page);
 
         // Assert
-        verify(apiService.getAllPendingOrders()).called(1);
+        verify(apiService.getAllPendingOrders(page)).called(1);
         expect(result, isA<ApiError<OrderResponse>>());
       },
     );

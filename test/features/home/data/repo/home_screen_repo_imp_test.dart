@@ -7,6 +7,7 @@ import 'package:tracking_app/features/home/data/data%20source/home_screen_data_s
 import 'package:tracking_app/features/home/data/models/pending_orders_response.dart';
 import 'package:tracking_app/features/home/data/repo/home_screen_repo_imp.dart';
 import 'package:tracking_app/features/home/domain/repo/home_screen_repo.dart';
+
 import 'home_screen_repo_imp_test.mocks.dart';
 
 @GenerateMocks([HomeScreenDataSource])
@@ -20,24 +21,25 @@ void main() {
   });
 
   group('HomeScreenRepoImp Tests', () {
+    const page = 1;
+
     test(
       'should return ApiSuccess<OrderResponse> when getAllPendingOrders succeeds',
       () async {
         // arrange
-        final response =
-            OrderResponse(); // Replace with real mock data if needed
+        final response = OrderResponse(); // You can provide mock data here
         final expected = ApiSuccess<OrderResponse>(data: response);
         provideDummy<ApiResult<OrderResponse>>(expected);
 
         when(
-          mockDataSource.getAllPendingOrders(),
+          mockDataSource.getAllPendingOrders(page),
         ).thenAnswer((_) async => expected);
 
         // act
-        final actual = await repo.getAllPendingOrders();
+        final actual = await repo.getAllPendingOrders(page);
 
         // assert
-        verify(mockDataSource.getAllPendingOrders()).called(1);
+        verify(mockDataSource.getAllPendingOrders(page)).called(1);
         expect(actual, expected);
       },
     );
@@ -53,14 +55,14 @@ void main() {
         provideDummy<ApiResult<OrderResponse>>(expected);
 
         when(
-          mockDataSource.getAllPendingOrders(),
+          mockDataSource.getAllPendingOrders(page),
         ).thenAnswer((_) async => expected);
 
         // act
-        final actual = await repo.getAllPendingOrders();
+        final actual = await repo.getAllPendingOrders(page);
 
         // assert
-        verify(mockDataSource.getAllPendingOrders()).called(1);
+        verify(mockDataSource.getAllPendingOrders(page)).called(1);
         expect(actual, expected);
       },
     );
