@@ -1,5 +1,7 @@
 import 'dart:developer';
 
+import 'dart:developer';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -155,6 +157,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         _saveUserToken(
                           state.loginState as BaseSuccess<LoginResponse>,
                         );
+                        _saveUserToken(
+                          state.loginState as BaseSuccess<LoginResponse>,
+                        );
                         Navigator.pushNamed(context, RoutesName.layOut);
                       }
                     },
@@ -205,6 +210,7 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
+
 Future<void> _saveUserToken(BaseSuccess<LoginResponse> state) async {
   await SecureStorageService().writeSecureData(
     Constants.userToken,
