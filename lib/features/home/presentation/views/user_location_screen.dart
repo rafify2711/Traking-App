@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tracking_app/core/base/base_state.dart';
+import 'package:tracking_app/core/utils/colors.dart';
 import 'package:tracking_app/core/utils/helper_func/snack_bar.dart';
 import 'package:tracking_app/features/home/presentation/view_model/cubit/current_user_location_cubit.dart';
 import 'package:tracking_app/features/home/presentation/views/widgets/user_location_screen_body.dart';
@@ -24,7 +25,7 @@ class UserLocationScreen extends StatelessWidget {
               return  UserLocationScreenBody(driverLat: state.lattitude ?? 0.0, driverLong: state.longitude ?? 0.0,);
             }
             else {
-              return const Center(child: CircularProgressIndicator());
+              return const Center(child: CircularProgressIndicator(color: PalletsColors.mainColorBase));
             }
           },
         ),

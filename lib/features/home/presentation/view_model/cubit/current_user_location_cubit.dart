@@ -27,15 +27,18 @@ class CurrentUserLocationCubit extends Cubit<CurrentUserLocationState> {
       }
       LocationPermission permission = await Geolocator.checkPermission();
       if (permission == LocationPermission.denied) {
-        emit(
-          state.copyWith(
-            locationState: BaseError<String>(
-              errorMessage: LocaleKeys.locationPermissionIsDeied.tr(),
+       
+        permission = await Geolocator.requestPermission();
+        if (permission == LocationPermission.denied) {
+          emit(
+            state.copyWith(
+              locationState: BaseError<String>(
+                errorMessage: LocaleKeys.locationPermissionIsDeied.tr(),
+              ),
             ),
-            // errorMessage: LocaleKeys.locationPermissionIsDeied.tr(),
-          ),
-        );
-        return;
+          );
+          return;
+        }
       }
       if (permission == LocationPermission.deniedForever) {
         emit(

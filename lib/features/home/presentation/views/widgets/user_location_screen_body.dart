@@ -33,7 +33,7 @@ class _UserLocationScreenBodyState extends State<UserLocationScreenBody> {
 
   @override
   void initState() {
-    _userLocation = const LatLng(34.0557, 118.2488);
+    _userLocation = const LatLng(30.1660, 31.6542);
     _deliveryManLocation =  LatLng(widget.driverLat, widget.driverLong);
     print("---------------------$_deliveryManLocation");
     _initMarkers();
