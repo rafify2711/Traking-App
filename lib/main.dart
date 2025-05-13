@@ -24,7 +24,7 @@ void main() async {
   await  Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  setup();
+  // setup();
 
 
   runApp(
@@ -59,7 +59,7 @@ class _TrackingState extends State<Tracking> {
       supportedLocales: context.supportedLocales,
       locale: context.locale,
       debugShowCheckedModeBanner: false,
-      initialRoute: RoutesName.orderStatus,
+      initialRoute: RoutesName.onBoarding,
       onGenerateRoute: RouteGenerator.onGenerator,
       theme: ApplicationTheme.themeData,
     );
