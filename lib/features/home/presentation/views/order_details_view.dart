@@ -93,6 +93,9 @@ class OrderDetailsView extends StatelessWidget {
                 addressOrPriceText: "20th st, Sheikh Zayed, Giza ",
                 imagePath: "assets/images/Photo.png",
                 numberOfOrder: "",
+                onTap: () {
+                   Navigator.pushNamed(context, RoutesName.userLocationScreen);
+                },
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 16),

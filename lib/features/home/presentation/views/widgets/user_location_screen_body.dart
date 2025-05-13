@@ -9,8 +9,8 @@ import 'package:tracking_app/core/utils/colors.dart';
 import 'package:tracking_app/features/home/presentation/views/widgets/dash_mark.dart';
 import 'package:tracking_app/generated/locale_keys.g.dart';
 
-class PickupLocationScreenBody extends StatefulWidget {
-  const PickupLocationScreenBody({
+class UserLocationScreenBody extends StatefulWidget {
+  const UserLocationScreenBody({
     super.key,
     required this.driverLat,
     required this.driverLong,
@@ -19,13 +19,13 @@ class PickupLocationScreenBody extends StatefulWidget {
   final double driverLong;
 
   @override
-  State<PickupLocationScreenBody> createState() =>
-      _PickupLocationScreenBodyState();
+  State<UserLocationScreenBody> createState() =>
+      _UserLocationScreenBodyState();
 }
 
-class _PickupLocationScreenBodyState extends State<PickupLocationScreenBody> {
+class _UserLocationScreenBodyState extends State<UserLocationScreenBody> {
   GoogleMapController? mapController;
-  late LatLng _storeLocation;
+  late LatLng _userLocation;
   late LatLng _deliveryManLocation;
 
   Set<Marker> markers = {};
@@ -33,7 +33,7 @@ class _PickupLocationScreenBodyState extends State<PickupLocationScreenBody> {
 
   @override
   void initState() {
-    _storeLocation = const LatLng(30.0383, 31.2114);
+    _userLocation = const LatLng(34.0557, 118.2488);
     _deliveryManLocation =  LatLng(widget.driverLat, widget.driverLong);
     print("---------------------$_deliveryManLocation");
     _initMarkers();
@@ -59,7 +59,7 @@ class _PickupLocationScreenBodyState extends State<PickupLocationScreenBody> {
                   markers: markers,
                   polylines: polylines,
                   initialCameraPosition: CameraPosition(
-                    target: _storeLocation,
+                    target: _userLocation,
                     zoom: 15,
                   ),
                   onMapCreated: (GoogleMapController controller) {
@@ -101,7 +101,7 @@ class _PickupLocationScreenBodyState extends State<PickupLocationScreenBody> {
                     horizontal: responsiveWidth(16),
                   ),
                   child: Text(
-                    "Pickup address",
+                     LocaleKeys.userAddress.tr(),
                     style: AppTextStyles.instance.textStyle12.copyWith(
                       color: PalletsColors.gray,
                     ),
@@ -110,8 +110,8 @@ class _PickupLocationScreenBodyState extends State<PickupLocationScreenBody> {
 
                 CustomCardWidget(
                   withTrailing: true,
-                  imagePath: 'assets/images/Flowery logo.png',
-                  title: 'Flowery store',
+                  imagePath: 'assets/images/Photo.png',
+                  title: 'Nour Mahmoud',
                   addressOrPriceText: '20th st, Sheikh Zayed, Giza',
                   numberOfOrder: '',
                 ),
@@ -121,16 +121,17 @@ class _PickupLocationScreenBodyState extends State<PickupLocationScreenBody> {
                     horizontal: responsiveWidth(16),
                   ),
                   child: Text(
-                    "User Address",
+                    LocaleKeys.pickUpAddress.tr(),
                     style: AppTextStyles.instance.textStyle12.copyWith(
                       color: PalletsColors.gray,
                     ),
                   ),
                 ),
+                
                 CustomCardWidget(
                   withTrailing: true,
-                  imagePath: 'assets/images/Photo.png',
-                  title: 'Nour Mahmoud',
+                  imagePath: 'assets/images/Flowery logo.png',
+                  title: 'Flowery store',
                   addressOrPriceText: '20th st, Sheikh Zayed, Giza',
                   numberOfOrder: '',
                 ),
@@ -145,8 +146,8 @@ class _PickupLocationScreenBodyState extends State<PickupLocationScreenBody> {
   void _initMarkers() {
     markers = {
       Marker(
-        markerId: const MarkerId("pickup"),
-        position: _storeLocation,
+        markerId: const MarkerId("user"),
+        position: _userLocation,
 
         infoWindow: InfoWindow(title: LocaleKeys.pickupLocation.tr()),
       ),
@@ -162,7 +163,7 @@ class _PickupLocationScreenBodyState extends State<PickupLocationScreenBody> {
     polylines = {
       Polyline(
         polylineId: const PolylineId("route"),
-        points: [_storeLocation, _deliveryManLocation],
+        points: [_userLocation, _deliveryManLocation],
         color: PalletsColors.mainColorBase,
         width: 2,
       ),
@@ -174,12 +175,12 @@ class _PickupLocationScreenBodyState extends State<PickupLocationScreenBody> {
     {
       LatLngBounds bounds = LatLngBounds(
         southwest: LatLng(
-          min(_storeLocation.latitude, _deliveryManLocation.latitude),
-          min(_storeLocation.longitude, _deliveryManLocation.longitude),
+          min(_userLocation.latitude, _deliveryManLocation.latitude),
+          min(_userLocation.longitude, _deliveryManLocation.longitude),
         ),
         northeast: LatLng(
-          max(_storeLocation.latitude, _deliveryManLocation.latitude),
-          max(_storeLocation.longitude, _deliveryManLocation.longitude),
+          max(_userLocation.latitude, _deliveryManLocation.latitude),
+          max(_userLocation.longitude, _deliveryManLocation.longitude),
         ),
       );
       CameraUpdate cameraUpdate = CameraUpdate.newLatLngBounds(bounds, 100);

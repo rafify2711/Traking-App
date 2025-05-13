@@ -12,4 +12,5 @@ class RoutesName {
   static const String orders = 'orders';
   static const String OrderDetailsView = 'orderDetailsView';
   static const String pickupLocationScreen = 'pickupLocationScreen';
+  static const String userLocationScreen = "UserLocationScreen";
 }

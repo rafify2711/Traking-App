@@ -74,7 +74,11 @@
     "cachOnDelivery":"الدفع عند التسليم",
     "arrivedAtPickupPoint":"وصل في نقطة التسليم",
     "pickupLocation" : "موقع الاستلام",
-    "yourLocation" : "موقعك"
+    "yourLocation" : "موقعك",
+    "locationServiceDisabled" : "خدمة الموقع معطلة",  
+    "locationPermissionIsDeied" : "تم رفض إذن الوصول إلى الموقع",  
+    "locationPermissionIsPermanentlyDenied": "تم رفض إذن الموقع بشكل دائم، لا يمكننا طلب الأذونات."  
+    
   
 
 

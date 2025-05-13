@@ -90,7 +90,10 @@ class CodegenLoader extends AssetLoader{
   "cachOnDelivery": "الدفع عند التسليم",
   "arrivedAtPickupPoint": "وصل في نقطة التسليم",
   "pickupLocation": "موقع الاستلام",
-  "yourLocation": "موقعك"
+  "yourLocation": "موقعك",
+  "locationServiceDisabled": "خدمة الموقع معطلة",
+  "locationPermissionIsDeied": "تم رفض إذن الوصول إلى الموقع",
+  "locationPermissionIsPermanentlyDenied": "تم رفض إذن الموقع بشكل دائم، لا يمكننا طلب الأذونات."
 };
 static const Map<String,dynamic> _en = {
   "local": "en",
@@ -148,7 +151,10 @@ static const Map<String,dynamic> _en = {
   "cachOnDelivery": "Cash on delivery",
   "arrivedAtPickupPoint": "Arrived at pickup point",
   "pickupLocation": "Pickup location",
-  "yourLocation": "Your location"
+  "yourLocation": "Your location",
+  "locationServiceDisabled": "Location service is disabled",
+  "locationPermissionIsDeied": "Location Permission is denied",
+  "locationPermissionIsPermanentlyDenied": "Location permission is permanently denied, we cannot request permissions."
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": _ar, "en": _en};
 }

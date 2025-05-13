@@ -54,5 +54,10 @@
     "cachOnDelivery":"Cash on delivery",
     "arrivedAtPickupPoint":"Arrived at pickup point",
     "pickupLocation" : "Pickup location",
-    "yourLocation" : "Your location"
+    "yourLocation" : "Your location",
+    "locationServiceDisabled" : "Location service is disabled",
+    "locationPermissionIsDeied" : "Location Permission is denied",
+    "locationPermissionIsPermanentlyDenied": "Location permission is permanently denied, we cannot request permissions.",
+   
+
 }
