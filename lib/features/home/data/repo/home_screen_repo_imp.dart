@@ -9,7 +9,7 @@ class HomeScreenRepoImp extends HomeScreenRepo {
   HomeScreenDataSource homeScreenDataSource;
   HomeScreenRepoImp(this.homeScreenDataSource);
   @override
-  Future<ApiResult<OrderResponse>> getAllPendingOrders() async {
-    return await homeScreenDataSource.getAllPendingOrders();
+  Future<ApiResult<OrderResponse>> getAllPendingOrders(int page) async {
+    return await homeScreenDataSource.getAllPendingOrders(page);
   }
 }

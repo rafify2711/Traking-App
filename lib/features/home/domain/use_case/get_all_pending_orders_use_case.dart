@@ -8,7 +8,7 @@ class GetAllPendingOrdersUseCase {
   HomeScreenRepo homeScreenRepo;
   GetAllPendingOrdersUseCase(this.homeScreenRepo);
 
-  Future<ApiResult<OrderResponse>> invoke() async {
-    return await homeScreenRepo.getAllPendingOrders();
+  Future<ApiResult<OrderResponse>> invoke(int page) async {
+    return await homeScreenRepo.getAllPendingOrders(page);
   }
 }

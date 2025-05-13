@@ -8,38 +8,77 @@ import 'package:tracking_app/features/home/domain/use_case/get_all_pending_order
 import 'package:tracking_app/features/home/presentation/view%20model/get_all_pending_orders_cubit.dart';
 import 'package:tracking_app/features/home/presentation/widgets/flower_order_card.dart';
 
-class HomeView extends StatelessWidget {
+class HomeView extends StatefulWidget {
   const HomeView({super.key});
 
   @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
+  final ScrollController _scrollController = ScrollController();
+  late GetAllPendingOrdersCubit _ordersCubit;
+
+  @override
+  void initState() {
+    super.initState();
+    _ordersCubit = GetAllPendingOrdersCubit(
+      getIt.get<GetAllPendingOrdersUseCase>(),
+    );
+    _ordersCubit.getAllPendingOrders();
+
+    _scrollController.addListener(() {
+      if (_scrollController.position.pixels >=
+          _scrollController.position.maxScrollExtent - 100) {
+        _ordersCubit.loadNextPage();
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create:
-          (context) =>
-              GetAllPendingOrdersCubit(getIt.get<GetAllPendingOrdersUseCase>())
-                ..getAllPendingOrders(),
+    return BlocProvider.value(
+      value: _ordersCubit,
       child: BlocBuilder<GetAllPendingOrdersCubit, GetAllPendingOrdersState>(
         builder: (context, state) {
           final status = state.pendingOrdersState;
+          final orders = state.allOrders ?? [];
 
-          if (status is BaseLoading) {
+          if (status is BaseLoading && orders.isEmpty) {
             return const Center(child: CircularProgressIndicator());
-          } else if (status is BaseError) {
-              return Center(child: Text(status.errorMessage??'Unknown error'),);
-                        
-          } else if (status is BaseSuccess<OrderResponse>) {
-            final orders = state.orderResponse!.orders ?? [];
-
-            return ListView.builder(
-              itemCount: orders.length,
-              itemBuilder: (context, index) {
-                final order = orders[index];
-                return const FlowerOrderCard(); // Update to accept order
-              },
-            );
           }
 
-          return const SizedBox();
+          if (status is BaseError && orders.isEmpty) {
+            return Center(child: Text(status.errorMessage ?? 'Unknown error'));
+          }
+
+          return ListView.builder(
+            controller: _scrollController,
+            itemCount: orders.length + 1,
+            itemBuilder: (context, index) {
+              if (index < orders.length) {
+                return FlowerOrderCard(order: orders[index]);
+              } else {
+                final currentPage = state.currentPage;
+                final totalPages = state.totalPages;
+
+                if (currentPage < totalPages) {
+                  return const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 16),
+                    child: Center(child: CircularProgressIndicator()),
+                  );
+                } else {
+                  return const SizedBox.shrink();
+                }
+              }
+            },
+          );
         },
       ),
     );

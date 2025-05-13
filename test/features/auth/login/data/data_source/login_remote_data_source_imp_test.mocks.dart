@@ -171,13 +171,13 @@ class MockApiService extends _i1.Mock implements _i9.ApiService {
           as _i10.Future<_i7.GetAllVehiclesResponse>);
 
   @override
-  _i10.Future<_i8.OrderResponse> getAllPendingOrders() =>
+  _i10.Future<_i8.OrderResponse> getAllPendingOrders(int? page) =>
       (super.noSuchMethod(
-            Invocation.method(#getAllPendingOrders, []),
+            Invocation.method(#getAllPendingOrders, [page]),
             returnValue: _i10.Future<_i8.OrderResponse>.value(
               _FakeOrderResponse_6(
                 this,
-                Invocation.method(#getAllPendingOrders, []),
+                Invocation.method(#getAllPendingOrders, [page]),
               ),
             ),
           )

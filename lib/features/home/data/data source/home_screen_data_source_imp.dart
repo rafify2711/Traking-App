@@ -11,9 +11,9 @@ class HomeScreenDataSourceImp extends HomeScreenDataSource {
   HomeScreenDataSourceImp(this.apiService);
 
   @override
-  Future<ApiResult<OrderResponse>> getAllPendingOrders() async {
+  Future<ApiResult<OrderResponse>> getAllPendingOrders(int page) async {
     return await apiExecuter<OrderResponse>(() async {
-      var response = await apiService.getAllPendingOrders();
+      var response = await apiService.getAllPendingOrders(page);
       return response;
     }, 'HomeScreenDataSourceImp');
   }

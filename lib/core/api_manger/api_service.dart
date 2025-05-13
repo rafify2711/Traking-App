@@ -38,5 +38,5 @@ abstract class ApiService {
   @GET(Constants.getAllVehiclesEndpoint)
   Future<GetAllVehiclesResponse> getAllVehicles();
   @GET(Constants.getAllPendingOrdersEndPoint)
-  Future<OrderResponse> getAllPendingOrders();
+  Future<OrderResponse> getAllPendingOrders(@Query("page") int page);
 }
