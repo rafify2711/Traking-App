@@ -13,4 +13,6 @@ class RoutesName {
   static const String orderStatus = 'orderStatusScreen';
   static const String OrderDetailsView = 'orderDetailsView';
   static const String success = "success";
+  static const String pickupLocationScreen = 'pickupLocationScreen';
+  static const String userLocationScreen = "UserLocationScreen";
 }

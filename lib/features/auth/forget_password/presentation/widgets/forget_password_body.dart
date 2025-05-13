@@ -53,7 +53,7 @@ class ForgetPasswordBody extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.symmetric(
                       horizontal: responsiveWidth(15),
-                      vertical: resposiveHeight(10),
+                      vertical: responsiveHeight(10),
                     ),
                     child: CustomTextFormFieled(
                       hintText: LocaleKeys.enterYourEmail.tr(),
@@ -69,7 +69,7 @@ class ForgetPasswordBody extends StatelessWidget {
                   responsiveHeightWidget(10),
                   Padding(
                     padding: EdgeInsets.symmetric(
-                      horizontal: resposiveHeight(15),
+                      horizontal: responsiveHeight(15),
                       vertical: responsiveWidth(10),
                     ),
                     child: BlocConsumer<
@@ -104,7 +104,8 @@ class ForgetPasswordBody extends StatelessWidget {
                             is BaseError<ForgetPasswordResponse>) {
                           showErrorSnackBar(
                             context,
-                            (state.forgetPasswordResponse  as BaseError).errorMessage??
+                            (state.forgetPasswordResponse as BaseError)
+                                    .errorMessage ??
                                 'email not found',
                           );
                         }
@@ -112,7 +113,8 @@ class ForgetPasswordBody extends StatelessWidget {
                       builder: (context, state) {
                         return ElevatedButton(
                           onPressed: () {
-                            if (cubit.formKey.currentState!.validate() == false) {
+                            if (cubit.formKey.currentState!.validate() ==
+                                false) {
                               return;
                             }
                             cubit.forgetPassword();
@@ -124,7 +126,8 @@ class ForgetPasswordBody extends StatelessWidget {
                                     width: 24,
                                     child: CircularProgressIndicator(
                                       color: PalletsColors.white10,
-                                    ))
+                                    ),
+                                  )
                                   : Text(
                                     LocaleKeys.confirm.tr(),
                                     style: AppTextStyles.instance.textStyle16

@@ -5,9 +5,9 @@ import 'package:url_launcher/url_launcher.dart';
 
 Future<void> launchCustomUrl(BuildContext context, String? url) async {
   if (url != null) {
-    final Uri url0 = Uri.parse(url);
-    if (await canLaunchUrl(url0)) {
-      !await launchUrl(url0);
+    final Uri newUrl = Uri.parse(url);
+    if (await canLaunchUrl(newUrl)) {
+      await launchUrl(newUrl);
     } else {
       showSnackBar(context, 'Cannot launch $url');
     }

@@ -53,7 +53,7 @@ class VerificationBody extends StatelessWidget {
                 if (state.verifyCodeState is BaseError) {
                   showErrorSnackBar(
                     context,
-                  (state.verifyCodeState as BaseError).errorMessage ?? '',
+                    (state.verifyCodeState as BaseError).errorMessage ?? '',
                   );
                 }
                 if (state.verifyCodeState is BaseSuccess) {
@@ -80,7 +80,7 @@ class VerificationBody extends StatelessWidget {
                   },
                   defaultPinTheme: PinTheme(
                     width: responsiveWidth(48),
-                    height: resposiveHeight(48),
+                    height: responsiveHeight(48),
 
                     decoration: BoxDecoration(
                       color: PalletsColors.white60,

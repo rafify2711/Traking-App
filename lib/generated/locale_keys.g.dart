@@ -79,5 +79,10 @@ abstract class LocaleKeys {
   static const arrivedAtPickupPoint = 'arrivedAtPickupPoint';
   static const thankYou = 'thankYou';
   static const orderDeliveredSuccess = 'orderDeliveredSuccess';
-  static const done = 'done';
+  static const done = 'done';  static const pickupLocation = 'pickupLocation';
+  static const yourLocation = 'yourLocation';
+  static const locationServiceDisabled = 'locationServiceDisabled';
+  static const locationPermissionIsDeied = 'locationPermissionIsDeied';
+  static const locationPermissionIsPermanentlyDenied = 'locationPermissionIsPermanentlyDenied';
+
 }

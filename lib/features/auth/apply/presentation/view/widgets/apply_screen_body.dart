@@ -61,16 +61,16 @@ class _ApplyScreenBodyState extends State<ApplyScreenBody> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: resposiveHeight(24)),
+              SizedBox(height: responsiveHeight(24)),
               const WelcomeTextInApplyView(),
-              SizedBox(height: resposiveHeight(32)),
+              SizedBox(height: responsiveHeight(32)),
 
               CountryDropDownList(
                 onChanged: (value) => cubit.setSelectedCountry(value!),
                 selectedCountry: state.selectedCountry!,
                 countries: state.countries,
               ),
-              SizedBox(height: resposiveHeight(24)),
+              SizedBox(height: responsiveHeight(24)),
 
               CustomTextFormFieled(
                 textEditingController: cubit.firstNameController,
@@ -79,7 +79,7 @@ class _ApplyScreenBodyState extends State<ApplyScreenBody> {
                 isObsecureText: false,
                 validator: (val) => Validator.validateName(val),
               ),
-              SizedBox(height: resposiveHeight(24)),
+              SizedBox(height: responsiveHeight(24)),
 
               CustomTextFormFieled(
                 textEditingController: cubit.secondNameController,
@@ -88,7 +88,7 @@ class _ApplyScreenBodyState extends State<ApplyScreenBody> {
                 isObsecureText: false,
                 validator: (val) => Validator.validateName(val),
               ),
-              SizedBox(height: resposiveHeight(24)),
+              SizedBox(height: responsiveHeight(24)),
 
               VehicleDropDownList(
                 labelText: LocaleKeys.vehicleType.tr(),
@@ -102,7 +102,7 @@ class _ApplyScreenBodyState extends State<ApplyScreenBody> {
                 items: state.vehicles ?? [],
               ),
 
-              SizedBox(height: resposiveHeight(24)),
+              SizedBox(height: responsiveHeight(24)),
 
               CustomTextFormFieled(
                 textEditingController: cubit.vehicleNumberController,
@@ -111,7 +111,7 @@ class _ApplyScreenBodyState extends State<ApplyScreenBody> {
                 isObsecureText: false,
                 validator: (val) => Validator.validateVehicleNumber(val),
               ),
-              SizedBox(height: resposiveHeight(24)),
+              SizedBox(height: responsiveHeight(24)),
 
               CustomTextFormFieled(
                 suffix: const Icon(Icons.file_upload_outlined),
@@ -127,7 +127,7 @@ class _ApplyScreenBodyState extends State<ApplyScreenBody> {
                   }
                 },
               ),
-              SizedBox(height: resposiveHeight(24)),
+              SizedBox(height: responsiveHeight(24)),
 
               CustomTextFormFieled(
                 keyboardType: TextInputType.emailAddress,
@@ -137,7 +137,7 @@ class _ApplyScreenBodyState extends State<ApplyScreenBody> {
                 isObsecureText: false,
                 validator: (val) => Validator.validateEmail(val),
               ),
-              SizedBox(height: resposiveHeight(24)),
+              SizedBox(height: responsiveHeight(24)),
 
               CustomTextFormFieled(
                 keyboardType: TextInputType.phone,
@@ -147,7 +147,7 @@ class _ApplyScreenBodyState extends State<ApplyScreenBody> {
                 isObsecureText: false,
                 validator: (val) => Validator.validatePhoneNumber(val),
               ),
-              SizedBox(height: resposiveHeight(24)),
+              SizedBox(height: responsiveHeight(24)),
 
               CustomTextFormFieled(
                 textEditingController: cubit.idNumberController,
@@ -156,7 +156,7 @@ class _ApplyScreenBodyState extends State<ApplyScreenBody> {
                 isObsecureText: false,
                 validator: (val) => Validator.validateIdNumber(val),
               ),
-              SizedBox(height: resposiveHeight(24)),
+              SizedBox(height: responsiveHeight(24)),
 
               CustomTextFormFieled(
                 suffix: const Icon(Icons.file_upload_outlined),
@@ -172,7 +172,7 @@ class _ApplyScreenBodyState extends State<ApplyScreenBody> {
                   }
                 },
               ),
-              SizedBox(height: resposiveHeight(24)),
+              SizedBox(height: responsiveHeight(24)),
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -202,7 +202,7 @@ class _ApplyScreenBodyState extends State<ApplyScreenBody> {
                   ),
                 ],
               ),
-              SizedBox(height: resposiveHeight(24)),
+              SizedBox(height: responsiveHeight(24)),
 
               Row(
                 children: [
@@ -245,71 +245,74 @@ class _ApplyScreenBodyState extends State<ApplyScreenBody> {
                   ),
                 ],
               ),
-              SizedBox(height: resposiveHeight(24)),
+              SizedBox(height: responsiveHeight(24)),
 
               BlocConsumer<ApplyCubit, ApplyState>(
-                  listener: (context, state) {
-                    if (state.applyState is BaseError<ApplyResponse>) {
-                      showErrorSnackBar(
-                        context,
-                        (state.applyState as BaseError<ApplyResponse>).errorMessage ??
-                         "Something went wrong",
-                      );
-                    } else if (state.applyState is BaseSuccess<ApplyResponse>) {
-                      showSnackBar(context, state.applyResponse?.message ?? "");
-                      Navigator.pushNamed(context, RoutesName.loginScreen);
-                    }
-                  },
-                  builder: (context, state) {
-                    return ElevatedButton(
-                              onPressed: () async {
-                                if (formKey.currentState!.validate()) {
-                                  if (cubit.vehicleLicenseFile == null ||
-                                      cubit.idImageFile == null) {
-                                    showErrorSnackBar(
-                                      context,
-                                      "Please upload all required files",
-                                    );
-                                    return;
-                                  }
-                                  await cubit.apply(
-                                    ApplyData(
-                                      country: state.selectedCountry?.name ?? "",
-                                      firstName: cubit.firstNameController.text,
-                                      lastName: cubit.secondNameController.text,
-                                      vehicleType: state.selectedVehicle?.id ?? "",
-              
-                                      vehicleNumber: cubit.vehicleNumberController.text,
-                                      vehicleLicense: cubit.vehicleLicenseFile!,
-                                      email: cubit.emailController.text,
-                                      phoneNumber: cubit.phoneNumberController.text,
-                                      idNumber: cubit.idNumberController.text,
-                                      idImage: cubit.idImageFile!,
-                                      password: cubit.passwordController.text,
-                                      confirmPassword: cubit.confirmPasswordController.text,
-                                      gender: state.selectedGender.name,
-                                    ),
-                                  );
-                                  autovalidateMode = AutovalidateMode.disabled;
-                                } else {
-                                  setState(() {
-                                    autovalidateMode = AutovalidateMode.always;
-                                  });
-                                }
-                              },
-                              child: state.applyState is BaseLoading ?
-                               const  SizedBox(
-                                    height: 24,
-                                    width: 24,
-                                    child: CircularProgressIndicator(
-                                      color: PalletsColors.white10,
-                                    )):
-                               const Text('Continue'),
-                                
-                            );
+                listener: (context, state) {
+                  if (state.applyState is BaseError<ApplyResponse>) {
+                    showErrorSnackBar(
+                      context,
+                      (state.applyState as BaseError<ApplyResponse>)
+                              .errorMessage ??
+                          "Something went wrong",
+                    );
+                  } else if (state.applyState is BaseSuccess<ApplyResponse>) {
+                    showSnackBar(context, state.applyResponse?.message ?? "");
+                    Navigator.pushNamed(context, RoutesName.loginScreen);
+                  }
+                },
+                builder: (context, state) {
+                  return ElevatedButton(
+                    onPressed: () async {
+                      if (formKey.currentState!.validate()) {
+                        if (cubit.vehicleLicenseFile == null ||
+                            cubit.idImageFile == null) {
+                          showErrorSnackBar(
+                            context,
+                            "Please upload all required files",
+                          );
+                          return;
+                        }
+                        await cubit.apply(
+                          ApplyData(
+                            country: state.selectedCountry?.name ?? "",
+                            firstName: cubit.firstNameController.text,
+                            lastName: cubit.secondNameController.text,
+                            vehicleType: state.selectedVehicle?.id ?? "",
+
+                            vehicleNumber: cubit.vehicleNumberController.text,
+                            vehicleLicense: cubit.vehicleLicenseFile!,
+                            email: cubit.emailController.text,
+                            phoneNumber: cubit.phoneNumberController.text,
+                            idNumber: cubit.idNumberController.text,
+                            idImage: cubit.idImageFile!,
+                            password: cubit.passwordController.text,
+                            confirmPassword:
+                                cubit.confirmPasswordController.text,
+                            gender: state.selectedGender.name,
+                          ),
+                        );
+                        autovalidateMode = AutovalidateMode.disabled;
+                      } else {
+                        setState(() {
+                          autovalidateMode = AutovalidateMode.always;
+                        });
+                      }
+                    },
+                    child:
+                        state.applyState is BaseLoading
+                            ? const SizedBox(
+                              height: 24,
+                              width: 24,
+                              child: CircularProgressIndicator(
+                                color: PalletsColors.white10,
+                              ),
+                            )
+                            : const Text('Continue'),
+                  );
                 },
               ),
-              SizedBox(height: resposiveHeight(24)),
+              SizedBox(height: responsiveHeight(24)),
             ],
           ),
         ),
