@@ -46,6 +46,14 @@ import '../../features/auth/login/data/repository_implementation/login_repositor
 import '../../features/auth/login/domain/repository_icontract/login_contract.dart'
     as _i96;
 import '../../features/auth/login/domain/usecases/login_usecase.dart' as _i401;
+import '../../features/home/data/data%20source/home_screen_data_source.dart'
+    as _i428;
+import '../../features/home/data/data%20source/home_screen_data_source_imp.dart'
+    as _i885;
+import '../../features/home/data/repo/home_screen_repo_imp.dart' as _i924;
+import '../../features/home/domain/repo/home_screen_repo.dart' as _i202;
+import '../../features/home/domain/use_case/get_all_pending_orders_use_case.dart'
+    as _i968;
 import '../../features/order_status/data/data_source/OrderStatusRemoteDataSource.dart'
     as _i404;
 import '../../features/order_status/data/data_source/OrderStatusRemoteDataSourceImpl.dart'
@@ -93,6 +101,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i143.AuthRemoteDataSource>(
       () => _i287.AuthRemoteDataSourceImpl(apiService: gh<_i525.ApiService>()),
     );
+    gh.factory<_i428.HomeScreenDataSource>(
+      () => _i885.HomeScreenDataSourceImp(gh<_i525.ApiService>()),
+    );
     gh.factory<_i762.ForgetPasswordDataSource>(
       () => _i224.ForgetPasswordDataSourceImpl(gh<_i525.ApiService>()),
     );
@@ -100,6 +111,9 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i802.AuthRepoImpl(
         authRemoteDataSource: gh<_i143.AuthRemoteDataSource>(),
       ),
+    );
+    gh.factory<_i202.HomeScreenRepo>(
+      () => _i924.HomeScreenRepoImp(gh<_i428.HomeScreenDataSource>()),
     );
     gh.factory<_i716.OrderRepository>(
       () => _i928.OrderRepoImpl(gh<_i404.OrderStatusRemoteDataSource>()),
@@ -122,6 +136,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i719.UpdateOrderStatusUseCase>(
       () => _i719.UpdateOrderStatusUseCase(gh<_i716.OrderRepository>()),
+    );
+    gh.factory<_i968.GetAllPendingOrdersUseCase>(
+      () => _i968.GetAllPendingOrdersUseCase(gh<_i202.HomeScreenRepo>()),
     );
     gh.factory<_i318.SenVerifyCodeUseCase>(
       () => _i318.SenVerifyCodeUseCase(repo: gh<_i484.ForgetPasswordRepo>()),

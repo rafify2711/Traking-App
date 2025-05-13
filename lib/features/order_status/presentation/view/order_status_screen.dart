@@ -6,7 +6,7 @@ import 'package:tracking_app/features/order_status/presentation/view/order_statu
 import 'package:tracking_app/features/order_status/presentation/viewModel/order_status_view_model.dart';
 
 class OrderStatusScreen extends StatelessWidget {
-  const OrderStatusScreen({Key? key}) : super(key: key);
+  const OrderStatusScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

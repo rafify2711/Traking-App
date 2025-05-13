@@ -8,7 +8,7 @@ import 'package:tracking_app/generated/locale_keys.g.dart';
 part 'current_user_location_state.dart';
 
 class CurrentUserLocationCubit extends Cubit<CurrentUserLocationState> {
-  CurrentUserLocationCubit() : super(CurrentUserLocationState());
+  CurrentUserLocationCubit() : super(const CurrentUserLocationState());
   Future<void> getCurrentLocation() async {
     // emit(state.copyWith(locationState: BaseLoading()));
 

@@ -39,7 +39,7 @@ class FlowerOrderCard extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 16, bottom: 8),
                 child: Text(LocaleKeys.pickUpAddress.tr()),
               ),
-              const CustomCardWidget(
+               CustomCardWidget(
                 withTrailing: false,
                 title: order.store!.name ?? 'Unnamed Store',
                 addressOrPriceText: order.store!.address ?? 'Unknown address',
@@ -51,7 +51,7 @@ class FlowerOrderCard extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 16),
                 child: Text(LocaleKeys.userAddress.tr()),
               ),
-              const CustomCardWidget(
+               CustomCardWidget(
                 withTrailing: false,
                 title: order.user!.firstName ?? "No Name",
                 addressOrPriceText: "20th st, Sheikh Zayed, Giza",

@@ -108,7 +108,7 @@ class _PickupLocationScreenBodyState extends State<PickupLocationScreenBody> {
                   ),
                 ),
 
-                CustomCardWidget(
+                const CustomCardWidget(
                   withTrailing: true,
                   imagePath: 'assets/images/Flowery logo.png',
                   title: 'Flowery store',
@@ -127,7 +127,7 @@ class _PickupLocationScreenBodyState extends State<PickupLocationScreenBody> {
                     ),
                   ),
                 ),
-                CustomCardWidget(
+                const CustomCardWidget(
                   withTrailing: true,
                   imagePath: 'assets/images/Photo.png',
                   title: 'Nour Mahmoud',

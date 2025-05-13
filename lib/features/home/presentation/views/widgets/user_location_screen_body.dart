@@ -108,7 +108,7 @@ class _UserLocationScreenBodyState extends State<UserLocationScreenBody> {
                   ),
                 ),
 
-                CustomCardWidget(
+                const CustomCardWidget(
                   withTrailing: true,
                   imagePath: 'assets/images/Photo.png',
                   title: 'Nour Mahmoud',
@@ -128,7 +128,7 @@ class _UserLocationScreenBodyState extends State<UserLocationScreenBody> {
                   ),
                 ),
                 
-                CustomCardWidget(
+                const CustomCardWidget(
                   withTrailing: true,
                   imagePath: 'assets/images/Flowery logo.png',
                   title: 'Flowery store',

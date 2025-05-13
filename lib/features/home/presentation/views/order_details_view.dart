@@ -4,6 +4,7 @@ import 'package:step_progress_indicator/step_progress_indicator.dart';
 import 'package:tracking_app/core/config/routes_name.dart';
 import 'package:tracking_app/core/utils/app_text_styles.dart';
 import 'package:tracking_app/core/utils/colors.dart';
+import 'package:tracking_app/core/utils/services/get_responsive_height_and_width.dart';
 import 'package:tracking_app/features/home/presentation/views/widgets/custom_card_widget.dart';
 import 'package:tracking_app/generated/locale_keys.g.dart';
 
@@ -57,7 +58,7 @@ class OrderDetailsView extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 16),
+                padding: EdgeInsets.only(left: responsiveWidth(16)),
                 child: Text(
                   LocaleKeys.pickUpAddress.tr(),
                   style: AppTextStyles.instance.textStyle18.copyWith(
@@ -74,7 +75,6 @@ class OrderDetailsView extends StatelessWidget {
                 numberOfOrder: "",
                 onTap: () {
                   Navigator.pushNamed(context, RoutesName.pickupLocationScreen);
-                 
                 },
               ),
               Padding(
@@ -94,7 +94,7 @@ class OrderDetailsView extends StatelessWidget {
                 imagePath: "assets/images/Photo.png",
                 numberOfOrder: "",
                 onTap: () {
-                   Navigator.pushNamed(context, RoutesName.userLocationScreen);
+                  Navigator.pushNamed(context, RoutesName.userLocationScreen);
                 },
               ),
               Padding(
@@ -107,16 +107,16 @@ class OrderDetailsView extends StatelessWidget {
                   ),
                 ),
               ),
-              CustomCardWidget(
+              const CustomCardWidget(
                 withTrailing: false,
-                title: "20th st, Sheikh Zayed, Giza ",
+                title: "15 Red roses ",
                 addressOrPriceText: "EGP 2222",
                 imagePath: "assets/images/image 2.png",
                 numberOfOrder: "x1",
               ),
-              CustomCardWidget(
+              const CustomCardWidget(
                 withTrailing: false,
-                title: "20th st, Sheikh Zayed, Giza ",
+                title: "15 Red roses  ",
                 addressOrPriceText: "EGP 2222",
                 imagePath: "assets/images/image 2.png",
                 numberOfOrder: "x1",
@@ -182,6 +182,7 @@ class OrderDetailsView extends StatelessWidget {
                   child: Text(LocaleKeys.arrivedAtPickupPoint.tr()),
                 ),
               ),
+              responsiveHeightWidget(16),
             ],
           ),
         ),

@@ -10,14 +10,14 @@ class OrderStatusInitial extends OrderStatusState {
 }
 
 class OrderStatusLoading extends OrderStatusState {
-  OrderStatusLoading(OrderStatus status) : super(status);
+  OrderStatusLoading(super.status);
 }
 
 class OrderStatusSuccess extends OrderStatusState {
-  OrderStatusSuccess(OrderStatus status) : super(status);
+  OrderStatusSuccess(super.status);
 }
 
 class OrderStatusFailure extends OrderStatusState {
   final String error;
-  OrderStatusFailure(OrderStatus status, this.error) : super(status);
+  OrderStatusFailure(super.status, this.error);
 }

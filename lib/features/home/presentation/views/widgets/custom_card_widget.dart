@@ -37,7 +37,7 @@ class CustomCardWidget extends StatelessWidget {
         ),
         child: ListTile(
           leading: CircleAvatar(
-            backgroundImage: AssetImage(imagePath),
+            backgroundImage: NetworkImage(imagePath),
             radius: 25,
           ),
 

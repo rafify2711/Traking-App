@@ -17,6 +17,7 @@
 /// rateAvg : 3.5
 /// rateCount : 30
 /// id : "673e1cd711599201718280fb"
+library;
 
 class Product {
   Product({

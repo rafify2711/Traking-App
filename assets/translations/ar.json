@@ -78,7 +78,9 @@
     "locationServiceDisabled" : "خدمة الموقع معطلة",  
     "locationPermissionIsDeied" : "تم رفض إذن الوصول إلى الموقع",  
     "locationPermissionIsPermanentlyDenied": "تم رفض إذن الموقع بشكل دائم، لا يمكننا طلب الأذونات.",
-     "done": "تم"  
+    "done": "تم" ,
+    "orderDeliveredSuccess": "تم تسليم الطلب بنجاح",
+    "thankYou": "شكراً لك"
     
   
 

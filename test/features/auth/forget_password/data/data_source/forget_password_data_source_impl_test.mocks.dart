@@ -7,7 +7,7 @@ import 'dart:async' as _i10;
 
 import 'package:dio/dio.dart' as _i15;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:mockito/src/dummies.dart' as _i15;
+import 'package:mockito/src/dummies.dart' as _i16;
 import 'package:tracking_app/core/api_manger/api_service.dart' as _i9;
 import 'package:tracking_app/features/auth/apply/data/models/apply_model/apply_response/apply_response.dart'
     as _i6;
@@ -170,6 +170,23 @@ class MockApiService extends _i1.Mock implements _i9.ApiService {
             ),
           )
           as _i10.Future<_i7.GetAllVehiclesResponse>);
+
+  @override
+  _i10.Future<String> updateOrderStatus(
+    String? id,
+    Map<String, dynamic>? newState,
+    String? token,
+  ) =>
+      (super.noSuchMethod(
+            Invocation.method(#updateOrderStatus, [id, newState, token]),
+            returnValue: _i10.Future<String>.value(
+              _i16.dummyValue<String>(
+                this,
+                Invocation.method(#updateOrderStatus, [id, newState, token]),
+              ),
+            ),
+          )
+          as _i10.Future<String>);
 
   @override
   _i10.Future<_i8.OrderResponse> getAllPendingOrders(int? page) =>
