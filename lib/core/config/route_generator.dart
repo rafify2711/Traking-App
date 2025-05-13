@@ -12,6 +12,7 @@ import 'package:tracking_app/features/on_boarding/presentation/views/widgets/on_
 import 'package:tracking_app/features/order_status/presentation/view/order_status_screen.dart';
 import 'package:tracking_app/features/orders/presentation/orders_view.dart';
 import 'package:tracking_app/features/profile/presentation/profile_view.dart';
+import 'package:tracking_app/features/success/success.dart';
 import 'package:tracking_app/features/success_screen/success_screen.dart';
 
 class RouteGenerator {
@@ -48,7 +49,7 @@ class RouteGenerator {
           builder: (context) => const LoginScreen(),
           settings: settings,
         );
-      
+
       case RoutesName.successScreen:
         return MaterialPageRoute(
           builder: (context) => const SuccessScreen(),
@@ -85,6 +86,12 @@ class RouteGenerator {
       case RoutesName.OrderDetailsView:
         return MaterialPageRoute(
           builder: (context) => const OrderDetailsView(),
+          settings: settings,
+        );
+
+      case RoutesName.success:
+        return MaterialPageRoute(
+          builder: (context) => const Success(),
           settings: settings,
         );
 

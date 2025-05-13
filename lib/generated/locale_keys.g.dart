@@ -2,11 +2,12 @@
 
 // ignore_for_file: constant_identifier_names
 
-abstract class  LocaleKeys {
+abstract class LocaleKeys {
   static const local = 'local';
   static const WelcomeToFloweryRiderApp = 'WelcomeToFloweryRiderApp';
   static const forgetPassword = 'forgetPassword';
-  static const pleaseEnterYourEmailAssociatedToYourAccount = 'pleaseEnterYourEmailAssociatedToYourAccount';
+  static const pleaseEnterYourEmailAssociatedToYourAccount =
+      'pleaseEnterYourEmailAssociatedToYourAccount';
   static const email = 'email';
   static const confirm = 'confirm';
   static const enterYourEmail = 'enterYourEmail';
@@ -36,8 +37,8 @@ abstract class  LocaleKeys {
   static const enterSecondLegalName = 'enterSecondLegalName';
   static const vehicleType = 'vehicleType';
   static const vehicleNumber = 'vehicleNumber';
-  static const enterVehicleNumber = 'enterVehicleNumber';
   static const vehicleLicense = 'vehicleLicense';
+  static const enterVehicleNumber = 'enterVehicleNumber';
   static const uploadLicensePhoto = 'uploadLicensePhoto';
   static const phoneNumber = 'phoneNumber';
   static const enterPhoneNumber = 'enterPhoneNumber';
@@ -53,7 +54,8 @@ abstract class  LocaleKeys {
   static const validationNumbersOnly = 'validationNumbersOnly';
   static const validationPasswordInvalid = 'validationPasswordInvalid';
   static const validationPasswordMismatch = 'validationPasswordMismatch';
-  static const validationVehicleNumberInvalid = 'validationVehicleNumberInvalid';
+  static const validationVehicleNumberInvalid =
+      'validationVehicleNumberInvalid';
   static const validationIdNumberInvalid = 'validationIdNumberInvalid';
   static const applicationSubmittedTitle = 'applicationSubmittedTitle';
   static const applicationSubmittedBody = 'applicationSubmittedBody';
@@ -75,5 +77,7 @@ abstract class  LocaleKeys {
   static const paymentMethod = 'paymentMethod';
   static const cachOnDelivery = 'cachOnDelivery';
   static const arrivedAtPickupPoint = 'arrivedAtPickupPoint';
-
+  static const thankYou = 'thankYou';
+  static const orderDeliveredSuccess = 'orderDeliveredSuccess';
+  static const done = 'done';
 }

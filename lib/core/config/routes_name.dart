@@ -12,4 +12,5 @@ class RoutesName {
   static const String orders = 'orders';
   static const String orderStatus = 'orderStatusScreen';
   static const String OrderDetailsView = 'orderDetailsView';
+  static const String success = "success";
 }
