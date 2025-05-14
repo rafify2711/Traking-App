@@ -80,9 +80,17 @@
     "locationPermissionIsPermanentlyDenied": "تم رفض إذن الموقع بشكل دائم، لا يمكننا طلب الأذونات.",
     "done": "تم" ,
     "orderDeliveredSuccess": "تم تسليم الطلب بنجاح",
-    "thankYou": "شكراً لك"
-    
-  
+    "thankYou": "شكراً لك",
+    "statusUpdatedSuccessfully": "تم تحديث الحالة بنجاح!",
+    "somethingWentWrong": "حدث خطأ. يرجى المحاولة مرة أخرى.",
+    "pending": "قيد الانتظار",
+    "inProgress": "قيد التنفيذ",
+    "arrivedAtPickup": "وصل إلى نقطة الاستلام",
+    "picked": "تم الالتقاط",
+    "startDeliver": "بدء التوصيل",
+    "outForDelivery": "في طريقه للتوصيل",
+    "arrivedToUser": "وصل إلى المستخدم",
+    "delivered": "تم التوصيل"
 
 
 

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tracking_app/features/order_status/domain/use_case/update_order-status_use_case.dart';
 import '../../../../core/utils/enums/order_status_enum.dart';
@@ -6,21 +7,61 @@ import 'OrderStatusState.dart';
 class OrderStatusViewModel extends Cubit<OrderStatusState> {
 
   final UpdateOrderStatusUseCase updateOrderStatusCase;
-  OrderStatusViewModel(this.updateOrderStatusCase) : super(OrderStatusInitial()); // Initial state is 'pending' from the enum i've created
+  OrderStatusViewModel(this.updateOrderStatusCase) : super(OrderStatusInitial(OrderStatus.pending,0)); // Initial state is 'pending' from the enum i've created
 
+
+  // Add a method to initialize the view model with current status from Firebase
+  Future<void> initializeOrderStatus(String orderId) async {
+    try {
+      emit(OrderStatusLoading(state.status,state.step));
+      // Fetch the current status from Firebase
+      final currentStatus = await updateOrderStatusCase.getOrderStatus(orderId);
+      // Calculate the step based on the status
+      final step = getStepFromStatus(currentStatus);
+      emit(OrderStatusInitial(currentStatus,step));
+    } catch (e) {
+      emit(OrderStatusFailure(state.status,state.step,e.toString()));
+    }
+  }
+
+
+  int getStepFromStatus(OrderStatus status) {
+    switch (status) {
+      case OrderStatus.pending:
+        return 1;
+      case OrderStatus.inProgress:
+        return 2;
+      case OrderStatus.arrivedAtPickup:
+        return 3;
+      case OrderStatus.picked:
+        return 4;
+      case OrderStatus.startDeliver:
+        return 5;
+      case OrderStatus.outForDelivery:
+        return 7;
+      case OrderStatus.arrivedToUser:
+        return 8;
+      case OrderStatus.delivered:
+        return 9;
+      default:
+        return 0;
+    }
+  }
   //function that updates the state whenever the button is pressed
   void updateStatus(String orderId) async {
     final currentStatus = state.status;
     final nextStatus = getNextStatus(currentStatus);
-    emit(OrderStatusLoading(currentStatus));
+    final nextStep = state.step + 1;
+    emit(OrderStatusLoading(currentStatus,state.step));
     try {
       await updateOrderStatusCase.callToFirebase(orderId, nextStatus);
       // Map to the 4 valid values for the external API
       final apiCompatibleStatus = mapToApiStatus(nextStatus);
       await updateOrderStatusCase.callToApi(orderId, apiCompatibleStatus);
-      emit(OrderStatusSuccess(nextStatus));
+      emit(OrderStatusSuccess(nextStatus,nextStep));
     } catch (e) {
-      emit(OrderStatusFailure(currentStatus, e.toString()));
+      debugPrint("Order status update failed: $e");
+      emit(OrderStatusFailure(currentStatus, state.step,e.toString()));
     }
   }
 

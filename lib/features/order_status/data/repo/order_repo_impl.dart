@@ -29,5 +29,10 @@ return  orderStatusRemoteDataSource.updateOrderStatusToFireBase(orderId, status)
     }, "Error in the OrderStatusRepoUpdateImpl");
 
   }
+
+  @override
+  Future<OrderStatus> getOrderStatus(String orderId) async {
+    return await orderStatusRemoteDataSource.getOrderStatus(orderId);
+  }
   
 } 

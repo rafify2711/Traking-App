@@ -6,7 +6,8 @@ import 'package:tracking_app/features/auth/forget_password/presentation/view/ver
 import 'package:tracking_app/features/auth/login/presentation/view/login_screen.dart';
 import 'package:tracking_app/features/auth/apply/presentation/view/apply_screen.dart';
 import 'package:tracking_app/features/home/presentation/views/home_view.dart';
-import 'package:tracking_app/features/home/presentation/views/order_details_view.dart';
+import 'package:tracking_app/features/home/presentation/views/order_details_screen.dart';
+import 'package:tracking_app/features/home/presentation/views/order_details_screen_body.dart';
 import 'package:tracking_app/features/home/presentation/views/pickup_location_screen.dart';
 import 'package:tracking_app/features/home/presentation/views/user_location_screen.dart';
 import 'package:tracking_app/features/layOut/presentation/lay_out.dart';
@@ -74,20 +75,14 @@ class RouteGenerator {
           builder: (context) => const OrdersView(),
           settings: settings,
         );
-
       case RoutesName.profile:
         return MaterialPageRoute(
           builder: (context) => const ProfileView(),
           settings: settings,
         );
-      case RoutesName.orderStatus:
-        return MaterialPageRoute(
-          builder: (context) => const OrderStatusScreen(),
-          settings: settings,
-        );
       case RoutesName.OrderDetailsView:
         return MaterialPageRoute(
-          builder: (context) => const OrderDetailsView(),
+          builder: (context) => const OrderDetailsScreen(),
           settings: settings,
         );
         case RoutesName.pickupLocationScreen:
