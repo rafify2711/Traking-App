@@ -54,7 +54,7 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void _updateButtonState() {
-    setState(() {}); // Triggers rebuild when text changes
+    setState(() {}); 
   }
 
   @override

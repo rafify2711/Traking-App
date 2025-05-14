@@ -25,7 +25,7 @@ void main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   // setup();
 
-  // Check remember me state
+ 
   final rememberMe = await SecureStorageService().readSecureData(
     Constants.rememberMe,
   );
