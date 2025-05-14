@@ -8,7 +8,7 @@ import 'package:tracking_app/features/auth/apply/presentation/view/apply_screen.
 import 'package:tracking_app/features/home/presentation/views/home_view.dart';
 import 'package:tracking_app/features/home/presentation/views/order_details_view.dart';
 import 'package:tracking_app/features/home/presentation/views/pickup_location_screen.dart';
-import 'package:tracking_app/features/home/presentation/views/user_location_screen.dart';
+import 'package:tracking_app/features/home/presentation/views/customer_location_screen.dart';
 import 'package:tracking_app/features/layOut/presentation/lay_out.dart';
 import 'package:tracking_app/features/on_boarding/presentation/views/widgets/on_boarding_view.dart';
 import 'package:tracking_app/features/order_status/presentation/view/order_status_screen.dart';
@@ -85,19 +85,19 @@ class RouteGenerator {
           builder: (context) => const OrderStatusScreen(),
           settings: settings,
         );
-      case RoutesName.OrderDetailsView:
+      case RoutesName.orderDetailsView:
         return MaterialPageRoute(
           builder: (context) => const OrderDetailsView(),
           settings: settings,
         );
-        case RoutesName.pickupLocationScreen:
+      case RoutesName.pickupLocationScreen:
         return MaterialPageRoute(
           builder: (context) => const PickupLocationScreen(),
           settings: settings,
         );
-         case RoutesName.userLocationScreen:
+      case RoutesName.customerLocationScreen:
         return MaterialPageRoute(
-          builder: (context) => const UserLocationScreen(),
+          builder: (context) => const CustomerLocationScreen(),
           settings: settings,
         );
 

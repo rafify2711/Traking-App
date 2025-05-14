@@ -96,7 +96,8 @@ class CodegenLoader extends AssetLoader{
   "locationPermissionIsPermanentlyDenied": "تم رفض إذن الموقع بشكل دائم، لا يمكننا طلب الأذونات.",
   "done": "تم",
   "orderDeliveredSuccess": "تم تسليم الطلب بنجاح",
-  "thankYou": "شكراً لك"
+  "thankYou": "شكراً لك",
+  "userLocation": "موقع العميل"
 };
 static const Map<String,dynamic> _en = {
   "local": "en",
@@ -180,7 +181,8 @@ static const Map<String,dynamic> _en = {
   "locationPermissionIsPermanentlyDenied": "Location permission permanently denied. We cannot request permissions.",
   "done": "Done",
   "orderDeliveredSuccess": "Order delivered successfully",
-  "thankYou": "Thank you"
+  "thankYou": "Thank you",
+  "userLocation": "User Location"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": _ar, "en": _en};
 }

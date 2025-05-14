@@ -3,14 +3,15 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:tracking_app/core/utils/app_text_styles.dart';
+import 'package:tracking_app/core/utils/constants.dart';
 import 'package:tracking_app/core/utils/services/get_responsive_height_and_width.dart';
 import 'package:tracking_app/features/home/presentation/views/widgets/custom_card_widget.dart';
 import 'package:tracking_app/core/utils/colors.dart';
 import 'package:tracking_app/features/home/presentation/views/widgets/dash_mark.dart';
 import 'package:tracking_app/generated/locale_keys.g.dart';
 
-class UserLocationScreenBody extends StatefulWidget {
-  const UserLocationScreenBody({
+class CustomerLocationScreenBody extends StatefulWidget {
+  const CustomerLocationScreenBody({
     super.key,
     required this.driverLat,
     required this.driverLong,
@@ -19,11 +20,11 @@ class UserLocationScreenBody extends StatefulWidget {
   final double driverLong;
 
   @override
-  State<UserLocationScreenBody> createState() =>
-      _UserLocationScreenBodyState();
+  State<CustomerLocationScreenBody> createState() =>
+      _CustomerLocationScreenBodyState();
 }
 
-class _UserLocationScreenBodyState extends State<UserLocationScreenBody> {
+class _CustomerLocationScreenBodyState extends State<CustomerLocationScreenBody> {
   GoogleMapController? mapController;
   late LatLng _userLocation;
   late LatLng _deliveryManLocation;
@@ -35,7 +36,7 @@ class _UserLocationScreenBodyState extends State<UserLocationScreenBody> {
   void initState() {
     _userLocation = const LatLng(30.1660, 31.6542);
     _deliveryManLocation =  LatLng(widget.driverLat, widget.driverLong);
-    print("---------------------$_deliveryManLocation");
+    
     _initMarkers();
     _initPolylines();
     super.initState();
@@ -146,13 +147,13 @@ class _UserLocationScreenBodyState extends State<UserLocationScreenBody> {
   void _initMarkers() {
     markers = {
       Marker(
-        markerId: const MarkerId("user"),
+        markerId: const MarkerId(Constants.customerMarkerId),
         position: _userLocation,
 
-        infoWindow: InfoWindow(title: LocaleKeys.pickupLocation.tr()),
+        infoWindow: InfoWindow(title: LocaleKeys.userLocation.tr()),
       ),
       Marker(
-        markerId: const MarkerId("delivery"),
+        markerId: const MarkerId(Constants.deliveryManMarkerId),
         position: _deliveryManLocation,
         infoWindow: InfoWindow(title: LocaleKeys.yourLocation.tr()),
       ),

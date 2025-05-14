@@ -18,7 +18,7 @@ class FlowerOrderCard extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 24),
       child: InkWell(
         onTap: () {
-          Navigator.pushNamed(context, RoutesName.OrderDetailsView);
+          Navigator.pushNamed(context, RoutesName.orderDetailsView);
         },
         child: Card(
           color: PalletsColors.whiteBase,
@@ -39,7 +39,7 @@ class FlowerOrderCard extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 16, bottom: 8),
                 child: Text(LocaleKeys.pickUpAddress.tr()),
               ),
-               CustomCardWidget(
+              CustomCardWidget(
                 withTrailing: false,
                 title: order.store!.name ?? 'Unnamed Store',
                 addressOrPriceText: order.store!.address ?? 'Unknown address',
@@ -51,7 +51,7 @@ class FlowerOrderCard extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 16),
                 child: Text(LocaleKeys.userAddress.tr()),
               ),
-               CustomCardWidget(
+              CustomCardWidget(
                 withTrailing: false,
                 title: order.user!.firstName ?? "No Name",
                 addressOrPriceText: "20th st, Sheikh Zayed, Giza",

@@ -83,5 +83,6 @@ abstract class  LocaleKeys {
   static const done = 'done';
   static const orderDeliveredSuccess = 'orderDeliveredSuccess';
   static const thankYou = 'thankYou';
+  static const userLocation = 'userLocation';
 
 }

@@ -94,7 +94,10 @@ class OrderDetailsView extends StatelessWidget {
                 imagePath: "assets/images/Photo.png",
                 numberOfOrder: "",
                 onTap: () {
-                  Navigator.pushNamed(context, RoutesName.userLocationScreen);
+                  Navigator.pushNamed(
+                    context,
+                    RoutesName.customerLocationScreen,
+                  );
                 },
               ),
               Padding(

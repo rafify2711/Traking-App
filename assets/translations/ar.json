@@ -80,7 +80,8 @@
     "locationPermissionIsPermanentlyDenied": "تم رفض إذن الموقع بشكل دائم، لا يمكننا طلب الأذونات.",
     "done": "تم" ,
     "orderDeliveredSuccess": "تم تسليم الطلب بنجاح",
-    "thankYou": "شكراً لك"
+    "thankYou": "شكراً لك",
+    "userLocation" : "موقع العميل"
     
   
 

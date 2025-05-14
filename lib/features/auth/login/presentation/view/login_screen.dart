@@ -1,6 +1,5 @@
 import 'dart:developer';
 
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,7 +16,6 @@ import 'package:tracking_app/features/auth/login/data/model/login_response.dart'
 import 'package:tracking_app/features/auth/login/domain/usecases/login_usecase.dart';
 import 'package:tracking_app/features/auth/login/presentation/view_model/login_cubit.dart';
 import 'package:tracking_app/features/auth/login/presentation/view_model/login_state.dart';
-
 import '../../../../../generated/locale_keys.g.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -41,6 +39,18 @@ class _LoginScreenState extends State<LoginScreen> {
     passwordController = TextEditingController();
     emailController.addListener(_updateButtonState);
     passwordController.addListener(_updateButtonState);
+    _loadRememberMeState();
+  }
+
+  Future<void> _loadRememberMeState() async {
+    final savedState = await SecureStorageService().readSecureData(
+      Constants.rememberMe,
+    );
+    if (savedState != null) {
+      setState(() {
+        rememberMe = savedState == 'true';
+      });
+    }
   }
 
   void _updateButtonState() {
@@ -139,7 +149,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(
                   width: double.infinity,
                   child: BlocConsumer<LoginCubit, LoginState>(
-                      listener: (context, state) {
+                    listener: (context, state) async {
                       if (state.loginState is BaseError<LoginResponse>) {
                         showErrorSnackBar(
                           context,
@@ -153,16 +163,18 @@ class _LoginScreenState extends State<LoginScreen> {
                           context,
                           LocaleKeys.loggedInSuccessfully.tr(),
                         );
-                        _saveUserToken(
+                        await _saveUserToken(
                           state.loginState as BaseSuccess<LoginResponse>,
                         );
-                        _saveUserToken(
-                          state.loginState as BaseSuccess<LoginResponse>,
+                        await _saveRememberMeState();
+                        Navigator.pushNamedAndRemoveUntil(
+                          context,
+                          RoutesName.layOut,
+                          (route) => false,
                         );
-                        Navigator.pushNamed(context, RoutesName.layOut);
                       }
                     },
-                  builder: (context, state) {
+                    builder: (context, state) {
                       return ElevatedButton(
                         onPressed: () async {
                           if (formKey.currentState!.validate()) {
@@ -170,7 +182,6 @@ class _LoginScreenState extends State<LoginScreen> {
                               email: emailController.text.trim(),
                               password: passwordController.text.trim(),
                             );
-
                             autoValidateMode = AutovalidateMode.disabled;
                           } else {
                             setState(() {
@@ -208,16 +219,22 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
-}
 
-Future<void> _saveUserToken(BaseSuccess<LoginResponse> state) async {
-  await SecureStorageService().writeSecureData(
-    Constants.userToken,
-    state.data?.token ?? "",
-  );
-  final String? token = await SecureStorageService().readSecureData(
-    Constants.userToken,
-  );
-  // print("user token $token");
-  log("user token is $token");
+  Future<void> _saveUserToken(BaseSuccess<LoginResponse> state) async {
+    await SecureStorageService().writeSecureData(
+      Constants.userToken,
+      state.data?.token ?? "",
+    );
+    final String? token = await SecureStorageService().readSecureData(
+      Constants.userToken,
+    );
+    log("user token is $token");
+  }
+
+  Future<void> _saveRememberMeState() async {
+    await SecureStorageService().writeSecureData(
+      Constants.rememberMe,
+      rememberMe.toString(),
+    );
+  }
 }

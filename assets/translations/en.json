@@ -80,5 +80,7 @@
     "locationPermissionIsPermanentlyDenied": "Location permission permanently denied. We cannot request permissions.",
     "done": "Done",
     "orderDeliveredSuccess": "Order delivered successfully",
-    "thankYou": "Thank you"
+    "thankYou": "Thank you",
+    "userLocation" : "User Location"
+
 }

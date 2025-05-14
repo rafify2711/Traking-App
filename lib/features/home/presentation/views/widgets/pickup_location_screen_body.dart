@@ -3,6 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:tracking_app/core/utils/app_text_styles.dart';
+import 'package:tracking_app/core/utils/constants.dart';
 import 'package:tracking_app/core/utils/services/get_responsive_height_and_width.dart';
 import 'package:tracking_app/features/home/presentation/views/widgets/custom_card_widget.dart';
 import 'package:tracking_app/core/utils/colors.dart';
@@ -34,7 +35,7 @@ class _PickupLocationScreenBodyState extends State<PickupLocationScreenBody> {
   @override
   void initState() {
     _storeLocation = const LatLng(30.0383, 31.2114);
-    _deliveryManLocation =  LatLng(widget.driverLat, widget.driverLong);
+    _deliveryManLocation = LatLng(widget.driverLat, widget.driverLong);
     print("---------------------$_deliveryManLocation");
     _initMarkers();
     _initPolylines();
@@ -53,18 +54,24 @@ class _PickupLocationScreenBodyState extends State<PickupLocationScreenBody> {
                 borderRadius: BorderRadius.circular(20),
                 child: GoogleMap(
                   mapType: MapType.normal,
-                  // myLocationEnabled: true,
-                  // myLocationButtonEnabled: false,
-                  // zoomControlsEnabled: false,
+                  myLocationEnabled: true,
+                  myLocationButtonEnabled: false,
+
                   markers: markers,
                   polylines: polylines,
                   initialCameraPosition: CameraPosition(
                     target: _storeLocation,
                     zoom: 15,
                   ),
-                  onMapCreated: (GoogleMapController controller) {
+                  onMapCreated: (GoogleMapController controller) async {
                     mapController = controller;
-                    fitMarkersInView();
+                    await fitMarkersInView();
+                    mapController?.showMarkerInfoWindow(
+                      const MarkerId(Constants.storeMarkerId),
+                    );
+                    mapController?.showMarkerInfoWindow(
+                      const MarkerId(Constants.deliveryManMarkerId),
+                    );
                   },
                 ),
               ),
@@ -145,13 +152,13 @@ class _PickupLocationScreenBodyState extends State<PickupLocationScreenBody> {
   void _initMarkers() {
     markers = {
       Marker(
-        markerId: const MarkerId("pickup"),
+        markerId: const MarkerId(Constants.storeMarkerId),
         position: _storeLocation,
 
         infoWindow: InfoWindow(title: LocaleKeys.pickupLocation.tr()),
       ),
       Marker(
-        markerId: const MarkerId("delivery"),
+        markerId: const MarkerId(Constants.deliveryManMarkerId),
         position: _deliveryManLocation,
         infoWindow: InfoWindow(title: LocaleKeys.yourLocation.tr()),
       ),
