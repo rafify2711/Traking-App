@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:tracking_app/features/home/presentation/home_view.dart';
+import 'package:tracking_app/features/home/presentation/views/home_view.dart';
 import 'package:tracking_app/features/orders/presentation/orders_view.dart';
 import 'package:tracking_app/features/profile/presentation/profile_view.dart';
 import 'package:tracking_app/generated/locale_keys.g.dart';

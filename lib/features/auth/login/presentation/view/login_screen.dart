@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -136,7 +139,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(
                   width: double.infinity,
                   child: BlocConsumer<LoginCubit, LoginState>(
-                    listener: (context, state) {
+                      listener: (context, state) {
                       if (state.loginState is BaseError<LoginResponse>) {
                         showErrorSnackBar(
                           context,
@@ -144,21 +147,22 @@ class _LoginScreenState extends State<LoginScreen> {
                                   .errorMessage ??
                               "",
                         );
-
-                        SecureStorageService().writeSecureData(
-                          Constants.userToken,
-                          state.loginResponse!.token,
-                        );
                       } else if (state.loginState
                           is BaseSuccess<LoginResponse>) {
                         showSnackBar(
                           context,
                           LocaleKeys.loggedInSuccessfully.tr(),
                         );
+                        _saveUserToken(
+                          state.loginState as BaseSuccess<LoginResponse>,
+                        );
+                        _saveUserToken(
+                          state.loginState as BaseSuccess<LoginResponse>,
+                        );
                         Navigator.pushNamed(context, RoutesName.layOut);
                       }
                     },
-                    builder: (context, state) {
+                  builder: (context, state) {
                       return ElevatedButton(
                         onPressed: () async {
                           if (formKey.currentState!.validate()) {
@@ -204,4 +208,16 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
+}
+
+Future<void> _saveUserToken(BaseSuccess<LoginResponse> state) async {
+  await SecureStorageService().writeSecureData(
+    Constants.userToken,
+    state.data?.token ?? "",
+  );
+  final String? token = await SecureStorageService().readSecureData(
+    Constants.userToken,
+  );
+  // print("user token $token");
+  log("user token is $token");
 }

@@ -52,7 +52,9 @@ dependencies:
     sdk: flutter
   step_progress_indicator: ^1.0.2
   firebase_core: ^3.13.0
+  cloud_firestore: ^5.6.7
   
+
 
 dev_dependencies:
   build_runner: ^2.3.3

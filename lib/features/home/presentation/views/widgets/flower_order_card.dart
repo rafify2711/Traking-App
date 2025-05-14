@@ -4,11 +4,13 @@ import 'package:tracking_app/core/config/routes_name.dart';
 import 'package:tracking_app/core/utils/app_text_styles.dart';
 import 'package:tracking_app/core/utils/colors.dart';
 import 'package:tracking_app/core/utils/services/get_responsive_height_and_width.dart';
-import 'package:tracking_app/features/home/presentation/widgets/custom_card_widget.dart';
+import 'package:tracking_app/features/home/data/models/order_response.dart';
+import 'package:tracking_app/features/home/presentation/views/widgets/custom_card_widget.dart';
 import 'package:tracking_app/generated/locale_keys.g.dart';
 
 class FlowerOrderCard extends StatelessWidget {
-  const FlowerOrderCard({super.key});
+  final Order order;
+  const FlowerOrderCard({super.key, required this.order});
 
   @override
   Widget build(BuildContext context) {
@@ -37,23 +39,24 @@ class FlowerOrderCard extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 16, bottom: 8),
                 child: Text(LocaleKeys.pickUpAddress.tr()),
               ),
-              CustomCardWidget(
+               CustomCardWidget(
                 withTrailing: false,
-                title: "Flowe Store",
-                addressOrPriceText: "20th st, Sheikh Zayed, Giza ",
-                imagePath: "assets/images/Flowery logo.png",
-                numberOfOrder: "",
+                title: order.store!.name ?? 'Unnamed Store',
+                addressOrPriceText: order.store!.address ?? 'Unknown address',
+                imagePath:
+                    order.store!.image ?? "assets/images/Flowery logo.png",
+                numberOfOrder: order.orderNumber ?? "Unkown Number",
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 16),
                 child: Text(LocaleKeys.userAddress.tr()),
               ),
-              CustomCardWidget(
+               CustomCardWidget(
                 withTrailing: false,
-                title: "Flowe Store",
-                addressOrPriceText: "20th st, Sheikh Zayed, Giza ",
-                imagePath: "assets/images/Photo.png",
-                numberOfOrder: "",
+                title: order.user!.firstName ?? "No Name",
+                addressOrPriceText: "20th st, Sheikh Zayed, Giza",
+                imagePath: order.user!.photo ?? "assets/images/Photo.png",
+                numberOfOrder: order.orderNumber ?? "Unkown Number",
               ),
 
               Padding(
@@ -62,7 +65,7 @@ class FlowerOrderCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "EGP 2000",
+                      order.totalPrice.toString(),
                       style: AppTextStyles.instance.textStyle14.copyWith(
                         fontWeight: FontWeight.w500,
                       ),

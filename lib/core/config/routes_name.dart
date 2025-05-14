@@ -10,5 +10,9 @@ class RoutesName {
   static const String home = 'home';
   static const String profile = 'profile';
   static const String orders = 'orders';
+  static const String orderStatus = 'orderStatusScreen';
   static const String OrderDetailsView = 'orderDetailsView';
+  static const String success = "success";
+  static const String pickupLocationScreen = 'pickupLocationScreen';
+  static const String userLocationScreen = "UserLocationScreen";
 }
