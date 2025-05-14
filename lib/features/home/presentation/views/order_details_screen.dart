@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tracking_app/core/di/di.dart';
 import 'package:tracking_app/features/home/presentation/views/order_details_screen_body.dart';
 import 'package:tracking_app/features/order_status/domain/use_case/update_order-status_use_case.dart';
-import 'package:tracking_app/features/order_status/presentation/view/order_status_screen_body.dart';
 import 'package:tracking_app/features/order_status/presentation/viewModel/order_status_view_model.dart';
 
 class OrderDetailsScreen extends StatelessWidget {

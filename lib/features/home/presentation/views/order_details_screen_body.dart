@@ -136,7 +136,7 @@ class _OrderDetailsScreenBodyState extends State<OrderDetailsScreenBody> {
                   imagePath: "assets/images/Photo.png",
                   numberOfOrder: "",
                   onTap: () {
-                    Navigator.pushNamed(context, RoutesName.userLocationScreen);
+                    Navigator.pushNamed(context, RoutesName.customerLocationScreen);
                   },
                 ),
                 Padding(
