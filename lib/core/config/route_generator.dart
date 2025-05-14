@@ -5,9 +5,8 @@ import 'package:tracking_app/features/auth/forget_password/presentation/view/res
 import 'package:tracking_app/features/auth/forget_password/presentation/view/verification_screen.dart';
 import 'package:tracking_app/features/auth/login/presentation/view/login_screen.dart';
 import 'package:tracking_app/features/auth/apply/presentation/view/apply_screen.dart';
-import 'package:tracking_app/features/home/presentation/views/home_view.dart';
+import 'package:tracking_app/features/home/presentation/views/home_screen.dart';
 import 'package:tracking_app/features/home/presentation/views/order_details_screen.dart';
-import 'package:tracking_app/features/home/presentation/views/order_details_screen_body.dart';
 import 'package:tracking_app/features/home/presentation/views/pickup_location_screen.dart';
 import 'package:tracking_app/features/home/presentation/views/customer_location_screen.dart';
 import 'package:tracking_app/features/layOut/presentation/lay_out.dart';
@@ -65,7 +64,7 @@ class RouteGenerator {
 
       case RoutesName.home:
         return MaterialPageRoute(
-          builder: (context) => const HomeView(),
+          builder: (context) => const HomeScreen(),
           settings: settings,
         );
 

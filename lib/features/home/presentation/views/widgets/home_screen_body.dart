@@ -6,14 +6,14 @@ import 'package:tracking_app/features/home/domain/use_case/get_all_pending_order
 import 'package:tracking_app/features/home/presentation/view%20model/pending_orders_cubit/get_all_pending_orders_cubit.dart';
 import 'package:tracking_app/features/home/presentation/views/widgets/flower_order_card.dart';
 
-class HomeView extends StatefulWidget {
-  const HomeView({super.key});
+class HomeScreenBody extends StatefulWidget {
+  const HomeScreenBody({super.key});
 
   @override
-  State<HomeView> createState() => _HomeViewState();
+  State<HomeScreenBody> createState() => _HomeScreenBodyState();
 }
 
-class _HomeViewState extends State<HomeView> {
+class _HomeScreenBodyState extends State<HomeScreenBody> {
   final ScrollController _scrollController = ScrollController();
   late GetAllPendingOrdersCubit _ordersCubit;
 

@@ -10,8 +10,9 @@ class OrderDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const OrderDetailsScreenBody();
+    return BlocProvider(
+      create: (context) => OrderStatusViewModel(getIt.get<UpdateOrderStatusUseCase>() ),
+      child: const OrderDetailsScreenBody(),
+    );
   }
-
-
 }

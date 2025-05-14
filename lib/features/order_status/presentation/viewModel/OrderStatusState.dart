@@ -7,18 +7,18 @@ abstract class OrderStatusState {
 }
 
 class OrderStatusInitial extends OrderStatusState {
-  OrderStatusInitial(OrderStatus status,int step) : super(status,step);
+  OrderStatusInitial(super.status,super.step);
 }
 
 class OrderStatusLoading extends OrderStatusState {
-  OrderStatusLoading(OrderStatus status, int step) : super(status, step);
+  OrderStatusLoading(super.status, super.step);
 }
 
 class OrderStatusSuccess extends OrderStatusState {
-  OrderStatusSuccess(OrderStatus status, int step) : super(status, step);
+  OrderStatusSuccess(super.status, super.step);
 }
 
 class OrderStatusFailure extends OrderStatusState {
   final String error;
-  OrderStatusFailure(OrderStatus status, int step, this.error) : super(status, step);
+  OrderStatusFailure(super.status, super.step, this.error);
 }
