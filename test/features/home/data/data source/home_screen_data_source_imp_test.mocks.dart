@@ -200,4 +200,14 @@ class MockApiService extends _i1.Mock implements _i9.ApiService {
             ),
           )
           as _i10.Future<_i8.OrderResponse>);
+
+  @override
+  _i10.Future<_i8.OrderResponse> startOrder(String? id) =>
+      (super.noSuchMethod(
+            Invocation.method(#startOrder, [id]),
+            returnValue: _i10.Future<_i8.OrderResponse>.value(
+              _FakeOrderResponse_6(this, Invocation.method(#startOrder, [id])),
+            ),
+          )
+          as _i10.Future<_i8.OrderResponse>);
 }

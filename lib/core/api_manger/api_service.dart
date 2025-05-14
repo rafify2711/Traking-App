@@ -46,4 +46,7 @@ abstract class ApiService {
       );
   @GET(Constants.getAllPendingOrdersEndPoint)
   Future<OrderResponse> getAllPendingOrders(@Query("page") int page);
+
+  @PUT((Constants.startOrderEndPoint))
+  Future<OrderResponse> startOrder(@Path() String id);
 }
