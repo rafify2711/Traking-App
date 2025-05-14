@@ -22,8 +22,11 @@ void main() async {
   await EasyLocalization.ensureInitialized();
   configureDependencies();
   Bloc.observer = SimpleBlocObserver();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  // setup();
+  await  Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  setup();
+
 
  
   final rememberMe = await SecureStorageService().readSecureData(

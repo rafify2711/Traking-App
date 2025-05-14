@@ -7,4 +7,8 @@ abstract class OrderStatusRemoteDataSource{
   Future<void> updateOrderStatusToFireBase(String orderId,OrderStatus status);
 
   Future<String> updateOrderStatusApi(String orderId,String status);
-  }
+
+
+  Future<OrderStatus> getOrderStatus(String orderId);
+
+}

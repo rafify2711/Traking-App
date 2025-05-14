@@ -93,6 +93,7 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i102.OrderRemoteDataSourceImpl(
         gh<_i974.FirebaseFirestore>(),
         gh<_i525.ApiService>(),
+        gh<_i665.SecureStorageService>(),
       ),
     );
     gh.factory<_i520.LoginRemoteDataSource>(

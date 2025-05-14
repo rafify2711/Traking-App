@@ -84,5 +84,15 @@ abstract class  LocaleKeys {
   static const orderDeliveredSuccess = 'orderDeliveredSuccess';
   static const thankYou = 'thankYou';
   static const userLocation = 'userLocation';
+  static const statusUpdatedSuccessfully = 'statusUpdatedSuccessfully';
+  static const somethingWentWrong = 'somethingWentWrong';
+  static const pending = 'pending';
+  static const inProgress = 'inProgress';
+  static const arrivedAtPickup = 'arrivedAtPickup';
+  static const picked = 'picked';
+  static const startDeliver = 'startDeliver';
+  static const outForDelivery = 'outForDelivery';
+  static const arrivedToUser = 'arrivedToUser';
+  static const delivered = 'delivered';
 
 }

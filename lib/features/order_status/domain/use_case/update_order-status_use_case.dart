@@ -22,6 +22,9 @@ class UpdateOrderStatusUseCase{
     return repository.updateOrderStatusToApi(orderId, newStatus);
 
   }
-
-
+  // Add method to get the current status
+  Future<OrderStatus> getOrderStatus(String orderId) async {
+    return await repository.getOrderStatus(orderId);
+  }
 }
+

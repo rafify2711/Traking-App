@@ -6,7 +6,7 @@ import 'package:tracking_app/core/utils/helper_func/url_launcher.dart';
 
 class CustomCardWidget extends StatelessWidget {
   final bool withTrailing;
-  final String imagePath;
+  final String? imagePath;
   final String title;
   final String addressOrPriceText;
   final String numberOfOrder;
@@ -14,7 +14,7 @@ class CustomCardWidget extends StatelessWidget {
   const CustomCardWidget({
     super.key,
     required this.withTrailing,
-    required this.imagePath,
+     this.imagePath,
     required this.addressOrPriceText,
     required this.title,
     required this.numberOfOrder,
@@ -23,6 +23,7 @@ class CustomCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     String phoneNumber = "tel:+201151442898";
     String whatsAppUrl = "https://wa.me/201151442898";
     return GestureDetector(
@@ -37,7 +38,8 @@ class CustomCardWidget extends StatelessWidget {
         ),
         child: ListTile(
           leading: CircleAvatar(
-            backgroundImage: NetworkImage(imagePath),
+
+            backgroundImage: NetworkImage(imagePath??""),
             radius: 25,
           ),
 

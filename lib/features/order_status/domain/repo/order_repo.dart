@@ -7,4 +7,8 @@ abstract class OrderRepository {
   Future<void> updateOrderStatusToFireBase(String orderId, OrderStatus status);
 
   Future<ApiResult<String>> updateOrderStatusToApi(String orderId, String status);
+
+
+  Future<OrderStatus> getOrderStatus(String orderId);
+
 }

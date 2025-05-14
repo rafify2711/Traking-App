@@ -82,5 +82,15 @@
     "orderDeliveredSuccess": "Order delivered successfully",
     "thankYou": "Thank you",
     "userLocation" : "User Location"
-
+,
+    "statusUpdatedSuccessfully": "Status updated successfully!",
+    "somethingWentWrong": "Something went wrong. Please try again.",
+    "pending" : "pending",
+    "inProgress": "In Progress",
+    "arrivedAtPickup": "Arrived at Pickup",
+    "picked": "Picked",
+    "startDeliver": "Start Deliver",
+    "outForDelivery": "Out for Delivery",
+    "arrivedToUser": "Arrived to User",
+    "delivered": "Delivered"
 }
