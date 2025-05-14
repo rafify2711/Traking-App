@@ -1,9 +1,10 @@
-import 'package:json_annotation/json_annotation.dart';
+import 'package:tracking_app/features/home/data/models/shipping_address_model.dart';
 import 'package:tracking_app/features/home/data/models/store_response.dart';
 import 'package:tracking_app/features/home/data/models/user_response.dart';
 import 'order_item_response.dart';
 
-part "order_response.g.dart";
+
+
 
 
 class Order {
@@ -85,15 +86,3 @@ class Order {
 }
 
 
-@JsonSerializable()
-class ShippingAddress{
-  final String? street;
-  final String? city;
-  final String? phone;
-  final String? lat;
-  final String? long;
-  ShippingAddress({this.street, this.city, this.phone, this.lat, this.long});
-
-  factory ShippingAddress.fromJson(Map<String, dynamic> json) => _$ShippingAddressFromJson(json);
-  Map<String, dynamic> toJson() => _$ShippingAddressToJson(this);
-}

@@ -7,13 +7,13 @@ import 'package:tracking_app/core/utils/app_text_styles.dart';
 import 'package:tracking_app/core/utils/colors.dart';
 import 'package:tracking_app/core/utils/services/get_responsive_height_and_width.dart';
 import 'package:tracking_app/features/home/data/models/order_response.dart';
-import 'package:tracking_app/features/home/data/models/order_response.dart';
+import 'package:tracking_app/features/home/data/models/pending_orders_response.dart';
 import 'package:tracking_app/features/home/presentation/view model/orders_cubit.dart';
 import 'package:tracking_app/features/home/presentation/views/widgets/custom_card_widget.dart';
 import 'package:tracking_app/generated/locale_keys.g.dart';
 import 'package:tracking_app/core/utils/helper_func/snack_bar.dart';
 
-import '../../data/models/pending_orders_response.dart';
+
 
 class FlowerOrderCard extends StatelessWidget {
   final Order order;
@@ -40,7 +40,7 @@ class FlowerOrderCard extends StatelessWidget {
           padding: const EdgeInsets.only(bottom: 24),
           child: InkWell(
             onTap: () {
-              Navigator.pushNamed(context, RoutesName.OrderDetailsView);
+              Navigator.pushNamed(context, RoutesName.orderDetailsView);
             },
             child: Card(
               color: PalletsColors.whiteBase,

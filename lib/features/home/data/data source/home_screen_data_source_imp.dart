@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:injectable/injectable.dart';
 import 'package:tracking_app/core/api_manger/api_service.dart';
 import 'package:tracking_app/core/base/api_excuter.dart';

@@ -1,5 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:tracking_app/features/apply/data/models/apply_model/apply_response/driver.dart';
+import 'package:tracking_app/features/auth/apply/data/models/apply_model/apply_response/driver.dart';
+
 import 'package:tracking_app/features/home/data/models/order_response.dart';
 
 part 'orders_firebase_model.g.dart';

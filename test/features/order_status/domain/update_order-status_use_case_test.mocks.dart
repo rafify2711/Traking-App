@@ -61,4 +61,14 @@ class MockOrderRepository extends _i1.Mock implements _i2.OrderRepository {
             ),
           )
           as _i3.Future<_i5.ApiResult<String>>);
+
+  @override
+  _i3.Future<_i4.OrderStatus> getOrderStatus(String? orderId) =>
+      (super.noSuchMethod(
+            Invocation.method(#getOrderStatus, [orderId]),
+            returnValue: _i3.Future<_i4.OrderStatus>.value(
+              _i4.OrderStatus.pending,
+            ),
+          )
+          as _i3.Future<_i4.OrderStatus>);
 }

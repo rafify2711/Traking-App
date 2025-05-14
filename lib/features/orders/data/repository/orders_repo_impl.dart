@@ -3,7 +3,6 @@ import 'package:injectable/injectable.dart';
 import 'package:tracking_app/core/base/api_result.dart';
 import 'package:tracking_app/features/orders/data/model/orders_firebase_model.dart';
 import 'package:tracking_app/features/orders/domain/repository/orders_repo.dart';
-import 'package:tracking_app/core/utils/Errors/error_handler.dart';
 
 @Injectable(as: OrdersRepo)
 class OrdersRepoImpl implements OrdersRepo {

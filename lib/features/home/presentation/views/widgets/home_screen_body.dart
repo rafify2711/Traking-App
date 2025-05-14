@@ -3,8 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tracking_app/core/base/base_state.dart';
 import 'package:tracking_app/core/di/di.dart';
 import 'package:tracking_app/features/home/domain/use_case/get_all_pending_orders_use_case.dart';
-import 'package:tracking_app/features/home/presentation/view%20model/pending_orders_cubit/get_all_pending_orders_cubit.dart';
+import 'package:tracking_app/features/home/domain/use_case/start_order_use_case.dart';
+import 'package:tracking_app/features/home/presentation/view%20model/orders_cubit.dart';
 import 'package:tracking_app/features/home/presentation/views/widgets/flower_order_card.dart';
+import 'package:tracking_app/features/orders/domain/use_case/save_order_to_firebase_use_case.dart';
 
 class HomeScreenBody extends StatefulWidget {
   const HomeScreenBody({super.key});
@@ -15,13 +17,13 @@ class HomeScreenBody extends StatefulWidget {
 
 class _HomeScreenBodyState extends State<HomeScreenBody> {
   final ScrollController _scrollController = ScrollController();
-  late GetAllPendingOrdersCubit _ordersCubit;
+  late OrdersCubit _ordersCubit;
 
   @override
   void initState() {
     super.initState();
-    _ordersCubit = GetAllPendingOrdersCubit(
-      getIt.get<GetAllPendingOrdersUseCase>(),
+    _ordersCubit = OrdersCubit(
+      getIt.get<GetAllPendingOrdersUseCase>() ,getIt.get<StartOrderUseCase>(),getIt.get<SaveOrderToFirebaseUseCase>(),
     );
     _ordersCubit.getAllPendingOrders();
 
