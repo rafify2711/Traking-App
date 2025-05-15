@@ -54,6 +54,8 @@ import '../../features/home/data/repo/home_screen_repo_imp.dart' as _i924;
 import '../../features/home/domain/repo/home_screen_repo.dart' as _i202;
 import '../../features/home/domain/use_case/get_all_pending_orders_use_case.dart'
     as _i968;
+import '../../features/home/domain/use_case/get_orderdetails_from_firebase.dart'
+    as _i136;
 import '../../features/order_status/data/data_source/OrderStatusRemoteDataSource.dart'
     as _i404;
 import '../../features/order_status/data/data_source/OrderStatusRemoteDataSourceImpl.dart'
@@ -102,7 +104,10 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i287.AuthRemoteDataSourceImpl(apiService: gh<_i525.ApiService>()),
     );
     gh.factory<_i428.HomeScreenDataSource>(
-      () => _i885.HomeScreenDataSourceImp(gh<_i525.ApiService>()),
+      () => _i885.HomeScreenDataSourceImp(
+        gh<_i525.ApiService>(),
+        gh<_i974.FirebaseFirestore>(),
+      ),
     );
     gh.factory<_i762.ForgetPasswordDataSource>(
       () => _i224.ForgetPasswordDataSourceImpl(gh<_i525.ApiService>()),
@@ -139,6 +144,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i968.GetAllPendingOrdersUseCase>(
       () => _i968.GetAllPendingOrdersUseCase(gh<_i202.HomeScreenRepo>()),
+    );
+    gh.factory<_i136.GetOrderdetailsFromFirebase>(
+      () => _i136.GetOrderdetailsFromFirebase(gh<_i202.HomeScreenRepo>()),
     );
     gh.factory<_i318.SenVerifyCodeUseCase>(
       () => _i318.SenVerifyCodeUseCase(repo: gh<_i484.ForgetPasswordRepo>()),

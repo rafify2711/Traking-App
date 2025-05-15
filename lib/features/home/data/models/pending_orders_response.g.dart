@@ -15,7 +15,7 @@ OrderResponse _$OrderResponseFromJson(Map<String, dynamic> json) =>
               : Metadata.fromJson(json['metadata'] as Map<String, dynamic>),
       orders:
           (json['orders'] as List<dynamic>?)
-              ?.map((e) => Order.fromJson(e as Map<String, dynamic>))
+              ?.map((e) => OrderDetails.fromJson(e as Map<String, dynamic>))
               .toList(),
     );
 

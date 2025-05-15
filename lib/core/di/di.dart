@@ -10,9 +10,10 @@ final getIt = GetIt.instance;
   preferRelativeImports: true, // default
   asExtension: true, // default
 )
-void configureDependencies() => getIt.init();
-
 void setup(){
   // Register FirebaseFirestore instance
   getIt.registerSingleton<FirebaseFirestore>(FirebaseFirestore.instance);
 }
+void configureDependencies() => getIt.init();
+
+

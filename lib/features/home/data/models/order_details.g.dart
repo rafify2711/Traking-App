@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'order_response.dart';
+part of 'order_details.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-Order _$OrderFromJson(Map<String, dynamic> json) => Order(
+OrderDetails _$OrderDetailsFromJson(Map<String, dynamic> json) => OrderDetails(
   id: json['_id'] as String?,
   user:
       json['user'] == null
@@ -30,17 +30,18 @@ Order _$OrderFromJson(Map<String, dynamic> json) => Order(
           : Store.fromJson(json['store'] as Map<String, dynamic>),
 );
 
-Map<String, dynamic> _$OrderToJson(Order instance) => <String, dynamic>{
-  '_id': instance.id,
-  'user': instance.user,
-  'orderItems': instance.orderItems,
-  'totalPrice': instance.totalPrice,
-  'paymentType': instance.paymentType,
-  'isPaid': instance.isPaid,
-  'isDelivered': instance.isDelivered,
-  'state': instance.state,
-  'createdAt': instance.createdAt,
-  'updatedAt': instance.updatedAt,
-  'orderNumber': instance.orderNumber,
-  'store': instance.store,
-};
+Map<String, dynamic> _$OrderDetailsToJson(OrderDetails instance) =>
+    <String, dynamic>{
+      '_id': instance.id,
+      'user': instance.user,
+      'orderItems': instance.orderItems,
+      'totalPrice': instance.totalPrice,
+      'paymentType': instance.paymentType,
+      'isPaid': instance.isPaid,
+      'isDelivered': instance.isDelivered,
+      'state': instance.state,
+      'createdAt': instance.createdAt,
+      'updatedAt': instance.updatedAt,
+      'orderNumber': instance.orderNumber,
+      'store': instance.store,
+    };

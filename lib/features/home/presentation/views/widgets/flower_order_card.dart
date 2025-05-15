@@ -4,12 +4,13 @@ import 'package:tracking_app/core/config/routes_name.dart';
 import 'package:tracking_app/core/utils/app_text_styles.dart';
 import 'package:tracking_app/core/utils/colors.dart';
 import 'package:tracking_app/core/utils/services/get_responsive_height_and_width.dart';
-import 'package:tracking_app/features/home/data/models/order_response.dart';
+import 'package:tracking_app/features/home/data/models/order_details.dart';
+import 'package:tracking_app/features/home/presentation/views/order_details_view.dart';
 import 'package:tracking_app/features/home/presentation/views/widgets/custom_card_widget.dart';
 import 'package:tracking_app/generated/locale_keys.g.dart';
 
 class FlowerOrderCard extends StatelessWidget {
-  final Order order;
+  final OrderDetails order;
   const FlowerOrderCard({super.key, required this.order});
 
   @override
@@ -18,7 +19,9 @@ class FlowerOrderCard extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 24),
       child: InkWell(
         onTap: () {
-          Navigator.pushNamed(context, RoutesName.orderDetailsView);
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return OrderDetailsView(order: order,);
+          },));
         },
         child: Card(
           color: PalletsColors.whiteBase,
@@ -55,7 +58,10 @@ class FlowerOrderCard extends StatelessWidget {
                 withTrailing: false,
                 title: order.user!.firstName ?? "No Name",
                 addressOrPriceText: "20th st, Sheikh Zayed, Giza",
-                imagePath: order.user!.photo ?? "assets/images/Photo.png",
+                imagePath:
+                // order.user!.photo ??
+                //     "assets/images/Photo.png",
+                "https://th.bing.com/th/id/OIP.9uQeXJPOGm7x6d4fFhnXxAHaD4?rs=1&pid=ImgDetMain",
                 numberOfOrder: order.orderNumber ?? "Unkown Number",
               ),
 
@@ -81,7 +87,9 @@ class FlowerOrderCard extends StatelessWidget {
                       width: responsiveWidth(111),
                       // flex: 1,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+
+                        },
                         child: Text(LocaleKeys.accept.tr()),
                       ),
                     ),

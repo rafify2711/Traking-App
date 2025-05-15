@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -9,14 +10,17 @@ import 'package:tracking_app/features/home/data/models/pending_orders_response.d
 
 import 'home_screen_data_source_imp_test.mocks.dart';
 
-@GenerateMocks([ApiService])
+@GenerateMocks([ApiService,FirebaseFirestore])
 void main() {
   late ApiService apiService;
+late  FirebaseFirestore firestore;
+
   late HomeScreenDataSourceImp dataSource;
 
   setUp(() {
     apiService = MockApiService();
-    dataSource = HomeScreenDataSourceImp(apiService);
+    firestore = MockFirebaseFirestore();
+    dataSource = HomeScreenDataSourceImp(apiService,firestore);
   });
 
   group('HomeScreenDataSourceImp', () {

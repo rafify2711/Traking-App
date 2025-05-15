@@ -5,13 +5,14 @@ import 'package:tracking_app/features/home/data/models/pending_orders_response.d
 import 'package:tracking_app/features/home/domain/repo/home_screen_repo.dart';
 
 @injectable
-class GetAllPendingOrdersUseCase {
+class GetOrderdetailsFromFirebase {
   HomeScreenRepo homeScreenRepo;
-  GetAllPendingOrdersUseCase(this.homeScreenRepo);
+  GetOrderdetailsFromFirebase(this.homeScreenRepo);
 
-  Future<ApiResult<OrderResponse>> invoke(int page) async {
-    return await homeScreenRepo.getAllPendingOrders(page);
+
+  Future<OrderDetails> invoke()async{
+
+    return await homeScreenRepo.getOrderDetailsFromFireBase();
+
   }
-
-
 }

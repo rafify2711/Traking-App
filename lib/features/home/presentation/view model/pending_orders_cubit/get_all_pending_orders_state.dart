@@ -2,7 +2,7 @@ part of 'get_all_pending_orders_cubit.dart';
 
 class GetAllPendingOrdersState extends Equatable {
   final BaseState? pendingOrdersState;
-  final List<Order> allOrders;
+  final List<OrderDetails> allOrders;
   final int currentPage;
   final int totalPages;
 
@@ -15,7 +15,7 @@ class GetAllPendingOrdersState extends Equatable {
 
   GetAllPendingOrdersState copyWith({
     BaseState? pendingOrdersState,
-    List<Order>? allOrders,
+    List<OrderDetails>? allOrders,
     int? currentPage,
     int? totalPages,
   }) {

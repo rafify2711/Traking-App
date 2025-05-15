@@ -3,22 +3,27 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i10;
+import 'dart:async' as _i12;
+import 'dart:typed_data' as _i20;
 
-import 'package:dio/dio.dart' as _i15;
+import 'package:cloud_firestore/cloud_firestore.dart' as _i11;
+import 'package:cloud_firestore_platform_interface/cloud_firestore_platform_interface.dart'
+    as _i10;
+import 'package:dio/dio.dart' as _i18;
+import 'package:firebase_core/firebase_core.dart' as _i9;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:mockito/src/dummies.dart' as _i16;
-import 'package:tracking_app/core/api_manger/api_service.dart' as _i9;
+import 'package:mockito/src/dummies.dart' as _i19;
+import 'package:tracking_app/core/api_manger/api_service.dart' as _i13;
 import 'package:tracking_app/features/auth/apply/data/models/apply_model/apply_response/apply_response.dart'
     as _i6;
 import 'package:tracking_app/features/auth/apply/data/models/get_all_vehicles_response/get_all_vehicles_response.dart'
     as _i7;
 import 'package:tracking_app/features/auth/forget_password/data/models/request/forget_password_request.dart'
-    as _i12;
+    as _i15;
 import 'package:tracking_app/features/auth/forget_password/data/models/request/otp_request.dart'
-    as _i13;
+    as _i16;
 import 'package:tracking_app/features/auth/forget_password/data/models/request/reset_password_request.dart'
-    as _i14;
+    as _i17;
 import 'package:tracking_app/features/auth/forget_password/data/models/response/forget_password_response.dart'
     as _i3;
 import 'package:tracking_app/features/auth/forget_password/data/models/response/otp_response.dart'
@@ -26,7 +31,7 @@ import 'package:tracking_app/features/auth/forget_password/data/models/response/
 import 'package:tracking_app/features/auth/forget_password/data/models/response/reset_password_response.dart'
     as _i5;
 import 'package:tracking_app/features/auth/login/data/model/login_request.dart'
-    as _i11;
+    as _i14;
 import 'package:tracking_app/features/auth/login/data/model/login_response.dart'
     as _i2;
 import 'package:tracking_app/features/home/data/models/pending_orders_response.dart'
@@ -84,120 +89,499 @@ class _FakeOrderResponse_6 extends _i1.SmartFake implements _i8.OrderResponse {
     : super(parent, parentInvocation);
 }
 
+class _FakeFirebaseApp_7 extends _i1.SmartFake implements _i9.FirebaseApp {
+  _FakeFirebaseApp_7(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
+}
+
+class _FakeSettings_8 extends _i1.SmartFake implements _i10.Settings {
+  _FakeSettings_8(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
+}
+
+class _FakeCollectionReference_9<T extends Object?> extends _i1.SmartFake
+    implements _i11.CollectionReference<T> {
+  _FakeCollectionReference_9(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
+}
+
+class _FakeWriteBatch_10 extends _i1.SmartFake implements _i11.WriteBatch {
+  _FakeWriteBatch_10(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
+}
+
+class _FakeLoadBundleTask_11 extends _i1.SmartFake
+    implements _i11.LoadBundleTask {
+  _FakeLoadBundleTask_11(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
+}
+
+class _FakeQuerySnapshot_12<T1 extends Object?> extends _i1.SmartFake
+    implements _i11.QuerySnapshot<T1> {
+  _FakeQuerySnapshot_12(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
+}
+
+class _FakeQuery_13<T extends Object?> extends _i1.SmartFake
+    implements _i11.Query<T> {
+  _FakeQuery_13(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
+}
+
+class _FakeDocumentReference_14<T extends Object?> extends _i1.SmartFake
+    implements _i11.DocumentReference<T> {
+  _FakeDocumentReference_14(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
+}
+
+class _FakeFuture_15<T1> extends _i1.SmartFake implements _i12.Future<T1> {
+  _FakeFuture_15(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
+}
+
 /// A class which mocks [ApiService].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockApiService extends _i1.Mock implements _i9.ApiService {
+class MockApiService extends _i1.Mock implements _i13.ApiService {
   MockApiService() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i10.Future<_i2.LoginResponse> loginUser(_i11.LoginRequest? loginRequest) =>
+  _i12.Future<_i2.LoginResponse> loginUser(_i14.LoginRequest? loginRequest) =>
       (super.noSuchMethod(
             Invocation.method(#loginUser, [loginRequest]),
-            returnValue: _i10.Future<_i2.LoginResponse>.value(
+            returnValue: _i12.Future<_i2.LoginResponse>.value(
               _FakeLoginResponse_0(
                 this,
                 Invocation.method(#loginUser, [loginRequest]),
               ),
             ),
           )
-          as _i10.Future<_i2.LoginResponse>);
+          as _i12.Future<_i2.LoginResponse>);
 
   @override
-  _i10.Future<_i3.ForgetPasswordResponse> forgetPassword(
-    _i12.ForgetPasswordRequest? forgetPasswordRequest,
+  _i12.Future<_i3.ForgetPasswordResponse> forgetPassword(
+    _i15.ForgetPasswordRequest? forgetPasswordRequest,
   ) =>
       (super.noSuchMethod(
             Invocation.method(#forgetPassword, [forgetPasswordRequest]),
-            returnValue: _i10.Future<_i3.ForgetPasswordResponse>.value(
+            returnValue: _i12.Future<_i3.ForgetPasswordResponse>.value(
               _FakeForgetPasswordResponse_1(
                 this,
                 Invocation.method(#forgetPassword, [forgetPasswordRequest]),
               ),
             ),
           )
-          as _i10.Future<_i3.ForgetPasswordResponse>);
+          as _i12.Future<_i3.ForgetPasswordResponse>);
 
   @override
-  _i10.Future<_i4.OtpResponse> verifyResetCode(_i13.OtpRequest? otpRequest) =>
+  _i12.Future<_i4.OtpResponse> verifyResetCode(_i16.OtpRequest? otpRequest) =>
       (super.noSuchMethod(
             Invocation.method(#verifyResetCode, [otpRequest]),
-            returnValue: _i10.Future<_i4.OtpResponse>.value(
+            returnValue: _i12.Future<_i4.OtpResponse>.value(
               _FakeOtpResponse_2(
                 this,
                 Invocation.method(#verifyResetCode, [otpRequest]),
               ),
             ),
           )
-          as _i10.Future<_i4.OtpResponse>);
+          as _i12.Future<_i4.OtpResponse>);
 
   @override
-  _i10.Future<_i5.ResetPasswordResponse> resetPassword(
-    _i14.ResetPasswordRequest? ResetPasswordRequest,
+  _i12.Future<_i5.ResetPasswordResponse> resetPassword(
+    _i17.ResetPasswordRequest? ResetPasswordRequest,
   ) =>
       (super.noSuchMethod(
             Invocation.method(#resetPassword, [ResetPasswordRequest]),
-            returnValue: _i10.Future<_i5.ResetPasswordResponse>.value(
+            returnValue: _i12.Future<_i5.ResetPasswordResponse>.value(
               _FakeResetPasswordResponse_3(
                 this,
                 Invocation.method(#resetPassword, [ResetPasswordRequest]),
               ),
             ),
           )
-          as _i10.Future<_i5.ResetPasswordResponse>);
+          as _i12.Future<_i5.ResetPasswordResponse>);
 
   @override
-  _i10.Future<_i6.ApplyResponse> apply(_i15.FormData? formData) =>
+  _i12.Future<_i6.ApplyResponse> apply(_i18.FormData? formData) =>
       (super.noSuchMethod(
             Invocation.method(#apply, [formData]),
-            returnValue: _i10.Future<_i6.ApplyResponse>.value(
+            returnValue: _i12.Future<_i6.ApplyResponse>.value(
               _FakeApplyResponse_4(this, Invocation.method(#apply, [formData])),
             ),
           )
-          as _i10.Future<_i6.ApplyResponse>);
+          as _i12.Future<_i6.ApplyResponse>);
 
   @override
-  _i10.Future<_i7.GetAllVehiclesResponse> getAllVehicles() =>
+  _i12.Future<_i7.GetAllVehiclesResponse> getAllVehicles() =>
       (super.noSuchMethod(
             Invocation.method(#getAllVehicles, []),
-            returnValue: _i10.Future<_i7.GetAllVehiclesResponse>.value(
+            returnValue: _i12.Future<_i7.GetAllVehiclesResponse>.value(
               _FakeGetAllVehiclesResponse_5(
                 this,
                 Invocation.method(#getAllVehicles, []),
               ),
             ),
           )
-          as _i10.Future<_i7.GetAllVehiclesResponse>);
+          as _i12.Future<_i7.GetAllVehiclesResponse>);
 
   @override
-  _i10.Future<String> updateOrderStatus(
+  _i12.Future<String> updateOrderStatus(
     String? id,
     Map<String, dynamic>? newState,
     String? token,
   ) =>
       (super.noSuchMethod(
             Invocation.method(#updateOrderStatus, [id, newState, token]),
-            returnValue: _i10.Future<String>.value(
-              _i16.dummyValue<String>(
+            returnValue: _i12.Future<String>.value(
+              _i19.dummyValue<String>(
                 this,
                 Invocation.method(#updateOrderStatus, [id, newState, token]),
               ),
             ),
           )
-          as _i10.Future<String>);
+          as _i12.Future<String>);
 
   @override
-  _i10.Future<_i8.OrderResponse> getAllPendingOrders(int? page) =>
+  _i12.Future<_i8.OrderResponse> getAllPendingOrders(int? page) =>
       (super.noSuchMethod(
             Invocation.method(#getAllPendingOrders, [page]),
-            returnValue: _i10.Future<_i8.OrderResponse>.value(
+            returnValue: _i12.Future<_i8.OrderResponse>.value(
               _FakeOrderResponse_6(
                 this,
                 Invocation.method(#getAllPendingOrders, [page]),
               ),
             ),
           )
-          as _i10.Future<_i8.OrderResponse>);
+          as _i12.Future<_i8.OrderResponse>);
+}
+
+/// A class which mocks [FirebaseFirestore].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockFirebaseFirestore extends _i1.Mock implements _i11.FirebaseFirestore {
+  MockFirebaseFirestore() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i9.FirebaseApp get app =>
+      (super.noSuchMethod(
+            Invocation.getter(#app),
+            returnValue: _FakeFirebaseApp_7(this, Invocation.getter(#app)),
+          )
+          as _i9.FirebaseApp);
+
+  @override
+  set app(_i9.FirebaseApp? _app) => super.noSuchMethod(
+    Invocation.setter(#app, _app),
+    returnValueForMissingStub: null,
+  );
+
+  @override
+  String get databaseURL =>
+      (super.noSuchMethod(
+            Invocation.getter(#databaseURL),
+            returnValue: _i19.dummyValue<String>(
+              this,
+              Invocation.getter(#databaseURL),
+            ),
+          )
+          as String);
+
+  @override
+  set databaseURL(String? _databaseURL) => super.noSuchMethod(
+    Invocation.setter(#databaseURL, _databaseURL),
+    returnValueForMissingStub: null,
+  );
+
+  @override
+  String get databaseId =>
+      (super.noSuchMethod(
+            Invocation.getter(#databaseId),
+            returnValue: _i19.dummyValue<String>(
+              this,
+              Invocation.getter(#databaseId),
+            ),
+          )
+          as String);
+
+  @override
+  set databaseId(String? _databaseId) => super.noSuchMethod(
+    Invocation.setter(#databaseId, _databaseId),
+    returnValueForMissingStub: null,
+  );
+
+  @override
+  set settings(_i10.Settings? settings) => super.noSuchMethod(
+    Invocation.setter(#settings, settings),
+    returnValueForMissingStub: null,
+  );
+
+  @override
+  _i10.Settings get settings =>
+      (super.noSuchMethod(
+            Invocation.getter(#settings),
+            returnValue: _FakeSettings_8(this, Invocation.getter(#settings)),
+          )
+          as _i10.Settings);
+
+  @override
+  Map<dynamic, dynamic> get pluginConstants =>
+      (super.noSuchMethod(
+            Invocation.getter(#pluginConstants),
+            returnValue: <dynamic, dynamic>{},
+          )
+          as Map<dynamic, dynamic>);
+
+  @override
+  _i11.CollectionReference<Map<String, dynamic>> collection(
+    String? collectionPath,
+  ) =>
+      (super.noSuchMethod(
+            Invocation.method(#collection, [collectionPath]),
+            returnValue: _FakeCollectionReference_9<Map<String, dynamic>>(
+              this,
+              Invocation.method(#collection, [collectionPath]),
+            ),
+          )
+          as _i11.CollectionReference<Map<String, dynamic>>);
+
+  @override
+  _i11.WriteBatch batch() =>
+      (super.noSuchMethod(
+            Invocation.method(#batch, []),
+            returnValue: _FakeWriteBatch_10(
+              this,
+              Invocation.method(#batch, []),
+            ),
+          )
+          as _i11.WriteBatch);
+
+  @override
+  _i12.Future<void> clearPersistence() =>
+      (super.noSuchMethod(
+            Invocation.method(#clearPersistence, []),
+            returnValue: _i12.Future<void>.value(),
+            returnValueForMissingStub: _i12.Future<void>.value(),
+          )
+          as _i12.Future<void>);
+
+  @override
+  _i12.Future<void> enablePersistence([
+    _i10.PersistenceSettings? persistenceSettings,
+  ]) =>
+      (super.noSuchMethod(
+            Invocation.method(#enablePersistence, [persistenceSettings]),
+            returnValue: _i12.Future<void>.value(),
+            returnValueForMissingStub: _i12.Future<void>.value(),
+          )
+          as _i12.Future<void>);
+
+  @override
+  _i11.LoadBundleTask loadBundle(_i20.Uint8List? bundle) =>
+      (super.noSuchMethod(
+            Invocation.method(#loadBundle, [bundle]),
+            returnValue: _FakeLoadBundleTask_11(
+              this,
+              Invocation.method(#loadBundle, [bundle]),
+            ),
+          )
+          as _i11.LoadBundleTask);
+
+  @override
+  void useFirestoreEmulator(
+    String? host,
+    int? port, {
+    bool? sslEnabled = false,
+    bool? automaticHostMapping = true,
+  }) => super.noSuchMethod(
+    Invocation.method(
+      #useFirestoreEmulator,
+      [host, port],
+      {#sslEnabled: sslEnabled, #automaticHostMapping: automaticHostMapping},
+    ),
+    returnValueForMissingStub: null,
+  );
+
+  @override
+  _i12.Future<_i11.QuerySnapshot<T>> namedQueryWithConverterGet<T>(
+    String? name, {
+    _i10.GetOptions? options = const _i10.GetOptions(),
+    required _i11.FromFirestore<T>? fromFirestore,
+    required _i11.ToFirestore<T>? toFirestore,
+  }) =>
+      (super.noSuchMethod(
+            Invocation.method(
+              #namedQueryWithConverterGet,
+              [name],
+              {
+                #options: options,
+                #fromFirestore: fromFirestore,
+                #toFirestore: toFirestore,
+              },
+            ),
+            returnValue: _i12.Future<_i11.QuerySnapshot<T>>.value(
+              _FakeQuerySnapshot_12<T>(
+                this,
+                Invocation.method(
+                  #namedQueryWithConverterGet,
+                  [name],
+                  {
+                    #options: options,
+                    #fromFirestore: fromFirestore,
+                    #toFirestore: toFirestore,
+                  },
+                ),
+              ),
+            ),
+          )
+          as _i12.Future<_i11.QuerySnapshot<T>>);
+
+  @override
+  _i12.Future<_i11.QuerySnapshot<Map<String, dynamic>>> namedQueryGet(
+    String? name, {
+    _i10.GetOptions? options = const _i10.GetOptions(),
+  }) =>
+      (super.noSuchMethod(
+            Invocation.method(#namedQueryGet, [name], {#options: options}),
+            returnValue:
+                _i12.Future<_i11.QuerySnapshot<Map<String, dynamic>>>.value(
+                  _FakeQuerySnapshot_12<Map<String, dynamic>>(
+                    this,
+                    Invocation.method(
+                      #namedQueryGet,
+                      [name],
+                      {#options: options},
+                    ),
+                  ),
+                ),
+          )
+          as _i12.Future<_i11.QuerySnapshot<Map<String, dynamic>>>);
+
+  @override
+  _i11.Query<Map<String, dynamic>> collectionGroup(String? collectionPath) =>
+      (super.noSuchMethod(
+            Invocation.method(#collectionGroup, [collectionPath]),
+            returnValue: _FakeQuery_13<Map<String, dynamic>>(
+              this,
+              Invocation.method(#collectionGroup, [collectionPath]),
+            ),
+          )
+          as _i11.Query<Map<String, dynamic>>);
+
+  @override
+  _i12.Future<void> disableNetwork() =>
+      (super.noSuchMethod(
+            Invocation.method(#disableNetwork, []),
+            returnValue: _i12.Future<void>.value(),
+            returnValueForMissingStub: _i12.Future<void>.value(),
+          )
+          as _i12.Future<void>);
+
+  @override
+  _i11.DocumentReference<Map<String, dynamic>> doc(String? documentPath) =>
+      (super.noSuchMethod(
+            Invocation.method(#doc, [documentPath]),
+            returnValue: _FakeDocumentReference_14<Map<String, dynamic>>(
+              this,
+              Invocation.method(#doc, [documentPath]),
+            ),
+          )
+          as _i11.DocumentReference<Map<String, dynamic>>);
+
+  @override
+  _i12.Future<void> enableNetwork() =>
+      (super.noSuchMethod(
+            Invocation.method(#enableNetwork, []),
+            returnValue: _i12.Future<void>.value(),
+            returnValueForMissingStub: _i12.Future<void>.value(),
+          )
+          as _i12.Future<void>);
+
+  @override
+  _i12.Stream<void> snapshotsInSync() =>
+      (super.noSuchMethod(
+            Invocation.method(#snapshotsInSync, []),
+            returnValue: _i12.Stream<void>.empty(),
+          )
+          as _i12.Stream<void>);
+
+  @override
+  _i12.Future<T> runTransaction<T>(
+    _i11.TransactionHandler<T>? transactionHandler, {
+    Duration? timeout = const Duration(seconds: 30),
+    int? maxAttempts = 5,
+  }) =>
+      (super.noSuchMethod(
+            Invocation.method(
+              #runTransaction,
+              [transactionHandler],
+              {#timeout: timeout, #maxAttempts: maxAttempts},
+            ),
+            returnValue:
+                _i19.ifNotNull(
+                  _i19.dummyValueOrNull<T>(
+                    this,
+                    Invocation.method(
+                      #runTransaction,
+                      [transactionHandler],
+                      {#timeout: timeout, #maxAttempts: maxAttempts},
+                    ),
+                  ),
+                  (T v) => _i12.Future<T>.value(v),
+                ) ??
+                _FakeFuture_15<T>(
+                  this,
+                  Invocation.method(
+                    #runTransaction,
+                    [transactionHandler],
+                    {#timeout: timeout, #maxAttempts: maxAttempts},
+                  ),
+                ),
+          )
+          as _i12.Future<T>);
+
+  @override
+  _i12.Future<void> terminate() =>
+      (super.noSuchMethod(
+            Invocation.method(#terminate, []),
+            returnValue: _i12.Future<void>.value(),
+            returnValueForMissingStub: _i12.Future<void>.value(),
+          )
+          as _i12.Future<void>);
+
+  @override
+  _i12.Future<void> waitForPendingWrites() =>
+      (super.noSuchMethod(
+            Invocation.method(#waitForPendingWrites, []),
+            returnValue: _i12.Future<void>.value(),
+            returnValueForMissingStub: _i12.Future<void>.value(),
+          )
+          as _i12.Future<void>);
+
+  @override
+  _i12.Future<void> setIndexConfiguration({
+    required List<_i10.Index>? indexes,
+    List<_i10.FieldOverrides>? fieldOverrides,
+  }) =>
+      (super.noSuchMethod(
+            Invocation.method(#setIndexConfiguration, [], {
+              #indexes: indexes,
+              #fieldOverrides: fieldOverrides,
+            }),
+            returnValue: _i12.Future<void>.value(),
+            returnValueForMissingStub: _i12.Future<void>.value(),
+          )
+          as _i12.Future<void>);
+
+  @override
+  _i12.Future<void> setIndexConfigurationFromJSON(String? json) =>
+      (super.noSuchMethod(
+            Invocation.method(#setIndexConfigurationFromJSON, [json]),
+            returnValue: _i12.Future<void>.value(),
+            returnValueForMissingStub: _i12.Future<void>.value(),
+          )
+          as _i12.Future<void>);
 }

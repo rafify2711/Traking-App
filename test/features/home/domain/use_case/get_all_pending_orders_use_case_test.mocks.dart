@@ -3,15 +3,17 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i3;
+import 'dart:async' as _i4;
 
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:mockito/src/dummies.dart' as _i6;
-import 'package:tracking_app/core/base/api_result.dart' as _i4;
-import 'package:tracking_app/features/home/data/models/pending_orders_response.dart'
-    as _i5;
-import 'package:tracking_app/features/home/domain/repo/home_screen_repo.dart'
+import 'package:mockito/src/dummies.dart' as _i7;
+import 'package:tracking_app/core/base/api_result.dart' as _i5;
+import 'package:tracking_app/features/home/data/models/order_details.dart'
     as _i2;
+import 'package:tracking_app/features/home/data/models/pending_orders_response.dart'
+    as _i6;
+import 'package:tracking_app/features/home/domain/repo/home_screen_repo.dart'
+    as _i3;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -27,24 +29,42 @@ import 'package:tracking_app/features/home/domain/repo/home_screen_repo.dart'
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
+class _FakeOrderDetails_0 extends _i1.SmartFake implements _i2.OrderDetails {
+  _FakeOrderDetails_0(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
+}
+
 /// A class which mocks [HomeScreenRepo].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockHomeScreenRepo extends _i1.Mock implements _i2.HomeScreenRepo {
+class MockHomeScreenRepo extends _i1.Mock implements _i3.HomeScreenRepo {
   MockHomeScreenRepo() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i3.Future<_i4.ApiResult<_i5.OrderResponse>> getAllPendingOrders(int? page) =>
+  _i4.Future<_i5.ApiResult<_i6.OrderResponse>> getAllPendingOrders(int? page) =>
       (super.noSuchMethod(
             Invocation.method(#getAllPendingOrders, [page]),
-            returnValue: _i3.Future<_i4.ApiResult<_i5.OrderResponse>>.value(
-              _i6.dummyValue<_i4.ApiResult<_i5.OrderResponse>>(
+            returnValue: _i4.Future<_i5.ApiResult<_i6.OrderResponse>>.value(
+              _i7.dummyValue<_i5.ApiResult<_i6.OrderResponse>>(
                 this,
                 Invocation.method(#getAllPendingOrders, [page]),
               ),
             ),
           )
-          as _i3.Future<_i4.ApiResult<_i5.OrderResponse>>);
+          as _i4.Future<_i5.ApiResult<_i6.OrderResponse>>);
+
+  @override
+  _i4.Future<_i2.OrderDetails> getOrderDetailsFromFireBase() =>
+      (super.noSuchMethod(
+            Invocation.method(#getOrderDetailsFromFireBase, []),
+            returnValue: _i4.Future<_i2.OrderDetails>.value(
+              _FakeOrderDetails_0(
+                this,
+                Invocation.method(#getOrderDetailsFromFireBase, []),
+              ),
+            ),
+          )
+          as _i4.Future<_i2.OrderDetails>);
 }

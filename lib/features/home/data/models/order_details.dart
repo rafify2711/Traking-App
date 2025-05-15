@@ -3,10 +3,10 @@ import 'package:tracking_app/features/home/data/models/order_item_response.dart'
 import 'package:tracking_app/features/home/data/models/store_response.dart';
 import 'package:tracking_app/features/home/data/models/user_response.dart';
 
-part 'order_response.g.dart';
+part 'order_details.g.dart';
 
 @JsonSerializable()
-class Order {
+class OrderDetails {
   @JsonKey(name: '_id')
   final String? id;
   final User? user;
@@ -21,7 +21,7 @@ class Order {
   final String? orderNumber;
   final Store? store;
 
-  Order({
+  OrderDetails({
     this.id,
     this.user,
     this.orderItems,
@@ -36,6 +36,6 @@ class Order {
     this.store,
   });
 
-  factory Order.fromJson(Map<String, dynamic> json) => _$OrderFromJson(json);
-  Map<String, dynamic> toJson() => _$OrderToJson(this);
+  factory OrderDetails.fromJson(Map<String, dynamic> json) => _$OrderDetailsFromJson(json);
+  Map<String, dynamic> toJson() => _$OrderDetailsToJson(this);
 }
