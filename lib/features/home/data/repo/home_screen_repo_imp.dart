@@ -17,12 +17,9 @@ class HomeScreenRepoImp extends HomeScreenRepo {
   @override
   Future<OrderDetails> getOrderDetailsFromFireBase( )async {
     try{
-      print("succeeeees");
-      return await  homeScreenDataSource.getOrderDetailsFireBase().then((value) {print(value);print("value");print(value.totalPrice); return value;});
+      return await  homeScreenDataSource.getOrderDetailsFireBase().then((value) {return value;});
     }catch(e){
-      print("fire base error");
-      print(e);
-      throw e;
+      rethrow;
     }
 
   }
