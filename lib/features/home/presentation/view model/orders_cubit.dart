@@ -22,71 +22,78 @@ class OrdersCubit extends Cubit<OrdersState> {
     this.saveOrderToFirebaseUseCase,
   ) : super(const OrdersState());
 
-  Future<void> getAllPendingOrders() async {
-    emit(state.copyWith(pendingOrdersState: BaseLoading<OrderResponse>()));
+  // Future<void> getAllPendingOrders() async {
+  //   emit(state.copyWith(pendingOrdersState: BaseLoading<OrderResponse>()));
 
-    final result = await getAllPendingOrdersUseCase.invoke();
+  //   final result = await getAllPendingOrdersUseCase.invoke();
 
-    if (result is ApiSuccess<OrderResponse>) {
-      emit(
-        state.copyWith(
-          pendingOrdersState: BaseSuccess<OrderResponse>(data: result.data),
-          orderResponse: result.data,
-        ),
-      );
-    } else if (result is ApiError<OrderResponse>) {
-      emit(
-        state.copyWith(
-          pendingOrdersState: BaseError<OrderResponse>(
-            errorMessage: result.failure?.errorMessage ?? 'Unknown error',
-          ),
-        ),
-      );
-    }
-  }
+  //   if (result is ApiSuccess<OrderResponse>) {
+  //     emit(
+  //       state.copyWith(
+  //         pendingOrdersState: BaseSuccess<OrderResponse>(data: result.data),
+  //         orderResponse: result.data,
+  //       ),
+  //     );
+  //   } else if (result is ApiError<OrderResponse>) {
+  //     emit(
+  //       state.copyWith(
+  //         pendingOrdersState: BaseError<OrderResponse>(
+  //           errorMessage: result.failure?.errorMessage ?? 'Unknown error',
+  //         ),
+  //       ),
+  //     );
+  //   }
+  // }
 
   Future<bool> acceptOrder(String id) async {
-    emit(state.copyWith(
-      acceptOrderState: BaseLoading<OrderResponse>(),
-      acceptingOrderId: id,
-    ));
-    
+    emit(
+      state.copyWith(
+        acceptOrderState: BaseLoading<OrderResponse>(),
+        acceptingOrderId: id,
+      ),
+    );
+
     final result = await startOrderUseCase.invoke(id);
-    
+
     if (result is ApiSuccess<OrderResponse>) {
       // Find the accepted order
-      final acceptedOrder = state.orderResponse?.orders?.firstWhere((order) => order.id == id);
-      
+      final acceptedOrder = state.orderResponse?.orders?.firstWhere(
+        (order) => order.id == id,
+      );
+
       if (acceptedOrder != null) {
         // Save to Firebase
         final firebaseOrder = OrdersFirebaseModel(
           order: acceptedOrder,
-          driver:Driver(
-          country: "Egypt",
-          firstName: "Ranim",
-          lastName: "afify",
-          vehicleType: "Car",
-          vehicleNumber: "ABC123",
-          vehicleLicense: "123456789",
-          nid: "29805251234567",
-          nidImg: "https://example.com/nid.png",
-          email: "ranim@example.com",
-          gender: "Female",
-          phone: "+201234567890",
-          photo: "https://example.com/photo.jpg",
-          role: "driver",
-          id: "driver123",
-          createdAt: DateTime.now(),
+          driver: Driver(
+            country: "Egypt",
+            firstName: "Ranim",
+            lastName: "afify",
+            vehicleType: "Car",
+            vehicleNumber: "ABC123",
+            vehicleLicense: "123456789",
+            nid: "29805251234567",
+            nidImg: "https://example.com/nid.png",
+            email: "ranim@example.com",
+            gender: "Female",
+            phone: "+201234567890",
+            photo: "https://example.com/photo.jpg",
+            role: "driver",
+            id: "driver123",
+            createdAt: DateTime.now(),
           ),
         );
-        
-        final firebaseResult = await saveOrderToFirebaseUseCase.invoke(firebaseOrder);
-        
+
+        final firebaseResult = await saveOrderToFirebaseUseCase.invoke(
+          firebaseOrder,
+        );
+
         if (firebaseResult is ApiError) {
           emit(
             state.copyWith(
               acceptOrderState: BaseError<OrderResponse>(
-                errorMessage: 'Order accepted but failed to save to Firebase: ${firebaseResult.message ?? firebaseResult.failure?.errorMessage ?? "Unknown error"}',
+                errorMessage:
+                    'Order accepted but failed to save to Firebase: ${firebaseResult.message ?? firebaseResult.failure?.errorMessage ?? "Unknown error"}',
               ),
               acceptingOrderId: null,
             ),
@@ -94,12 +101,16 @@ class OrdersCubit extends Cubit<OrdersState> {
           return false;
         }
       }
-      
+
       // Update only the specific order in the list
       if (state.orderResponse != null) {
-        final updatedOrders = state.orderResponse!.orders?.where((order) => order.id != id).toList() ?? [];
+        final updatedOrders =
+            state.orderResponse!.orders
+                ?.where((order) => order.id != id)
+                .toList() ??
+            [];
         final updatedResponse = OrderResponse(orders: updatedOrders);
-        
+
         emit(
           state.copyWith(
             acceptOrderState: BaseSuccess<OrderResponse>(data: result.data),
@@ -125,14 +136,14 @@ class OrdersCubit extends Cubit<OrdersState> {
 
   void rejectOrder(String id) {
     if (state.orderResponse != null) {
-      final updatedOrders = state.orderResponse!.orders?.where((order) => order.id != id).toList() ?? [];
+      final updatedOrders =
+          state.orderResponse!.orders
+              ?.where((order) => order.id != id)
+              .toList() ??
+          [];
       final updatedResponse = OrderResponse(orders: updatedOrders);
-      
-      emit(
-        state.copyWith(
-          orderResponse: updatedResponse,
-        ),
-      );
+
+      emit(state.copyWith(orderResponse: updatedResponse));
     }
   }
 }
