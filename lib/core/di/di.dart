@@ -16,12 +16,12 @@ final getIt = GetIt.instance;
 Future<void> configureDependencies() async {
   getIt.init();
 
-void setup(){
-  // Register FirebaseFirestore instance
-  getIt.registerSingleton<FirebaseFirestore>(FirebaseFirestore.instance);
-}
-  
+  void setup() {
+    // Register FirebaseFirestore instance
+    getIt.registerSingleton<FirebaseFirestore>(FirebaseFirestore.instance);
+  }
+
   // Register Firebase-related dependencies
-  getIt.registerLazySingleton<OrdersRepo>(() => OrdersRepoImpl(getIt()));
-  getIt.registerLazySingleton(() => SaveOrderToFirebaseUseCase(getIt()));
+  // getIt.registerLazySingleton<OrdersRepo>(() => OrdersRepoImpl(getIt()));
+  // getIt.registerLazySingleton(() => SaveOrderToFirebaseUseCase(getIt()));
 }

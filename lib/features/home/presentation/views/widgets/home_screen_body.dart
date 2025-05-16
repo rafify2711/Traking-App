@@ -5,6 +5,8 @@ import 'package:tracking_app/core/di/di.dart';
 import 'package:tracking_app/features/home/domain/use_case/get_all_pending_orders_use_case.dart';
 import 'package:tracking_app/features/home/domain/use_case/start_order_use_case.dart';
 import 'package:tracking_app/features/home/presentation/view%20model/orders_cubit.dart';
+import 'package:tracking_app/features/home/presentation/view%20model/pending_orders_cubit/get_all_pending_orders_cubit.dart';
+import 'package:tracking_app/features/home/presentation/view%20model/pending_orders_cubit/get_all_pending_orders_state.dart';
 import 'package:tracking_app/features/home/presentation/views/widgets/flower_order_card.dart';
 import 'package:tracking_app/features/orders/domain/use_case/save_order_to_firebase_use_case.dart';
 
@@ -18,19 +20,26 @@ class HomeScreenBody extends StatefulWidget {
 class _HomeScreenBodyState extends State<HomeScreenBody> {
   final ScrollController _scrollController = ScrollController();
   late OrdersCubit _ordersCubit;
+  late GetAllPendingOrdersCubit _getAllPendingOrdersCubit;
 
   @override
   void initState() {
     super.initState();
     _ordersCubit = OrdersCubit(
-      getIt.get<GetAllPendingOrdersUseCase>() ,getIt.get<StartOrderUseCase>(),getIt.get<SaveOrderToFirebaseUseCase>(),
+      getIt.get<GetAllPendingOrdersUseCase>(),
+      getIt.get<StartOrderUseCase>(),
+      getIt.get<SaveOrderToFirebaseUseCase>(),
     );
-    _ordersCubit.getAllPendingOrders();
+    _getAllPendingOrdersCubit = GetAllPendingOrdersCubit(
+      getIt.get<GetAllPendingOrdersUseCase>(),
+    );
+
+    _getAllPendingOrdersCubit.getAllPendingOrders();
 
     _scrollController.addListener(() {
       if (_scrollController.position.pixels >=
           _scrollController.position.maxScrollExtent - 100) {
-        _ordersCubit.loadNextPage();
+        _getAllPendingOrdersCubit.loadNextPage();
       }
     });
   }
@@ -42,9 +51,13 @@ class _HomeScreenBodyState extends State<HomeScreenBody> {
   }
 
   @override
+  @override
   Widget build(BuildContext context) {
-    return BlocProvider.value(
-      value: _ordersCubit,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider.value(value: _ordersCubit),
+        BlocProvider.value(value: _getAllPendingOrdersCubit),
+      ],
       child: BlocBuilder<GetAllPendingOrdersCubit, GetAllPendingOrdersState>(
         builder: (context, state) {
           final status = state.pendingOrdersState;
