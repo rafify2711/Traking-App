@@ -6,8 +6,16 @@ import 'order_item_response.dart';
 
 
 
+<<<<<<< HEAD:lib/features/home/data/models/order_response.dart
 
 class Order {
+=======
+part 'order_details.g.dart';
+
+@JsonSerializable()
+class OrderDetails {
+  @JsonKey(name: '_id')
+>>>>>>> origin/feature/order-details-body:lib/features/home/data/models/order_details.dart
   final String? id;
   final User? user;
   final List<OrderItem>? orderItems;
@@ -22,7 +30,7 @@ class Order {
   final Store? store;
   final ShippingAddress? shippingAddress;
 
-  Order({
+  OrderDetails({
     this.id,
     this.user,
     this.orderItems,
@@ -38,6 +46,7 @@ class Order {
     this.shippingAddress,
   });
 
+<<<<<<< HEAD:lib/features/home/data/models/order_response.dart
   factory Order.fromJson(Map<String, dynamic> json) {
     final dynamic rawUser = json['user'];
 
@@ -83,6 +92,10 @@ class Order {
       'shippingAddress': shippingAddress?.toJson(),
     };
   }
+=======
+  factory OrderDetails.fromJson(Map<String, dynamic> json) => _$OrderDetailsFromJson(json);
+  Map<String, dynamic> toJson() => _$OrderDetailsToJson(this);
+>>>>>>> origin/feature/order-details-body:lib/features/home/data/models/order_details.dart
 }
 
 

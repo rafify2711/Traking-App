@@ -39,7 +39,7 @@ void main() async {
       (rememberMe == 'true' && token != null && token.isNotEmpty)
           ? RoutesName.layOut
           : RoutesName.onBoarding;
-
+setup();
   runApp(
     EasyLocalization(
       supportedLocales: const [Locale('en'), Locale('ar')],

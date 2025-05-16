@@ -1,10 +1,10 @@
 import '../../../auth/apply/data/models/get_all_vehicles_response/metadata.dart';
-import 'order_response.dart';
+import 'order_details.dart';
 
 class OrderResponse {
   final String? message;
   final Metadata? metadata;
-  final List<Order>? orders;
+  final List<OrderDetails>? orders;
   final Order? order;
 
   OrderResponse({
