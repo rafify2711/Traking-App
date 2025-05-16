@@ -43,17 +43,17 @@ class MockHomeScreenRepo extends _i1.Mock implements _i3.HomeScreenRepo {
   }
 
   @override
-  _i4.Future<_i5.ApiResult<_i6.OrderResponse>> getAllPendingOrders(int? page) =>
+  _i4.Future<_i5.ApiResult<_i6.PendingOrderResponse>> getAllPendingOrders(int? page) =>
       (super.noSuchMethod(
             Invocation.method(#getAllPendingOrders, [page]),
-            returnValue: _i4.Future<_i5.ApiResult<_i6.OrderResponse>>.value(
-              _i7.dummyValue<_i5.ApiResult<_i6.OrderResponse>>(
+            returnValue: _i4.Future<_i5.ApiResult<_i6.PendingOrderResponse>>.value(
+              _i7.dummyValue<_i5.ApiResult<_i6.PendingOrderResponse>>(
                 this,
                 Invocation.method(#getAllPendingOrders, [page]),
               ),
             ),
           )
-          as _i4.Future<_i5.ApiResult<_i6.OrderResponse>>);
+          as _i4.Future<_i5.ApiResult<_i6.PendingOrderResponse>>);
 
   @override
   _i4.Future<_i2.OrderDetails> getOrderDetailsFromFireBase() =>
@@ -67,4 +67,17 @@ class MockHomeScreenRepo extends _i1.Mock implements _i3.HomeScreenRepo {
             ),
           )
           as _i4.Future<_i2.OrderDetails>);
+
+  @override
+  _i4.Future<_i5.ApiResult<_i6.PendingOrderResponse>> startOrder(String? id) =>
+      (super.noSuchMethod(
+            Invocation.method(#startOrder, [id]),
+            returnValue: _i4.Future<_i5.ApiResult<_i6.PendingOrderResponse>>.value(
+              _i7.dummyValue<_i5.ApiResult<_i6.PendingOrderResponse>>(
+                this,
+                Invocation.method(#startOrder, [id]),
+              ),
+            ),
+          )
+          as _i4.Future<_i5.ApiResult<_i6.PendingOrderResponse>>);
 }

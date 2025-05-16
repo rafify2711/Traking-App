@@ -9,11 +9,11 @@ class OrderDetailsFirebaseState extends Equatable {
   });
 
   final BaseState? orderState;
-  final OrderDetails? order;
+  final OrderResponse? order;
 
   OrderDetailsFirebaseState copyWith({
     BaseState? orderState,
-    OrderDetails? order,
+    OrderResponse? order,
 
     // String? errorMessage,
   }) {

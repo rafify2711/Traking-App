@@ -8,7 +8,7 @@ part of 'orders_firebase_model.dart';
 
 OrdersFirebaseModel _$OrdersFirebaseModelFromJson(Map<String, dynamic> json) =>
     OrdersFirebaseModel(
-      order: Order.fromJson(json['order'] as Map<String, dynamic>),
+      order: OrderResponse.fromJson(json['order'] as Map<String, dynamic>),
       driver: Driver.fromJson(json['driver'] as Map<String, dynamic>),
     );
 

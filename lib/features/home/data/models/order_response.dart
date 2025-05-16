@@ -1,21 +1,12 @@
-import 'package:tracking_app/features/home/data/models/shipping_address_model.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:tracking_app/features/home/data/models/store_response.dart';
 import 'package:tracking_app/features/home/data/models/user_response.dart';
 import 'order_item_response.dart';
 
+part "order_response.g.dart";
 
 
-
-<<<<<<< HEAD:lib/features/home/data/models/order_response.dart
-
-class Order {
-=======
-part 'order_details.g.dart';
-
-@JsonSerializable()
-class OrderDetails {
-  @JsonKey(name: '_id')
->>>>>>> origin/feature/order-details-body:lib/features/home/data/models/order_details.dart
+class OrderResponse {
   final String? id;
   final User? user;
   final List<OrderItem>? orderItems;
@@ -30,7 +21,7 @@ class OrderDetails {
   final Store? store;
   final ShippingAddress? shippingAddress;
 
-  OrderDetails({
+  OrderResponse({
     this.id,
     this.user,
     this.orderItems,
@@ -46,11 +37,10 @@ class OrderDetails {
     this.shippingAddress,
   });
 
-<<<<<<< HEAD:lib/features/home/data/models/order_response.dart
-  factory Order.fromJson(Map<String, dynamic> json) {
+  factory OrderResponse.fromJson(Map<String, dynamic> json) {
     final dynamic rawUser = json['user'];
 
-    return Order(
+    return OrderResponse(
       id: json['_id'] as String?,
       user: rawUser is Map<String, dynamic>
           ? User.fromJson(rawUser)
@@ -92,10 +82,18 @@ class OrderDetails {
       'shippingAddress': shippingAddress?.toJson(),
     };
   }
-=======
-  factory OrderDetails.fromJson(Map<String, dynamic> json) => _$OrderDetailsFromJson(json);
-  Map<String, dynamic> toJson() => _$OrderDetailsToJson(this);
->>>>>>> origin/feature/order-details-body:lib/features/home/data/models/order_details.dart
 }
 
 
+@JsonSerializable()
+class ShippingAddress{
+  final String? street;
+  final String? city;
+  final String? phone;
+  final String? lat;
+  final String? long;
+  ShippingAddress({this.street, this.city, this.phone, this.lat, this.long});
+
+  factory ShippingAddress.fromJson(Map<String, dynamic> json) => _$ShippingAddressFromJson(json);
+  Map<String, dynamic> toJson() => _$ShippingAddressToJson(this);
+}

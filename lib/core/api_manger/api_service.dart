@@ -45,8 +45,8 @@ abstract class ApiService {
       @Header('Authorization') String token
       );
   @GET(Constants.getAllPendingOrdersEndPoint)
-  Future<OrderResponse> getAllPendingOrders(@Query("page") int page);
+  Future<PendingOrderResponse> getAllPendingOrders(@Query("page") int page);
 
   @PUT((Constants.startOrderEndPoint))
-  Future<OrderResponse> startOrder(@Path() String id);
+  Future<PendingOrderResponse> startOrder(@Path() String id);
 }

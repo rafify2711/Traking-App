@@ -228,12 +228,12 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<OrderResponse> getAllPendingOrders(int page) async {
+  Future<PendingOrderResponse> getAllPendingOrders(int page) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'page': page};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<OrderResponse>(
+    final _options = _setStreamType<PendingOrderResponse>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -244,9 +244,9 @@ class _ApiService implements ApiService {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late OrderResponse _value;
+    late PendingOrderResponse _value;
     try {
-      _value = OrderResponse.fromJson(_result.data!);
+      _value = PendingOrderResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -255,12 +255,12 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<OrderResponse> startOrder(String id) async {
+  Future<PendingOrderResponse> startOrder(String id) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<OrderResponse>(
+    final _options = _setStreamType<PendingOrderResponse>(
       Options(method: 'PUT', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -271,9 +271,9 @@ class _ApiService implements ApiService {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late OrderResponse _value;
+    late PendingOrderResponse _value;
     try {
-      _value = OrderResponse.fromJson(_result.data!);
+      _value = PendingOrderResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

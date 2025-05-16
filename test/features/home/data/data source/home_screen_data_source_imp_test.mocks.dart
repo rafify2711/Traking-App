@@ -84,7 +84,7 @@ class _FakeGetAllVehiclesResponse_5 extends _i1.SmartFake
     : super(parent, parentInvocation);
 }
 
-class _FakeOrderResponse_6 extends _i1.SmartFake implements _i8.OrderResponse {
+class _FakeOrderResponse_6 extends _i1.SmartFake implements _i8.PendingOrderResponse {
   _FakeOrderResponse_6(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
@@ -268,17 +268,27 @@ class MockApiService extends _i1.Mock implements _i13.ApiService {
           as _i12.Future<String>);
 
   @override
-  _i12.Future<_i8.OrderResponse> getAllPendingOrders(int? page) =>
+  _i12.Future<_i8.PendingOrderResponse> getAllPendingOrders(int? page) =>
       (super.noSuchMethod(
             Invocation.method(#getAllPendingOrders, [page]),
-            returnValue: _i12.Future<_i8.OrderResponse>.value(
+            returnValue: _i12.Future<_i8.PendingOrderResponse>.value(
               _FakeOrderResponse_6(
                 this,
                 Invocation.method(#getAllPendingOrders, [page]),
               ),
             ),
           )
-          as _i12.Future<_i8.OrderResponse>);
+          as _i12.Future<_i8.PendingOrderResponse>);
+
+  @override
+  _i12.Future<_i8.PendingOrderResponse> startOrder(String? id) =>
+      (super.noSuchMethod(
+            Invocation.method(#startOrder, [id]),
+            returnValue: _i12.Future<_i8.PendingOrderResponse>.value(
+              _FakeOrderResponse_6(this, Invocation.method(#startOrder, [id])),
+            ),
+          )
+          as _i12.Future<_i8.PendingOrderResponse>);
 }
 
 /// A class which mocks [FirebaseFirestore].

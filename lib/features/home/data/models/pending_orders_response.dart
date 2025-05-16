@@ -1,32 +1,34 @@
-import '../../../auth/apply/data/models/get_all_vehicles_response/metadata.dart';
-import 'order_details.dart';
+import 'package:tracking_app/features/home/data/models/order_response.dart';
 
-class OrderResponse {
+import '../../../auth/apply/data/models/get_all_vehicles_response/metadata.dart';
+
+
+class PendingOrderResponse {
   final String? message;
   final Metadata? metadata;
-  final List<OrderDetails>? orders;
-  final Order? order;
+  final List<OrderResponse>? orders;
+  final OrderResponse? order;
 
-  OrderResponse({
+  PendingOrderResponse({
     this.message,
     this.metadata,
     this.orders,
     this.order,
   });
 
-  factory OrderResponse.fromJson(Map<String, dynamic> json) {
+  factory PendingOrderResponse.fromJson(Map<String, dynamic> json) {
     final rawOrders = json['orders'];
 
-    List<Order>? ordersList;
-    Order? singleOrder;
+    List<OrderResponse>? ordersList;
+    OrderResponse? singleOrder;
 
     if (rawOrders is List) {
-      ordersList = rawOrders.map((e) => Order.fromJson(e)).toList();
+      ordersList = rawOrders.map((e) => OrderResponse.fromJson(e)).toList();
     } else if (rawOrders is Map<String, dynamic>) {
-      singleOrder = Order.fromJson(rawOrders);
+      singleOrder = OrderResponse.fromJson(rawOrders);
     }
 
-    return OrderResponse(
+    return PendingOrderResponse(
       message: json['message'] as String?,
       metadata: json['metadata'] != null
           ? Metadata.fromJson(json['metadata'])

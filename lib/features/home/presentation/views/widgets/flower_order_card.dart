@@ -6,7 +6,8 @@ import 'package:tracking_app/core/config/routes_name.dart';
 import 'package:tracking_app/core/utils/app_text_styles.dart';
 import 'package:tracking_app/core/utils/colors.dart';
 import 'package:tracking_app/core/utils/services/get_responsive_height_and_width.dart';
-import 'package:tracking_app/features/home/data/models/order_details.dart';
+
+import 'package:tracking_app/features/home/data/models/order_response.dart';
 import 'package:tracking_app/features/home/presentation/views/order_details_view.dart';
 import 'package:tracking_app/features/home/data/models/pending_orders_response.dart';
 import 'package:tracking_app/features/home/presentation/view model/orders_cubit.dart';
@@ -17,7 +18,7 @@ import 'package:tracking_app/core/utils/helper_func/snack_bar.dart';
 
 
 class FlowerOrderCard extends StatelessWidget {
-  final OrderDetails order;
+  final OrderResponse order;
   const FlowerOrderCard({super.key, required this.order});
 
   @override
@@ -26,7 +27,7 @@ class FlowerOrderCard extends StatelessWidget {
       builder: (context, state) {
         final acceptState = state.acceptOrderState;
         final isAccepting = state.acceptingOrderId == order.id;
-        final acceptError = acceptState is BaseError<OrderResponse> && state.acceptingOrderId == order.id
+        final acceptError = acceptState is BaseError<PendingOrderResponse> && state.acceptingOrderId == order.id
             ? acceptState.errorMessage 
             : null;
 

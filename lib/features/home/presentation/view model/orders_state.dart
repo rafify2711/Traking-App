@@ -3,7 +3,7 @@ part of 'orders_cubit.dart';
 class OrdersState extends Equatable {
   final BaseState? pendingOrdersState;
   final BaseState? acceptOrderState;
-  final OrderResponse? orderResponse;
+  final PendingOrderResponse? orderResponse;
   final String? acceptingOrderId;
 
   const OrdersState({
@@ -16,7 +16,7 @@ class OrdersState extends Equatable {
   OrdersState copyWith({
     BaseState? pendingOrdersState,
     BaseState? acceptOrderState,
-    OrderResponse? orderResponse,
+    PendingOrderResponse? orderResponse,
     String? acceptingOrderId,
   }) {
     return OrdersState(

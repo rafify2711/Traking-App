@@ -25,6 +25,6 @@ Future<void> configureDependencies() async {
   // getIt.registerLazySingleton<OrdersRepo>(() => OrdersRepoImpl(getIt()));
   // getIt.registerLazySingleton(() => SaveOrderToFirebaseUseCase(getIt()));
 }
-void configureDependencies() => getIt.init();
+
 
 

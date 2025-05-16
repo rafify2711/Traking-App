@@ -8,14 +8,15 @@ import 'package:tracking_app/core/di/di.dart';
 import 'package:tracking_app/core/utils/app_text_styles.dart';
 import 'package:tracking_app/core/utils/colors.dart';
 import 'package:tracking_app/core/utils/services/get_responsive_height_and_width.dart';
-import 'package:tracking_app/features/home/data/models/order_details.dart';
+
+import 'package:tracking_app/features/home/data/models/order_response.dart';
 import 'package:tracking_app/features/home/domain/use_case/get_orderdetails_from_firebase.dart';
 import 'package:tracking_app/features/home/presentation/view%20model/order_details_firebase_cubit/order_details_firebase_cubit.dart';
 import 'package:tracking_app/features/home/presentation/views/widgets/custom_card_widget.dart';
 import 'package:tracking_app/generated/locale_keys.g.dart';
 
 class OrderDetailsView extends StatefulWidget {
-  final OrderDetails? order;
+  final OrderResponse? order;
 
   const OrderDetailsView({super.key, this.order});
 

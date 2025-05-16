@@ -8,7 +8,7 @@ class StartOrderUseCase {
   HomeScreenRepo homeScreenRepo;
   StartOrderUseCase(this.homeScreenRepo);
 
-  Future<ApiResult<OrderResponse>> invoke(String id) async {
+  Future<ApiResult<PendingOrderResponse>> invoke(String id) async {
     return await homeScreenRepo.startOrder(id);
   }
 }

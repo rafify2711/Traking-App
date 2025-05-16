@@ -4,7 +4,8 @@ import 'package:mockito/mockito.dart';
 import 'package:tracking_app/core/base/api_result.dart';
 import 'package:tracking_app/core/utils/Errors/error_handler.dart';
 import 'package:tracking_app/features/home/data/data%20source/home_screen_data_source.dart';
-import 'package:tracking_app/features/home/data/models/order_details.dart';
+import 'package:tracking_app/features/home/data/models/order_response.dart';
+
 import 'package:tracking_app/features/home/data/models/pending_orders_response.dart';
 import 'package:tracking_app/features/home/data/repo/home_screen_repo_imp.dart';
 import 'package:tracking_app/features/home/domain/repo/home_screen_repo.dart';
@@ -28,9 +29,9 @@ void main() {
       'should return ApiSuccess<OrderResponse> when getAllPendingOrders succeeds',
           () async {
         // arrange
-        final response = OrderResponse(); // You can provide mock data here
-        final expected = ApiSuccess<OrderResponse>(data: response);
-        provideDummy<ApiResult<OrderResponse>>(expected);
+        final response = PendingOrderResponse(); // You can provide mock data here
+        final expected = ApiSuccess<PendingOrderResponse>(data: response);
+        provideDummy<ApiResult<PendingOrderResponse>>(expected);
 
         when(
           mockDataSource.getAllPendingOrders(page),
@@ -49,11 +50,11 @@ void main() {
       'should return ApiError<OrderResponse> when getAllPendingOrders fails',
           () async {
         // arrange
-        final expected = ApiError<OrderResponse>(
+        final expected = ApiError<PendingOrderResponse>(
           message: 'Network error',
           failure: ServerFailure(errorMessage: 'Network error'),
         );
-        provideDummy<ApiResult<OrderResponse>>(expected);
+        provideDummy<ApiResult<PendingOrderResponse>>(expected);
 
         when(
           mockDataSource.getAllPendingOrders(page),
@@ -71,8 +72,8 @@ void main() {
       'should return OrderDetails when getOrderDetailsFromFireBase succeeds',
           () async {
         // arrange
-        final response = OrderDetails(); // You can provide mock data here
-        final expected=OrderDetails.fromJson(   {
+        final response = OrderResponse(); // You can provide mock data here
+        final expected=OrderResponse.fromJson(   {
           "_id": "678ab51c3ca006b9c3b0eeb4",
           "driver": "678a59fa3c3797492747c8d4",
           "order": {
@@ -115,7 +116,7 @@ void main() {
             "latLong": "37.7749,-122.4194"
           }
         });
-        provideDummy<OrderDetails>(expected);
+        provideDummy<OrderResponse>(expected);
 
         when(
           mockDataSource.getOrderDetailsFireBase(),

@@ -56,6 +56,7 @@ import '../../features/home/domain/use_case/get_all_pending_orders_use_case.dart
     as _i968;
 import '../../features/home/domain/use_case/get_orderdetails_from_firebase.dart'
     as _i136;
+import '../../features/home/domain/use_case/start_order_use_case.dart' as _i587;
 import '../../features/order_status/data/data_source/OrderStatusRemoteDataSource.dart'
     as _i404;
 import '../../features/order_status/data/data_source/OrderStatusRemoteDataSourceImpl.dart'
@@ -161,6 +162,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i136.GetOrderdetailsFromFirebase>(
       () => _i136.GetOrderdetailsFromFirebase(gh<_i202.HomeScreenRepo>()),
+    );
+    gh.factory<_i587.StartOrderUseCase>(
+      () => _i587.StartOrderUseCase(gh<_i202.HomeScreenRepo>()),
     );
     gh.factory<_i318.SenVerifyCodeUseCase>(
       () => _i318.SenVerifyCodeUseCase(repo: gh<_i484.ForgetPasswordRepo>()),

@@ -6,7 +6,8 @@ import 'package:tracking_app/core/api_manger/api_service.dart';
 import 'package:tracking_app/core/base/api_result.dart';
 import 'package:tracking_app/core/utils/Errors/error_handler.dart';
 import 'package:tracking_app/features/home/data/data%20source/home_screen_data_source_imp.dart';
-import 'package:tracking_app/features/home/data/models/order_details.dart';
+import 'package:tracking_app/features/home/data/models/order_response.dart';
+
 import 'package:tracking_app/features/home/data/models/pending_orders_response.dart';
 
 import 'home_screen_data_source_imp_test.mocks.dart';
@@ -33,7 +34,7 @@ void main() {
       'should return ApiSuccess<OrderResponse> when getAllPendingOrders succeeds',
           () async {
         // Arrange
-        final expectedResponse = OrderResponse();
+        final expectedResponse = PendingOrderResponse();
         when(
           apiService.getAllPendingOrders(page),
         ).thenAnswer((_) async => expectedResponse);
@@ -43,7 +44,7 @@ void main() {
 
         // Assert
         verify(apiService.getAllPendingOrders(page)).called(1);
-        expect(result, isA<ApiSuccess<OrderResponse>>());
+        expect(result, isA<ApiSuccess<PendingOrderResponse>>());
       },
     );
 
@@ -60,7 +61,7 @@ void main() {
 
         // Assert
         verify(apiService.getAllPendingOrders(page)).called(1);
-        expect(result, isA<ApiError<OrderResponse>>());
+        expect(result, isA<ApiError<PendingOrderResponse>>());
       },
     );
   });
@@ -126,7 +127,7 @@ void main() {
             final result = await dataSource.getOrderDetailsFireBase();
 
             // Assert
-            expect(result, isA<OrderDetails>());
+            expect(result, isA<OrderResponse>());
         //     // Arrange
         //     final doc = await firestore.collection('orders')  .doc("681bd6741433a666c8da31c7").get();
         //

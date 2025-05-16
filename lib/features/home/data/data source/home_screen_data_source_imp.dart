@@ -4,8 +4,9 @@ import 'package:tracking_app/core/api_manger/api_service.dart';
 import 'package:tracking_app/core/base/api_excuter.dart';
 import 'package:tracking_app/core/base/api_result.dart';
 import 'package:tracking_app/features/home/data/data%20source/home_screen_data_source.dart';
-import 'package:tracking_app/features/home/data/models/order_details.dart';
+
 import 'package:tracking_app/features/home/data/models/pending_orders_response.dart';
+import 'package:tracking_app/features/orders/data/model/orders_firebase_model.dart';
 
 @Injectable(as: HomeScreenDataSource)
 class HomeScreenDataSourceImp extends HomeScreenDataSource {
@@ -15,8 +16,8 @@ class HomeScreenDataSourceImp extends HomeScreenDataSource {
   HomeScreenDataSourceImp(this.apiService,this.firestore);
 
   @override
-  Future<ApiResult<OrderResponse>> getAllPendingOrders(int page) async {
-    return await apiExecuter<OrderResponse>(() async {
+  Future<ApiResult<PendingOrderResponse>> getAllPendingOrders(int page) async {
+    return await apiExecuter<PendingOrderResponse>(() async {
       var response = await apiService.getAllPendingOrders(page);
       return response;
     }, 'HomeScreenDataSourceImp');
@@ -25,11 +26,11 @@ class HomeScreenDataSourceImp extends HomeScreenDataSource {
 
 
   @override
-  Future<OrderDetails> getOrderDetailsFireBase()async {
+  Future<OrdersFirebaseModel> getOrderDetailsFireBase()async {
     final doc = await firestore.collection('orders')  .doc("681bd6741433a666c8da31c7").get();
     if (doc.exists) {
-      final data = doc.data()?['order'];
-      var result= OrderDetails.fromJson(data!);
+      final data = doc.data();
+      var result= OrdersFirebaseModel.fromJson(data!);
       return  result;
     } else {
       throw Exception('Order not found');
@@ -37,8 +38,8 @@ class HomeScreenDataSourceImp extends HomeScreenDataSource {
 
 }
   @override
-  Future<ApiResult<OrderResponse>> startOrder(String id) async {
-    return await apiExecuter<OrderResponse>(() async {
+  Future<ApiResult<PendingOrderResponse>> startOrder(String id) async {
+    return await apiExecuter<PendingOrderResponse>(() async {
       var response = await apiService.startOrder(id);
       return response;
     }, 'HomeScreenDataSourceImp');

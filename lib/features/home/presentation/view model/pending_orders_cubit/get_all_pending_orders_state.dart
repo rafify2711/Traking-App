@@ -1,10 +1,12 @@
 import 'package:equatable/equatable.dart';
 import 'package:tracking_app/core/base/base_state.dart';
+
 import 'package:tracking_app/features/home/data/models/order_response.dart';
+
 
 class GetAllPendingOrdersState extends Equatable {
   final BaseState? pendingOrdersState;
-  final List<OrderDetails> allOrders;
+  final List<OrderResponse> allOrders;
   final int currentPage;
   final int totalPages;
 
@@ -17,7 +19,7 @@ class GetAllPendingOrdersState extends Equatable {
 
   GetAllPendingOrdersState copyWith({
     BaseState? pendingOrdersState,
-    List<OrderDetails>? allOrders,
+    List<OrderResponse>? allOrders,
     int? currentPage,
     int? totalPages,
   }) {

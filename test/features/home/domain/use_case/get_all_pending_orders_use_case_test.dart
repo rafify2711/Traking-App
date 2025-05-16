@@ -26,10 +26,10 @@ void main() {
       'should return ApiSuccess<OrderResponse> when repo returns success',
       () async {
         // Arrange
-        final response = OrderResponse(); // Mock data can be added here
-        final expected = ApiSuccess<OrderResponse>(data: response);
+        final response = PendingOrderResponse(); // Mock data can be added here
+        final expected = ApiSuccess<PendingOrderResponse>(data: response);
 
-        provideDummy<ApiResult<OrderResponse>>(expected);
+        provideDummy<ApiResult<PendingOrderResponse>>(expected);
         when(repo.getAllPendingOrders(page)).thenAnswer((_) async => expected);
 
         // Act
@@ -37,7 +37,7 @@ void main() {
 
         // Assert
         verify(repo.getAllPendingOrders(page)).called(1);
-        expect(actual, isA<ApiSuccess<OrderResponse>>());
+        expect(actual, isA<ApiSuccess<PendingOrderResponse>>());
       },
     );
 
@@ -45,12 +45,12 @@ void main() {
       'should return ApiError<OrderResponse> when repo returns error',
       () async {
         // Arrange
-        final expected = ApiError<OrderResponse>(
+        final expected = ApiError<PendingOrderResponse>(
           message: 'Failed to fetch orders',
           failure: ServerFailure(errorMessage: 'Failed to fetch orders'),
         );
 
-        provideDummy<ApiResult<OrderResponse>>(expected);
+        provideDummy<ApiResult<PendingOrderResponse>>(expected);
         when(repo.getAllPendingOrders(page)).thenAnswer((_) async => expected);
 
         // Act
@@ -58,7 +58,7 @@ void main() {
 
         // Assert
         verify(repo.getAllPendingOrders(page)).called(1);
-        expect(actual, isA<ApiError<OrderResponse>>());
+        expect(actual, isA<ApiError<PendingOrderResponse>>());
       },
     );
   });

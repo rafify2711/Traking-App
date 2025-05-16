@@ -48,14 +48,14 @@ class OrdersCubit extends Cubit<OrdersState> {
   Future<bool> acceptOrder(String id) async {
     emit(
       state.copyWith(
-        acceptOrderState: BaseLoading<OrderResponse>(),
+        acceptOrderState: BaseLoading<PendingOrderResponse>(),
         acceptingOrderId: id,
       ),
     );
 
     final result = await startOrderUseCase.invoke(id);
 
-    if (result is ApiSuccess<OrderResponse>) {
+    if (result is ApiSuccess<PendingOrderResponse>) {
       // Find the accepted order
       final acceptedOrder = state.orderResponse?.orders?.firstWhere(
         (order) => order.id == id,
@@ -91,7 +91,7 @@ class OrdersCubit extends Cubit<OrdersState> {
         if (firebaseResult is ApiError) {
           emit(
             state.copyWith(
-              acceptOrderState: BaseError<OrderResponse>(
+              acceptOrderState: BaseError<PendingOrderResponse>(
                 errorMessage:
                     'Order accepted but failed to save to Firebase: ${firebaseResult.message ?? firebaseResult.failure?.errorMessage ?? "Unknown error"}',
               ),
@@ -109,21 +109,21 @@ class OrdersCubit extends Cubit<OrdersState> {
                 ?.where((order) => order.id != id)
                 .toList() ??
             [];
-        final updatedResponse = OrderResponse(orders: updatedOrders);
+        final updatedResponse = PendingOrderResponse(orders: updatedOrders);
 
         emit(
           state.copyWith(
-            acceptOrderState: BaseSuccess<OrderResponse>(data: result.data),
+            acceptOrderState: BaseSuccess<PendingOrderResponse>(data: result.data),
             orderResponse: updatedResponse,
             acceptingOrderId: null,
           ),
         );
       }
       return true;
-    } else if (result is ApiError<OrderResponse>) {
+    } else if (result is ApiError<PendingOrderResponse>) {
       emit(
         state.copyWith(
-          acceptOrderState: BaseError<OrderResponse>(
+          acceptOrderState: BaseError<PendingOrderResponse>(
             errorMessage: result.failure?.errorMessage ?? 'Unknown error',
           ),
           acceptingOrderId: null,
@@ -141,7 +141,7 @@ class OrdersCubit extends Cubit<OrdersState> {
               ?.where((order) => order.id != id)
               .toList() ??
           [];
-      final updatedResponse = OrderResponse(orders: updatedOrders);
+      final updatedResponse = PendingOrderResponse(orders: updatedOrders);
 
       emit(state.copyWith(orderResponse: updatedResponse));
     }
