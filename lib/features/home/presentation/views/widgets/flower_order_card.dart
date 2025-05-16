@@ -8,6 +8,7 @@ import 'package:tracking_app/core/utils/colors.dart';
 import 'package:tracking_app/core/utils/services/get_responsive_height_and_width.dart';
 
 import 'package:tracking_app/features/home/data/models/order_response.dart';
+import 'package:tracking_app/features/home/presentation/views/order_details_screen.dart';
 import 'package:tracking_app/features/home/presentation/views/order_details_view.dart';
 import 'package:tracking_app/features/home/data/models/pending_orders_response.dart';
 import 'package:tracking_app/features/home/presentation/view model/orders_cubit.dart';
@@ -42,9 +43,7 @@ class FlowerOrderCard extends StatelessWidget {
           padding: const EdgeInsets.only(bottom: 24),
           child: InkWell(
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return OrderDetailsView(order: order,);
-          },));
+              Navigator.pushNamed(context, RoutesName.orderDetailsScreen, arguments: order);
             },
             child: Card(
               color: PalletsColors.whiteBase,
@@ -89,7 +88,7 @@ class FlowerOrderCard extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          order.totalPrice!.toString(),
+                          "EGP${order.totalPrice!}",
                           style: AppTextStyles.instance.textStyle14.copyWith(
                             fontWeight: FontWeight.w500,
                           ),

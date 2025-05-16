@@ -83,7 +83,7 @@ class RouteGenerator {
       //     builder: (context) => const OrderStatusScreen(),
       //     settings: settings,
       //   );
-      case RoutesName.orderDetailsView:
+      case RoutesName.orderDetailsScreen:
         return MaterialPageRoute(
           builder: (context) => const OrderDetailsScreen(),
           settings: settings,
