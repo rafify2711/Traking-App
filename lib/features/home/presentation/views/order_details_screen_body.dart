@@ -41,16 +41,7 @@ class _OrderDetailsScreenBodyState extends State<OrderDetailsScreenBody> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<OrderStatusViewModel, OrderStatusState>(
-      listener: (context, state) {
-        if (state is OrderStatusSuccess) {
-          showSnackBar(context, LocaleKeys.statusUpdatedSuccessfully.tr());
-        } else if (state is OrderStatusFailure) {
-          showSnackBar(context, state.error);
-          log(state.error);
-        }
-      },
-      child: SafeArea(
+    return SafeArea(
         child: Scaffold(
           backgroundColor: PalletsColors.whiteBase,
           appBar: AppBar(title: Text(LocaleKeys.orderdetails.tr())),
@@ -58,7 +49,15 @@ class _OrderDetailsScreenBodyState extends State<OrderDetailsScreenBody> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                BlocBuilder<OrderStatusViewModel, OrderStatusState>(
+                BlocConsumer<OrderStatusViewModel, OrderStatusState>(
+                  listener: (context, state) {
+        if (state is OrderStatusSuccess) {
+          showSnackBar(context, LocaleKeys.statusUpdatedSuccessfully.tr());
+        } else if (state is OrderStatusFailure) {
+          showSnackBar(context, state.error);
+          log(state.error);
+        }
+      },
                   builder: (context, state) {
                     return StepProgressIndicator(
                       totalSteps: 7,
@@ -310,7 +309,7 @@ class _OrderDetailsScreenBodyState extends State<OrderDetailsScreenBody> {
             ),
           ),
         ),
-      ),
+      
     );
   }
 }
