@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -24,7 +26,7 @@ class OrderDetailsScreenBody extends StatefulWidget {
 
 class _OrderDetailsScreenBodyState extends State<OrderDetailsScreenBody> {
   // Define a constant for the order ID
-  // static const String orderId = "681bd6741433a666c8da31c7";
+  static const String orderId = "681bd6741433a666c8da31c7";
 
   @override
   void initState() {
@@ -44,7 +46,8 @@ class _OrderDetailsScreenBodyState extends State<OrderDetailsScreenBody> {
         if (state is OrderStatusSuccess) {
           showSnackBar(context, LocaleKeys.statusUpdatedSuccessfully.tr());
         } else if (state is OrderStatusFailure) {
-          showSnackBar(context, LocaleKeys.statusUpdatedSuccessfully.tr());
+          showSnackBar(context, state.error);
+          log(state.error);
         }
       },
       child: SafeArea(
@@ -284,7 +287,8 @@ class _OrderDetailsScreenBodyState extends State<OrderDetailsScreenBody> {
                             isDelivered || isLoading
                                 ? null
                                 : () => viewModel.updateStatus(
-                                  widget.order.id ?? "",
+                                  orderId
+                                  // widget.order.id ?? "",
                                 ),
                         child:
                             isLoading
