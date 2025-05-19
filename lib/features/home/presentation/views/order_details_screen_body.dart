@@ -286,8 +286,8 @@ class _OrderDetailsScreenBodyState extends State<OrderDetailsScreenBody> {
                             isDelivered || isLoading
                                 ? null
                                 : () => viewModel.updateStatus(
-                                  orderId
-                                  // widget.order.id ?? "",
+                                  // orderId
+                                  widget.order.id ?? "",
                                 ),
                         child:
                             isLoading
