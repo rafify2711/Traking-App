@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:tracking_app/core/base/base_state.dart';
-import 'package:tracking_app/features/home/data/models/order_details.dart';
+import 'package:tracking_app/features/home/data/models/order_response.dart';
 import 'package:tracking_app/features/home/domain/use_case/get_orderdetails_from_firebase.dart';
 import 'package:tracking_app/features/home/presentation/view%20model/order_details_firebase_cubit/order_details_firebase_cubit.dart';
 
@@ -19,7 +19,7 @@ void main() {
   });
 
   group('OrderDetailsFirebaseCubit', () {
-    final order =OrderDetails.fromJson(   {
+    final order =OrderResponse.fromJson(   {
       "_id": "678ab51c3ca006b9c3b0eeb4",
       "driver": "678a59fa3c3797492747c8d4",
       "order": {
@@ -72,9 +72,9 @@ void main() {
       act: (cubit) => cubit.fetchOrderDetails(),
       expect: () => [
         isA<OrderDetailsFirebaseState>()
-            .having((s) => s.orderState, 'loading', isA<BaseLoading<OrderDetails>>()),
+            .having((s) => s.orderState, 'loading', isA<BaseLoading<OrderResponse>>()),
         isA<OrderDetailsFirebaseState>()
-            .having((s) => s.orderState, 'success', isA<BaseSuccess<OrderDetails>>())
+            .having((s) => s.orderState, 'success', isA<BaseSuccess<OrderResponse>>())
             .having((s) => (s.orderState as BaseSuccess).data, 'order', order),
       ],
       verify: (_) {
@@ -91,9 +91,9 @@ void main() {
       act: (cubit) => cubit.fetchOrderDetails(),
       expect: () => [
         isA<OrderDetailsFirebaseState>()
-            .having((s) => s.orderState, 'loading', isA<BaseLoading<OrderDetails>>()),
+            .having((s) => s.orderState, 'loading', isA<BaseLoading<OrderResponse>>()),
         isA<OrderDetailsFirebaseState>()
-            .having((s) => s.orderState, 'error', isA<BaseError<OrderDetails>>())
+            .having((s) => s.orderState, 'error', isA<BaseError<OrderResponse>>())
             .having((s) => (s.orderState as BaseError).errorMessage, 'error', contains('Firebase error')),
       ],
       verify: (_) {

@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:tracking_app/features/home/data/models/order_details.dart';
+import 'package:tracking_app/features/home/data/models/order_response.dart';
 import 'package:tracking_app/features/home/domain/repo/home_screen_repo.dart';
 import 'package:tracking_app/features/home/domain/use_case/get_orderdetails_from_firebase.dart';
 
@@ -23,7 +23,7 @@ void main() {
       'should return OrderDetails when repo returns successfully',
           () async {
         // arrange
-        final expected = OrderDetails.fromJson(   {
+        final expected =OrderResponse.fromJson(   {
           "_id": "678ab51c3ca006b9c3b0eeb4",
           "driver": "678a59fa3c3797492747c8d4",
           "order": {

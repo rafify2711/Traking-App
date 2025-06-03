@@ -18,14 +18,16 @@ class CodegenLoader extends AssetLoader {
     "local": "ar",
     "WelcomeToFloweryRiderApp": "مرحبًا بكم في تطبيق سائق فلويري",
     "forgetPassword": "نسيت كلمة المرور",
-    "pleaseEnterYourEmailAssociatedToYourAccount": "يرجى ادخال بريدك الإلكتروني المرتبط \nبهذا الحساب",
+    "pleaseEnterYourEmailAssociatedToYourAccount":
+        "يرجى ادخال بريدك الإلكتروني المرتبط \nبهذا الحساب",
     "email": "البريد الإلكتروني",
     "confirm": "تأكيد",
     "enterYourEmail": "أدخل بريدك الإلكتروني",
     "thisEmailIsNotValid": "هذا البريد الإلكتروني غير صالح",
     "password": "كلمة المرور",
     "emailVerification": "تحقق البريد الإلكتروني",
-    "pleaseEnterYourCode": "يرجى ادخال الكود الذي تم ارساله\n لبريدك الإلكتروني",
+    "pleaseEnterYourCode":
+        "يرجى ادخال الكود الذي تم ارساله\n لبريدك الإلكتروني",
     "didntReceiveTheCode": "لم تستلم الكود؟",
     "resend": "اعادة الارسال",
     "login": "تسجيل الدخول",
@@ -63,14 +65,18 @@ class CodegenLoader extends AssetLoader {
     "male": "ذكر",
     "validationRequiredField": "هذا الحقل مطلوب",
     "validationEmailEmpty": "أدخل عنوان البريد الإلكتروني الخاص بك",
-    "validationEmailInvalid": "البريد الإلكتروني غير صالح (مثال: example@example.com)",
+    "validationEmailInvalid":
+        "البريد الإلكتروني غير صالح (مثال: example@example.com)",
     "validationNumbersOnly": "يُسمح بإدخال أرقام فقط",
-    "validationPasswordInvalid": "يجب أن تحتوي كلمة المرور على 8 أحرف على الأقل، مع حرف كبير ورقم واحد على الأقل",
+    "validationPasswordInvalid":
+        "يجب أن تحتوي كلمة المرور على 8 أحرف على الأقل، مع حرف كبير ورقم واحد على الأقل",
     "validationPasswordMismatch": "كلمة المرور غير متطابقة",
     "validationVehicleNumberInvalid": "رقم المركبة غير صالح (مثال: ABC-123)",
-    "validationIdNumberInvalid": "رقم الهوية غير صالح، يجب أن يتكون من 14 رقمًا (مثال: 12345678901234)",
+    "validationIdNumberInvalid":
+        "رقم الهوية غير صالح، يجب أن يتكون من 14 رقمًا (مثال: 12345678901234)",
     "applicationSubmittedTitle": "تم تقديم طلبك!",
-    "applicationSubmittedBody": "شكرًا لتقديمك الطلب، سنقوم بمراجعته وسنعود إليك قريبًا.",
+    "applicationSubmittedBody":
+        "شكرًا لتقديمك الطلب، سنقوم بمراجعته وسنعود إليك قريبًا.",
     "home": "الصفحة الرئيسية",
     "profile": "الملف الشخصي",
     "orders": "الطلبات",
@@ -93,20 +99,25 @@ class CodegenLoader extends AssetLoader {
     "yourLocation": "موقعك",
     "locationServiceDisabled": "خدمة الموقع معطلة",
     "locationPermissionIsDeied": "تم رفض إذن الوصول إلى الموقع",
-    "locationPermissionIsPermanentlyDenied": "تم رفض إذن الموقع بشكل دائم، لا يمكننا طلب الأذونات.",
+    "locationPermissionIsPermanentlyDenied":
+        "تم رفض إذن الموقع بشكل دائم، لا يمكننا طلب الأذونات.",
     "done": "تم",
     "orderDeliveredSuccess": "تم تسليم الطلب بنجاح",
     "thankYou": "شكراً لك",
     "userLocation": "موقع العميل",
-    "myOrders" : 'طلباتي',
-    "recentOrders":"الطلبات الاخيرة",
-    "flowerOrder":"طلبات المتجر"
+    "vehicleInfo": "معلومات المركبة",
+    "language": "اللغة",
+    "arabic": "العربية",
+    "english": "الانجليزية",
+    "logout": "تسجيل خروج",
+    "editVehicle":"تعديل معلومات المركبة"
   };
   static const Map<String, dynamic> _en = {
     "local": "en",
     "WelcomeToFloweryRiderApp": "Welcome to the Flowery Rider App",
     "forgetPassword": "Forgot Password",
-    "pleaseEnterYourEmailAssociatedToYourAccount": "Please enter the email associated with your account",
+    "pleaseEnterYourEmailAssociatedToYourAccount":
+        "Please enter the email associated with your account",
     "email": "Email",
     "confirm": "Confirm",
     "enterYourEmail": "Enter your email",
@@ -153,12 +164,15 @@ class CodegenLoader extends AssetLoader {
     "validationEmailEmpty": "Enter your email address",
     "validationEmailInvalid": "Email is invalid (e.g., example@example.com)",
     "validationNumbersOnly": "Only numbers are allowed",
-    "validationPasswordInvalid": "Password must be at least 8 characters, with at least one uppercase letter and one number",
+    "validationPasswordInvalid":
+        "Password must be at least 8 characters, with at least one uppercase letter and one number",
     "validationPasswordMismatch": "Passwords do not match",
     "validationVehicleNumberInvalid": "Invalid vehicle number (e.g., ABC-123)",
-    "validationIdNumberInvalid": "Invalid ID number, must be 14 digits (e.g., 12345678901234)",
+    "validationIdNumberInvalid":
+        "Invalid ID number, must be 14 digits (e.g., 12345678901234)",
     "applicationSubmittedTitle": "Your application has been submitted!",
-    "applicationSubmittedBody": "Thank you for submitting your application. We will review it and get back to you soon.",
+    "applicationSubmittedBody":
+        "Thank you for submitting your application. We will review it and get back to you soon.",
     "home": "Home",
     "profile": "Profile",
     "orders": "Orders",
@@ -181,17 +195,22 @@ class CodegenLoader extends AssetLoader {
     "yourLocation": "Your Location",
     "locationServiceDisabled": "Location service is disabled",
     "locationPermissionIsDeied": "Location permission denied",
-    "locationPermissionIsPermanentlyDenied": "Location permission permanently denied. We cannot request permissions.",
+    "locationPermissionIsPermanentlyDenied":
+        "Location permission permanently denied. We cannot request permissions.",
     "done": "Done",
     "orderDeliveredSuccess": "Order delivered successfully",
     "thankYou": "Thank you",
     "userLocation": "User Location",
-    "myOrders" : 'My orders',
-    "recentOrders":"Recent orders",
-    "flowerOrder":"Flower order"
+    "vehicleInfo": "Vehicle Info",
+    "language": "Language",
+    "arabic": "arabic",
+    "english": "english",
+    "logout": "Log Out",
+    "editVehicle":"Edit Vehicle"
+
   };
   static const Map<String, Map<String, dynamic>> mapLocales = {
     "ar": _ar,
-    "en": _en
+    "en": _en,
   };
 }

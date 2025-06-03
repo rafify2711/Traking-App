@@ -3,12 +3,14 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:tracking_app/core/base/api_result.dart';
 import 'package:tracking_app/core/utils/Errors/error_handler.dart';
+import 'package:tracking_app/features/auth/apply/data/models/apply_model/apply_response/driver.dart';
 import 'package:tracking_app/features/home/data/data%20source/home_screen_data_source.dart';
 import 'package:tracking_app/features/home/data/models/order_response.dart';
 
 import 'package:tracking_app/features/home/data/models/pending_orders_response.dart';
 import 'package:tracking_app/features/home/data/repo/home_screen_repo_imp.dart';
 import 'package:tracking_app/features/home/domain/repo/home_screen_repo.dart';
+import 'package:tracking_app/features/orders/data/model/orders_firebase_model.dart';
 
 import 'home_screen_repo_imp_test.mocks.dart';
 
@@ -73,7 +75,7 @@ void main() {
           () async {
         // arrange
         final response = OrderResponse(); // You can provide mock data here
-        final expected=OrderResponse.fromJson(   {
+        final expectedOrderResponse =OrderResponse.fromJson(   {
           "_id": "678ab51c3ca006b9c3b0eeb4",
           "driver": "678a59fa3c3797492747c8d4",
           "order": {
@@ -116,18 +118,19 @@ void main() {
             "latLong": "37.7749,-122.4194"
           }
         });
-        provideDummy<OrderResponse>(expected);
+        final fakeOrdersFirebaseModel = OrdersFirebaseModel(order: expectedOrderResponse,driver: Driver());
 
-        when(
-          mockDataSource.getOrderDetailsFireBase(),
-        ).thenAnswer((_) async => expected);
+        provideDummy<OrderResponse>(expectedOrderResponse );
+
+        when(mockDataSource.getOrderDetailsFireBase())
+            .thenAnswer((_) async => fakeOrdersFirebaseModel);
 
         // act
         final actual = await repo.getOrderDetailsFromFireBase();
 
         // assert
         verify(mockDataSource.getOrderDetailsFireBase()).called(1);
-        expect(actual, expected);
+        expect(actual, expectedOrderResponse);
       },
     );
     test(
@@ -146,5 +149,6 @@ void main() {
         verify(mockDataSource.getOrderDetailsFireBase()).called(1);
       },
     );
+
   });
 }

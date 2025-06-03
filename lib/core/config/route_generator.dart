@@ -14,9 +14,11 @@ import 'package:tracking_app/features/on_boarding/presentation/views/widgets/on_
 import 'package:tracking_app/features/order_tap/presentation/view/driver_order_screen.dart';
 import 'package:tracking_app/features/order_tap/presentation/view/driver_order_view.dart';
 import 'package:tracking_app/features/orders/presentation/orders_view.dart';
-import 'package:tracking_app/features/profile/presentation/profile_view.dart';
-import 'package:tracking_app/features/profile/presentation/views/success/success.dart';
+import 'package:tracking_app/features/profile/presentation/views/profile_tab/profile_screen.dart';
+import 'package:tracking_app/features/profile/presentation/views/profile/presentation/views/profile_tab/profile_view.dart';
 import 'package:tracking_app/features/success_screen/success_screen.dart';
+
+import '../../features/profile/presentation/views/success/success.dart';
 
 class RouteGenerator {
   static Route<dynamic>? onGenerator(RouteSettings settings) {
@@ -77,7 +79,7 @@ class RouteGenerator {
         );
       case RoutesName.profile:
         return MaterialPageRoute(
-          builder: (context) => const ProfileView(),
+          builder: (context) =>  ProfileView(),
           settings: settings,
         );
       // case RoutesName.orderStatus:
@@ -116,6 +118,12 @@ class RouteGenerator {
           builder: (context) =>  DriverOrderView(),
           settings: settings,
         );
+      case RoutesName.profileScreen:
+        return MaterialPageRoute(
+          builder: (context) => const ProfileScreen(),
+          settings: settings,
+        );
+
       default:
         return MaterialPageRoute(
           builder: (context) => const OnBoardingView(),
