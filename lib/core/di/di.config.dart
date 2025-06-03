@@ -69,10 +69,17 @@ import '../../features/orders/data/repository/orders_repo_impl.dart' as _i849;
 import '../../features/orders/domain/repository/orders_repo.dart' as _i132;
 import '../../features/orders/domain/use_case/save_order_to_firebase_use_case.dart'
     as _i73;
+import '../../features/profile/data/data_source/profile_remote_data_source.dart'
+    as _i998;
+import '../../features/profile/data/data_source/profile_remote_data_source_impl.dart'
+    as _i531;
+import '../../features/profile/data/repos/profile_repo_impl.dart' as _i1072;
+import '../../features/profile/domain/repos/profile_repo.dart' as _i1007;
 import '../api_manger/api_service.dart' as _i525;
 import '../api_manger/dio_module.dart' as _i508;
 import '../provider/app_config_provider.dart' as _i291;
 import '../utils/services/fire_store_module.dart' as _i81;
+import '../utils/services/location_service.dart' as _i200;
 import '../utils/services/secure_sotrage_service.dart' as _i665;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -90,12 +97,17 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i665.SecureStorageService(),
     );
     gh.lazySingleton<_i974.FirebaseFirestore>(() => firestoreModule.firestore);
+    gh.lazySingleton<_i200.LocationService>(() => _i200.LocationService());
+    gh.factory<_i998.ProfileRemoteDataSource>(
+      () => _i531.ProfileRemoteDataSourceImpl(),
+    );
     gh.singleton<_i361.Dio>(
       () => dioModule.provideDio(
         gh<_i361.LogInterceptor>(),
         gh<_i665.SecureStorageService>(),
       ),
     );
+    gh.factory<_i1007.ProfileRepo>(() => _i1072.ProfileRepoImpl());
     gh.factory<_i132.OrdersRepo>(
       () => _i849.OrdersRepoImpl(gh<_i974.FirebaseFirestore>()),
     );

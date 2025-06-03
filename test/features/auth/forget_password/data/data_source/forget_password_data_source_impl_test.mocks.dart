@@ -79,8 +79,9 @@ class _FakeGetAllVehiclesResponse_5 extends _i1.SmartFake
     : super(parent, parentInvocation);
 }
 
-class _FakeOrderResponse_6 extends _i1.SmartFake implements _i8.PendingOrderResponse {
-  _FakeOrderResponse_6(Object parent, Invocation parentInvocation)
+class _FakePendingOrderResponse_6 extends _i1.SmartFake
+    implements _i8.PendingOrderResponse {
+  _FakePendingOrderResponse_6(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
@@ -193,7 +194,7 @@ class MockApiService extends _i1.Mock implements _i9.ApiService {
       (super.noSuchMethod(
             Invocation.method(#getAllPendingOrders, [page]),
             returnValue: _i10.Future<_i8.PendingOrderResponse>.value(
-              _FakeOrderResponse_6(
+              _FakePendingOrderResponse_6(
                 this,
                 Invocation.method(#getAllPendingOrders, [page]),
               ),
@@ -206,7 +207,10 @@ class MockApiService extends _i1.Mock implements _i9.ApiService {
       (super.noSuchMethod(
             Invocation.method(#startOrder, [id]),
             returnValue: _i10.Future<_i8.PendingOrderResponse>.value(
-              _FakeOrderResponse_6(this, Invocation.method(#startOrder, [id])),
+              _FakePendingOrderResponse_6(
+                this,
+                Invocation.method(#startOrder, [id]),
+              ),
             ),
           )
           as _i10.Future<_i8.PendingOrderResponse>);
