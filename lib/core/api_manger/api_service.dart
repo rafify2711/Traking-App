@@ -13,6 +13,7 @@ import 'package:tracking_app/features/auth/forget_password/data/models/response/
 import 'package:tracking_app/features/auth/forget_password/data/models/response/otp_response.dart';
 import 'package:tracking_app/features/auth/forget_password/data/models/response/reset_password_response.dart';
 import 'package:tracking_app/features/home/data/models/pending_orders_response.dart';
+import 'package:tracking_app/features/order_tap/data/model/driver_orders_response.dart';
 part 'api_service.g.dart';
 
 @RestApi(baseUrl: Constants.baseUrl)
@@ -49,4 +50,8 @@ abstract class ApiService {
 
   @PUT((Constants.startOrderEndPoint))
   Future<PendingOrderResponse> startOrder(@Path() String id);
+
+  @GET(Constants.getAllDriverOrdersEndPoint)
+  Future<DriverOrdersResponse> getAllDriverOrders();
+
 }

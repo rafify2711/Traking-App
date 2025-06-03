@@ -11,6 +11,8 @@ import 'package:tracking_app/features/home/presentation/views/pickup_location_sc
 import 'package:tracking_app/features/home/presentation/views/customer_location_screen.dart';
 import 'package:tracking_app/features/layOut/presentation/lay_out.dart';
 import 'package:tracking_app/features/on_boarding/presentation/views/widgets/on_boarding_view.dart';
+import 'package:tracking_app/features/order_tap/presentation/view/driver_order_screen.dart';
+import 'package:tracking_app/features/order_tap/presentation/view/driver_order_view.dart';
 import 'package:tracking_app/features/orders/presentation/orders_view.dart';
 import 'package:tracking_app/features/profile/presentation/profile_view.dart';
 import 'package:tracking_app/features/profile/presentation/views/success/success.dart';
@@ -101,10 +103,19 @@ class RouteGenerator {
 
       case RoutesName.success:
         return MaterialPageRoute(
-          builder: (context) => const Success(),
+          builder: (context) => const SuccessScreen(),
           settings: settings,
         );
-
+      case RoutesName.driverOrderScreen:
+        return MaterialPageRoute(
+          builder: (context) => const DriverOrderScreen(),
+          settings: settings,
+        );
+      case RoutesName.driverOrderView:
+        return MaterialPageRoute(
+          builder: (context) =>  DriverOrderView(),
+          settings: settings,
+        );
       default:
         return MaterialPageRoute(
           builder: (context) => const OnBoardingView(),
