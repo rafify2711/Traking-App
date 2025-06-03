@@ -15,7 +15,7 @@ import 'package:tracking_app/features/order_tap/presentation/view/driver_order_s
 import 'package:tracking_app/features/order_tap/presentation/view/driver_order_view.dart';
 import 'package:tracking_app/features/orders/presentation/orders_view.dart';
 import 'package:tracking_app/features/profile/presentation/views/profile_tab/profile_screen.dart';
-import 'package:tracking_app/features/profile/presentation/views/profile/presentation/views/profile_tab/profile_view.dart';
+import 'package:tracking_app/features/profile/presentation/views/profile_tab/profile_view.dart';
 import 'package:tracking_app/features/success_screen/success_screen.dart';
 
 import '../../features/profile/presentation/views/success/success.dart';
