@@ -13,9 +13,10 @@ import 'package:tracking_app/core/utils/constants.dart';
 import 'package:tracking_app/core/utils/services/screen_size_service.dart';
 import 'package:tracking_app/core/utils/services/secure_sotrage_service.dart';
 import 'package:tracking_app/core/utils/services/simple_bloc_observer.dart';
+// import 'package:tracking_app/features/profile/presentation/profile_view.dart';
 import 'package:tracking_app/generated/codegen_loader.g.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:tracking_app/sp.dart';
+// import 'features/profile/presentation/profile_view.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -46,7 +47,6 @@ void main() async {
       ),
     ),
   );
-  
 }
 
 class Tracking extends StatefulWidget {
@@ -68,7 +68,7 @@ class _TrackingState extends State<Tracking> {
       supportedLocales: context.supportedLocales,
       locale: context.locale,
       debugShowCheckedModeBanner: false,
-      initialRoute: widget.initialRoute,
+      initialRoute: RoutesName.editProfileView,
       onGenerateRoute: RouteGenerator.onGenerator,
       theme: ApplicationTheme.themeData,
     );

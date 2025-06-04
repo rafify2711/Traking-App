@@ -12,4 +12,4 @@ class SaveOrderToFirebaseUseCase {
   Future<ApiResult<void>> invoke(OrdersFirebaseModel order) async {
     return await _ordersRepo.saveOrderToFirebase(order);
   }
-} 
+}

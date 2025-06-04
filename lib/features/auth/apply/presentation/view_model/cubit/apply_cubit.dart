@@ -17,8 +17,7 @@ import 'package:tracking_app/features/auth/apply/presentation/view_model/cubit/a
 class ApplyCubit extends Cubit<ApplyState> {
   final ApplyUseCase applyUseCase;
   final GetVehiclesUseCase getVehiclesUseCase;
-  ApplyCubit(this.applyUseCase, this.getVehiclesUseCase)
-    : super( ApplyState());
+  ApplyCubit(this.applyUseCase, this.getVehiclesUseCase) : super(ApplyState());
 
   final countryController = TextEditingController();
   final firstNameController = TextEditingController();
@@ -84,8 +83,7 @@ class ApplyCubit extends Cubit<ApplyState> {
       emit(
         state.copyWith(
           applyState: BaseError<ApplyResponse>(
-            errorMessage: 
-           "Please upload all required images",
+            errorMessage: "Please upload all required images",
           ),
         ),
       );
@@ -100,15 +98,15 @@ class ApplyCubit extends Cubit<ApplyState> {
         state.copyWith(
           applyState: BaseSuccess<ApplyResponse>(data: result.data),
           applyResponse: result.data,
-          
         ),
       );
     } else if (result is ApiError<ApplyResponse>) {
       emit(
         state.copyWith(
-          applyState: BaseError<ApplyResponse>(errorMessage:  result.failure?.errorMessage ?? "Something went wrong"),
-            
-          
+          applyState: BaseError<ApplyResponse>(
+            errorMessage:
+                result.failure?.errorMessage ?? "Something went wrong",
+          ),
         ),
       );
     }
@@ -117,13 +115,22 @@ class ApplyCubit extends Cubit<ApplyState> {
   Future<void> getVehicles() async {
     emit(state.copyWith(applyState: BaseLoading()));
     final result = await getVehiclesUseCase.call();
-    
+
     if (result is ApiSuccess<GetAllVehiclesResponse>) {
-      emit(state.copyWith(
-                  vehiclesResponse: result.data?.vehicles,
-        applyState: BaseSuccess<List<Vehicle>>(data: result.data?.vehicles)));
+      emit(
+        state.copyWith(
+          vehiclesResponse: result.data?.vehicles,
+          applyState: BaseSuccess<List<Vehicle>>(data: result.data?.vehicles),
+        ),
+      );
     } else if (result is ApiError<GetAllVehiclesResponse>) {
-      emit(state.copyWith(applyState: BaseError<String>( errorMessage: result.message ?? "Something went wrong")));
+      emit(
+        state.copyWith(
+          applyState: BaseError<String>(
+            errorMessage: result.message ?? "Something went wrong",
+          ),
+        ),
+      );
     }
   }
 

@@ -14,7 +14,7 @@ class CustomCardWidget extends StatelessWidget {
   const CustomCardWidget({
     super.key,
     required this.withTrailing,
-     this.imagePath,
+    this.imagePath,
     required this.addressOrPriceText,
     required this.title,
     required this.numberOfOrder,
@@ -23,7 +23,6 @@ class CustomCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     String phoneNumber = "tel:+201151442898";
     String whatsAppUrl = "https://wa.me/201151442898";
     return GestureDetector(
@@ -38,8 +37,7 @@ class CustomCardWidget extends StatelessWidget {
         ),
         child: ListTile(
           leading: CircleAvatar(
-
-            backgroundImage: NetworkImage(imagePath??""),
+            backgroundImage: NetworkImage(imagePath ?? ""),
             radius: 25,
           ),
 

@@ -8,15 +8,11 @@ import 'package:tracking_app/core/utils/colors.dart';
 import 'package:tracking_app/core/utils/services/get_responsive_height_and_width.dart';
 
 import 'package:tracking_app/features/home/data/models/order_response.dart';
-import 'package:tracking_app/features/home/presentation/views/order_details_screen.dart';
-import 'package:tracking_app/features/home/presentation/views/order_details_view.dart';
 import 'package:tracking_app/features/home/data/models/pending_orders_response.dart';
 import 'package:tracking_app/features/home/presentation/view model/orders_cubit.dart';
 import 'package:tracking_app/features/home/presentation/views/widgets/custom_card_widget.dart';
 import 'package:tracking_app/generated/locale_keys.g.dart';
 import 'package:tracking_app/core/utils/helper_func/snack_bar.dart';
-
-
 
 class FlowerOrderCard extends StatelessWidget {
   final OrderResponse order;
@@ -28,10 +24,11 @@ class FlowerOrderCard extends StatelessWidget {
       builder: (context, state) {
         final acceptState = state.acceptOrderState;
         final isAccepting = state.acceptingOrderId == order.id;
-        final acceptError = acceptState is BaseError<PendingOrderResponse> && state.acceptingOrderId == order.id
-            ? acceptState.errorMessage 
-            : null;
-
+        final acceptError =
+            acceptState is BaseError<PendingOrderResponse> &&
+                    state.acceptingOrderId == order.id
+                ? acceptState.errorMessage
+                : null;
 
         final isRemoved = state.orderResponse?.orders?.contains(order) == false;
 
@@ -43,7 +40,11 @@ class FlowerOrderCard extends StatelessWidget {
           padding: const EdgeInsets.only(bottom: 24),
           child: InkWell(
             onTap: () {
-              Navigator.pushNamed(context, RoutesName.orderDetailsScreen, arguments: order);
+              Navigator.pushNamed(
+                context,
+                RoutesName.orderDetailsScreen,
+                arguments: order,
+              );
             },
             child: Card(
               color: PalletsColors.whiteBase,
@@ -52,7 +53,11 @@ class FlowerOrderCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(top: 16, left: 16, bottom: 16),
+                    padding: const EdgeInsets.only(
+                      top: 16,
+                      left: 16,
+                      bottom: 16,
+                    ),
                     child: Text(
                       LocaleKeys.flowerorder.tr(),
                       style: AppTextStyles.instance.textStyle14.copyWith(
@@ -78,7 +83,10 @@ class FlowerOrderCard extends StatelessWidget {
                   CustomCardWidget(
                     withTrailing: false,
                     title: "${order.user!.firstName} ${order.user!.lastName}",
-                    addressOrPriceText: (order.shippingAddress!=null)? "${order.shippingAddress!.street} ${order.shippingAddress!.city}":"No provided address",
+                    addressOrPriceText:
+                        (order.shippingAddress != null)
+                            ? "${order.shippingAddress!.street} ${order.shippingAddress!.city}"
+                            : "No provided address",
                     imagePath: order.user!.photo!,
                     numberOfOrder: order.orderNumber!,
                   ),
@@ -97,7 +105,9 @@ class FlowerOrderCard extends StatelessWidget {
                           width: responsiveWidth(111),
                           child: OutlinedButton(
                             onPressed: () {
-                              context.read<OrdersCubit>().rejectOrder(order.id!);
+                              context.read<OrdersCubit>().rejectOrder(
+                                order.id!,
+                              );
                               showSnackBar(context, "order rejected");
                             },
                             child: Text(LocaleKeys.reject.tr()),
@@ -106,26 +116,36 @@ class FlowerOrderCard extends StatelessWidget {
                         SizedBox(
                           width: responsiveWidth(111),
                           child: ElevatedButton(
-                            onPressed: isAccepting 
-                                ? null 
-                                : () async {
-                                    final success = await context.read<OrdersCubit>().acceptOrder(order.id!);
-                                    if (success) {
-                                      showSnackBar(context, "order accepted");
-                                    } else {
-                                      showErrorSnackBar(context, "order failed to accept");
-                                    }
-                                  },
-                            child: isAccepting
-                                ? const SizedBox(
-                                    width: 20,
-                                    height: 20,
-                                    child: CircularProgressIndicator(
-                                      strokeWidth: 2,
-                                      valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-                                    ),
-                                  )
-                                : Text(LocaleKeys.accept.tr()),
+                            onPressed:
+                                isAccepting
+                                    ? null
+                                    : () async {
+                                      final success = await context
+                                          .read<OrdersCubit>()
+                                          .acceptOrder(order.id!);
+                                      if (success) {
+                                        showSnackBar(context, "order accepted");
+                                      } else {
+                                        showErrorSnackBar(
+                                          context,
+                                          "order failed to accept",
+                                        );
+                                      }
+                                    },
+                            child:
+                                isAccepting
+                                    ? const SizedBox(
+                                      width: 20,
+                                      height: 20,
+                                      child: CircularProgressIndicator(
+                                        strokeWidth: 2,
+                                        valueColor:
+                                            AlwaysStoppedAnimation<Color>(
+                                              Colors.white,
+                                            ),
+                                      ),
+                                    )
+                                    : Text(LocaleKeys.accept.tr()),
                           ),
                         ),
                       ],

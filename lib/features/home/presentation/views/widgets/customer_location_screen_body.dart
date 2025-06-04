@@ -24,7 +24,8 @@ class CustomerLocationScreenBody extends StatefulWidget {
       _CustomerLocationScreenBodyState();
 }
 
-class _CustomerLocationScreenBodyState extends State<CustomerLocationScreenBody> {
+class _CustomerLocationScreenBodyState
+    extends State<CustomerLocationScreenBody> {
   GoogleMapController? mapController;
   late LatLng _userLocation;
   late LatLng _deliveryManLocation;
@@ -35,8 +36,8 @@ class _CustomerLocationScreenBodyState extends State<CustomerLocationScreenBody>
   @override
   void initState() {
     _userLocation = const LatLng(30.1660, 31.6542);
-    _deliveryManLocation =  LatLng(widget.driverLat, widget.driverLong);
-    
+    _deliveryManLocation = LatLng(widget.driverLat, widget.driverLong);
+
     _initMarkers();
     _initPolylines();
     super.initState();
@@ -102,7 +103,7 @@ class _CustomerLocationScreenBodyState extends State<CustomerLocationScreenBody>
                     horizontal: responsiveWidth(16),
                   ),
                   child: Text(
-                     LocaleKeys.userAddress.tr(),
+                    LocaleKeys.userAddress.tr(),
                     style: AppTextStyles.instance.textStyle12.copyWith(
                       color: PalletsColors.gray,
                     ),
@@ -128,7 +129,7 @@ class _CustomerLocationScreenBodyState extends State<CustomerLocationScreenBody>
                     ),
                   ),
                 ),
-                
+
                 const CustomCardWidget(
                   withTrailing: true,
                   imagePath: 'assets/images/Flowery logo.png',

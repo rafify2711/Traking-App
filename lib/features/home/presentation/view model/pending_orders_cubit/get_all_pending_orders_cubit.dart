@@ -1,4 +1,3 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tracking_app/core/base/api_result.dart';
 import 'package:tracking_app/core/base/base_state.dart';
@@ -13,7 +12,9 @@ class GetAllPendingOrdersCubit extends Cubit<GetAllPendingOrdersState> {
     : super(const GetAllPendingOrdersState());
 
   Future<void> getAllPendingOrders({int page = 1}) async {
-    emit(state.copyWith(pendingOrdersState: BaseLoading<PendingOrderResponse>()));
+    emit(
+      state.copyWith(pendingOrdersState: BaseLoading<PendingOrderResponse>()),
+    );
 
     final result = await useCase.invoke(page);
 
@@ -24,7 +25,9 @@ class GetAllPendingOrdersCubit extends Cubit<GetAllPendingOrdersState> {
 
       emit(
         state.copyWith(
-          pendingOrdersState: BaseSuccess<PendingOrderResponse>(data: result.data),
+          pendingOrdersState: BaseSuccess<PendingOrderResponse>(
+            data: result.data,
+          ),
           allOrders: updatedOrders,
           currentPage: result.data!.metadata?.currentPage ?? page,
           totalPages: result.data!.metadata?.totalPages ?? 1,

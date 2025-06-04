@@ -1,8 +1,11 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
 import 'package:tracking_app/core/utils/constants.dart';
 import 'package:tracking_app/features/auth/apply/data/models/apply_model/apply_response/apply_response.dart';
+import 'package:tracking_app/features/auth/apply/data/models/apply_model/apply_response/driver.dart';
 import 'package:tracking_app/features/auth/apply/data/models/get_all_vehicles_response/get_all_vehicles_response.dart';
 import 'package:tracking_app/features/auth/login/data/model/login_request.dart';
 import 'package:tracking_app/features/auth/login/data/model/login_response.dart';
@@ -12,6 +15,7 @@ import 'package:tracking_app/features/auth/forget_password/data/models/request/r
 import 'package:tracking_app/features/auth/forget_password/data/models/response/forget_password_response.dart';
 import 'package:tracking_app/features/auth/forget_password/data/models/response/otp_response.dart';
 import 'package:tracking_app/features/auth/forget_password/data/models/response/reset_password_response.dart';
+import 'package:tracking_app/features/editProfile/data/model/user_response/user_response.dart';
 import 'package:tracking_app/features/home/data/models/pending_orders_response.dart';
 part 'api_service.g.dart';
 
@@ -40,13 +44,20 @@ abstract class ApiService {
 
   @PUT('${Constants.updateOrderStatusEndPoint}/{id}')
   Future<String> updateOrderStatus(
-      @Query('id') String id,
-      @Body() Map<String,dynamic> newState,
-      @Header('Authorization') String token
-      );
+    @Query('id') String id,
+    @Body() Map<String, dynamic> newState,
+    @Header('Authorization') String token,
+  );
   @GET(Constants.getAllPendingOrdersEndPoint)
   Future<PendingOrderResponse> getAllPendingOrders(@Query("page") int page);
 
   @PUT((Constants.startOrderEndPoint))
   Future<PendingOrderResponse> startOrder(@Path() String id);
+
+  @PUT(Constants.editProfileEndPoint)
+  Future<UserResponse> editProfile(@Body() Driver driver);
+
+  @MultiPart()
+  @PUT(Constants.uploadPhoto)
+  Future<String> uploadPhoto(@Part(name: "photo") File image);
 }

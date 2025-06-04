@@ -15,15 +15,19 @@ class PickupLocationScreen extends StatelessWidget {
         body: BlocConsumer<CurrentUserLocationCubit, CurrentUserLocationState>(
           listener: (context, state) {
             if (state.locationState is BaseError<String>) {
-              showErrorSnackBar(context, (state.locationState as BaseError<String>).errorMessage ?? "");
+              showErrorSnackBar(
+                context,
+                (state.locationState as BaseError<String>).errorMessage ?? "",
+              );
             }
-            
           },
           builder: (context, state) {
             if (state.locationState is BaseSuccess) {
-              return  PickupLocationScreenBody(driverLat: state.lattitude ?? 0.0, driverLong: state.longitude ?? 0.0,);
-            }
-            else {
+              return PickupLocationScreenBody(
+                driverLat: state.lattitude ?? 0.0,
+                driverLong: state.longitude ?? 0.0,
+              );
+            } else {
               return const Center(child: CircularProgressIndicator());
             }
           },

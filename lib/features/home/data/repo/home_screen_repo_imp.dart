@@ -1,4 +1,4 @@
-import 'package:injectable/injectable.dart' ;
+import 'package:injectable/injectable.dart';
 import 'package:tracking_app/core/base/api_result.dart';
 import 'package:tracking_app/features/home/data/data%20source/home_screen_data_source.dart';
 
@@ -16,14 +16,16 @@ class HomeScreenRepoImp extends HomeScreenRepo {
   }
 
   @override
-  Future<OrderResponse> getOrderDetailsFromFireBase( )async {
-    try{
-      return await  homeScreenDataSource.getOrderDetailsFireBase().then((value) {return value.order;});
-    }catch(e){
+  Future<OrderResponse> getOrderDetailsFromFireBase() async {
+    try {
+      return await homeScreenDataSource.getOrderDetailsFireBase().then((value) {
+        return value.order;
+      });
+    } catch (e) {
       rethrow;
     }
-
   }
+
   @override
   Future<ApiResult<PendingOrderResponse>> startOrder(String id) async {
     return await homeScreenDataSource.startOrder(id);

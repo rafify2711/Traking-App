@@ -1,3 +1,1 @@
-abstract class ProfileRepo {
-  
-}
+abstract class ProfileRepo {}

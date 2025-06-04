@@ -1,4 +1,3 @@
-
 sealed class BaseState<T> {
   BaseState();
 }
@@ -11,11 +10,10 @@ class BaseLoading<T> extends BaseState<T> {
   BaseLoading();
 }
 
-
 class BaseError<T> extends BaseState<T> {
   final String? errorMessage;
-  
-  BaseError({ this.errorMessage,});
+
+  BaseError({this.errorMessage});
 }
 
 class BaseSuccess<T> extends BaseState<T> {

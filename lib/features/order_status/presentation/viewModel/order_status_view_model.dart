@@ -5,25 +5,25 @@ import '../../../../core/utils/enums/order_status_enum.dart';
 import 'OrderStatusState.dart';
 
 class OrderStatusViewModel extends Cubit<OrderStatusState> {
-
   final UpdateOrderStatusUseCase updateOrderStatusCase;
-  OrderStatusViewModel(this.updateOrderStatusCase) : super(OrderStatusInitial(OrderStatus.pending,0)); // Initial state is 'pending' from the enum i've created
-
+  OrderStatusViewModel(this.updateOrderStatusCase)
+    : super(
+        OrderStatusInitial(OrderStatus.pending, 0),
+      ); // Initial state is 'pending' from the enum i've created
 
   // Add a method to initialize the view model with current status from Firebase
   Future<void> initializeOrderStatus(String orderId) async {
     try {
-      emit(OrderStatusLoading(state.status,state.step));
+      emit(OrderStatusLoading(state.status, state.step));
       // Fetch the current status from Firebase
       final currentStatus = await updateOrderStatusCase.getOrderStatus(orderId);
       // Calculate the step based on the status
       final step = getStepFromStatus(currentStatus);
-      emit(OrderStatusInitial(currentStatus,step));
+      emit(OrderStatusInitial(currentStatus, step));
     } catch (e) {
-      emit(OrderStatusFailure(state.status,state.step,e.toString()));
+      emit(OrderStatusFailure(state.status, state.step, e.toString()));
     }
   }
-
 
   int getStepFromStatus(OrderStatus status) {
     switch (status) {
@@ -47,21 +47,22 @@ class OrderStatusViewModel extends Cubit<OrderStatusState> {
         return 0;
     }
   }
+
   //function that updates the state whenever the button is pressed
   void updateStatus(String orderId) async {
     final currentStatus = state.status;
     final nextStatus = getNextStatus(currentStatus);
     final nextStep = state.step + 1;
-    emit(OrderStatusLoading(currentStatus,state.step));
+    emit(OrderStatusLoading(currentStatus, state.step));
     try {
       await updateOrderStatusCase.callToFirebase(orderId, nextStatus);
       // Map to the 4 valid values for the external API
       final apiCompatibleStatus = mapToApiStatus(nextStatus);
       await updateOrderStatusCase.callToApi(orderId, apiCompatibleStatus);
-      emit(OrderStatusSuccess(nextStatus,nextStep));
+      emit(OrderStatusSuccess(nextStatus, nextStep));
     } catch (e) {
       debugPrint("Order status update failed: $e");
-      emit(OrderStatusFailure(currentStatus, state.step,e.toString()));
+      emit(OrderStatusFailure(currentStatus, state.step, e.toString()));
     }
   }
 
@@ -103,6 +104,7 @@ class OrderStatusViewModel extends Cubit<OrderStatusState> {
         return OrderStatus.delivered;
     }
   }
+
   //ill use this to compare the state and return it to the text inside the button
   String getButtonText(OrderStatus state) {
     switch (state) {

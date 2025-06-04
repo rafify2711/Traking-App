@@ -1,17 +1,17 @@
 part of 'current_user_location_cubit.dart';
 
 class CurrentUserLocationState extends Equatable {
-  const CurrentUserLocationState( {
+  const CurrentUserLocationState({
     this.locationState,
-   this.lattitude, 
-   this.longitude,
-   
+    this.lattitude,
+    this.longitude,
+
     // this.errorMessage,
   });
   final BaseState? locationState;
   // final LocationData? locationData;
-final double? lattitude;
-final double? longitude;
+  final double? lattitude;
+  final double? longitude;
   // final String? errorMessage;
 
   CurrentUserLocationState copyWith({
@@ -29,5 +29,5 @@ final double? longitude;
   }
 
   @override
-  List<Object?> get props => [locationState,lattitude,longitude,];
+  List<Object?> get props => [locationState, lattitude, longitude];
 }

@@ -6,7 +6,6 @@ import 'package:tracking_app/core/utils/helper_func/snack_bar.dart';
 import 'package:tracking_app/features/home/presentation/view%20model/user_location_cubit/current_user_location_cubit.dart';
 import 'package:tracking_app/features/home/presentation/views/widgets/customer_location_screen_body.dart';
 
-
 class CustomerLocationScreen extends StatelessWidget {
   const CustomerLocationScreen({super.key});
   @override

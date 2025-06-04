@@ -6,5 +6,4 @@
 
 //   LocationData({required this.position, this.errorMessage});
 
-  
 // }

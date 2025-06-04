@@ -1,4 +1,3 @@
-
 enum OrderStatus {
   pending,
   inProgress,
@@ -7,5 +6,5 @@ enum OrderStatus {
   startDeliver,
   outForDelivery,
   arrivedToUser,
-  delivered
+  delivered,
 }

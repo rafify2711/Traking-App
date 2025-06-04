@@ -5,6 +5,8 @@ import 'package:tracking_app/features/auth/forget_password/presentation/view/res
 import 'package:tracking_app/features/auth/forget_password/presentation/view/verification_screen.dart';
 import 'package:tracking_app/features/auth/login/presentation/view/login_screen.dart';
 import 'package:tracking_app/features/auth/apply/presentation/view/apply_screen.dart';
+import 'package:tracking_app/features/editProfile/data/model/user_response/driver.dart';
+import 'package:tracking_app/features/editProfile/presentation/view/edit_profile_view.dart';
 import 'package:tracking_app/features/home/presentation/views/home_screen.dart';
 import 'package:tracking_app/features/home/presentation/views/order_details_screen.dart';
 import 'package:tracking_app/features/home/presentation/views/pickup_location_screen.dart';
@@ -13,7 +15,6 @@ import 'package:tracking_app/features/layOut/presentation/lay_out.dart';
 import 'package:tracking_app/features/on_boarding/presentation/views/widgets/on_boarding_view.dart';
 import 'package:tracking_app/features/orders/presentation/orders_view.dart';
 import 'package:tracking_app/features/profile/presentation/profile_view.dart';
-import 'package:tracking_app/features/profile/presentation/views/success/success.dart';
 import 'package:tracking_app/features/success_screen/success_screen.dart';
 
 class RouteGenerator {
@@ -104,6 +105,22 @@ class RouteGenerator {
           builder: (context) => const SuccessScreen(),
           settings: settings,
         );
+
+      case RoutesName.editProfileView:
+      // final driver =settings.arguments! as Driver;
+        return MaterialPageRoute(
+          builder: (context) => const EditProfileView(),
+          settings: settings,
+        );
+
+// final userData = settings.arguments! as UserData;
+//         return MaterialPageRoute(
+//           builder:
+//               (context) => BlocProvider(
+//                 create: (context) => getIt<EditProfileCubit>(),
+//                 child: EditProfileView(user: userData),
+//               ),
+//           settings: settings,
 
       default:
         return MaterialPageRoute(

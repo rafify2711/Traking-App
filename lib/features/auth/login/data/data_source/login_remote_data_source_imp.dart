@@ -1,4 +1,3 @@
-
 import 'package:injectable/injectable.dart';
 import 'package:tracking_app/core/api_manger/api_service.dart';
 import 'package:tracking_app/core/base/api_excuter.dart';
@@ -13,7 +12,9 @@ class LoginRemoteDataSourceImp implements LoginRemoteDataSource {
   LoginRemoteDataSourceImp({required this.apiService});
 
   @override
-  Future<ApiResult<LoginResponse>>  login({required LoginRequest loginRequest}) async {
+  Future<ApiResult<LoginResponse>> login({
+    required LoginRequest loginRequest,
+  }) async {
     // return apiExecuter<LoginResponse>(() async{
     //   return response;
     // },"");
@@ -21,6 +22,6 @@ class LoginRemoteDataSourceImp implements LoginRemoteDataSource {
       var response = await apiService.loginUser(loginRequest);
 
       return response;
-    },"");
+    }, "");
   }
 }

@@ -20,7 +20,7 @@ class AppTextStyles {
     fontWeight: FontWeight.normal,
     fontFamily: "Inter",
   );
-  final textStyle13 =const  TextStyle(
+  final textStyle13 = const TextStyle(
     fontSize: 13,
     fontWeight: FontWeight.normal,
     fontFamily: "Inter",
@@ -45,7 +45,7 @@ class AppTextStyles {
     fontWeight: FontWeight.normal,
     fontFamily: "Inter",
   );
-  final textStyle20 =const TextStyle(
+  final textStyle20 = const TextStyle(
     fontSize: 20,
     fontWeight: FontWeight.normal,
     fontFamily: "Inter",
@@ -70,7 +70,7 @@ class AppTextStyles {
     fontWeight: FontWeight.normal,
     fontFamily: "Inter",
   );
-  final textStyle30 =const TextStyle(
+  final textStyle30 = const TextStyle(
     fontSize: 30,
     fontWeight: FontWeight.normal,
     fontFamily: "Inter",

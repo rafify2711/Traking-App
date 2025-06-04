@@ -13,5 +13,8 @@ class Constants {
   static const String deliveryManMarkerId = "deliveryMan";
   static const String storeMarkerId = "store";
   static const String customerMarkerId = "customer";
-  static const String  startOrderEndPoint = "orders/start/{id}";
+  static const String startOrderEndPoint = "orders/start/{id}";
+  static const String editProfileEndPoint = "drivers/editProfile";
+  static const String uploadPhoto = "drivers/upload-photo";
+ 
 }

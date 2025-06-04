@@ -21,8 +21,8 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   }
 
   @override
-  Future<GetAllVehiclesResponse> getAllVehicles()async {
-  final response = await apiService.getAllVehicles();
-  return response;
+  Future<GetAllVehiclesResponse> getAllVehicles() async {
+    final response = await apiService.getAllVehicles();
+    return response;
   }
 }

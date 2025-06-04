@@ -10,10 +10,10 @@ import 'package:mockito/src/dummies.dart' as _i7;
 import 'package:tracking_app/core/base/api_result.dart' as _i5;
 import 'package:tracking_app/features/home/data/data%20source/home_screen_data_source.dart'
     as _i3;
-import 'package:tracking_app/features/home/data/models/order_details.dart'
-    as _i2;
 import 'package:tracking_app/features/home/data/models/pending_orders_response.dart'
     as _i6;
+import 'package:tracking_app/features/orders/data/model/orders_firebase_model.dart'
+    as _i2;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -29,8 +29,9 @@ import 'package:tracking_app/features/home/data/models/pending_orders_response.d
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-class _FakeOrderDetails_0 extends _i1.SmartFake implements _i2.OrderDetails {
-  _FakeOrderDetails_0(Object parent, Invocation parentInvocation)
+class _FakeOrdersFirebaseModel_0 extends _i1.SmartFake
+    implements _i2.OrdersFirebaseModel {
+  _FakeOrdersFirebaseModel_0(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
@@ -44,41 +45,45 @@ class MockHomeScreenDataSource extends _i1.Mock
   }
 
   @override
-  _i4.Future<_i5.ApiResult<_i6.PendingOrderResponse>> getAllPendingOrders(int? page) =>
+  _i4.Future<_i5.ApiResult<_i6.PendingOrderResponse>> getAllPendingOrders(
+    int? page,
+  ) =>
       (super.noSuchMethod(
             Invocation.method(#getAllPendingOrders, [page]),
-            returnValue: _i4.Future<_i5.ApiResult<_i6.PendingOrderResponse>>.value(
-              _i7.dummyValue<_i5.ApiResult<_i6.PendingOrderResponse>>(
-                this,
-                Invocation.method(#getAllPendingOrders, [page]),
-              ),
-            ),
+            returnValue:
+                _i4.Future<_i5.ApiResult<_i6.PendingOrderResponse>>.value(
+                  _i7.dummyValue<_i5.ApiResult<_i6.PendingOrderResponse>>(
+                    this,
+                    Invocation.method(#getAllPendingOrders, [page]),
+                  ),
+                ),
           )
           as _i4.Future<_i5.ApiResult<_i6.PendingOrderResponse>>);
 
   @override
-  _i4.Future<_i2.OrderDetails> getOrderDetailsFireBase() =>
+  _i4.Future<_i2.OrdersFirebaseModel> getOrderDetailsFireBase() =>
       (super.noSuchMethod(
             Invocation.method(#getOrderDetailsFireBase, []),
-            returnValue: _i4.Future<_i2.OrderDetails>.value(
-              _FakeOrderDetails_0(
+            returnValue: _i4.Future<_i2.OrdersFirebaseModel>.value(
+              _FakeOrdersFirebaseModel_0(
                 this,
                 Invocation.method(#getOrderDetailsFireBase, []),
               ),
             ),
           )
-          as _i4.Future<_i2.OrderDetails>);
+          as _i4.Future<_i2.OrdersFirebaseModel>);
 
   @override
   _i4.Future<_i5.ApiResult<_i6.PendingOrderResponse>> startOrder(String? id) =>
       (super.noSuchMethod(
             Invocation.method(#startOrder, [id]),
-            returnValue: _i4.Future<_i5.ApiResult<_i6.PendingOrderResponse>>.value(
-              _i7.dummyValue<_i5.ApiResult<_i6.PendingOrderResponse>>(
-                this,
-                Invocation.method(#startOrder, [id]),
-              ),
-            ),
+            returnValue:
+                _i4.Future<_i5.ApiResult<_i6.PendingOrderResponse>>.value(
+                  _i7.dummyValue<_i5.ApiResult<_i6.PendingOrderResponse>>(
+                    this,
+                    Invocation.method(#startOrder, [id]),
+                  ),
+                ),
           )
           as _i4.Future<_i5.ApiResult<_i6.PendingOrderResponse>>);
 }

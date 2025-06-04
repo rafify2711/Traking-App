@@ -3,9 +3,7 @@ import 'package:tracking_app/core/utils/colors.dart';
 import 'package:tracking_app/core/utils/services/get_responsive_height_and_width.dart';
 
 class DashMark extends StatelessWidget {
-  const DashMark({
-    super.key,
-  });
+  const DashMark({super.key});
 
   @override
   Widget build(BuildContext context) {

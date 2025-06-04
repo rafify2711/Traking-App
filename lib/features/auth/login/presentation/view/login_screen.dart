@@ -54,7 +54,7 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void _updateButtonState() {
-    setState(() {}); 
+    setState(() {});
   }
 
   @override
@@ -173,7 +173,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           (route) => false,
                         );
                       }
-                      },
+                    },
                     builder: (context, state) {
                       return ElevatedButton(
                         onPressed: () async {

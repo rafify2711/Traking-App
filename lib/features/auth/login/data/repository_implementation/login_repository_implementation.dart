@@ -1,5 +1,3 @@
-
-
 import 'package:injectable/injectable.dart';
 import 'package:tracking_app/core/base/api_result.dart';
 import 'package:tracking_app/features/auth/login/data/data_source/login_remote_data_source.dart';
@@ -10,13 +8,14 @@ import 'package:tracking_app/features/auth/login/domain/repository_icontract/log
 @Injectable(as: LoginContract)
 class LoginRepositoryImplementation implements LoginContract {
   final LoginRemoteDataSource _loginRemoteDataSource;
-  LoginRepositoryImplementation({required LoginRemoteDataSource loginRemoteDataSource}) : _loginRemoteDataSource = loginRemoteDataSource;
+  LoginRepositoryImplementation({
+    required LoginRemoteDataSource loginRemoteDataSource,
+  }) : _loginRemoteDataSource = loginRemoteDataSource;
 
   @override
   Future<ApiResult<LoginResponse>> login({
     required LoginRequest loginRequest,
   }) async {
     return await _loginRemoteDataSource.login(loginRequest: loginRequest);
-
   }
 }
