@@ -19,6 +19,9 @@ import 'package:tracking_app/sp.dart';
 import 'firebase_options.dart';
 
 void main() async {
+ 
+  
+ 
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
   configureDependencies();
@@ -46,7 +49,6 @@ void main() async {
       ),
     ),
   );
-  
 }
 
 class Tracking extends StatefulWidget {
