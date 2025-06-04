@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:injectable/injectable.dart';
 import 'package:tracking_app/core/api_manger/api_service.dart';
-import 'package:tracking_app/core/base/api_excuter.dart';
 import 'package:tracking_app/core/base/api_result.dart';
 import 'package:tracking_app/features/editProfile/data/dataSource/edit_profile_remote_data_source.dart';
 import 'package:tracking_app/features/editProfile/data/model/user_response/driver.dart';
@@ -12,25 +11,18 @@ import 'package:tracking_app/features/editProfile/data/model/user_response/user_
 class EditProfileRemoteDataSourceImpl implements EditProfileRemoteDataSource {
   ApiService apiService;
   EditProfileRemoteDataSourceImpl({required this.apiService});
-  
+
   @override
   Future<ApiResult<UserResponse>> editProfile(Driver driver) {
     // TODO: implement editProfile
     throw UnimplementedError();
   }
-  
+
   @override
   Future<ApiResult<String>> uploadPhoto(File photo) {
     // TODO: implement uploadPhoto
     throw UnimplementedError();
   }
-
-
-
-
-
-
-
 
   // @override
   // Future<ApiResult<UserResponse>> editProfile(Driver driver) async {
@@ -44,10 +36,10 @@ class EditProfileRemoteDataSourceImpl implements EditProfileRemoteDataSource {
 
   // @override
   // Future<ApiResult<String>> uploadPhoto(File photo) async {
-  //   return 
+  //   return
   //   apiService.uploadPhoto(image);
   // }
-  }  
+}  
 //  apiExecuter<GetLoggedDriverDataResponse>(() async {
 //       var response = await apiService.getLoggedDriverData();
 

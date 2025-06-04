@@ -5,7 +5,6 @@ import 'package:tracking_app/features/auth/forget_password/presentation/view/res
 import 'package:tracking_app/features/auth/forget_password/presentation/view/verification_screen.dart';
 import 'package:tracking_app/features/auth/login/presentation/view/login_screen.dart';
 import 'package:tracking_app/features/auth/apply/presentation/view/apply_screen.dart';
-import 'package:tracking_app/features/editProfile/data/model/user_response/driver.dart';
 import 'package:tracking_app/features/editProfile/presentation/view/edit_profile_view.dart';
 import 'package:tracking_app/features/home/presentation/views/home_screen.dart';
 import 'package:tracking_app/features/home/presentation/views/order_details_screen.dart';
@@ -107,20 +106,20 @@ class RouteGenerator {
         );
 
       case RoutesName.editProfileView:
-      // final driver =settings.arguments! as Driver;
+        // final driver =settings.arguments! as Driver;
         return MaterialPageRoute(
           builder: (context) => const EditProfileView(),
           settings: settings,
         );
 
-// final userData = settings.arguments! as UserData;
-//         return MaterialPageRoute(
-//           builder:
-//               (context) => BlocProvider(
-//                 create: (context) => getIt<EditProfileCubit>(),
-//                 child: EditProfileView(user: userData),
-//               ),
-//           settings: settings,
+      // final userData = settings.arguments! as UserData;
+      //         return MaterialPageRoute(
+      //           builder:
+      //               (context) => BlocProvider(
+      //                 create: (context) => getIt<EditProfileCubit>(),
+      //                 child: EditProfileView(user: userData),
+      //               ),
+      //           settings: settings,
 
       default:
         return MaterialPageRoute(

@@ -56,6 +56,8 @@ import '../../features/editProfile/domain/repository/edit_profile_repo.dart'
     as _i971;
 import '../../features/editProfile/domain/useCase/edit_profile_use_case.dart'
     as _i934;
+import '../../features/editProfile/presentation/viewModel/cubit/edit_profile_cubit.dart'
+    as _i973;
 import '../../features/home/data/data%20source/home_screen_data_source.dart'
     as _i428;
 import '../../features/home/data/data%20source/home_screen_data_source_imp.dart'
@@ -116,6 +118,9 @@ extension GetItInjectableX on _i174.GetIt {
       ),
     );
     gh.factory<_i1007.ProfileRepo>(() => _i1072.ProfileRepoImpl());
+    gh.factory<_i973.EditProfileCubit>(
+      () => _i973.EditProfileCubit(gh<InvalidType>(), gh<InvalidType>()),
+    );
     gh.factory<_i132.OrdersRepo>(
       () => _i849.OrdersRepoImpl(gh<_i974.FirebaseFirestore>()),
     );
