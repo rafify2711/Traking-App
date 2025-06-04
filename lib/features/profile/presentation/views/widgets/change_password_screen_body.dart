@@ -1,12 +1,16 @@
 import 'package:easy_localization/easy_localization.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import 'package:tracking_app/core/config/routes_name.dart';
 import 'package:tracking_app/core/utils/colors.dart';
+import 'package:tracking_app/core/utils/helper_func/snack_bar.dart';
 import 'package:tracking_app/core/utils/services/get_responsive_height_and_width.dart';
 import 'package:tracking_app/core/utils/validator.dart';
 import 'package:tracking_app/core/utils/widgets/custom_text_form_fieled.dart';
+import 'package:tracking_app/features/profile/presentation/view_model/change_password_cubit/change_password_cubit.dart';
 
 import 'package:tracking_app/generated/locale_keys.g.dart';
 
@@ -80,7 +84,7 @@ class _ChangePasswordScreenBodyState extends State<ChangePasswordScreenBody> {
               onPressed: () {
                 if (formKey.currentState!.validate()) {
                   formKey.currentState!.save();
-                  // triggerChangePasswordCubit(context);
+                   triggerChangePasswordCubit(context);
                   autovalidateMode = AutovalidateMode.disabled;
                   setState(() {});
                 } else {
@@ -92,7 +96,26 @@ class _ChangePasswordScreenBodyState extends State<ChangePasswordScreenBody> {
               style: ElevatedButton.styleFrom(
                 backgroundColor: PalletsColors.black30,
               ),
-              child:  const Text('Update'),
+              child: BlocConsumer<ChangePasswordCubit, ChangePasswordState>(
+                listener: (context, state) {
+                  if (state is ChangePasswordFailure) {
+                    showErrorSnackBar(context, state.errorMessage);
+                  }
+                  if (state is ChangePasswordSuccess) {
+                    showSnackBar(context, state.data["message"] as String);
+                    Navigator.pushNamed(context, RoutesName.loginScreen);
+                  }
+                },
+                builder: (context, state) {
+                  if (state is ChangePasswordLoading) {
+                    return const Center(
+                      child: CircularProgressIndicator(color: Colors.white),
+                    );
+                  } else {
+                    return const Text('Update');
+                  }
+                },
+              ),
             ),
           ],
         ),
@@ -100,10 +123,10 @@ class _ChangePasswordScreenBodyState extends State<ChangePasswordScreenBody> {
     );
   }
 
-//   void triggerChangePasswordCubit(BuildContext context) {
-//     context.read<ChangePasswordCubit>().changePassword(
-//       oldPassword: oldPassWord.text.trim(),
-//       newPassword: newPassWord.text.trim(),
-//     );
-//   }
+  void triggerChangePasswordCubit(BuildContext context) {
+    context.read<ChangePasswordCubit>().changePassword(
+      oldPassword: oldPassWord.text.trim(),
+      newPassword: newPassWord.text.trim(),
+    );
+  }
  }

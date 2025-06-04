@@ -13,8 +13,8 @@ class Constants {
   static const String deliveryManMarkerId = "deliveryMan";
   static const String storeMarkerId = "store";
   static const String customerMarkerId = "customer";
-  static const String  startOrderEndPoint = "orders/start/{id}";
-  static const String  getLoggedDriverDataEndPoint = "drivers/profile-data";
+  static const String startOrderEndPoint = "orders/start/{id}";
+  static const String getLoggedDriverDataEndPoint = "drivers/profile-data";
   static const String getAllDriverOrdersEndPoint = "orders/driver-orders";
-
+  static const String changePasswordEndPoint = "drivers/change-password";
 }

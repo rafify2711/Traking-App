@@ -34,7 +34,7 @@ void main() async {
   );
   final initialRoute =
       (rememberMe == 'true' && token != null && token.isNotEmpty)
-          ? RoutesName.changePasswordScreen
+          ? RoutesName.loginScreen
           : RoutesName.onBoarding;
   runApp(
     EasyLocalization(
