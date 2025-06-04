@@ -69,5 +69,6 @@ abstract class ApiService {
 
   @GET(Constants.getAllDriverOrdersEndPoint)
   Future<DriverOrdersResponse> getAllDriverOrders();
-
+  @GET(Constants.loginEndPoint)
+  Future<String> logout();
 }

@@ -358,6 +358,16 @@ class MockApiService extends _i1.Mock implements _i16.ApiService {
             ),
           )
           as _i15.Future<_i11.DriverOrdersResponse>);
+
+  @override
+  _i15.Future<String> logout() =>
+      (super.noSuchMethod(
+            Invocation.method(#logout, []),
+            returnValue: _i15.Future<String>.value(
+              _i22.dummyValue<String>(this, Invocation.method(#logout, [])),
+            ),
+          )
+          as _i15.Future<String>);
 }
 
 /// A class which mocks [FirebaseFirestore].

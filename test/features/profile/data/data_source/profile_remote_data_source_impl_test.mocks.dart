@@ -279,4 +279,14 @@ class MockApiService extends _i1.Mock implements _i12.ApiService {
             ),
           )
           as _i13.Future<_i11.DriverOrdersResponse>);
+
+  @override
+  _i13.Future<String> logout() =>
+      (super.noSuchMethod(
+            Invocation.method(#logout, []),
+            returnValue: _i13.Future<String>.value(
+              _i19.dummyValue<String>(this, Invocation.method(#logout, [])),
+            ),
+          )
+          as _i13.Future<String>);
 }

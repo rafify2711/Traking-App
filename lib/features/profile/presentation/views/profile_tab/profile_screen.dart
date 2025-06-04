@@ -6,6 +6,7 @@ import 'package:tracking_app/core/utils/app_text_styles.dart';
 import 'package:tracking_app/core/utils/colors.dart';
 import 'package:tracking_app/features/profile/presentation/view_model/profile_cubit/profile_cubit.dart';
 import 'package:tracking_app/features/profile/presentation/views/edit_vehicle/edit_vehicle_screen.dart';
+import 'package:tracking_app/features/profile/presentation/widget/logout_sheet.dart';
 import 'package:tracking_app/generated/locale_keys.g.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -26,23 +27,18 @@ class ProfileScreen extends StatelessWidget {
         title: Text(LocaleKeys.profile.tr()),
       ),
       body: Column(
-
         children: [
           BlocBuilder<ProfileCubit, ProfileState>(
-
             builder: (context, state) {
               final status = state.orderState;
 
               if (status is BaseError) {
-
                 return Center(
-                  child: Text(
-                    status.errorMessage ?? 'Unknown error',
-                  ),
+                  child: Text(status.errorMessage ?? 'Unknown error'),
                 );
               } else if (status is BaseLoading) {
-                return Expanded(
-                  child: const Center(
+                return const Expanded(
+                  child: Center(
                     child: CircularProgressIndicator(
                       color: PalletsColors.mainColorBase,
                     ),
@@ -53,9 +49,7 @@ class ProfileScreen extends StatelessWidget {
                 return Column(
                   children: [
                     GestureDetector(
-                      onTap: () {
-
-                      },
+                      onTap: () {},
                       child: Container(
                         margin: const EdgeInsets.all(10),
                         padding: const EdgeInsets.all(5),
@@ -111,9 +105,17 @@ class ProfileScreen extends StatelessWidget {
                     const SizedBox(height: 20),
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) {
-                          return EditVehicleScreen(getVehicleResponse: state.getVehicle!, getLoggedDriverDataResponse: state.driverData!);
-                        },));
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return EditVehicleScreen(
+                                getVehicleResponse: state.getVehicle!,
+                                getLoggedDriverDataResponse: state.driverData!,
+                              );
+                            },
+                          ),
+                        );
                       },
                       child: Container(
                         margin: const EdgeInsets.all(10),
@@ -134,7 +136,6 @@ class ProfileScreen extends StatelessWidget {
                             children: [
                               Text(
                                 LocaleKeys.vehicleInfo.tr(),
-
 
                                 style: AppTextStyles.instance.textStyle18
                                     .copyWith(fontWeight: FontWeight.w500),
@@ -163,48 +164,62 @@ class ProfileScreen extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 12,
+                      ),
                       child: Row(
                         children: [
-                          Icon(Icons.translate),
-                          SizedBox(width: 10),
+                          const Icon(Icons.translate),
+                          const SizedBox(width: 10),
                           Expanded(
                             child: Text(
                               LocaleKeys.language,
-                              style: AppTextStyles.instance.textStyle16.copyWith(
-                                color: PalletsColors.blackBase,
-                                fontWeight: FontWeight.w400,
-                              ),
+                              style: AppTextStyles.instance.textStyle16
+                                  .copyWith(
+                                    color: PalletsColors.blackBase,
+                                    fontWeight: FontWeight.w400,
+                                  ),
                             ),
                           ),
                           InkWell(
                             onTap: () {},
                             child: Text(
                               LocaleKeys.english,
-                              style: AppTextStyles.instance.textStyle13.copyWith(
-                                color: PalletsColors.mainColorBase,
-                              ),
+                              style: AppTextStyles.instance.textStyle13
+                                  .copyWith(color: PalletsColors.mainColorBase),
                             ),
                           ),
                         ],
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 12,
+                      ),
                       child: Row(
                         children: [
-                          Icon(Icons.logout),
-                          SizedBox(width: 10),
+                          const Icon(Icons.logout),
+                          const SizedBox(width: 10),
                           Expanded(
                             child: Text(
                               LocaleKeys.logout,
-                              style: AppTextStyles.instance.textStyle16.copyWith(
-                                color: PalletsColors.blackBase,
-                                fontWeight: FontWeight.w400,
-                              ),
+                              style: AppTextStyles.instance.textStyle16
+                                  .copyWith(
+                                    color: PalletsColors.blackBase,
+                                    fontWeight: FontWeight.w400,
+                                  ),
                             ),
                           ),
-                          InkWell(onTap: () {}, child: Icon(Icons.logout)),
+                          InkWell(
+                            onTap: () {
+                              showLogoutDialog(context, () {
+                                context.read<ProfileCubit>().logOut();
+                              });
+                            },
+                            child: const Icon(Icons.logout),
+                          ),
                         ],
                       ),
                     ),
@@ -213,8 +228,6 @@ class ProfileScreen extends StatelessWidget {
               }
             },
           ),
-
-
         ],
       ),
     );
