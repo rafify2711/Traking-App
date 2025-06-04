@@ -15,7 +15,6 @@ import 'package:tracking_app/core/utils/services/secure_sotrage_service.dart';
 import 'package:tracking_app/core/utils/services/simple_bloc_observer.dart';
 import 'package:tracking_app/generated/codegen_loader.g.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:tracking_app/sp.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -35,7 +34,7 @@ void main() async {
   );
   final initialRoute =
       (rememberMe == 'true' && token != null && token.isNotEmpty)
-          ? RoutesName.layOut
+          ? RoutesName.changePasswordScreen
           : RoutesName.onBoarding;
   runApp(
     EasyLocalization(

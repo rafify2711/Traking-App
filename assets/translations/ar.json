@@ -91,8 +91,20 @@
     "startDeliver": "بدء التوصيل",
     "outForDelivery": "في طريقه للتوصيل",
     "arrivedToUser": "وصل إلى المستخدم",
-    "delivered": "تم التوصيل"
+    "delivered": "تم التوصيل",
+    "changePassword": "تغيير كلمة المرور",
+    "currentPassword": "كلمة المرور الحالية",
+    "myOrders": "طلباتي",
+    "recentOrders":"طلبات حديثة",
+    "flowerOrder": "طلب ورد",
+    "editVehicle": "تعديل المركبة",
+    "vehicleInfo": "معلومات المركبة",
+    "language": "اللغة",
+    "english": "الانجليزية",
+    "arabic": "العربية",
+    "logOut": "تسجيل الخروج"
+  }
 
 
 
-}
+

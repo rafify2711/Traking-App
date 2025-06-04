@@ -19,4 +19,5 @@ class RoutesName {
   static const String profileScreen = "profileScreen";
   static const String driverOrderView = "driverOrderView";
   static const String driverOrderScreen = "driverOrderScreen";
+  static const String changePasswordScreen = "changePasswordScreen";
 }

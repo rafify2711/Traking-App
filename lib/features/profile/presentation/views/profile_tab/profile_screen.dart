@@ -41,8 +41,8 @@ class ProfileScreen extends StatelessWidget {
                   ),
                 );
               } else if (status is BaseLoading) {
-                return Expanded(
-                  child: const Center(
+                return const Expanded(
+                  child:  Center(
                     child: CircularProgressIndicator(
                       color: PalletsColors.mainColorBase,
                     ),
@@ -193,18 +193,18 @@ class ProfileScreen extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                       child: Row(
                         children: [
-                          Icon(Icons.logout),
-                          SizedBox(width: 10),
+                        const  Icon(Icons.logout),
+                        const  SizedBox(width: 10),
                           Expanded(
                             child: Text(
-                              LocaleKeys.logout,
+                              LocaleKeys.logOut,
                               style: AppTextStyles.instance.textStyle16.copyWith(
                                 color: PalletsColors.blackBase,
                                 fontWeight: FontWeight.w400,
                               ),
                             ),
                           ),
-                          InkWell(onTap: () {}, child: Icon(Icons.logout)),
+                          InkWell(onTap: () {}, child: const Icon(Icons.logout)),
                         ],
                       ),
                     ),
