@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:equatable/equatable.dart';
-import 'package:flowery/features/profile/data/model/user_response.dart';
+import 'package:tracking_app/features/editProfile/data/model/user_response/user_response.dart';
+
 
 enum EditProfileStatus { initial, loading, success, failure }
 

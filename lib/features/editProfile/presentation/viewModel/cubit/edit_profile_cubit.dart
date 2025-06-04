@@ -1,13 +1,12 @@
 import 'dart:io';
 
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flowery/features/profile/data/model/user_response.dart';
-import 'package:flowery/features/profile/domain/use_case/edit_profile_use_case.dart';
-import 'package:flowery/features/profile/domain/use_case/upload_photo__use_case.dart';
-import 'package:flowery/features/profile/presentation/view_model/edit_profile_state.dart';
-import 'package:flowery/generated/locale_keys.g.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
+import 'package:tracking_app/features/editProfile/domain/useCase/edit_profile_use_case.dart';
+import 'package:tracking_app/features/editProfile/presentation/viewModel/cubit/edit_profile_state.dart';
+import 'package:tracking_app/generated/locale_keys.g.dart';
 
 @injectable
 class EditProfileCubit extends Cubit<EditProfileState> {
