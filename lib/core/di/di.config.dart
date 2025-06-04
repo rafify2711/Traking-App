@@ -57,6 +57,15 @@ import '../../features/home/domain/use_case/get_all_pending_orders_use_case.dart
 import '../../features/home/domain/use_case/get_orderdetails_from_firebase.dart'
     as _i136;
 import '../../features/home/domain/use_case/start_order_use_case.dart' as _i587;
+import '../../features/logout/data/datasources/logout_remote_data_source_impl.dart'
+    as _i115;
+import '../../features/logout/data/datasources/logout_remote_datasource.dart'
+    as _i671;
+import '../../features/logout/data/repositories/logout_repository_impl.dart'
+    as _i885;
+import '../../features/logout/domain/repositories/logout_repository.dart'
+    as _i1004;
+import '../../features/logout/domain/usecases/logout_usecase.dart' as _i98;
 import '../../features/order_status/data/data_source/OrderStatusRemoteDataSource.dart'
     as _i404;
 import '../../features/order_status/data/data_source/OrderStatusRemoteDataSourceImpl.dart'
@@ -150,6 +159,10 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i143.AuthRemoteDataSource>(
       () => _i287.AuthRemoteDataSourceImpl(apiService: gh<_i525.ApiService>()),
     );
+    gh.factory<_i671.LogoutRemoteDataSource>(
+      () =>
+          _i115.LogoutRemoteDataSourceImpl(apiService: gh<_i525.ApiService>()),
+    );
     gh.factory<_i428.HomeScreenDataSource>(
       () => _i885.HomeScreenDataSourceImp(
         gh<_i525.ApiService>(),
@@ -213,6 +226,11 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i318.SenVerifyCodeUseCase>(
       () => _i318.SenVerifyCodeUseCase(repo: gh<_i484.ForgetPasswordRepo>()),
     );
+    gh.factory<_i1004.LogoutRepository>(
+      () => _i885.LogoutRepositoryImpl(
+        remoteDataSource: gh<_i671.LogoutRemoteDataSource>(),
+      ),
+    );
     gh.factory<_i913.ForgetPasswordUseCase>(
       () => _i913.ForgetPasswordUseCase(gh<_i484.ForgetPasswordRepo>()),
     );
@@ -221,6 +239,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i729.GetVehiclesUseCase>(
       () => _i729.GetVehiclesUseCase(gh<_i981.AuthRepo>()),
+    );
+    gh.factory<_i98.LogoutUseCase>(
+      () => _i98.LogoutUseCase(gh<_i1004.LogoutRepository>()),
     );
     return this;
   }
