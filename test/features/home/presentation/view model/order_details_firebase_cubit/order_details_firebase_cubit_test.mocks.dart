@@ -6,7 +6,7 @@
 import 'dart:async' as _i5;
 
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:tracking_app/features/home/data/models/order_details.dart'
+import 'package:tracking_app/features/home/data/models/order_response.dart'
     as _i3;
 import 'package:tracking_app/features/home/domain/repo/home_screen_repo.dart'
     as _i2;
@@ -33,8 +33,8 @@ class _FakeHomeScreenRepo_0 extends _i1.SmartFake
     : super(parent, parentInvocation);
 }
 
-class _FakeOrderDetails_1 extends _i1.SmartFake implements _i3.OrderDetails {
-  _FakeOrderDetails_1(Object parent, Invocation parentInvocation)
+class _FakeOrderResponse_1 extends _i1.SmartFake implements _i3.OrderResponse {
+  _FakeOrderResponse_1(Object parent, Invocation parentInvocation)
     : super(parent, parentInvocation);
 }
 
@@ -65,12 +65,12 @@ class MockGetOrderdetailsFromFirebase extends _i1.Mock
   );
 
   @override
-  _i5.Future<_i3.OrderDetails> invoke() =>
+  _i5.Future<_i3.OrderResponse> invoke() =>
       (super.noSuchMethod(
             Invocation.method(#invoke, []),
-            returnValue: _i5.Future<_i3.OrderDetails>.value(
-              _FakeOrderDetails_1(this, Invocation.method(#invoke, [])),
+            returnValue: _i5.Future<_i3.OrderResponse>.value(
+              _FakeOrderResponse_1(this, Invocation.method(#invoke, [])),
             ),
           )
-          as _i5.Future<_i3.OrderDetails>);
+          as _i5.Future<_i3.OrderResponse>);
 }
