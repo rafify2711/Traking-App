@@ -5,7 +5,6 @@ import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
 import 'package:tracking_app/core/utils/constants.dart';
 import 'package:tracking_app/features/auth/apply/data/models/apply_model/apply_response/apply_response.dart';
-import 'package:tracking_app/features/auth/apply/data/models/apply_model/apply_response/driver.dart';
 import 'package:tracking_app/features/auth/apply/data/models/get_all_vehicles_response/get_all_vehicles_response.dart';
 import 'package:tracking_app/features/auth/login/data/model/login_request.dart';
 import 'package:tracking_app/features/auth/login/data/model/login_response.dart';
@@ -58,7 +57,7 @@ abstract class ApiService {
   @PUT(Constants.editProfileEndPoint)
   Future<UserResponse> editProfile(@Body() UpdatedUserModel user);
 
-  @MultiPart()
   @PUT(Constants.uploadPhoto)
+  @MultiPart()
   Future<String> uploadPhoto(@Part(name: "photo") File image);
 }

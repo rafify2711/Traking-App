@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:injectable/injectable.dart';
 import 'package:tracking_app/core/api_manger/api_service.dart';
-import 'package:tracking_app/features/auth/apply/data/models/apply_model/apply_response/driver.dart';
 import 'package:tracking_app/features/editProfile/data/dataSource/edit_profile_remote_data_source.dart';
 import 'package:tracking_app/features/editProfile/data/model/updated_user_model.dart';
 import 'package:tracking_app/features/editProfile/data/model/user_response/user_response.dart';
