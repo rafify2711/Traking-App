@@ -12,8 +12,6 @@ import 'package:mockito/src/dummies.dart' as _i17;
 import 'package:tracking_app/core/api_manger/api_service.dart' as _i10;
 import 'package:tracking_app/features/auth/apply/data/models/apply_model/apply_response/apply_response.dart'
     as _i6;
-import 'package:tracking_app/features/auth/apply/data/models/apply_model/apply_response/driver.dart'
-    as _i18;
 import 'package:tracking_app/features/auth/apply/data/models/get_all_vehicles_response/get_all_vehicles_response.dart'
     as _i7;
 import 'package:tracking_app/features/auth/forget_password/data/models/request/forget_password_request.dart'
@@ -32,6 +30,8 @@ import 'package:tracking_app/features/auth/login/data/model/login_request.dart'
     as _i12;
 import 'package:tracking_app/features/auth/login/data/model/login_response.dart'
     as _i2;
+import 'package:tracking_app/features/editProfile/data/model/updated_user_model.dart'
+    as _i18;
 import 'package:tracking_app/features/editProfile/data/model/user_response/user_response.dart'
     as _i9;
 import 'package:tracking_app/features/home/data/models/pending_orders_response.dart'
@@ -226,13 +226,13 @@ class MockApiService extends _i1.Mock implements _i10.ApiService {
           as _i11.Future<_i8.PendingOrderResponse>);
 
   @override
-  _i11.Future<_i9.UserResponse> editProfile(_i18.Driver? driver) =>
+  _i11.Future<_i9.UserResponse> editProfile(_i18.UpdatedUserModel? user) =>
       (super.noSuchMethod(
-            Invocation.method(#editProfile, [driver]),
+            Invocation.method(#editProfile, [user]),
             returnValue: _i11.Future<_i9.UserResponse>.value(
               _FakeUserResponse_7(
                 this,
-                Invocation.method(#editProfile, [driver]),
+                Invocation.method(#editProfile, [user]),
               ),
             ),
           )

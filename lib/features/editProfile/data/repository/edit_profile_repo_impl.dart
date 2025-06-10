@@ -6,19 +6,22 @@ import 'package:tracking_app/features/editProfile/data/dataSource/edit_profile_r
 import 'package:tracking_app/features/editProfile/data/model/updated_user_model.dart';
 import 'package:tracking_app/features/editProfile/data/model/user_response/user_response.dart';
 import 'package:tracking_app/features/editProfile/domain/repository/edit_profile_repo.dart';
+import 'package:tracking_app/features/success/success.dart';
 
 @Injectable(as: EditProfileRepo)
 class EditProfileRepoImpl implements EditProfileRepo {
-  EditProfileRemoteDataSource remoteDataSource;
+  final EditProfileRemoteDataSource remoteDataSource;
   EditProfileRepoImpl({required this.remoteDataSource});
 
   @override
   Future<ApiResult<UserResponse>> editProfile(UpdatedUserModel user) async {
-    return await remoteDataSource.editProfile(user);
+    final result = await remoteDataSource.editProfile(user);
+    return ApiSuccess(data: result);
   }
 
   @override
   Future<ApiResult<String>> uploadPhoto(File photo) async {
-    return await remoteDataSource.uploadPhoto(photo);
+    final result = await remoteDataSource.uploadPhoto(photo);
+    return ApiSuccess(data: result);
   }
 }

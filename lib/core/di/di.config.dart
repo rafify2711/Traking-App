@@ -152,6 +152,11 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i974.FirebaseFirestore>(),
       ),
     );
+    gh.factory<_i971.EditProfileRepo>(
+      () => _i352.EditProfileRepoImpl(
+        remoteDataSource: gh<_i270.EditProfileRemoteDataSource>(),
+      ),
+    );
     gh.factory<_i762.ForgetPasswordDataSource>(
       () => _i224.ForgetPasswordDataSourceImpl(gh<_i525.ApiService>()),
     );
@@ -185,8 +190,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i719.UpdateOrderStatusUseCase>(
       () => _i719.UpdateOrderStatusUseCase(gh<_i716.OrderRepository>()),
     );
-    gh.factory<_i971.EditProfileRepo>(
-      () => _i352.EditProfileRepoImpl(gh<_i270.EditProfileRemoteDataSource>()),
+    gh.factory<_i934.EditProfileUseCase>(
+      () => _i934.EditProfileUseCase(gh<_i971.EditProfileRepo>()),
     );
     gh.factory<_i587.StartOrderUseCase>(
       () => _i587.StartOrderUseCase(gh<_i202.HomeScreenRepo>()),
@@ -208,9 +213,6 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i729.GetVehiclesUseCase>(
       () => _i729.GetVehiclesUseCase(gh<_i981.AuthRepo>()),
-    );
-    gh.factory<_i934.EditProfileUseCase>(
-      () => _i934.EditProfileUseCase(gh<_i971.EditProfileRepo>()),
     );
     gh.factory<_i973.EditProfileCubit>(
       () => _i973.EditProfileCubit(

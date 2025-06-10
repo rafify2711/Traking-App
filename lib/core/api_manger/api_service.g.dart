@@ -282,12 +282,12 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<UserResponse> editProfile(Driver driver) async {
+  Future<UserResponse> editProfile(UpdatedUserModel user) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    _data.addAll(driver.toJson());
+    _data.addAll(user.toJson());
     final _options = _setStreamType<UserResponse>(
       Options(method: 'PUT', headers: _headers, extra: _extra)
           .compose(
