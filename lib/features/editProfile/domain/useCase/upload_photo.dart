@@ -7,7 +7,7 @@ class UploadPhoto {
   EditProfileRepo editProfileRepo;
   UploadPhoto(this.editProfileRepo);
 
-  Future<ApiResult<String>> uploadPhoto(File photo)async{
-return await editProfileRepo.uploadPhoto(photo);
+  Future<ApiResult<String>> uploadPhoto(File photo) async {
+    return await editProfileRepo.uploadPhoto(photo);
   }
 }

@@ -13,12 +13,12 @@ class EditProfileRepoImpl implements EditProfileRepo {
   EditProfileRepoImpl({required this.remoteDataSource});
 
   @override
-  Future<ApiResult<UserResponse>> editProfile(UpdatedUserModel user) {
-    return remoteDataSource.editProfile(user);
+  Future<ApiResult<UserResponse>> editProfile(UpdatedUserModel user) async {
+    return await remoteDataSource.editProfile(user);
   }
 
   @override
-  Future<ApiResult<String>> uploadPhoto(File photo) {
-    return remoteDataSource.uploadPhoto(photo);
+  Future<ApiResult<String>> uploadPhoto(File photo) async {
+    return await remoteDataSource.uploadPhoto(photo);
   }
 }

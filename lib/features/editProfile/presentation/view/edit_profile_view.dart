@@ -11,6 +11,7 @@ import 'package:tracking_app/core/utils/colors.dart';
 import 'package:tracking_app/core/utils/validator.dart';
 import 'package:tracking_app/core/utils/widgets/custom_text_form_fieled.dart';
 import 'package:tracking_app/features/auth/apply/data/models/apply_model/apply_response/driver.dart';
+import 'package:tracking_app/features/editProfile/data/model/updated_user_model.dart';
 import 'package:tracking_app/features/editProfile/presentation/viewModel/cubit/edit_profile_cubit.dart';
 import 'package:tracking_app/features/editProfile/presentation/viewModel/cubit/edit_profile_state.dart';
 import 'package:tracking_app/generated/locale_keys.g.dart';
@@ -147,7 +148,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                         ],
                       ),
                     ),
-                    SizedBox(height: 50),
+                    const SizedBox(height: 50),
 
                     // First & Last Name
                     Row(
@@ -161,7 +162,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                             hintText: '',
                           ),
                         ),
-                        SizedBox(width: 20),
+                        const SizedBox(width: 20),
                         Expanded(
                           child: CustomTextFormFieled(
                             labelText: LocaleKeys.lastName.tr(),
@@ -173,7 +174,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                         ),
                       ],
                     ),
-                    SizedBox(height: 12),
+                    const SizedBox(height: 12),
 
                     // Email
                     CustomTextFormFieled(
@@ -183,7 +184,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                       validator: Validator.validateEmail,
                       hintText: '',
                     ),
-                    SizedBox(height: 12),
+                    const SizedBox(height: 12),
 
                     // Phone Number
                     CustomTextFormFieled(
@@ -193,7 +194,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                       validator: Validator.validatePhoneNumber,
                       hintText: '',
                     ),
-                    SizedBox(height: 30),
+                    const SizedBox(height: 30),
 
                     CustomTextFormFieled(
                       hintText: LocaleKeys.enterYourPassword.tr(),
@@ -218,7 +219,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                       ),
                     ),
 
-                    SizedBox(height: 100),
+                    const SizedBox(height: 100),
 
                     // Save Button
                     if (state.status == EditProfileStatus.loading)
