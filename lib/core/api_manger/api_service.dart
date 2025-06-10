@@ -15,6 +15,7 @@ import 'package:tracking_app/features/auth/forget_password/data/models/request/r
 import 'package:tracking_app/features/auth/forget_password/data/models/response/forget_password_response.dart';
 import 'package:tracking_app/features/auth/forget_password/data/models/response/otp_response.dart';
 import 'package:tracking_app/features/auth/forget_password/data/models/response/reset_password_response.dart';
+import 'package:tracking_app/features/editProfile/data/model/updated_user_model.dart';
 import 'package:tracking_app/features/editProfile/data/model/user_response/user_response.dart';
 import 'package:tracking_app/features/home/data/models/pending_orders_response.dart';
 part 'api_service.g.dart';
@@ -55,7 +56,7 @@ abstract class ApiService {
   Future<PendingOrderResponse> startOrder(@Path() String id);
 
   @PUT(Constants.editProfileEndPoint)
-  Future<UserResponse> editProfile(@Body() Driver driver);
+  Future<UserResponse> editProfile(@Body() UpdatedUserModel user);
 
   @MultiPart()
   @PUT(Constants.uploadPhoto)

@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tracking_app/core/config/routes_name.dart';
+import 'package:tracking_app/core/di/di.dart';
+import 'package:tracking_app/features/auth/apply/data/models/apply_model/apply_response/driver.dart';
 import 'package:tracking_app/features/auth/forget_password/presentation/view/forget_password_screen.dart';
 import 'package:tracking_app/features/auth/forget_password/presentation/view/reset_password_screen.dart';
 import 'package:tracking_app/features/auth/forget_password/presentation/view/verification_screen.dart';
 import 'package:tracking_app/features/auth/login/presentation/view/login_screen.dart';
 import 'package:tracking_app/features/auth/apply/presentation/view/apply_screen.dart';
 import 'package:tracking_app/features/editProfile/presentation/view/edit_profile_view.dart';
+import 'package:tracking_app/features/editProfile/presentation/viewModel/cubit/edit_profile_cubit.dart';
 import 'package:tracking_app/features/home/presentation/views/home_screen.dart';
 import 'package:tracking_app/features/home/presentation/views/order_details_screen.dart';
 import 'package:tracking_app/features/home/presentation/views/pickup_location_screen.dart';
@@ -106,20 +110,16 @@ class RouteGenerator {
         );
 
       case RoutesName.editProfileView:
-        // final driver =settings.arguments! as Driver;
+        final driver = settings.arguments! as Driver;
         return MaterialPageRoute(
-          builder: (context) => const EditProfileView(),
+          builder:
+              (context) => BlocProvider(
+                create: (context) => getIt<EditProfileCubit>(),
+                child: EditProfileView(driver: driver),
+              ),
+
           settings: settings,
         );
-
-      // final userData = settings.arguments! as UserData;
-      //         return MaterialPageRoute(
-      //           builder:
-      //               (context) => BlocProvider(
-      //                 create: (context) => getIt<EditProfileCubit>(),
-      //                 child: EditProfileView(user: userData),
-      //               ),
-      //           settings: settings,
 
       default:
         return MaterialPageRoute(

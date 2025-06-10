@@ -56,6 +56,7 @@ import '../../features/editProfile/domain/repository/edit_profile_repo.dart'
     as _i971;
 import '../../features/editProfile/domain/useCase/edit_profile_use_case.dart'
     as _i934;
+import '../../features/editProfile/domain/useCase/upload_photo.dart' as _i808;
 import '../../features/editProfile/presentation/viewModel/cubit/edit_profile_cubit.dart'
     as _i973;
 import '../../features/home/data/data%20source/home_screen_data_source.dart'
@@ -102,11 +103,11 @@ extension GetItInjectableX on _i174.GetIt {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final dioModule = _$DioModule();
     final firestoreModule = _$FirestoreModule();
-    gh.singleton<_i361.LogInterceptor>(() => dioModule.provideLogger());
     gh.singleton<_i291.AppConfigProvider>(() => _i291.AppConfigProvider());
     gh.singleton<_i665.SecureStorageService>(
       () => _i665.SecureStorageService(),
     );
+    gh.singleton<_i361.LogInterceptor>(() => dioModule.provideLogger());
     gh.lazySingleton<_i974.FirebaseFirestore>(() => firestoreModule.firestore);
     gh.factory<_i998.ProfileRemoteDataSource>(
       () => _i531.ProfileRemoteDataSourceImpl(),
@@ -118,9 +119,6 @@ extension GetItInjectableX on _i174.GetIt {
       ),
     );
     gh.factory<_i1007.ProfileRepo>(() => _i1072.ProfileRepoImpl());
-    gh.factory<_i973.EditProfileCubit>(
-      () => _i973.EditProfileCubit(gh<InvalidType>(), gh<InvalidType>()),
-    );
     gh.factory<_i132.OrdersRepo>(
       () => _i849.OrdersRepoImpl(gh<_i974.FirebaseFirestore>()),
     );
@@ -190,14 +188,14 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i971.EditProfileRepo>(
       () => _i352.EditProfileRepoImpl(gh<_i270.EditProfileRemoteDataSource>()),
     );
+    gh.factory<_i587.StartOrderUseCase>(
+      () => _i587.StartOrderUseCase(gh<_i202.HomeScreenRepo>()),
+    );
     gh.factory<_i968.GetAllPendingOrdersUseCase>(
       () => _i968.GetAllPendingOrdersUseCase(gh<_i202.HomeScreenRepo>()),
     );
     gh.factory<_i136.GetOrderdetailsFromFirebase>(
       () => _i136.GetOrderdetailsFromFirebase(gh<_i202.HomeScreenRepo>()),
-    );
-    gh.factory<_i587.StartOrderUseCase>(
-      () => _i587.StartOrderUseCase(gh<_i202.HomeScreenRepo>()),
     );
     gh.factory<_i318.SenVerifyCodeUseCase>(
       () => _i318.SenVerifyCodeUseCase(repo: gh<_i484.ForgetPasswordRepo>()),
@@ -213,6 +211,12 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i934.EditProfileUseCase>(
       () => _i934.EditProfileUseCase(gh<_i971.EditProfileRepo>()),
+    );
+    gh.factory<_i973.EditProfileCubit>(
+      () => _i973.EditProfileCubit(
+        gh<_i934.EditProfileUseCase>(),
+        gh<_i808.UploadPhoto>(),
+      ),
     );
     return this;
   }
