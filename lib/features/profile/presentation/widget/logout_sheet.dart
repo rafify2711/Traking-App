@@ -1,35 +1,55 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:tracking_app/core/utils/app_text_styles.dart';
+import 'package:tracking_app/generated/locale_keys.g.dart';
 
 void showLogoutDialog(BuildContext context, VoidCallback onPressed) {
   showDialog(
     context: context,
-    barrierDismissible: false, 
+    barrierDismissible: false,
     builder: (BuildContext context) {
       return AlertDialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        title: const Center(
-          child: Text('LOGOUT', style: TextStyle(fontWeight: FontWeight.bold)),
-        ),
-        content: const Text('Confirm logout!!', textAlign: TextAlign.center),
-        actionsAlignment: MainAxisAlignment.spaceEvenly,
-        actions: <Widget>[
-          OutlinedButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            style: OutlinedButton.styleFrom(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30),
-              ),
-              side: const BorderSide(color: Colors.black),
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+        title:  Center(
+          child: Text(
+            LocaleKeys.LOGOUT.tr(),
+            style: AppTextStyles.instance.textStyle18.copyWith(
+              fontWeight: FontWeight.bold,
             ),
-            child: const Text('Cancel', style: TextStyle(color: Colors.black)),
           ),
-          ElevatedButton(
-            onPressed: onPressed,
-
-            child: const Text('Logout', style: TextStyle(color: Colors.white)),
+        ),
+        content:  Text(
+          LocaleKeys.logoutConfirmation.tr(),
+          style:  AppTextStyles.instance.textStyle16,
+          textAlign: TextAlign.center,
+        ),
+        contentPadding: const EdgeInsets.fromLTRB(24, 20, 24, 10),
+        actionsPadding: const EdgeInsets.only(bottom: 16),
+        actions: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              SizedBox(
+                width: 100,
+                child: OutlinedButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                
+                  child:  Text(LocaleKeys.cancel.tr(), style: AppTextStyles.instance.textStyle14),
+                ),
+              ),
+              const SizedBox(width: 12), 
+              SizedBox(
+                width: 100,
+                child: ElevatedButton(
+                  onPressed: onPressed,
+                
+                  
+                  child:  Text(LocaleKeys.logout.tr(), style: AppTextStyles.instance.textStyle14),
+                ),
+              ),
+            ],
           ),
         ],
       );

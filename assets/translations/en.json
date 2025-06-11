@@ -92,5 +92,10 @@
     "startDeliver": "Start Deliver",
     "outForDelivery": "Out for Delivery",
     "arrivedToUser": "Arrived to User",
-    "delivered": "Delivered"
+    "delivered": "Delivered",
+    "logout": "Logout",
+    "LOGOUT":"LOGOUT",
+    "logoutConfirmation":"Confirm Logout !",
+    "cancel": "Cancel",
+    "editVehicle": "Edit Vehicle"
 }

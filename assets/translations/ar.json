@@ -91,8 +91,12 @@
     "startDeliver": "بدء التوصيل",
     "outForDelivery": "في طريقه للتوصيل",
     "arrivedToUser": "وصل إلى المستخدم",
-    "delivered": "تم التوصيل"
-
+    "delivered": "تم التوصيل",
+    "logout": "تسجيل الخروج",
+    "LOGOUT": "تسجيل الخروج",
+    "logoutConfirmation": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
+    "cancel": "الغاء",
+    "editVehicle": "تعديل المركبة"
 
 
 }
