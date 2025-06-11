@@ -92,6 +92,7 @@
     "outForDelivery": "في طريقه للتوصيل",
     "arrivedToUser": "وصل إلى المستخدم",
     "delivered": "تم التوصيل",
+<<<<<<< HEAD
     "editProfile": "تعديل الملف الشخصي",
     "firstName": "الاسم الأول",
     "lastName": "اسم العائلة",
@@ -102,3 +103,21 @@
     "updateFailed": "فشل التحديث",
     "updateProfile": "تحديث الملف الشخصي"
 }
+=======
+    "changePassword": "تغيير كلمة المرور",
+    "currentPassword": "كلمة المرور الحالية",
+    "myOrders": "طلباتي",
+    "recentOrders":"طلبات حديثة",
+    "flowerOrder": "طلب ورد",
+    "editVehicle": "تعديل المركبة",
+    "vehicleInfo": "معلومات المركبة",
+    "language": "اللغة",
+    "english": "الانجليزية",
+    "arabic": "العربية",
+    "logOut": "تسجيل الخروج"
+  }
+
+
+
+
+>>>>>>> development

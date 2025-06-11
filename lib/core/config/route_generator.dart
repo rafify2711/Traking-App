@@ -16,9 +16,15 @@ import 'package:tracking_app/features/home/presentation/views/pickup_location_sc
 import 'package:tracking_app/features/home/presentation/views/customer_location_screen.dart';
 import 'package:tracking_app/features/layOut/presentation/lay_out.dart';
 import 'package:tracking_app/features/on_boarding/presentation/views/widgets/on_boarding_view.dart';
+import 'package:tracking_app/features/order_tap/presentation/view/driver_order_screen.dart';
+import 'package:tracking_app/features/order_tap/presentation/view/driver_order_view.dart';
 import 'package:tracking_app/features/orders/presentation/orders_view.dart';
-import 'package:tracking_app/features/profile/presentation/profile_view.dart';
+import 'package:tracking_app/features/profile/presentation/views/change_password_screen.dart';
+import 'package:tracking_app/features/profile/presentation/views/profile_tab/profile_screen.dart';
+import 'package:tracking_app/features/profile/presentation/views/profile_tab/profile_view.dart';
 import 'package:tracking_app/features/success_screen/success_screen.dart';
+
+import '../../features/profile/presentation/views/success/success.dart';
 
 class RouteGenerator {
   static Route<dynamic>? onGenerator(RouteSettings settings) {
@@ -79,7 +85,7 @@ class RouteGenerator {
         );
       case RoutesName.profile:
         return MaterialPageRoute(
-          builder: (context) => const ProfileView(),
+          builder: (context) => ProfileView(),
           settings: settings,
         );
       // case RoutesName.orderStatus:
@@ -106,6 +112,26 @@ class RouteGenerator {
       case RoutesName.success:
         return MaterialPageRoute(
           builder: (context) => const SuccessScreen(),
+          settings: settings,
+        );
+      case RoutesName.driverOrderScreen:
+        return MaterialPageRoute(
+          builder: (context) => const DriverOrderScreen(),
+          settings: settings,
+        );
+      case RoutesName.driverOrderView:
+        return MaterialPageRoute(
+          builder: (context) => DriverOrderView(),
+          settings: settings,
+        );
+      case RoutesName.profileScreen:
+        return MaterialPageRoute(
+          builder: (context) => const ProfileScreen(),
+          settings: settings,
+        );
+      case RoutesName.changePasswordScreen:
+        return MaterialPageRoute(
+          builder: (context) => const ChangePasswordScreen(),
           settings: settings,
         );
 

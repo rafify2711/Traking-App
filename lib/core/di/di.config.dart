@@ -78,6 +78,16 @@ import '../../features/order_status/data/repo/order_repo_impl.dart' as _i928;
 import '../../features/order_status/domain/repo/order_repo.dart' as _i716;
 import '../../features/order_status/domain/use_case/update_order-status_use_case.dart'
     as _i719;
+import '../../features/order_tap/data/data_source/driver_order_remote_data_source.dart'
+    as _i501;
+import '../../features/order_tap/data/data_source/driver_order_remote_data_source_imp.dart'
+    as _i1035;
+import '../../features/order_tap/data/repository/driver_order_repo_impl.dart'
+    as _i950;
+import '../../features/order_tap/domain/repository/driver_order_repo.dart'
+    as _i954;
+import '../../features/order_tap/domain/use_case/get_driver_order_data_usecase.dart'
+    as _i58;
 import '../../features/orders/data/repository/orders_repo_impl.dart' as _i849;
 import '../../features/orders/domain/repository/orders_repo.dart' as _i132;
 import '../../features/orders/domain/use_case/save_order_to_firebase_use_case.dart'
@@ -88,6 +98,13 @@ import '../../features/profile/data/data_source/profile_remote_data_source_impl.
     as _i531;
 import '../../features/profile/data/repos/profile_repo_impl.dart' as _i1072;
 import '../../features/profile/domain/repos/profile_repo.dart' as _i1007;
+import '../../features/profile/domain/use_case/change_password_use_case.dart'
+    as _i342;
+import '../../features/profile/domain/use_case/get_logged_driver_data_use_case.dart'
+    as _i440;
+import '../../features/profile/domain/use_case/get_vechile_name_use_case.dart'
+    as _i668;
+import '../api_manger/api_manager.dart' as _i89;
 import '../api_manger/api_service.dart' as _i525;
 import '../api_manger/dio_module.dart' as _i508;
 import '../provider/app_config_provider.dart' as _i291;
@@ -118,6 +135,7 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i665.SecureStorageService>(),
       ),
     );
+    gh.singleton<_i89.ApiManager>(() => _i89.ApiManager(dio: gh<_i361.Dio>()));
     gh.factory<_i1007.ProfileRepo>(() => _i1072.ProfileRepoImpl());
     gh.factory<_i132.OrdersRepo>(
       () => _i849.OrdersRepoImpl(gh<_i974.FirebaseFirestore>()),
@@ -133,6 +151,17 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i974.FirebaseFirestore>(),
         gh<_i525.ApiService>(),
         gh<_i665.SecureStorageService>(),
+      ),
+    );
+    gh.factory<_i501.DriverOrderRemoteDataSource>(
+      () => _i1035.DriverOrderRemoteDataSourceImp(
+        apiService: gh<_i525.ApiService>(),
+      ),
+    );
+    gh.factory<_i998.ProfileRemoteDataSource>(
+      () => _i531.ProfileRemoteDataSourceImpl(
+        gh<_i89.ApiManager>(),
+        apiService: gh<_i525.ApiService>(),
       ),
     );
     gh.factory<_i270.EditProfileRemoteDataSource>(
@@ -187,6 +216,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i401.LoginUsecase>(
       () => _i401.LoginUsecase(login_repo: gh<_i96.LoginContract>()),
     );
+    gh.factory<_i954.DriverOrderRepo>(
+      () => _i950.DriverOrderRepoImpl(gh<_i501.DriverOrderRemoteDataSource>()),
+    );
     gh.factory<_i719.UpdateOrderStatusUseCase>(
       () => _i719.UpdateOrderStatusUseCase(gh<_i716.OrderRepository>()),
     );
@@ -202,8 +234,23 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i587.StartOrderUseCase>(
       () => _i587.StartOrderUseCase(gh<_i202.HomeScreenRepo>()),
     );
+    gh.factory<_i58.GetDriverOrderDataUsecase>(
+      () => _i58.GetDriverOrderDataUsecase(gh<_i954.DriverOrderRepo>()),
+    );
+    gh.factory<_i1007.ProfileRepo>(
+      () => _i1072.ProfileRepoImpl(gh<_i998.ProfileRemoteDataSource>()),
+    );
     gh.factory<_i318.SenVerifyCodeUseCase>(
       () => _i318.SenVerifyCodeUseCase(repo: gh<_i484.ForgetPasswordRepo>()),
+    );
+    gh.factory<_i440.GetLoggedDriverDataUseCase>(
+      () => _i440.GetLoggedDriverDataUseCase(gh<_i1007.ProfileRepo>()),
+    );
+    gh.factory<_i668.GetVechileNameUseCase>(
+      () => _i668.GetVechileNameUseCase(gh<_i1007.ProfileRepo>()),
+    );
+    gh.factory<_i342.ChangePasswordUseCase>(
+      () => _i342.ChangePasswordUseCase(gh<_i1007.ProfileRepo>()),
     );
     gh.factory<_i913.ForgetPasswordUseCase>(
       () => _i913.ForgetPasswordUseCase(gh<_i484.ForgetPasswordRepo>()),

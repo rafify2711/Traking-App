@@ -2,11 +2,12 @@
 
 // ignore_for_file: constant_identifier_names
 
-abstract class  LocaleKeys {
+abstract class LocaleKeys {
   static const local = 'local';
   static const WelcomeToFloweryRiderApp = 'WelcomeToFloweryRiderApp';
   static const forgetPassword = 'forgetPassword';
-  static const pleaseEnterYourEmailAssociatedToYourAccount = 'pleaseEnterYourEmailAssociatedToYourAccount';
+  static const pleaseEnterYourEmailAssociatedToYourAccount =
+      'pleaseEnterYourEmailAssociatedToYourAccount';
   static const email = 'email';
   static const confirm = 'confirm';
   static const enterYourEmail = 'enterYourEmail';
@@ -53,7 +54,8 @@ abstract class  LocaleKeys {
   static const validationNumbersOnly = 'validationNumbersOnly';
   static const validationPasswordInvalid = 'validationPasswordInvalid';
   static const validationPasswordMismatch = 'validationPasswordMismatch';
-  static const validationVehicleNumberInvalid = 'validationVehicleNumberInvalid';
+  static const validationVehicleNumberInvalid =
+      'validationVehicleNumberInvalid';
   static const validationIdNumberInvalid = 'validationIdNumberInvalid';
   static const applicationSubmittedTitle = 'applicationSubmittedTitle';
   static const applicationSubmittedBody = 'applicationSubmittedBody';
@@ -79,7 +81,8 @@ abstract class  LocaleKeys {
   static const yourLocation = 'yourLocation';
   static const locationServiceDisabled = 'locationServiceDisabled';
   static const locationPermissionIsDeied = 'locationPermissionIsDeied';
-  static const locationPermissionIsPermanentlyDenied = 'locationPermissionIsPermanentlyDenied';
+  static const locationPermissionIsPermanentlyDenied =
+      'locationPermissionIsPermanentlyDenied';
   static const done = 'done';
   static const orderDeliveredSuccess = 'orderDeliveredSuccess';
   static const thankYou = 'thankYou';
@@ -94,6 +97,17 @@ abstract class  LocaleKeys {
   static const outForDelivery = 'outForDelivery';
   static const arrivedToUser = 'arrivedToUser';
   static const delivered = 'delivered';
+  static const changePassword = 'changePassword';
+  static const currentPassword = 'currentPassword';
+  static const myOrders = 'myOrders';
+  static const recentOrders = 'recentOrders';
+  static const flowerOrder = 'flowerOrder';
+  static const editVehicle = 'editVehicle';
+  static const vehicleInfo = 'vehicleInfo';
+  static const language = 'language';
+  static const english = 'english';
+  static const arabic = 'arabic';
+  static const logOut = 'logOut';
   static const editProfile = 'editProfile';
   static const firstName = 'firstName';
   static const lastName = 'lastName';
@@ -103,5 +117,4 @@ abstract class  LocaleKeys {
   static const profileUpdatedSuccessfully = 'profileUpdatedSuccessfully';
   static const updateFailed = 'updateFailed';
   static const updateProfile = 'updateProfile';
-
 }

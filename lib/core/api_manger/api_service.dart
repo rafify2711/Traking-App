@@ -17,11 +17,16 @@ import 'package:tracking_app/features/auth/forget_password/data/models/response/
 import 'package:tracking_app/features/editProfile/data/model/updated_user_model.dart';
 import 'package:tracking_app/features/editProfile/data/model/user_response/user_response.dart';
 import 'package:tracking_app/features/home/data/models/pending_orders_response.dart';
+import 'package:tracking_app/features/profile/data/model/get_logged_driver_data_response.dart';
+import 'package:tracking_app/features/profile/data/model/get_vehicle_response.dart';
+
+import 'package:tracking_app/features/order_tap/data/model/driver_orders_response.dart';
 part 'api_service.g.dart';
 
 @RestApi(baseUrl: Constants.baseUrl)
 abstract class ApiService {
   factory ApiService(Dio dio, {String baseUrl}) = _ApiService;
+
   @POST(Constants.loginEndPoint)
   Future<LoginResponse> loginUser(@Body() LoginRequest loginRequest);
 
@@ -29,12 +34,15 @@ abstract class ApiService {
   Future<ForgetPasswordResponse> forgetPassword(
     @Body() ForgetPasswordRequest forgetPasswordRequest,
   );
+
   @POST(Constants.verifyResetCodeEndpoint)
   Future<OtpResponse> verifyResetCode(@Body() OtpRequest otpRequest);
+
   @PUT(Constants.resetPasswordEndpoint)
   Future<ResetPasswordResponse> resetPassword(
     @Body() ResetPasswordRequest ResetPasswordRequest,
   );
+
   @MultiPart()
   @POST(Constants.applyEndpoint)
   Future<ApplyResponse> apply(@Body() FormData formData);
@@ -48,11 +56,23 @@ abstract class ApiService {
     @Body() Map<String, dynamic> newState,
     @Header('Authorization') String token,
   );
+
   @GET(Constants.getAllPendingOrdersEndPoint)
   Future<PendingOrderResponse> getAllPendingOrders(@Query("page") int page);
 
   @PUT((Constants.startOrderEndPoint))
   Future<PendingOrderResponse> startOrder(@Path() String id);
+
+  @GET(Constants.getLoggedDriverDataEndPoint)
+  Future<GetLoggedDriverDataResponse> getLoggedDriverData();
+
+  @GET('${Constants.getAllVehiclesEndpoint}/{vehicleId}')
+  Future<GetVehicleResponse> getSpecificVehicleName(
+    @Path('vehicleId') String vehicleId,
+  );
+
+  @GET(Constants.getAllDriverOrdersEndPoint)
+  Future<DriverOrdersResponse> getAllDriverOrders();
 
   @PUT(Constants.editProfileEndPoint)
   Future<UserResponse> editProfile(@Body() UpdatedUserModel user);

@@ -92,6 +92,7 @@
     "outForDelivery": "Out for Delivery",
     "arrivedToUser": "Arrived to User",
     "delivered": "Delivered",
+<<<<<<< HEAD
     "editProfile": "Edit profile",
     "firstName": "First name",
     "lastName": "Last name",
@@ -102,3 +103,18 @@
     "updateFailed": "Update failed",
     "updateProfile": "Update profile"
 }
+=======
+    "changePassword": "Change Password",
+    "currentPassword": "Current Password",
+    "myOrders": "My Orders",
+    "recentOrders": "Recent Orders",
+    "flowerOrder": "Flower Order",
+    "editVehicle": "Edit Vehicle",
+    "vehicleInfo": "Vehicle Info",
+    "language": "Language",
+    "english": "English",
+    "arabic": "Arabic",
+    "logOut": "Log Out"
+  }
+
+>>>>>>> development
