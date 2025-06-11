@@ -92,7 +92,6 @@
     "outForDelivery": "Out for Delivery",
     "arrivedToUser": "Arrived to User",
     "delivered": "Delivered",
-<<<<<<< HEAD
     "editProfile": "Edit profile",
     "firstName": "First name",
     "lastName": "Last name",
@@ -101,9 +100,7 @@
     "failedToUploadPhoto": "Failed to upload photo",
     "profileUpdatedSuccessfully": "Profile updated successfully",
     "updateFailed": "Update failed",
-    "updateProfile": "Update profile"
-}
-=======
+    "updateProfile": "Update profile",
     "changePassword": "Change Password",
     "currentPassword": "Current Password",
     "myOrders": "My Orders",
@@ -115,6 +112,4 @@
     "english": "English",
     "arabic": "Arabic",
     "logOut": "Log Out"
-  }
-
->>>>>>> development
+}

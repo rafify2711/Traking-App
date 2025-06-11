@@ -92,7 +92,6 @@
     "outForDelivery": "في طريقه للتوصيل",
     "arrivedToUser": "وصل إلى المستخدم",
     "delivered": "تم التوصيل",
-<<<<<<< HEAD
     "editProfile": "تعديل الملف الشخصي",
     "firstName": "الاسم الأول",
     "lastName": "اسم العائلة",
@@ -101,9 +100,7 @@
     "failedToUploadPhoto": "فشل في رفع الصورة",
     "profileUpdatedSuccessfully": "تم تحديث الملف الشخصي بنجاح",
     "updateFailed": "فشل التحديث",
-    "updateProfile": "تحديث الملف الشخصي"
-}
-=======
+    "updateProfile": "تحديث الملف الشخصي",
     "changePassword": "تغيير كلمة المرور",
     "currentPassword": "كلمة المرور الحالية",
     "myOrders": "طلباتي",
@@ -120,4 +117,3 @@
 
 
 
->>>>>>> development

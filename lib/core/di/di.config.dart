@@ -120,15 +120,12 @@ extension GetItInjectableX on _i174.GetIt {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final dioModule = _$DioModule();
     final firestoreModule = _$FirestoreModule();
-    gh.singleton<_i361.LogInterceptor>(() => dioModule.provideLogger());
     gh.singleton<_i291.AppConfigProvider>(() => _i291.AppConfigProvider());
     gh.singleton<_i665.SecureStorageService>(
       () => _i665.SecureStorageService(),
     );
+    gh.singleton<_i361.LogInterceptor>(() => dioModule.provideLogger());
     gh.lazySingleton<_i974.FirebaseFirestore>(() => firestoreModule.firestore);
-    gh.factory<_i998.ProfileRemoteDataSource>(
-      () => _i531.ProfileRemoteDataSourceImpl(),
-    );
     gh.singleton<_i361.Dio>(
       () => dioModule.provideDio(
         gh<_i361.LogInterceptor>(),
@@ -136,7 +133,6 @@ extension GetItInjectableX on _i174.GetIt {
       ),
     );
     gh.singleton<_i89.ApiManager>(() => _i89.ApiManager(dio: gh<_i361.Dio>()));
-    gh.factory<_i1007.ProfileRepo>(() => _i1072.ProfileRepoImpl());
     gh.factory<_i132.OrdersRepo>(
       () => _i849.OrdersRepoImpl(gh<_i974.FirebaseFirestore>()),
     );
@@ -158,14 +154,14 @@ extension GetItInjectableX on _i174.GetIt {
         apiService: gh<_i525.ApiService>(),
       ),
     );
-    gh.factory<_i998.ProfileRemoteDataSource>(
-      () => _i531.ProfileRemoteDataSourceImpl(
-        gh<_i89.ApiManager>(),
+    gh.factory<_i270.EditProfileRemoteDataSource>(
+      () => _i394.EditProfileRemoteDataSourceImpl(
         apiService: gh<_i525.ApiService>(),
       ),
     );
-    gh.factory<_i270.EditProfileRemoteDataSource>(
-      () => _i394.EditProfileRemoteDataSourceImpl(
+    gh.factory<_i998.ProfileRemoteDataSource>(
+      () => _i531.ProfileRemoteDataSourceImpl(
+        gh<_i89.ApiManager>(),
         apiService: gh<_i525.ApiService>(),
       ),
     );
@@ -225,14 +221,14 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i934.EditProfileUseCase>(
       () => _i934.EditProfileUseCase(gh<_i971.EditProfileRepo>()),
     );
+    gh.factory<_i587.StartOrderUseCase>(
+      () => _i587.StartOrderUseCase(gh<_i202.HomeScreenRepo>()),
+    );
     gh.factory<_i968.GetAllPendingOrdersUseCase>(
       () => _i968.GetAllPendingOrdersUseCase(gh<_i202.HomeScreenRepo>()),
     );
     gh.factory<_i136.GetOrderdetailsFromFirebase>(
       () => _i136.GetOrderdetailsFromFirebase(gh<_i202.HomeScreenRepo>()),
-    );
-    gh.factory<_i587.StartOrderUseCase>(
-      () => _i587.StartOrderUseCase(gh<_i202.HomeScreenRepo>()),
     );
     gh.factory<_i58.GetDriverOrderDataUsecase>(
       () => _i58.GetDriverOrderDataUsecase(gh<_i954.DriverOrderRepo>()),
@@ -243,14 +239,14 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i318.SenVerifyCodeUseCase>(
       () => _i318.SenVerifyCodeUseCase(repo: gh<_i484.ForgetPasswordRepo>()),
     );
+    gh.factory<_i342.ChangePasswordUseCase>(
+      () => _i342.ChangePasswordUseCase(gh<_i1007.ProfileRepo>()),
+    );
     gh.factory<_i440.GetLoggedDriverDataUseCase>(
       () => _i440.GetLoggedDriverDataUseCase(gh<_i1007.ProfileRepo>()),
     );
     gh.factory<_i668.GetVechileNameUseCase>(
       () => _i668.GetVechileNameUseCase(gh<_i1007.ProfileRepo>()),
-    );
-    gh.factory<_i342.ChangePasswordUseCase>(
-      () => _i342.ChangePasswordUseCase(gh<_i1007.ProfileRepo>()),
     );
     gh.factory<_i913.ForgetPasswordUseCase>(
       () => _i913.ForgetPasswordUseCase(gh<_i484.ForgetPasswordRepo>()),

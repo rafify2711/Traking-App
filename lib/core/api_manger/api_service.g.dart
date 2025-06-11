@@ -382,7 +382,7 @@ class _ApiService implements ApiService {
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late UserResponse _value;
     try {
-      _value = UserResponse.fromJson(_result.data.toString()!);
+      _value = UserResponse.fromJson(_result.data.toString());
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

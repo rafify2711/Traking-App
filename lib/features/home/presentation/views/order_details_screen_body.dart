@@ -3,7 +3,6 @@ import 'dart:developer';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:injectable/injectable.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 import 'package:tracking_app/core/utils/helper_func/snack_bar.dart';
 import 'package:tracking_app/features/home/data/models/order_response.dart';

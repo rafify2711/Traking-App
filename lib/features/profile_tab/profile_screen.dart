@@ -5,8 +5,8 @@ import 'package:tracking_app/core/base/base_state.dart';
 import 'package:tracking_app/core/config/routes_name.dart';
 import 'package:tracking_app/core/utils/app_text_styles.dart';
 import 'package:tracking_app/core/utils/colors.dart';
+import 'package:tracking_app/features/edit_vehicle/edit_vehicle_screen.dart';
 import 'package:tracking_app/features/profile/presentation/view_model/profile_cubit/profile_cubit.dart';
-import 'package:tracking_app/features/profile/presentation/views/edit_vehicle/edit_vehicle_screen.dart';
 import 'package:tracking_app/generated/locale_keys.g.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -175,8 +175,8 @@ class ProfileScreen extends StatelessWidget {
                       ),
                       child: Row(
                         children: [
-                          Icon(Icons.translate),
-                          SizedBox(width: 10),
+                          const Icon(Icons.translate),
+                          const SizedBox(width: 10),
                           Expanded(
                             child: Text(
                               LocaleKeys.language,

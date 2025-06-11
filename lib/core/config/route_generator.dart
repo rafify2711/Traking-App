@@ -8,6 +8,7 @@ import 'package:tracking_app/features/auth/forget_password/presentation/view/res
 import 'package:tracking_app/features/auth/forget_password/presentation/view/verification_screen.dart';
 import 'package:tracking_app/features/auth/login/presentation/view/login_screen.dart';
 import 'package:tracking_app/features/auth/apply/presentation/view/apply_screen.dart';
+import 'package:tracking_app/features/change_password_screen.dart';
 import 'package:tracking_app/features/editProfile/presentation/view/edit_profile_view.dart';
 import 'package:tracking_app/features/editProfile/presentation/viewModel/cubit/edit_profile_cubit.dart';
 import 'package:tracking_app/features/home/presentation/views/home_screen.dart';
@@ -19,12 +20,10 @@ import 'package:tracking_app/features/on_boarding/presentation/views/widgets/on_
 import 'package:tracking_app/features/order_tap/presentation/view/driver_order_screen.dart';
 import 'package:tracking_app/features/order_tap/presentation/view/driver_order_view.dart';
 import 'package:tracking_app/features/orders/presentation/orders_view.dart';
-import 'package:tracking_app/features/profile/presentation/views/change_password_screen.dart';
-import 'package:tracking_app/features/profile/presentation/views/profile_tab/profile_screen.dart';
-import 'package:tracking_app/features/profile/presentation/views/profile_tab/profile_view.dart';
+import 'package:tracking_app/features/profile_tab/profile_screen.dart';
+import 'package:tracking_app/features/profile_tab/profile_view.dart';
 import 'package:tracking_app/features/success_screen/success_screen.dart';
 
-import '../../features/profile/presentation/views/success/success.dart';
 
 class RouteGenerator {
   static Route<dynamic>? onGenerator(RouteSettings settings) {

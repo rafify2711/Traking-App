@@ -118,7 +118,7 @@ void main() {
             "latLong": "37.7749,-122.4194"
           }
         });
-        final fakeOrdersFirebaseModel = OrdersFirebaseModel(order: expectedOrderResponse,driver: Driver());
+        final fakeOrdersFirebaseModel = OrdersFirebaseModel(order: expectedOrderResponse,driver: const Driver());
 
         provideDummy<OrderResponse>(expectedOrderResponse );
 

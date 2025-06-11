@@ -29,10 +29,6 @@ import 'package:tracking_app/features/auth/login/data/model/login_request.dart'
     as _i14;
 import 'package:tracking_app/features/auth/login/data/model/login_response.dart'
     as _i2;
-import 'package:tracking_app/features/editProfile/data/model/updated_user_model.dart'
-    as _i18;
-import 'package:tracking_app/features/editProfile/data/model/user_response/user_response.dart'
-    as _i9;
 import 'package:tracking_app/features/home/data/models/pending_orders_response.dart'
     as _i8;
 import 'package:tracking_app/features/order_tap/data/model/driver_orders_response.dart'

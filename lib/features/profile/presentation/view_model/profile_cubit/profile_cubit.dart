@@ -2,7 +2,6 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:tracking_app/core/base/api_result.dart';
 import 'package:tracking_app/core/base/base_state.dart';
-import 'package:tracking_app/features/auth/apply/domain/use_case/get_vehicle_use_case.dart';
 
 import 'package:tracking_app/features/profile/data/model/get_logged_driver_data_response.dart';
 import 'package:tracking_app/features/profile/data/model/get_vehicle_response.dart';
