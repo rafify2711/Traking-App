@@ -97,5 +97,12 @@
     "LOGOUT":"LOGOUT",
     "logoutConfirmation":"Confirm Logout !",
     "cancel": "Cancel",
-    "editVehicle": "Edit Vehicle"
+    "editVehicle": "Edit Vehicle",
+    "vehicleInfo": "Vehicle Information",
+    "recentOrders": "Recent Orders",
+    "myOrders": "My Orders",
+    "flowerOrder": "Flower Orders",
+    "language": "Language",
+    "english": "English",
+    "arabic": "Arabic"
 }

@@ -98,5 +98,13 @@ abstract class  LocaleKeys {
   static const LOGOUT = 'LOGOUT';
   static const logoutConfirmation = 'logoutConfirmation';
   static const cancel = 'cancel';
+  static const vehicleInfo = 'vehicleInfo';
+  static const recentOrders = 'recentOrders';
+  static const myOrders = 'myOrders';
+  static const flowerOrders = 'flowerOrders';
+  static const editVehicle = 'editVehicle';
+  static const language = 'language';
+  static const english = 'english';
+  static const arabic = 'arabic';
 
 }

@@ -96,7 +96,14 @@
     "LOGOUT": "تسجيل الخروج",
     "logoutConfirmation": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
     "cancel": "الغاء",
-    "editVehicle": "تعديل المركبة"
+    "vehicleInfo": "معلومات المركبة",
+    "recentOrders": "الطلبات الأخيرة",
+    "myOrders": "طلباتي",
+    "flowerOrders": "طلبات الزهور",
+    "editVehicle": "تعديل المركبة",
+    "language": "اللغة",
+    "english": "الإنجليزية",
+    "arabic": "العربية"
 
 
 }

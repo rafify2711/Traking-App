@@ -111,7 +111,15 @@ class CodegenLoader extends AssetLoader{
   "logout": "تسجيل الخروج",
   "LOGOUT": "تسجيل الخروج",
   "logoutConfirmation": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
-  "cancel": "الغاء"
+  "cancel": "الغاء",
+  "vehicleInfo": "معلومات المركبة",
+  "recentOrders": "الطلبات الأخيرة",
+  "myOrders": "طلباتي",
+  "flowerOrders": "طلبات الزهور",
+  "editVehicle": "تعديل المركبة",
+  "language": "اللغة",
+  "english": "الإنجليزية",
+  "arabic": "العربية"
 };
 static const Map<String,dynamic> _en = {
   "local": "en",
@@ -210,7 +218,15 @@ static const Map<String,dynamic> _en = {
   "logout": "Logout",
   "LOGOUT": "LOGOUT",
   "logoutConfirmation": "Confirm Logout !",
-  "cancel": "Cancel"
+  "cancel": "Cancel",
+  "editVehicle": "Edit Vehicle",
+  "vehicleInfo": "Vehicle Information",
+  "recentOrders": "Recent Orders",
+  "myOrders": "My Orders",
+  "flowerOrder": "Flower Orders",
+  "language": "Language",
+  "english": "English",
+  "arabic": "Arabic"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": _ar, "en": _en};
 }

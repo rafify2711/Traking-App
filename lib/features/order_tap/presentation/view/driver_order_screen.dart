@@ -152,7 +152,7 @@ class DriverOrderScreen extends StatelessWidget {
                                 children: [
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
-                                    child: Text(LocaleKeys.flowerOrder.tr(),style: TextStyle(fontSize: 18),),
+                                    child: Text(LocaleKeys.flowerOrders.tr(),style: TextStyle(fontSize: 18),),
                                   ),
                                   driverOrderData[index].order!.state ==
                                           "canceled"
