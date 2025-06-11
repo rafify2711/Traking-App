@@ -110,7 +110,7 @@ class RouteGenerator {
         );
 
       case RoutesName.editProfileView:
-        final driver = settings.arguments! as Driver;
+        final driver = settings.arguments as Driver;
         return MaterialPageRoute(
           builder:
               (context) => BlocProvider(
