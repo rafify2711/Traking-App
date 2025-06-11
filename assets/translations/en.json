@@ -104,5 +104,16 @@
     "flowerOrder": "Flower Orders",
     "language": "Language",
     "english": "English",
-    "arabic": "Arabic"
+    "arabic": "Arabic",
+    "changePassword": "Change Password",
+    "currentPassword": "Current Password",
+    "myOrders": "My Orders",
+    "recentOrders": "Recent Orders",
+    "flowerOrder": "Flower Order",
+    "editVehicle": "Edit Vehicle",
+    "vehicleInfo": "Vehicle Info",
+    "language": "Language",
+    "english": "English",
+    "arabic": "Arabic",
+    "logOut": "Log Out"
 }

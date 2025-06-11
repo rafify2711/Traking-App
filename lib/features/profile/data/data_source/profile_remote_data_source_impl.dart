@@ -1,7 +1,8 @@
-
 import 'package:injectable/injectable.dart';
+import 'package:tracking_app/core/api_manger/api_manager.dart';
 import 'package:tracking_app/core/api_manger/api_service.dart';
 import 'package:tracking_app/core/base/api_result.dart';
+import 'package:tracking_app/core/utils/constants.dart';
 import 'package:tracking_app/features/profile/data/data_source/profile_remote_data_source.dart';
 import 'package:tracking_app/features/profile/data/model/get_logged_driver_data_response.dart';
 import 'package:tracking_app/features/profile/data/model/get_vehicle_response.dart';
@@ -11,24 +12,34 @@ import '../../../../core/base/api_excuter.dart';
 @Injectable(as: ProfileRemoteDataSource)
 class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
   final ApiService apiService;
+  final ApiManager apiManager;
 
-  ProfileRemoteDataSourceImpl({required this.apiService});
+  ProfileRemoteDataSourceImpl(this.apiManager, {required this.apiService});
 
   @override
-  Future<ApiResult<GetLoggedDriverDataResponse>> getLoggedDriverData()async {
+  Future<ApiResult<GetLoggedDriverDataResponse>> getLoggedDriverData() async {
     return apiExecuter<GetLoggedDriverDataResponse>(() async {
       var response = await apiService.getLoggedDriverData();
 
       return response;
-    },"ProfileRemoteDataSourceImpl");
+    }, "ProfileRemoteDataSourceImpl");
   }
 
   @override
-  Future<ApiResult<GetVehicleResponse>> getVechileName(String vehicleId)async {
+  Future<ApiResult<GetVehicleResponse>> getVechileName(String vehicleId) async {
     return apiExecuter<GetVehicleResponse>(() async {
       var response = await apiService.getSpecificVehicleName(vehicleId);
 
       return response;
-    },"ProfileRemoteDataSourceImpl");
+    }, "ProfileRemoteDataSourceImpl");
+  }
+
+  @override
+  Future<Map<String, dynamic>> changePassword(Map<String, dynamic> data) async{
+   final response = await apiManager.patchRequest(
+      Constants.changePasswordEndPoint,
+      data,
+    );
+    return response.data as Map<String, dynamic>;
   }
 }

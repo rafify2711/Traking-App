@@ -68,4 +68,19 @@ class MockProfileRepo extends _i1.Mock implements _i2.ProfileRepo {
                 ),
           )
           as _i3.Future<_i4.ApiResult<_i7.GetVehicleResponse>>);
+
+  @override
+  _i3.Future<_i4.ApiResult<Map<String, dynamic>>> changePassword(
+    Map<String, dynamic>? data,
+  ) =>
+      (super.noSuchMethod(
+            Invocation.method(#changePassword, [data]),
+            returnValue: _i3.Future<_i4.ApiResult<Map<String, dynamic>>>.value(
+              _i6.dummyValue<_i4.ApiResult<Map<String, dynamic>>>(
+                this,
+                Invocation.method(#changePassword, [data]),
+              ),
+            ),
+          )
+          as _i3.Future<_i4.ApiResult<Map<String, dynamic>>>);
 }

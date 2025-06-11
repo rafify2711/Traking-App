@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tracking_app/core/base/base_state.dart';
 import 'package:tracking_app/core/config/routes_name.dart';
+import 'package:tracking_app/core/config/routes_name.dart';
 import 'package:tracking_app/core/utils/app_text_styles.dart';
 import 'package:tracking_app/core/utils/colors.dart';
 import 'package:tracking_app/features/profile/presentation/view_model/profile_cubit/profile_cubit.dart';
@@ -50,7 +51,12 @@ class ProfileScreen extends StatelessWidget {
                 return Column(
                   children: [
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamed(
+                          context,
+                          RoutesName.changePasswordScreen,
+                        );
+                      },
                       child: Container(
                         margin: const EdgeInsets.all(10),
                         padding: const EdgeInsets.all(5),

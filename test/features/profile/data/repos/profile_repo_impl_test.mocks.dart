@@ -69,4 +69,14 @@ class MockProfileRemoteDataSource extends _i1.Mock
                 ),
           )
           as _i3.Future<_i4.ApiResult<_i7.GetVehicleResponse>>);
+
+  @override
+  _i3.Future<Map<String, dynamic>> changePassword(Map<String, dynamic>? data) =>
+      (super.noSuchMethod(
+            Invocation.method(#changePassword, [data]),
+            returnValue: _i3.Future<Map<String, dynamic>>.value(
+              <String, dynamic>{},
+            ),
+          )
+          as _i3.Future<Map<String, dynamic>>);
 }

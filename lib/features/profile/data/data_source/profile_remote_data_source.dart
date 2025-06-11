@@ -5,4 +5,5 @@ import 'package:tracking_app/features/profile/data/model/get_vehicle_response.da
 abstract class ProfileRemoteDataSource {
   Future<ApiResult<GetLoggedDriverDataResponse>>  getLoggedDriverData();
   Future<ApiResult<GetVehicleResponse>>  getVechileName(String vehicleId);
+  Future<Map<String, dynamic>> changePassword(Map<String, dynamic> data);
 }

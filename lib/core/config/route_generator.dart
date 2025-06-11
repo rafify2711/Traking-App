@@ -14,6 +14,7 @@ import 'package:tracking_app/features/on_boarding/presentation/views/widgets/on_
 import 'package:tracking_app/features/order_tap/presentation/view/driver_order_screen.dart';
 import 'package:tracking_app/features/order_tap/presentation/view/driver_order_view.dart';
 import 'package:tracking_app/features/orders/presentation/orders_view.dart';
+import 'package:tracking_app/features/profile/presentation/views/change_password_screen.dart';
 import 'package:tracking_app/features/profile/presentation/views/profile_tab/profile_screen.dart';
 import 'package:tracking_app/features/profile/presentation/views/profile_tab/profile_view.dart';
 import 'package:tracking_app/features/success_screen/success_screen.dart';
@@ -121,6 +122,11 @@ class RouteGenerator {
       case RoutesName.profileScreen:
         return MaterialPageRoute(
           builder: (context) => const ProfileScreen(),
+          settings: settings,
+        );
+         case RoutesName.changePasswordScreen:
+        return MaterialPageRoute(
+          builder: (context) => const ChangePasswordScreen(),
           settings: settings,
         );
 
