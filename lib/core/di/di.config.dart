@@ -120,11 +120,11 @@ extension GetItInjectableX on _i174.GetIt {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final dioModule = _$DioModule();
     final firestoreModule = _$FirestoreModule();
+    gh.singleton<_i361.LogInterceptor>(() => dioModule.provideLogger());
     gh.singleton<_i291.AppConfigProvider>(() => _i291.AppConfigProvider());
     gh.singleton<_i665.SecureStorageService>(
       () => _i665.SecureStorageService(),
     );
-    gh.singleton<_i361.LogInterceptor>(() => dioModule.provideLogger());
     gh.lazySingleton<_i974.FirebaseFirestore>(() => firestoreModule.firestore);
     gh.singleton<_i361.Dio>(
       () => dioModule.provideDio(
@@ -221,14 +221,17 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i934.EditProfileUseCase>(
       () => _i934.EditProfileUseCase(gh<_i971.EditProfileRepo>()),
     );
-    gh.factory<_i587.StartOrderUseCase>(
-      () => _i587.StartOrderUseCase(gh<_i202.HomeScreenRepo>()),
+    gh.factory<_i808.UploadPhoto>(
+      () => _i808.UploadPhoto(gh<_i971.EditProfileRepo>()),
     );
     gh.factory<_i968.GetAllPendingOrdersUseCase>(
       () => _i968.GetAllPendingOrdersUseCase(gh<_i202.HomeScreenRepo>()),
     );
     gh.factory<_i136.GetOrderdetailsFromFirebase>(
       () => _i136.GetOrderdetailsFromFirebase(gh<_i202.HomeScreenRepo>()),
+    );
+    gh.factory<_i587.StartOrderUseCase>(
+      () => _i587.StartOrderUseCase(gh<_i202.HomeScreenRepo>()),
     );
     gh.factory<_i58.GetDriverOrderDataUsecase>(
       () => _i58.GetDriverOrderDataUsecase(gh<_i954.DriverOrderRepo>()),

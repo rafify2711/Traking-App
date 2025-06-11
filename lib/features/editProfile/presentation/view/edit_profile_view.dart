@@ -14,10 +14,11 @@ import 'package:tracking_app/features/auth/apply/data/models/apply_model/apply_r
 import 'package:tracking_app/features/editProfile/data/model/updated_user_model.dart';
 import 'package:tracking_app/features/editProfile/presentation/viewModel/cubit/edit_profile_cubit.dart';
 import 'package:tracking_app/features/editProfile/presentation/viewModel/cubit/edit_profile_state.dart';
+import 'package:tracking_app/features/profile/data/model/get_logged_driver_data_response.dart';
 import 'package:tracking_app/generated/locale_keys.g.dart';
 
 class EditProfileView extends StatefulWidget {
-  final Driver driver;
+  final GetLoggedDriverDataResponse driver;
   const EditProfileView({super.key, required this.driver});
 
   @override
@@ -39,11 +40,11 @@ class _EditProfileViewState extends State<EditProfileView> {
   void initState() {
     super.initState();
 
-    log('*****${widget.driver.firstName}');
-    firstNameController = TextEditingController(text: widget.driver.firstName);
-    lastNameController = TextEditingController(text: widget.driver.lastName);
-    emailController = TextEditingController(text: widget.driver.email);
-    phoneNumberController = TextEditingController(text: widget.driver.phone);
+    log('*****${widget.driver.driver?.firstName}');
+    firstNameController = TextEditingController(text: widget.driver.driver?.firstName);
+    lastNameController = TextEditingController(text: widget.driver.driver?.lastName);
+    emailController = TextEditingController(text: widget.driver.driver?.email);
+    phoneNumberController = TextEditingController(text: widget.driver.driver?.phone);
   }
 
   @override
@@ -62,7 +63,7 @@ class _EditProfileViewState extends State<EditProfileView> {
         selectedImage = File(picked.path);
       });
     } else {
-      selectedImage = File(widget.driver.photo!);
+      selectedImage = File(widget.driver.driver?.photo ?? '');
     }
   }
 
@@ -116,8 +117,9 @@ class _EditProfileViewState extends State<EditProfileView> {
                             backgroundImage:
                                 selectedImage != null
                                     ? FileImage(selectedImage!)
-                                    : (widget.driver.photo != null
-                                            ? NetworkImage(widget.driver.photo!)
+                                    : (widget.driver.driver?.photo != null
+                                            ? NetworkImage(widget.driver.driver?.photo 
+                                                ?? '')
                                             : const AssetImage(''))
                                         as ImageProvider,
                           ),
@@ -205,17 +207,14 @@ class _EditProfileViewState extends State<EditProfileView> {
                         text: '*********',
                       ),
                       suffix: GestureDetector(
-                        child: GestureDetector(
-                          onTap: () {},
-                          child: Text(
-                            LocaleKeys.change.tr(),
-                            style: AppTextStyles.instance.textStyle14.copyWith(
-                              color: PalletsColors.mainColorBase,
-                              fontWeight: FontWeight.w600,
-                            ),
+                        onTap: () {},
+                        child: Text(
+                          LocaleKeys.change.tr(),
+                          style: AppTextStyles.instance.textStyle14.copyWith(
+                            color: PalletsColors.mainColorBase,
+                            fontWeight: FontWeight.w600,
                           ),
                         ),
-                        onTap: () {},
                       ),
                     ),
 
@@ -238,6 +237,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                               await cubit.uploadProfilePhoto(selectedImage);
                             }
                             await cubit.editProfile(updatedUser);
+                            // ignore: use_build_context_synchronously
                             Navigator.pop(context);
                           } else {
                             setState(() {

@@ -20,6 +20,7 @@ import 'package:tracking_app/features/on_boarding/presentation/views/widgets/on_
 import 'package:tracking_app/features/order_tap/presentation/view/driver_order_screen.dart';
 import 'package:tracking_app/features/order_tap/presentation/view/driver_order_view.dart';
 import 'package:tracking_app/features/orders/presentation/orders_view.dart';
+import 'package:tracking_app/features/profile/data/model/get_logged_driver_data_response.dart';
 import 'package:tracking_app/features/profile_tab/profile_screen.dart';
 import 'package:tracking_app/features/profile_tab/profile_view.dart';
 import 'package:tracking_app/features/success_screen/success_screen.dart';
@@ -135,14 +136,13 @@ class RouteGenerator {
         );
 
       case RoutesName.editProfileView:
-        final driver = settings.arguments as Driver;
+        final driver = settings.arguments as GetLoggedDriverDataResponse;
         return MaterialPageRoute(
           builder:
               (context) => BlocProvider(
                 create: (context) => getIt<EditProfileCubit>(),
                 child: EditProfileView(driver: driver),
               ),
-
           settings: settings,
         );
 
