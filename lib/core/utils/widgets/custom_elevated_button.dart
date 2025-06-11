@@ -16,29 +16,29 @@ class CustomElevatedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return isPink
         ? SizedBox(
-      width: double.infinity,
-      child: ElevatedButton(
-        onPressed: onTap,
-        style: ElevatedButton.styleFrom(
-          padding: const EdgeInsets.symmetric(vertical: 16.0),
-        ),
-        child: Text(
-          text,
-          style: Theme.of(
-            context,
-          ).textTheme.labelMedium!.copyWith(color: Colors.white),
-        ),
-      ),
-    )
+          width: double.infinity,
+          child: ElevatedButton(
+            onPressed: onTap,
+            style: ElevatedButton.styleFrom(
+              padding: const EdgeInsets.symmetric(vertical: 16.0),
+            ),
+            child: Text(
+              text,
+              style: Theme.of(
+                context,
+              ).textTheme.labelMedium!.copyWith(color: Colors.white),
+            ),
+          ),
+        )
         : SizedBox(
-      width: double.infinity,
-      child: OutlinedButton(
-        onPressed: onTap,
-        style: OutlinedButton.styleFrom(
-          padding: const EdgeInsets.symmetric(vertical: 16.0),
-        ),
-        child: Text(text, style: Theme.of(context).textTheme.bodyMedium),
-      ),
-    );
+          width: double.infinity,
+          child: OutlinedButton(
+            onPressed: onTap,
+            style: OutlinedButton.styleFrom(
+              padding: const EdgeInsets.symmetric(vertical: 16.0),
+            ),
+            child: Text(text, style: Theme.of(context).textTheme.bodyMedium),
+          ),
+        );
   }
 }

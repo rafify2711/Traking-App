@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:tracking_app/core/utils/helper_func/snack_bar.dart';
 import 'package:url_launcher/url_launcher.dart';

@@ -82,7 +82,7 @@ void main() {
         provideDummy<ApiResult<GetLoggedDriverDataResponse>>(expected);
 
         when(mockLoggedDriverDataUseCase.invoke()).thenAnswer(
-          (_) async => ApiError<GetLoggedDriverDataResponse>(
+          (_) async => const ApiError<GetLoggedDriverDataResponse>(
             failure: Failure(errorMessage: 'getLoggedDriverData error'),
           ),
         );
@@ -166,7 +166,7 @@ void main() {
 
         when(mockVechileNameUseCase.invoke(vehicleId)).thenAnswer(
           (_) async =>
-              ApiError<GetVehicleResponse>(failure: Failure(errorMessage: 'getVechileName error')),
+              const ApiError<GetVehicleResponse>(failure: Failure(errorMessage: 'getVechileName error')),
         );
         return ProfileCubit(
           mockLoggedDriverDataUseCase,

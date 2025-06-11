@@ -6,9 +6,13 @@ import 'package:tracking_app/core/config/routes_name.dart';
 import 'package:tracking_app/core/config/routes_name.dart';
 import 'package:tracking_app/core/utils/app_text_styles.dart';
 import 'package:tracking_app/core/utils/colors.dart';
+import 'package:tracking_app/features/edit_vehicle/edit_vehicle_screen.dart';
 import 'package:tracking_app/features/profile/presentation/view_model/profile_cubit/profile_cubit.dart';
+<<<<<<< HEAD:lib/features/profile/presentation/views/profile_tab/profile_screen.dart
 import 'package:tracking_app/features/profile/presentation/views/edit_vehicle/edit_vehicle_screen.dart';
 import 'package:tracking_app/features/profile/presentation/widget/logout_sheet.dart';
+=======
+>>>>>>> feature/edit-my-info:lib/features/profile_tab/profile_screen.dart
 import 'package:tracking_app/generated/locale_keys.g.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -47,7 +51,7 @@ class ProfileScreen extends StatelessWidget {
                   ),
                 );
               } else {
-                var driverData = state.driverData!.driver!;
+                var driverData = state.driverData;
                 return Column(
                   children: [
                     GestureDetector(
@@ -57,54 +61,63 @@ class ProfileScreen extends StatelessWidget {
                           RoutesName.changePasswordScreen,
                         );
                       },
-                      child: Container(
-                        margin: const EdgeInsets.all(10),
-                        padding: const EdgeInsets.all(5),
-                        decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.shade300,
-                              blurRadius: 4,
-                            ),
-                          ],
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.white,
-                        ),
-                        child: ListTile(
-                          leading: CircleAvatar(
-                            backgroundImage: NetworkImage(
-                              driverData.photo ?? "",
-                            ),
-                            radius: 25,
-                          ),
-
-                          title: Column(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: [
-                              Text(
-                                "${driverData.firstName} ${driverData.lastName}",
-
-                                style: AppTextStyles.instance.textStyle18
-                                    .copyWith(fontWeight: FontWeight.w500),
-                              ),
-                              const SizedBox(height: 5),
-                              Text(
-                                driverData.email ?? "",
-                                style: AppTextStyles.instance.textStyle14
-                                    .copyWith(color: PalletsColors.blackBase),
-                              ),
-                              Text(
-                                driverData.phone ?? "",
-                                style: AppTextStyles.instance.textStyle14
-                                    .copyWith(color: PalletsColors.blackBase),
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.pushNamed(
+                            context,
+                            RoutesName.editProfileView,
+                            arguments: driverData,
+                          );
+                        },
+                        child: Container(
+                          margin: const EdgeInsets.all(10),
+                          padding: const EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.shade300,
+                                blurRadius: 4,
                               ),
                             ],
+                            borderRadius: BorderRadius.circular(20),
+                            color: Colors.white,
                           ),
-
-                          trailing: const Icon(
-                            Icons.arrow_forward_ios,
-
-                            color: PalletsColors.gray,
+                          child: ListTile(
+                            leading: CircleAvatar(
+                              backgroundImage: NetworkImage(
+                                driverData?.driver?.photo ?? "",
+                              ),
+                              radius: 25,
+                            ),
+                        
+                            title: Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                Text(
+                                  "${driverData?.driver?.firstName} ${driverData?.driver?.lastName}",
+                        
+                                  style: AppTextStyles.instance.textStyle18
+                                      .copyWith(fontWeight: FontWeight.w500),
+                                ),
+                                const SizedBox(height: 5),
+                                Text(
+                                  driverData?.driver?.email ?? "",
+                                  style: AppTextStyles.instance.textStyle14
+                                      .copyWith(color: PalletsColors.blackBase),
+                                ),
+                                Text(
+                                  driverData?.driver?.phone ?? "",
+                                  style: AppTextStyles.instance.textStyle14
+                                      .copyWith(color: PalletsColors.blackBase),
+                                ),
+                              ],
+                            ),
+                        
+                            trailing: const Icon(
+                              Icons.arrow_forward_ios,
+                        
+                              color: PalletsColors.gray,
+                            ),
                           ),
                         ),
                       ),
@@ -150,12 +163,12 @@ class ProfileScreen extends StatelessWidget {
                               const SizedBox(height: 5),
                               Text(
                                 state.getVehicle?.vehicle?.type ??
-                                    driverData.vehicleType!,
+                                    driverData?.driver?.vehicleType ??"",
                                 style: AppTextStyles.instance.textStyle14
                                     .copyWith(color: PalletsColors.blackBase),
                               ),
                               Text(
-                                driverData.vehicleNumber ?? "",
+                                driverData?.driver?.vehicleNumber ?? "",
                                 style: AppTextStyles.instance.textStyle14
                                     .copyWith(color: PalletsColors.blackBase),
                               ),

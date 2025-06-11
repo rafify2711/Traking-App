@@ -5,11 +5,8 @@ import 'package:tracking_app/features/auth/login/data/model/login_response.dart'
 
 class LoginState extends Equatable {
   final BaseState<LoginResponse>? loginState;
-  LoginResponse? loginResponse; 
-  LoginState({
-     this.loginState,
-    this.loginResponse,
-  });
+  LoginResponse? loginResponse;
+  LoginState({this.loginState, this.loginResponse});
   LoginState copyWith({
     BaseState<LoginResponse>? loginState,
     LoginResponse? loginResponse,
@@ -19,8 +16,7 @@ class LoginState extends Equatable {
       loginResponse: loginResponse ?? this.loginResponse,
     );
   }
-  
-  @override
-  List<Object?> get props => [loginState,loginResponse];
 
+  @override
+  List<Object?> get props => [loginState, loginResponse];
 }

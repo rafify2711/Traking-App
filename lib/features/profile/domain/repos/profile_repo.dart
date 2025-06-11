@@ -5,8 +5,7 @@ import 'package:tracking_app/features/profile/data/model/get_vehicle_response.da
 abstract class ProfileRepo {
   Future<ApiResult<GetLoggedDriverDataResponse>> getLoggedDriverData();
   Future<ApiResult<GetVehicleResponse>> getVechileName(String vehicleId);
-  Future<ApiResult< Map<String, dynamic>>> changePassword(
+  Future<ApiResult<Map<String, dynamic>>> changePassword(
     Map<String, dynamic> data,
   );
-
 }

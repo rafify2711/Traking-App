@@ -5,7 +5,7 @@ import 'package:tracking_app/features/logout/domain/usecases/logout_usecase.dart
 import 'package:tracking_app/features/profile/domain/use_case/get_logged_driver_data_use_case.dart';
 import 'package:tracking_app/features/profile/domain/use_case/get_vechile_name_use_case.dart';
 import 'package:tracking_app/features/profile/presentation/view_model/profile_cubit/profile_cubit.dart';
-import 'package:tracking_app/features/profile/presentation/views/profile_tab/profile_screen.dart';
+import 'package:tracking_app/features/profile_tab/profile_screen.dart';
 
 
 class ProfileView extends StatelessWidget {

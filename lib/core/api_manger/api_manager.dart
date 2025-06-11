@@ -1,9 +1,6 @@
-import 'dart:developer';
 import 'package:dio/dio.dart';
 
 import 'package:injectable/injectable.dart';
-import 'package:tracking_app/core/utils/constants.dart';
-import 'package:tracking_app/core/utils/services/secure_sotrage_service.dart';
 
 @singleton
 class ApiManager {

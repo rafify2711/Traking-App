@@ -2,19 +2,13 @@ import 'package:tracking_app/features/home/data/models/order_response.dart';
 
 import '../../../auth/apply/data/models/get_all_vehicles_response/metadata.dart';
 
-
 class PendingOrderResponse {
   final String? message;
   final Metadata? metadata;
   final List<OrderResponse>? orders;
   final OrderResponse? order;
 
-  PendingOrderResponse({
-    this.message,
-    this.metadata,
-    this.orders,
-    this.order,
-  });
+  PendingOrderResponse({this.message, this.metadata, this.orders, this.order});
 
   factory PendingOrderResponse.fromJson(Map<String, dynamic> json) {
     final rawOrders = json['orders'];
@@ -30,9 +24,8 @@ class PendingOrderResponse {
 
     return PendingOrderResponse(
       message: json['message'] as String?,
-      metadata: json['metadata'] != null
-          ? Metadata.fromJson(json['metadata'])
-          : null,
+      metadata:
+          json['metadata'] != null ? Metadata.fromJson(json['metadata']) : null,
       orders: ordersList,
       order: singleOrder,
     );
@@ -42,10 +35,10 @@ class PendingOrderResponse {
     return {
       'message': message,
       'metadata': metadata?.toJson(),
-      'orders': orders != null
-          ? orders!.map((e) => e.toJson()).toList()
-          : order?.toJson(),
+      'orders':
+          orders != null
+              ? orders!.map((e) => e.toJson()).toList()
+              : order?.toJson(),
     };
   }
-
 }

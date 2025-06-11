@@ -3,12 +3,10 @@
 library;
 
 class LoginResponse {
-  LoginResponse({
-      required this.message,
-      required this.token,});
+  LoginResponse({required this.message, required this.token});
 
   LoginResponse.fromJson(dynamic json) {
-     message = json['message'];
+    message = json['message'];
     token = json['token'];
   }
   late String message;
@@ -20,5 +18,4 @@ class LoginResponse {
     map['token'] = token;
     return map;
   }
-
 }

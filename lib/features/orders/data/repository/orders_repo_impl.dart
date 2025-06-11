@@ -13,13 +13,13 @@ class OrdersRepoImpl implements OrdersRepo {
   @override
   Future<ApiResult<void>> saveOrderToFirebase(OrdersFirebaseModel order) async {
     try {
-      await _firestore.collection('orders').doc(order.order.id).set(order.toJson());
+      await _firestore
+          .collection('orders')
+          .doc(order.order.id)
+          .set(order.toJson());
       return const ApiSuccess(data: null);
     } catch (e) {
-      return ApiError(
-        message: e.toString(),
-
-      );
+      return ApiError(message: e.toString());
     }
   }
 }

@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tracking_app/core/config/routes_name.dart';
+import 'package:tracking_app/core/di/di.dart';
+import 'package:tracking_app/features/auth/apply/data/models/apply_model/apply_response/driver.dart';
 import 'package:tracking_app/features/auth/forget_password/presentation/view/forget_password_screen.dart';
 import 'package:tracking_app/features/auth/forget_password/presentation/view/reset_password_screen.dart';
 import 'package:tracking_app/features/auth/forget_password/presentation/view/verification_screen.dart';
 import 'package:tracking_app/features/auth/login/presentation/view/login_screen.dart';
 import 'package:tracking_app/features/auth/apply/presentation/view/apply_screen.dart';
+import 'package:tracking_app/features/change_password_screen.dart';
+import 'package:tracking_app/features/editProfile/presentation/view/edit_profile_view.dart';
+import 'package:tracking_app/features/editProfile/presentation/viewModel/cubit/edit_profile_cubit.dart';
 import 'package:tracking_app/features/home/presentation/views/home_screen.dart';
 import 'package:tracking_app/features/home/presentation/views/order_details_screen.dart';
 import 'package:tracking_app/features/home/presentation/views/pickup_location_screen.dart';
@@ -14,12 +20,11 @@ import 'package:tracking_app/features/on_boarding/presentation/views/widgets/on_
 import 'package:tracking_app/features/order_tap/presentation/view/driver_order_screen.dart';
 import 'package:tracking_app/features/order_tap/presentation/view/driver_order_view.dart';
 import 'package:tracking_app/features/orders/presentation/orders_view.dart';
-import 'package:tracking_app/features/profile/presentation/views/change_password_screen.dart';
-import 'package:tracking_app/features/profile/presentation/views/profile_tab/profile_screen.dart';
-import 'package:tracking_app/features/profile/presentation/views/profile_tab/profile_view.dart';
+import 'package:tracking_app/features/profile/data/model/get_logged_driver_data_response.dart';
+import 'package:tracking_app/features/profile_tab/profile_screen.dart';
+import 'package:tracking_app/features/profile_tab/profile_view.dart';
 import 'package:tracking_app/features/success_screen/success_screen.dart';
 
-import '../../features/profile/presentation/views/success/success.dart';
 
 class RouteGenerator {
   static Route<dynamic>? onGenerator(RouteSettings settings) {
@@ -80,7 +85,7 @@ class RouteGenerator {
         );
       case RoutesName.profile:
         return MaterialPageRoute(
-          builder: (context) =>  ProfileView(),
+          builder: (context) => ProfileView(),
           settings: settings,
         );
       // case RoutesName.orderStatus:
@@ -116,7 +121,7 @@ class RouteGenerator {
         );
       case RoutesName.driverOrderView:
         return MaterialPageRoute(
-          builder: (context) =>  DriverOrderView(),
+          builder: (context) => DriverOrderView(),
           settings: settings,
         );
       case RoutesName.profileScreen:
@@ -124,9 +129,20 @@ class RouteGenerator {
           builder: (context) => const ProfileScreen(),
           settings: settings,
         );
-         case RoutesName.changePasswordScreen:
+      case RoutesName.changePasswordScreen:
         return MaterialPageRoute(
           builder: (context) => const ChangePasswordScreen(),
+          settings: settings,
+        );
+
+      case RoutesName.editProfileView:
+        final driver = settings.arguments as GetLoggedDriverDataResponse;
+        return MaterialPageRoute(
+          builder:
+              (context) => BlocProvider(
+                create: (context) => getIt<EditProfileCubit>(),
+                child: EditProfileView(driver: driver),
+              ),
           settings: settings,
         );
 

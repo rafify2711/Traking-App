@@ -11,9 +11,9 @@ import 'package:tracking_app/features/orders/data/model/orders_firebase_model.da
 @Injectable(as: HomeScreenDataSource)
 class HomeScreenDataSourceImp extends HomeScreenDataSource {
   ApiService apiService;
-   FirebaseFirestore firestore;
+  FirebaseFirestore firestore;
 
-  HomeScreenDataSourceImp(this.apiService,this.firestore);
+  HomeScreenDataSourceImp(this.apiService, this.firestore);
 
   @override
   Future<ApiResult<PendingOrderResponse>> getAllPendingOrders(int page) async {
@@ -23,20 +23,22 @@ class HomeScreenDataSourceImp extends HomeScreenDataSource {
     }, 'HomeScreenDataSourceImp');
   }
 
-
-
   @override
-  Future<OrdersFirebaseModel> getOrderDetailsFireBase()async {
-    final doc = await firestore.collection('orders')  .doc("681bd6741433a666c8da31c7").get();
+  Future<OrdersFirebaseModel> getOrderDetailsFireBase() async {
+    final doc =
+        await firestore
+            .collection('orders')
+            .doc("681bd6741433a666c8da31c7")
+            .get();
     if (doc.exists) {
       final data = doc.data();
-      var result= OrdersFirebaseModel.fromJson(data!);
-      return  result;
+      var result = OrdersFirebaseModel.fromJson(data!);
+      return result;
     } else {
       throw Exception('Order not found');
     }
+  }
 
-}
   @override
   Future<ApiResult<PendingOrderResponse>> startOrder(String id) async {
     return await apiExecuter<PendingOrderResponse>(() async {
@@ -44,6 +46,4 @@ class HomeScreenDataSourceImp extends HomeScreenDataSource {
       return response;
     }, 'HomeScreenDataSourceImp');
   }
-
-
 }

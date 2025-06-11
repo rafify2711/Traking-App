@@ -1,14 +1,9 @@
-
-
 import 'package:tracking_app/core/utils/enums/order_status_enum.dart';
 
-abstract class OrderStatusRemoteDataSource{
+abstract class OrderStatusRemoteDataSource {
+  Future<void> updateOrderStatusToFireBase(String orderId, OrderStatus status);
 
-  Future<void> updateOrderStatusToFireBase(String orderId,OrderStatus status);
-
-  Future<String> updateOrderStatusApi(String orderId,String status);
-
+  Future<String> updateOrderStatusApi(String orderId, String status);
 
   Future<OrderStatus> getOrderStatus(String orderId);
-
 }

@@ -2,8 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:tracking_app/features/home/presentation/views/home_screen.dart';
 import 'package:tracking_app/features/order_tap/presentation/view/driver_order_view.dart';
-import 'package:tracking_app/features/orders/presentation/orders_view.dart';
-import 'package:tracking_app/features/profile/presentation/views/profile_tab/profile_view.dart';
+import 'package:tracking_app/features/profile_tab/profile_view.dart';
 import 'package:tracking_app/generated/locale_keys.g.dart';
 
 class LayOut extends StatefulWidget {

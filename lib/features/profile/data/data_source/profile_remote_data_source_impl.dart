@@ -35,8 +35,8 @@ class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
   }
 
   @override
-  Future<Map<String, dynamic>> changePassword(Map<String, dynamic> data) async{
-   final response = await apiManager.patchRequest(
+  Future<Map<String, dynamic>> changePassword(Map<String, dynamic> data) async {
+    final response = await apiManager.patchRequest(
       Constants.changePasswordEndPoint,
       data,
     );

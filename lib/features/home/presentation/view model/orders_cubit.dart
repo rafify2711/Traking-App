@@ -116,7 +116,9 @@ class OrdersCubit extends Cubit<OrdersState> {
 
         emit(
           state.copyWith(
-            acceptOrderState: BaseSuccess<PendingOrderResponse>(data: result.data),
+            acceptOrderState: BaseSuccess<PendingOrderResponse>(
+              data: result.data,
+            ),
             orderResponse: updatedResponse,
             acceptingOrderId: null,
           ),

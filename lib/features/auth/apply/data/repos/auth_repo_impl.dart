@@ -15,15 +15,15 @@ class AuthRepoImpl implements AuthRepo {
   @override
   Future<ApiResult<ApplyResponse>> apply(ApplyData applyData) async {
     return await apiExecuter<ApplyResponse>(
-      ()async => await authRemoteDataSource.apply(applyData),
+      () async => await authRemoteDataSource.apply(applyData),
       " Error AuthRepoImpl apply method",
     );
   }
 
   @override
-  Future<ApiResult<GetAllVehiclesResponse>> getAllVehicles()async {
-   return await apiExecuter<GetAllVehiclesResponse>(()async{
-  return  await authRemoteDataSource.getAllVehicles();
-   }, "Error AuthRepoImpl getAllVehicles method");
+  Future<ApiResult<GetAllVehiclesResponse>> getAllVehicles() async {
+    return await apiExecuter<GetAllVehiclesResponse>(() async {
+      return await authRemoteDataSource.getAllVehicles();
+    }, "Error AuthRepoImpl getAllVehicles method");
   }
 }

@@ -8,10 +8,7 @@ class GetOrderdetailsFromFirebase {
   HomeScreenRepo homeScreenRepo;
   GetOrderdetailsFromFirebase(this.homeScreenRepo);
 
-
-  Future<OrderResponse> invoke()async{
-
+  Future<OrderResponse> invoke() async {
     return await homeScreenRepo.getOrderDetailsFromFireBase();
-
   }
 }

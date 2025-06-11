@@ -3,11 +3,11 @@ import '../../../../core/utils/enums/order_status_enum.dart';
 abstract class OrderStatusState {
   final OrderStatus status;
   final int step;
-  const OrderStatusState(this.status,this.step);
+  const OrderStatusState(this.status, this.step);
 }
 
 class OrderStatusInitial extends OrderStatusState {
-  OrderStatusInitial(super.status,super.step);
+  OrderStatusInitial(super.status, super.step);
 }
 
 class OrderStatusLoading extends OrderStatusState {

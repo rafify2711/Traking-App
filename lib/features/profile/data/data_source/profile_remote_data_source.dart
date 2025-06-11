@@ -3,7 +3,7 @@ import 'package:tracking_app/features/profile/data/model/get_logged_driver_data_
 import 'package:tracking_app/features/profile/data/model/get_vehicle_response.dart';
 
 abstract class ProfileRemoteDataSource {
-  Future<ApiResult<GetLoggedDriverDataResponse>>  getLoggedDriverData();
-  Future<ApiResult<GetVehicleResponse>>  getVechileName(String vehicleId);
+  Future<ApiResult<GetLoggedDriverDataResponse>> getLoggedDriverData();
+  Future<ApiResult<GetVehicleResponse>> getVechileName(String vehicleId);
   Future<Map<String, dynamic>> changePassword(Map<String, dynamic> data);
 }

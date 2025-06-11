@@ -9,8 +9,8 @@ import 'package:tracking_app/features/order_status/domain/use_case/update_order-
 import 'package:tracking_app/features/order_status/presentation/viewModel/order_status_view_model.dart';
 
 class OrderDetailsScreen extends StatelessWidget {
-  const OrderDetailsScreen({super.key,});
-  
+  const OrderDetailsScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     final arg = ModalRoute.of(context)?.settings.arguments as OrderResponse;
@@ -21,7 +21,12 @@ class OrderDetailsScreen extends StatelessWidget {
               (context) =>
                   OrderStatusViewModel(getIt.get<UpdateOrderStatusUseCase>()),
         ),
-        BlocProvider(create: (context) => OrderDetailsFirebaseCubit(getIt.get<GetOrderdetailsFromFirebase>())..fetchOrderDetails()),
+        BlocProvider(
+          create:
+              (context) => OrderDetailsFirebaseCubit(
+                getIt.get<GetOrderdetailsFromFirebase>(),
+              )..fetchOrderDetails(),
+        ),
       ],
       child: OrderDetailsScreenBody(order: arg),
     );

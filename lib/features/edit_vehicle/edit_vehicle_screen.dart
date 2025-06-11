@@ -55,7 +55,7 @@ final GetLoggedDriverDataResponse getLoggedDriverDataResponse;
                   // });
                 },
                 selectedItem: getVehicleResponse.vehicle as Vehicle,
-                items: [],
+                items: const [],
               ),
 
               SizedBox(height: responsiveHeight(24)),

@@ -11,6 +11,4 @@ class GetAllPendingOrdersUseCase {
   Future<ApiResult<PendingOrderResponse>> invoke(int page) async {
     return await homeScreenRepo.getAllPendingOrders(page);
   }
-
-
 }

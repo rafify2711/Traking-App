@@ -46,6 +46,19 @@ import '../../features/auth/login/data/repository_implementation/login_repositor
 import '../../features/auth/login/domain/repository_icontract/login_contract.dart'
     as _i96;
 import '../../features/auth/login/domain/usecases/login_usecase.dart' as _i401;
+import '../../features/editProfile/data/dataSource/edit_profile_remote_data_source.dart'
+    as _i270;
+import '../../features/editProfile/data/dataSource/edit_profile_remote_data_source_impl.dart'
+    as _i394;
+import '../../features/editProfile/data/repository/edit_profile_repo_impl.dart'
+    as _i352;
+import '../../features/editProfile/domain/repository/edit_profile_repo.dart'
+    as _i971;
+import '../../features/editProfile/domain/useCase/edit_profile_use_case.dart'
+    as _i934;
+import '../../features/editProfile/domain/useCase/upload_photo.dart' as _i808;
+import '../../features/editProfile/presentation/viewModel/cubit/edit_profile_cubit.dart'
+    as _i973;
 import '../../features/home/data/data%20source/home_screen_data_source.dart'
     as _i428;
 import '../../features/home/data/data%20source/home_screen_data_source_imp.dart'
@@ -150,6 +163,11 @@ extension GetItInjectableX on _i174.GetIt {
         apiService: gh<_i525.ApiService>(),
       ),
     );
+    gh.factory<_i270.EditProfileRemoteDataSource>(
+      () => _i394.EditProfileRemoteDataSourceImpl(
+        apiService: gh<_i525.ApiService>(),
+      ),
+    );
     gh.factory<_i998.ProfileRemoteDataSource>(
       () => _i531.ProfileRemoteDataSourceImpl(
         gh<_i89.ApiManager>(),
@@ -170,6 +188,11 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i885.HomeScreenDataSourceImp(
         gh<_i525.ApiService>(),
         gh<_i974.FirebaseFirestore>(),
+      ),
+    );
+    gh.factory<_i971.EditProfileRepo>(
+      () => _i352.EditProfileRepoImpl(
+        remoteDataSource: gh<_i270.EditProfileRemoteDataSource>(),
       ),
     );
     gh.factory<_i762.ForgetPasswordDataSource>(
@@ -208,6 +231,12 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i719.UpdateOrderStatusUseCase>(
       () => _i719.UpdateOrderStatusUseCase(gh<_i716.OrderRepository>()),
     );
+    gh.factory<_i934.EditProfileUseCase>(
+      () => _i934.EditProfileUseCase(gh<_i971.EditProfileRepo>()),
+    );
+    gh.factory<_i808.UploadPhoto>(
+      () => _i808.UploadPhoto(gh<_i971.EditProfileRepo>()),
+    );
     gh.factory<_i968.GetAllPendingOrdersUseCase>(
       () => _i968.GetAllPendingOrdersUseCase(gh<_i202.HomeScreenRepo>()),
     );
@@ -225,6 +254,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i318.SenVerifyCodeUseCase>(
       () => _i318.SenVerifyCodeUseCase(repo: gh<_i484.ForgetPasswordRepo>()),
+    );
+    gh.factory<_i342.ChangePasswordUseCase>(
+      () => _i342.ChangePasswordUseCase(gh<_i1007.ProfileRepo>()),
     );
     gh.factory<_i1004.LogoutRepository>(
       () => _i885.LogoutRepositoryImpl(
@@ -248,6 +280,12 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i729.GetVehiclesUseCase>(
       () => _i729.GetVehiclesUseCase(gh<_i981.AuthRepo>()),
+    );
+    gh.factory<_i973.EditProfileCubit>(
+      () => _i973.EditProfileCubit(
+        gh<_i934.EditProfileUseCase>(),
+        gh<_i808.UploadPhoto>(),
+      ),
     );
     gh.factory<_i98.LogoutUseCase>(
       () => _i98.LogoutUseCase(gh<_i1004.LogoutRepository>()),

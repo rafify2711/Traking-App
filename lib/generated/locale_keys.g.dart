@@ -94,6 +94,15 @@ abstract class  LocaleKeys {
   static const outForDelivery = 'outForDelivery';
   static const arrivedToUser = 'arrivedToUser';
   static const delivered = 'delivered';
+  static const editProfile = 'editProfile';
+  static const firstName = 'firstName';
+  static const lastName = 'lastName';
+  static const change = 'change';
+  static const update = 'update';
+  static const failedToUploadPhoto = 'failedToUploadPhoto';
+  static const profileUpdatedSuccessfully = 'profileUpdatedSuccessfully';
+  static const updateFailed = 'updateFailed';
+  static const updateProfile = 'updateProfile';
   static const changePassword = 'changePassword';
   static const currentPassword = 'currentPassword';
   static const myOrders = 'myOrders';

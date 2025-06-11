@@ -3,22 +3,23 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i13;
+import 'dart:async' as _i14;
+import 'dart:io' as _i22;
 
-import 'package:dio/dio.dart' as _i18;
+import 'package:dio/dio.dart' as _i19;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:mockito/src/dummies.dart' as _i19;
-import 'package:tracking_app/core/api_manger/api_service.dart' as _i12;
+import 'package:mockito/src/dummies.dart' as _i20;
+import 'package:tracking_app/core/api_manger/api_service.dart' as _i13;
 import 'package:tracking_app/features/auth/apply/data/models/apply_model/apply_response/apply_response.dart'
     as _i6;
 import 'package:tracking_app/features/auth/apply/data/models/get_all_vehicles_response/get_all_vehicles_response.dart'
     as _i7;
 import 'package:tracking_app/features/auth/forget_password/data/models/request/forget_password_request.dart'
-    as _i15;
-import 'package:tracking_app/features/auth/forget_password/data/models/request/otp_request.dart'
     as _i16;
-import 'package:tracking_app/features/auth/forget_password/data/models/request/reset_password_request.dart'
+import 'package:tracking_app/features/auth/forget_password/data/models/request/otp_request.dart'
     as _i17;
+import 'package:tracking_app/features/auth/forget_password/data/models/request/reset_password_request.dart'
+    as _i18;
 import 'package:tracking_app/features/auth/forget_password/data/models/response/forget_password_response.dart'
     as _i3;
 import 'package:tracking_app/features/auth/forget_password/data/models/response/otp_response.dart'
@@ -26,9 +27,13 @@ import 'package:tracking_app/features/auth/forget_password/data/models/response/
 import 'package:tracking_app/features/auth/forget_password/data/models/response/reset_password_response.dart'
     as _i5;
 import 'package:tracking_app/features/auth/login/data/model/login_request.dart'
-    as _i14;
+    as _i15;
 import 'package:tracking_app/features/auth/login/data/model/login_response.dart'
     as _i2;
+import 'package:tracking_app/features/editProfile/data/model/updated_user_model.dart'
+    as _i21;
+import 'package:tracking_app/features/editProfile/data/model/user_response/user_response.dart'
+    as _i12;
 import 'package:tracking_app/features/home/data/models/pending_orders_response.dart'
     as _i8;
 import 'package:tracking_app/features/order_tap/data/model/driver_orders_response.dart'
@@ -109,176 +114,207 @@ class _FakeDriverOrdersResponse_9 extends _i1.SmartFake
     : super(parent, parentInvocation);
 }
 
+class _FakeUserResponse_10 extends _i1.SmartFake implements _i12.UserResponse {
+  _FakeUserResponse_10(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
+}
+
 /// A class which mocks [ApiService].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockApiService extends _i1.Mock implements _i12.ApiService {
+class MockApiService extends _i1.Mock implements _i13.ApiService {
   MockApiService() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i13.Future<_i2.LoginResponse> loginUser(_i14.LoginRequest? loginRequest) =>
+  _i14.Future<_i2.LoginResponse> loginUser(_i15.LoginRequest? loginRequest) =>
       (super.noSuchMethod(
             Invocation.method(#loginUser, [loginRequest]),
-            returnValue: _i13.Future<_i2.LoginResponse>.value(
+            returnValue: _i14.Future<_i2.LoginResponse>.value(
               _FakeLoginResponse_0(
                 this,
                 Invocation.method(#loginUser, [loginRequest]),
               ),
             ),
           )
-          as _i13.Future<_i2.LoginResponse>);
+          as _i14.Future<_i2.LoginResponse>);
 
   @override
-  _i13.Future<_i3.ForgetPasswordResponse> forgetPassword(
-    _i15.ForgetPasswordRequest? forgetPasswordRequest,
+  _i14.Future<_i3.ForgetPasswordResponse> forgetPassword(
+    _i16.ForgetPasswordRequest? forgetPasswordRequest,
   ) =>
       (super.noSuchMethod(
             Invocation.method(#forgetPassword, [forgetPasswordRequest]),
-            returnValue: _i13.Future<_i3.ForgetPasswordResponse>.value(
+            returnValue: _i14.Future<_i3.ForgetPasswordResponse>.value(
               _FakeForgetPasswordResponse_1(
                 this,
                 Invocation.method(#forgetPassword, [forgetPasswordRequest]),
               ),
             ),
           )
-          as _i13.Future<_i3.ForgetPasswordResponse>);
+          as _i14.Future<_i3.ForgetPasswordResponse>);
 
   @override
-  _i13.Future<_i4.OtpResponse> verifyResetCode(_i16.OtpRequest? otpRequest) =>
+  _i14.Future<_i4.OtpResponse> verifyResetCode(_i17.OtpRequest? otpRequest) =>
       (super.noSuchMethod(
             Invocation.method(#verifyResetCode, [otpRequest]),
-            returnValue: _i13.Future<_i4.OtpResponse>.value(
+            returnValue: _i14.Future<_i4.OtpResponse>.value(
               _FakeOtpResponse_2(
                 this,
                 Invocation.method(#verifyResetCode, [otpRequest]),
               ),
             ),
           )
-          as _i13.Future<_i4.OtpResponse>);
+          as _i14.Future<_i4.OtpResponse>);
 
   @override
-  _i13.Future<_i5.ResetPasswordResponse> resetPassword(
-    _i17.ResetPasswordRequest? ResetPasswordRequest,
+  _i14.Future<_i5.ResetPasswordResponse> resetPassword(
+    _i18.ResetPasswordRequest? ResetPasswordRequest,
   ) =>
       (super.noSuchMethod(
             Invocation.method(#resetPassword, [ResetPasswordRequest]),
-            returnValue: _i13.Future<_i5.ResetPasswordResponse>.value(
+            returnValue: _i14.Future<_i5.ResetPasswordResponse>.value(
               _FakeResetPasswordResponse_3(
                 this,
                 Invocation.method(#resetPassword, [ResetPasswordRequest]),
               ),
             ),
           )
-          as _i13.Future<_i5.ResetPasswordResponse>);
+          as _i14.Future<_i5.ResetPasswordResponse>);
 
   @override
-  _i13.Future<_i6.ApplyResponse> apply(_i18.FormData? formData) =>
+  _i14.Future<_i6.ApplyResponse> apply(_i19.FormData? formData) =>
       (super.noSuchMethod(
             Invocation.method(#apply, [formData]),
-            returnValue: _i13.Future<_i6.ApplyResponse>.value(
+            returnValue: _i14.Future<_i6.ApplyResponse>.value(
               _FakeApplyResponse_4(this, Invocation.method(#apply, [formData])),
             ),
           )
-          as _i13.Future<_i6.ApplyResponse>);
+          as _i14.Future<_i6.ApplyResponse>);
 
   @override
-  _i13.Future<_i7.GetAllVehiclesResponse> getAllVehicles() =>
+  _i14.Future<_i7.GetAllVehiclesResponse> getAllVehicles() =>
       (super.noSuchMethod(
             Invocation.method(#getAllVehicles, []),
-            returnValue: _i13.Future<_i7.GetAllVehiclesResponse>.value(
+            returnValue: _i14.Future<_i7.GetAllVehiclesResponse>.value(
               _FakeGetAllVehiclesResponse_5(
                 this,
                 Invocation.method(#getAllVehicles, []),
               ),
             ),
           )
-          as _i13.Future<_i7.GetAllVehiclesResponse>);
+          as _i14.Future<_i7.GetAllVehiclesResponse>);
 
   @override
-  _i13.Future<String> updateOrderStatus(
+  _i14.Future<String> updateOrderStatus(
     String? id,
     Map<String, dynamic>? newState,
     String? token,
   ) =>
       (super.noSuchMethod(
             Invocation.method(#updateOrderStatus, [id, newState, token]),
-            returnValue: _i13.Future<String>.value(
-              _i19.dummyValue<String>(
+            returnValue: _i14.Future<String>.value(
+              _i20.dummyValue<String>(
                 this,
                 Invocation.method(#updateOrderStatus, [id, newState, token]),
               ),
             ),
           )
-          as _i13.Future<String>);
+          as _i14.Future<String>);
 
   @override
-  _i13.Future<_i8.PendingOrderResponse> getAllPendingOrders(int? page) =>
+  _i14.Future<_i8.PendingOrderResponse> getAllPendingOrders(int? page) =>
       (super.noSuchMethod(
             Invocation.method(#getAllPendingOrders, [page]),
-            returnValue: _i13.Future<_i8.PendingOrderResponse>.value(
+            returnValue: _i14.Future<_i8.PendingOrderResponse>.value(
               _FakePendingOrderResponse_6(
                 this,
                 Invocation.method(#getAllPendingOrders, [page]),
               ),
             ),
           )
-          as _i13.Future<_i8.PendingOrderResponse>);
+          as _i14.Future<_i8.PendingOrderResponse>);
 
   @override
-  _i13.Future<_i8.PendingOrderResponse> startOrder(String? id) =>
+  _i14.Future<_i8.PendingOrderResponse> startOrder(String? id) =>
       (super.noSuchMethod(
             Invocation.method(#startOrder, [id]),
-            returnValue: _i13.Future<_i8.PendingOrderResponse>.value(
+            returnValue: _i14.Future<_i8.PendingOrderResponse>.value(
               _FakePendingOrderResponse_6(
                 this,
                 Invocation.method(#startOrder, [id]),
               ),
             ),
           )
-          as _i13.Future<_i8.PendingOrderResponse>);
+          as _i14.Future<_i8.PendingOrderResponse>);
 
   @override
-  _i13.Future<_i9.GetLoggedDriverDataResponse> getLoggedDriverData() =>
+  _i14.Future<_i9.GetLoggedDriverDataResponse> getLoggedDriverData() =>
       (super.noSuchMethod(
             Invocation.method(#getLoggedDriverData, []),
-            returnValue: _i13.Future<_i9.GetLoggedDriverDataResponse>.value(
+            returnValue: _i14.Future<_i9.GetLoggedDriverDataResponse>.value(
               _FakeGetLoggedDriverDataResponse_7(
                 this,
                 Invocation.method(#getLoggedDriverData, []),
               ),
             ),
           )
-          as _i13.Future<_i9.GetLoggedDriverDataResponse>);
+          as _i14.Future<_i9.GetLoggedDriverDataResponse>);
 
   @override
-  _i13.Future<_i10.GetVehicleResponse> getSpecificVehicleName(
+  _i14.Future<_i10.GetVehicleResponse> getSpecificVehicleName(
     String? vehicleId,
   ) =>
       (super.noSuchMethod(
             Invocation.method(#getSpecificVehicleName, [vehicleId]),
-            returnValue: _i13.Future<_i10.GetVehicleResponse>.value(
+            returnValue: _i14.Future<_i10.GetVehicleResponse>.value(
               _FakeGetVehicleResponse_8(
                 this,
                 Invocation.method(#getSpecificVehicleName, [vehicleId]),
               ),
             ),
           )
-          as _i13.Future<_i10.GetVehicleResponse>);
+          as _i14.Future<_i10.GetVehicleResponse>);
 
   @override
-  _i13.Future<_i11.DriverOrdersResponse> getAllDriverOrders() =>
+  _i14.Future<_i11.DriverOrdersResponse> getAllDriverOrders() =>
       (super.noSuchMethod(
             Invocation.method(#getAllDriverOrders, []),
-            returnValue: _i13.Future<_i11.DriverOrdersResponse>.value(
+            returnValue: _i14.Future<_i11.DriverOrdersResponse>.value(
               _FakeDriverOrdersResponse_9(
                 this,
                 Invocation.method(#getAllDriverOrders, []),
               ),
             ),
           )
-          as _i13.Future<_i11.DriverOrdersResponse>);
+          as _i14.Future<_i11.DriverOrdersResponse>);
+
+  @override
+  _i14.Future<_i12.UserResponse> editProfile(_i21.UpdatedUserModel? user) =>
+      (super.noSuchMethod(
+            Invocation.method(#editProfile, [user]),
+            returnValue: _i14.Future<_i12.UserResponse>.value(
+              _FakeUserResponse_10(
+                this,
+                Invocation.method(#editProfile, [user]),
+              ),
+            ),
+          )
+          as _i14.Future<_i12.UserResponse>);
+
+  @override
+  _i14.Future<String> uploadPhoto(_i22.File? image) =>
+      (super.noSuchMethod(
+            Invocation.method(#uploadPhoto, [image]),
+            returnValue: _i14.Future<String>.value(
+              _i20.dummyValue<String>(
+                this,
+                Invocation.method(#uploadPhoto, [image]),
+              ),
+            ),
+          )
+          as _i14.Future<String>);
 
   @override
   _i13.Future<String> logout() =>

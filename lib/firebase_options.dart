@@ -86,5 +86,4 @@ class DefaultFirebaseOptions {
     storageBucket: 'traking-app-57b68.firebasestorage.app',
     measurementId: 'G-354M60P69S',
   );
-
 }

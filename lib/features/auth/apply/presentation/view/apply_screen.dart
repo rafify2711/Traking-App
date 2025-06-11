@@ -6,13 +6,16 @@ import 'package:tracking_app/features/auth/apply/domain/use_case/get_vehicle_use
 import 'package:tracking_app/features/auth/apply/presentation/view/widgets/apply_screen_body.dart';
 import 'package:tracking_app/features/auth/apply/presentation/view_model/cubit/apply_cubit.dart';
 
-
 class ApplyScreen extends StatelessWidget {
   const ApplyScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ApplyCubit(getIt.get<ApplyUseCase>() , getIt.get<GetVehiclesUseCase>() ),
+      create:
+          (context) => ApplyCubit(
+            getIt.get<ApplyUseCase>(),
+            getIt.get<GetVehiclesUseCase>(),
+          ),
       child: Scaffold(
         appBar: AppBar(
           titleSpacing: 0,
