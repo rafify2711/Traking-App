@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tracking_app/core/utils/app_text_styles.dart';
@@ -39,7 +40,9 @@ class CustomCardWidget extends StatelessWidget {
         child: ListTile(
           leading: CircleAvatar(
 
-            backgroundImage: NetworkImage(imagePath??""),
+            backgroundImage: CachedNetworkImageProvider(
+              errorListener:(p0) =>  const Icon(Icons.error),
+              imagePath??""),
             radius: 25,
           ),
 

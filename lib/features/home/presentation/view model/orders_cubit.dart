@@ -8,6 +8,7 @@ import 'package:tracking_app/features/home/domain/use_case/get_all_pending_order
 import 'package:tracking_app/features/home/domain/use_case/start_order_use_case.dart';
 import 'package:tracking_app/features/orders/data/model/orders_firebase_model.dart';
 import 'package:tracking_app/features/orders/domain/use_case/save_order_to_firebase_use_case.dart';
+import 'package:tracking_app/features/profile/data/model/get_logged_driver_data_response.dart';
 
 part 'orders_state.dart';
 
@@ -60,26 +61,28 @@ class OrdersCubit extends Cubit<OrdersState> {
       final acceptedOrder = state.orderResponse?.orders?.firstWhere(
         (order) => order.id == id,
       );
+      final driverResponse = state.driverResponse?.driver;
+
 
       if (acceptedOrder != null) {
         // Save to Firebase
         final firebaseOrder = OrdersFirebaseModel(
           order: acceptedOrder,
           driver: Driver(
-            country: "Egypt",
-            firstName: "Ranim",
-            lastName: "afify",
-            vehicleType: "Car",
-            vehicleNumber: "ABC123",
-            vehicleLicense: "123456789",
-            nid: "29805251234567",
-            nidImg: "https://example.com/nid.png",
-            email: "ranim@example.com",
-            gender: "Female",
-            phone: "+201234567890",
-            photo: "https://example.com/photo.jpg",
-            role: "driver",
-            id: "driver123",
+            country: driverResponse?.country??"Fill Country",
+            firstName: driverResponse?.firstName ?? "Fill First Name",
+            lastName: driverResponse?.lastName ?? "Fill Last Name",
+            vehicleType: driverResponse?.vehicleType ?? "Fill Vehicle Type",
+            vehicleNumber: driverResponse?.vehicleNumber ?? "Fill Vehicle Number",
+            vehicleLicense: driverResponse?.vehicleLicense ?? "Fill Vehicle License",
+            nid: driverResponse?.NID ?? "Fill NID",
+            nidImg: driverResponse?.NIDImg ?? "Fill NID Image",
+            email: driverResponse?.email ?? "Fill Email",
+            gender: driverResponse?.gender ?? "Fill Gender",
+            phone: driverResponse?.phone ?? "Fill Phone",
+            photo: driverResponse?.photo ?? "Fill Photo",
+            role: driverResponse?.role ?? "Fill Role",
+            id: driverResponse?.id ?? "Fill ID",
             createdAt: DateTime.now(),
           ),
         );

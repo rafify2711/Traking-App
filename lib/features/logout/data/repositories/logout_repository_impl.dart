@@ -11,8 +11,8 @@ class LogoutRepositoryImpl implements LogoutRepository {
   LogoutRepositoryImpl({required this.remoteDataSource});
 
   @override
-  Future<ApiResult<String>> logout() {
-    return remoteDataSource.logout();
+  Future<ApiResult<String>> logout() async {
+    return await remoteDataSource.logout();
   }
 
 }
