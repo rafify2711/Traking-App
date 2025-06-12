@@ -212,17 +212,21 @@ class _EditProfileViewState extends State<EditProfileView> {
                         text: '*********',
                       ),
                       suffix: GestureDetector(
-                        child: GestureDetector(
-                          onTap:
-                              () => Navigator.pushNamed(
-                                context,
-                                RoutesName.changePasswordScreen,
-                              ),
-                          child: Text(
-                            LocaleKeys.change.tr(),
-                            style: AppTextStyles.instance.textStyle14.copyWith(
-                              color: PalletsColors.mainColorBase,
-                              fontWeight: FontWeight.w600,
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: GestureDetector(
+                            onTap:
+                                () => Navigator.pushNamed(
+                                  context,
+                                  RoutesName.changePasswordScreen,
+                                ),
+                            child: Text(
+                              LocaleKeys.change.tr(),
+                              style: AppTextStyles.instance.textStyle14
+                                  .copyWith(
+                                    color: PalletsColors.mainColorBase,
+                                    fontWeight: FontWeight.w600,
+                                  ),
                             ),
                           ),
                         ),
