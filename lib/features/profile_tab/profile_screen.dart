@@ -8,11 +8,7 @@ import 'package:tracking_app/core/utils/app_text_styles.dart';
 import 'package:tracking_app/core/utils/colors.dart';
 import 'package:tracking_app/features/edit_vehicle/edit_vehicle_screen.dart';
 import 'package:tracking_app/features/profile/presentation/view_model/profile_cubit/profile_cubit.dart';
-<<<<<<< HEAD:lib/features/profile/presentation/views/profile_tab/profile_screen.dart
-import 'package:tracking_app/features/profile/presentation/views/edit_vehicle/edit_vehicle_screen.dart';
 import 'package:tracking_app/features/profile/presentation/widget/logout_sheet.dart';
-=======
->>>>>>> feature/edit-my-info:lib/features/profile_tab/profile_screen.dart
 import 'package:tracking_app/generated/locale_keys.g.dart';
 
 class ProfileScreen extends StatelessWidget {

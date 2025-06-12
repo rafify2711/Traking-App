@@ -255,9 +255,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i318.SenVerifyCodeUseCase>(
       () => _i318.SenVerifyCodeUseCase(repo: gh<_i484.ForgetPasswordRepo>()),
     );
-    gh.factory<_i342.ChangePasswordUseCase>(
-      () => _i342.ChangePasswordUseCase(gh<_i1007.ProfileRepo>()),
-    );
     gh.factory<_i1004.LogoutRepository>(
       () => _i885.LogoutRepositoryImpl(
         remoteDataSource: gh<_i671.LogoutRemoteDataSource>(),
@@ -281,14 +278,14 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i729.GetVehiclesUseCase>(
       () => _i729.GetVehiclesUseCase(gh<_i981.AuthRepo>()),
     );
+    gh.factory<_i98.LogoutUseCase>(
+      () => _i98.LogoutUseCase(gh<_i1004.LogoutRepository>()),
+    );
     gh.factory<_i973.EditProfileCubit>(
       () => _i973.EditProfileCubit(
         gh<_i934.EditProfileUseCase>(),
         gh<_i808.UploadPhoto>(),
       ),
-    );
-    gh.factory<_i98.LogoutUseCase>(
-      () => _i98.LogoutUseCase(gh<_i1004.LogoutRepository>()),
     );
     return this;
   }

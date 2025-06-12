@@ -1,58 +1,75 @@
-import 'dart:convert';
 
-import 'package:collection/collection.dart';
+import 'package:json_annotation/json_annotation.dart';
+part 'user_response.g.dart';
 
-import 'driver.dart';
-
+@JsonSerializable()
 class UserResponse {
+  @JsonKey(name: 'message')
   String? message;
+  @JsonKey(name: 'driver')
   Driver? driver;
 
   UserResponse({this.message, this.driver});
 
-  @override
-  String toString() => 'UserResponse(message: $message, driver: $driver)';
+  factory UserResponse.fromJson(Map<String, dynamic> json) => _$UserResponseFromJson(json);
 
-  factory UserResponse.fromMap(Map<String, dynamic> data) => UserResponse(
-    message: data['message'] as String?,
-    driver:
-        data['driver'] == null
-            ? null
-            : Driver.fromMap(data['driver'] as Map<String, dynamic>),
-  );
-
-  Map<String, dynamic> toMap() => {
-    'message': message,
-    'driver': driver?.toMap(),
-  };
-
-  /// `dart:convert`
-  ///
-  /// Parses the string and returns the resulting Json object as [UserResponse].
-  factory UserResponse.fromJson(String data) {
-    return UserResponse.fromMap(json.decode(data) as Map<String, dynamic>);
+  static List<UserResponse> fromList(List<Map<String, dynamic>> list) {
+    return list.map(UserResponse.fromJson).toList();
   }
 
-  /// `dart:convert`
-  ///
-  /// Converts [UserResponse] to a JSON string.
-  String toJson() => json.encode(toMap());
+  Map<String, dynamic> toJson() => _$UserResponseToJson(this);
+}
 
-  UserResponse copyWith({String? message, Driver? driver}) {
-    return UserResponse(
-      message: message ?? this.message,
-      driver: driver ?? this.driver,
-    );
+@JsonSerializable()
+class Driver {
+  @JsonKey(name: '_id')
+  String? id;
+  @JsonKey(name: 'country')
+  String? country;
+  @JsonKey(name: 'firstName')
+  String? firstName;
+  @JsonKey(name: 'lastName')
+  String? lastName;
+  @JsonKey(name: 'vehicleType')
+  String? vehicleType;
+  @JsonKey(name: 'vehicleNumber')
+  String? vehicleNumber;
+  @JsonKey(name: 'vehicleLicense')
+  String? vehicleLicense;
+  @JsonKey(name: 'NID')
+  String? nid;
+  @JsonKey(name: 'NIDImg')
+  String? nidImg;
+  @JsonKey(name: 'email')
+  String? email;
+  @JsonKey(name: 'password')
+  String? password;
+  @JsonKey(name: 'gender')
+  String? gender;
+  @JsonKey(name: 'phone')
+  String? phone;
+  @JsonKey(name: 'photo')
+  String? photo;
+  @JsonKey(name: 'role')
+  String? role;
+  @JsonKey(name: 'createdAt')
+  String? createdAt;
+  @JsonKey(name: 'passwordResetCode')
+  String? passwordResetCode;
+  @JsonKey(name: 'passwordResetExpires')
+  String? passwordResetExpires;
+  @JsonKey(name: 'resetCodeVerified')
+  bool? resetCodeVerified;
+  @JsonKey(name: 'passwordChangedAt')
+  String? passwordChangedAt;
+
+  Driver({this.id, this.country, this.firstName, this.lastName, this.vehicleType, this.vehicleNumber, this.vehicleLicense, this.nid, this.nidImg, this.email, this.password, this.gender, this.phone, this.photo, this.role, this.createdAt, this.passwordResetCode, this.passwordResetExpires, this.resetCodeVerified, this.passwordChangedAt});
+
+  factory Driver.fromJson(Map<String, dynamic> json) => _$DriverFromJson(json);
+
+  static List<Driver> fromList(List<Map<String, dynamic>> list) {
+    return list.map(Driver.fromJson).toList();
   }
 
-  @override
-  bool operator ==(Object other) {
-    if (identical(other, this)) return true;
-    if (other is! UserResponse) return false;
-    final mapEquals = const DeepCollectionEquality().equals;
-    return mapEquals(other.toMap(), toMap());
-  }
-
-  @override
-  int get hashCode => message.hashCode ^ driver.hashCode;
+  Map<String, dynamic> toJson() => _$DriverToJson(this);
 }

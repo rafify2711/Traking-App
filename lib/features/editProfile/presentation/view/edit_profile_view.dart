@@ -242,6 +242,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                           } else {
                             setState(() {
                               autoValidateMode = AutovalidateMode.always;
+                              
                             });
                           }
                         },

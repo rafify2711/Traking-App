@@ -19,4 +19,5 @@ class Constants {
   static const String changePasswordEndPoint = "drivers/change-password";
   static const String editProfileEndPoint = "drivers/editProfile";
   static const String uploadPhoto = "drivers/upload-photo";
+  static const String logoutEndPoint ="drivers/logout";
 }

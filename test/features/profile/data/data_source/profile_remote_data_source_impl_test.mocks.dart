@@ -291,6 +291,16 @@ class MockApiService extends _i1.Mock implements _i13.ApiService {
           as _i14.Future<_i11.DriverOrdersResponse>);
 
   @override
+  _i14.Future<String> logout() =>
+      (super.noSuchMethod(
+            Invocation.method(#logout, []),
+            returnValue: _i14.Future<String>.value(
+              _i20.dummyValue<String>(this, Invocation.method(#logout, [])),
+            ),
+          )
+          as _i14.Future<String>);
+
+  @override
   _i14.Future<_i12.UserResponse> editProfile(_i21.UpdatedUserModel? user) =>
       (super.noSuchMethod(
             Invocation.method(#editProfile, [user]),
@@ -315,14 +325,4 @@ class MockApiService extends _i1.Mock implements _i13.ApiService {
             ),
           )
           as _i14.Future<String>);
-
-  @override
-  _i13.Future<String> logout() =>
-      (super.noSuchMethod(
-            Invocation.method(#logout, []),
-            returnValue: _i13.Future<String>.value(
-              _i19.dummyValue<String>(this, Invocation.method(#logout, [])),
-            ),
-          )
-          as _i13.Future<String>);
 }

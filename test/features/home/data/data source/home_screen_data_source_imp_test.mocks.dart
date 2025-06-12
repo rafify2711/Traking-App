@@ -370,6 +370,16 @@ class MockApiService extends _i1.Mock implements _i17.ApiService {
           as _i16.Future<_i11.DriverOrdersResponse>);
 
   @override
+  _i16.Future<String> logout() =>
+      (super.noSuchMethod(
+            Invocation.method(#logout, []),
+            returnValue: _i16.Future<String>.value(
+              _i23.dummyValue<String>(this, Invocation.method(#logout, [])),
+            ),
+          )
+          as _i16.Future<String>);
+
+  @override
   _i16.Future<_i12.UserResponse> editProfile(_i24.UpdatedUserModel? user) =>
       (super.noSuchMethod(
             Invocation.method(#editProfile, [user]),
@@ -394,16 +404,6 @@ class MockApiService extends _i1.Mock implements _i17.ApiService {
             ),
           )
           as _i16.Future<String>);
-
-  @override
-  _i15.Future<String> logout() =>
-      (super.noSuchMethod(
-            Invocation.method(#logout, []),
-            returnValue: _i15.Future<String>.value(
-              _i22.dummyValue<String>(this, Invocation.method(#logout, [])),
-            ),
-          )
-          as _i15.Future<String>);
 }
 
 /// A class which mocks [FirebaseFirestore].
