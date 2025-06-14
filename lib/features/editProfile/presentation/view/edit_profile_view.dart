@@ -1,16 +1,14 @@
 import 'dart:developer';
 import 'dart:io';
-
 import 'package:easy_localization/easy_localization.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:tracking_app/core/config/routes_name.dart';
 import 'package:tracking_app/core/utils/app_text_styles.dart';
 import 'package:tracking_app/core/utils/colors.dart';
 import 'package:tracking_app/core/utils/validator.dart';
 import 'package:tracking_app/core/utils/widgets/custom_text_form_fieled.dart';
-import 'package:tracking_app/features/auth/apply/data/models/apply_model/apply_response/driver.dart';
 import 'package:tracking_app/features/editProfile/data/model/updated_user_model.dart';
 import 'package:tracking_app/features/editProfile/presentation/viewModel/cubit/edit_profile_cubit.dart';
 import 'package:tracking_app/features/editProfile/presentation/viewModel/cubit/edit_profile_state.dart';
@@ -41,10 +39,16 @@ class _EditProfileViewState extends State<EditProfileView> {
     super.initState();
 
     log('*****${widget.driver.driver?.firstName}');
-    firstNameController = TextEditingController(text: widget.driver.driver?.firstName);
-    lastNameController = TextEditingController(text: widget.driver.driver?.lastName);
+    firstNameController = TextEditingController(
+      text: widget.driver.driver?.firstName,
+    );
+    lastNameController = TextEditingController(
+      text: widget.driver.driver?.lastName,
+    );
     emailController = TextEditingController(text: widget.driver.driver?.email);
-    phoneNumberController = TextEditingController(text: widget.driver.driver?.phone);
+    phoneNumberController = TextEditingController(
+      text: widget.driver.driver?.phone,
+    );
   }
 
   @override
@@ -118,8 +122,9 @@ class _EditProfileViewState extends State<EditProfileView> {
                                 selectedImage != null
                                     ? FileImage(selectedImage!)
                                     : (widget.driver.driver?.photo != null
-                                            ? NetworkImage(widget.driver.driver?.photo 
-                                                ?? '')
+                                            ? NetworkImage(
+                                              widget.driver.driver?.photo ?? '',
+                                            )
                                             : const AssetImage(''))
                                         as ImageProvider,
                           ),
@@ -207,14 +212,25 @@ class _EditProfileViewState extends State<EditProfileView> {
                         text: '*********',
                       ),
                       suffix: GestureDetector(
-                        onTap: () {},
-                        child: Text(
-                          LocaleKeys.change.tr(),
-                          style: AppTextStyles.instance.textStyle14.copyWith(
-                            color: PalletsColors.mainColorBase,
-                            fontWeight: FontWeight.w600,
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: GestureDetector(
+                            onTap:
+                                () => Navigator.pushNamed(
+                                  context,
+                                  RoutesName.changePasswordScreen,
+                                ),
+                            child: Text(
+                              LocaleKeys.change.tr(),
+                              style: AppTextStyles.instance.textStyle14
+                                  .copyWith(
+                                    color: PalletsColors.mainColorBase,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                            ),
                           ),
                         ),
+                        onTap: () {},
                       ),
                     ),
 
@@ -242,7 +258,6 @@ class _EditProfileViewState extends State<EditProfileView> {
                           } else {
                             setState(() {
                               autoValidateMode = AutovalidateMode.always;
-                              
                             });
                           }
                         },
