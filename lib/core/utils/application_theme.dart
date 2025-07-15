@@ -59,7 +59,8 @@ abstract class ApplicationTheme {
     ),
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
-        foregroundColor: PalletsColors.gray,
+        foregroundColor: PalletsColors.white90,
+
         minimumSize: const Size(double.infinity, 48),
       ),
     ),

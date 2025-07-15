@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:tracking_app/core/config/routes_name.dart';
 import 'package:tracking_app/core/utils/app_text_styles.dart';
+import 'package:tracking_app/core/utils/colors.dart';
 import 'package:tracking_app/generated/locale_keys.g.dart';
 
 class OnBoardingView extends StatefulWidget {
@@ -18,21 +19,30 @@ class _OnBoardingViewState extends State<OnBoardingView> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.only(right: 10, left: 16, top: 100),
+          padding: const EdgeInsets.only(right: 10, left: 16, top: 37),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
-              // mainAxisAlignment: MainAxisAlignment.center,
+
               children: [
                 Container(
-                  child: Lottie.asset(
-                    'assets/json/on_boarding.json',
-                    fit: BoxFit.fill,
+                  height: 450,
+                  child: FittedBox(
+                    fit: BoxFit.cover,
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 100),
+                      child: SizedBox(
+                        width: 2000,
+                        height: 900,
+                        child: Lottie.asset('assets/json/on_boarding.json'),
+                      ),
+                    ),
                   ),
                 ),
 
                 const SizedBox(height: 16),
                 Text(
+                  maxLines: 2,
                   LocaleKeys.WelcomeToFloweryRiderApp.tr(),
                   style: AppTextStyles.instance.textStyle20.copyWith(
                     fontWeight: FontWeight.w500,
