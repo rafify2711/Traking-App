@@ -25,7 +25,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
 
               children: [
-                Container(
+                SizedBox(
                   height: 450,
                   child: FittedBox(
                     fit: BoxFit.cover,
@@ -42,12 +42,18 @@ class _OnBoardingViewState extends State<OnBoardingView> {
 
                 const SizedBox(height: 16),
                 Text(
-                  maxLines: 2,
-                  LocaleKeys.WelcomeToFloweryRiderApp.tr(),
+                  LocaleKeys.welcomeTo.tr(),
                   style: AppTextStyles.instance.textStyle20.copyWith(
                     fontWeight: FontWeight.w500,
                   ),
                 ),
+                Text(
+                  LocaleKeys.floweryRiderApp.tr(),
+                  style: AppTextStyles.instance.textStyle20.copyWith(
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+
                 const SizedBox(height: 24),
                 ElevatedButton(
                   onPressed: () {
