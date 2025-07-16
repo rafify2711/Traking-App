@@ -10,7 +10,6 @@ import 'package:tracking_app/core/utils/app_text_styles.dart';
 import 'package:tracking_app/core/utils/colors.dart';
 import 'package:tracking_app/core/utils/validator.dart';
 import 'package:tracking_app/core/utils/widgets/custom_text_form_fieled.dart';
-import 'package:tracking_app/features/auth/apply/data/models/apply_model/apply_response/driver.dart';
 import 'package:tracking_app/features/editProfile/data/model/updated_user_model.dart';
 import 'package:tracking_app/features/editProfile/presentation/viewModel/cubit/edit_profile_cubit.dart';
 import 'package:tracking_app/features/editProfile/presentation/viewModel/cubit/edit_profile_state.dart';
@@ -35,16 +34,30 @@ class _EditProfileViewState extends State<EditProfileView> {
   late final TextEditingController phoneNumberController;
 
   File? selectedImage;
+  String? selectedGender; // 'Male' or 'Female'
 
   @override
   void initState() {
     super.initState();
-
-    log('*****${widget.driver.driver?.firstName}');
-    firstNameController = TextEditingController(text: widget.driver.driver?.firstName);
-    lastNameController = TextEditingController(text: widget.driver.driver?.lastName);
-    emailController = TextEditingController(text: widget.driver.driver?.email);
-    phoneNumberController = TextEditingController(text: widget.driver.driver?.phone);
+    firstNameController = TextEditingController(
+      text: widget.driver.driver?.firstName,
+    )..addListener(_checkIfEdited);
+    lastNameController = TextEditingController(
+      text: widget.driver.driver?.lastName,
+    )..addListener(_checkIfEdited);
+    emailController = TextEditingController(text: widget.driver.driver?.email)
+      ..addListener(_checkIfEdited);
+    phoneNumberController = TextEditingController(
+      text: widget.driver.driver?.phone,
+    )..addListener(_checkIfEdited);
+    selectedGender = widget.driver.driver?.gender;
+    if (widget.driver.driver?.gender == 'male') {
+      selectedGender = 'Male';
+    } else if (widget.driver.driver?.gender == 'female') {
+      selectedGender = 'Female';
+    } else {
+      selectedGender = 'Male';
+    }
   }
 
   @override
@@ -65,6 +78,24 @@ class _EditProfileViewState extends State<EditProfileView> {
     } else {
       selectedImage = File(widget.driver.driver?.photo ?? '');
     }
+    _checkIfEdited();
+  }
+
+  bool _isEdited = false;
+
+  void _checkIfEdited() {
+    setState(() {
+      _isEdited =
+          firstNameController.text.trim() !=
+              (widget.driver.driver?.firstName ?? '') ||
+          lastNameController.text.trim() !=
+              (widget.driver.driver?.lastName ?? '') ||
+          emailController.text.trim() != (widget.driver.driver?.email ?? '') ||
+          phoneNumberController.text.trim() !=
+              (widget.driver.driver?.phone ?? '') ||
+          selectedGender != (widget.driver.driver?.gender ?? '') ||
+          selectedImage != null;
+    });
   }
 
   @override
@@ -80,6 +111,7 @@ class _EditProfileViewState extends State<EditProfileView> {
           },
           icon: const Icon(Icons.arrow_back_ios),
         ),
+        titleSpacing: 0,
         title: Text(LocaleKeys.editProfile.tr(), style: text.titleMedium),
       ),
       body: BlocConsumer<EditProfileCubit, EditProfileState>(
@@ -118,8 +150,9 @@ class _EditProfileViewState extends State<EditProfileView> {
                                 selectedImage != null
                                     ? FileImage(selectedImage!)
                                     : (widget.driver.driver?.photo != null
-                                            ? NetworkImage(widget.driver.driver?.photo 
-                                                ?? '')
+                                            ? NetworkImage(
+                                              widget.driver.driver?.photo ?? '',
+                                            )
                                             : const AssetImage(''))
                                         as ImageProvider,
                           ),
@@ -134,7 +167,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                                   Radius.circular(20),
                                 ),
 
-                                color: PalletsColors.mainColor30,
+                                color: PalletsColors.mainColor10,
                               ),
                               child: IconButton(
                                 padding: EdgeInsets.zero,
@@ -176,7 +209,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 12),
+                    const SizedBox(height: 24),
 
                     // Email
                     CustomTextFormFieled(
@@ -186,7 +219,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                       validator: Validator.validateEmail,
                       hintText: '',
                     ),
-                    const SizedBox(height: 12),
+                    const SizedBox(height: 24),
 
                     // Phone Number
                     CustomTextFormFieled(
@@ -196,7 +229,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                       validator: Validator.validatePhoneNumber,
                       hintText: '',
                     ),
-                    const SizedBox(height: 30),
+                    const SizedBox(height: 24),
 
                     CustomTextFormFieled(
                       hintText: LocaleKeys.enterYourPassword.tr(),
@@ -206,47 +239,116 @@ class _EditProfileViewState extends State<EditProfileView> {
                       textEditingController: TextEditingController(
                         text: '*********',
                       ),
-                      suffix: GestureDetector(
-                        onTap: () {},
-                        child: Text(
-                          LocaleKeys.change.tr(),
-                          style: AppTextStyles.instance.textStyle14.copyWith(
-                            color: PalletsColors.mainColorBase,
-                            fontWeight: FontWeight.w600,
+                      suffix: Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: GestureDetector(
+                          onTap: () {},
+                          child: Text(
+                            LocaleKeys.change.tr(),
+                            style: AppTextStyles.instance.textStyle14.copyWith(
+                              color: PalletsColors.black50,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                         ),
                       ),
                     ),
 
-                    const SizedBox(height: 100),
+                    const SizedBox(height: 24),
+
+                    // const SizedBox(height: 8),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          LocaleKeys.gender.tr(),
+                          style: AppTextStyles.instance.textStyle18.copyWith(
+                            fontWeight: FontWeight.bold,
+                            color: PalletsColors.gray,
+                          ),
+                        ),
+                        Expanded(
+                          child: RadioListTile<String>(
+                            title: Text(
+                              "male",
+                              style: AppTextStyles.instance.textStyle14,
+                            ),
+                            value: 'Male',
+                            groupValue: selectedGender,
+                            activeColor:
+                                PalletsColors
+                                    .mainColorBase, // ✅ Pink circle when selected
+                            onChanged: (value) {
+                              setState(() {
+                                selectedGender = value!;
+                                _checkIfEdited();
+                              });
+                            },
+                          ),
+                        ),
+                        Expanded(
+                          child: RadioListTile<String>(
+                            title: Text(
+                              "female",
+                              style: AppTextStyles.instance.textStyle14,
+                            ),
+
+                            value: 'Female',
+                            groupValue: selectedGender,
+                            activeColor:
+                                PalletsColors
+                                    .mainColorBase, // ✅ Pink circle when selected
+                            onChanged: (value) {
+                              setState(() {
+                                selectedGender = value!;
+                                _checkIfEdited();
+                              });
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+
+                    const SizedBox(height: 50),
 
                     // Save Button
                     if (state.status == EditProfileStatus.loading)
                       const CircularProgressIndicator()
                     else
                       ElevatedButton(
-                        onPressed: () async {
-                          if (formKey.currentState!.validate()) {
-                            final updatedUser = UpdatedUserModel(
-                              firstName: firstNameController.text.trim(),
-                              lastName: lastNameController.text.trim(),
-                              email: emailController.text.trim(),
-                              phone: phoneNumberController.text.trim(),
-                            );
-                            if (selectedImage != null) {
-                              await cubit.uploadProfilePhoto(selectedImage);
-                            }
-                            await cubit.editProfile(updatedUser);
-                            // ignore: use_build_context_synchronously
-                            Navigator.pop(context);
-                          } else {
-                            setState(() {
-                              autoValidateMode = AutovalidateMode.always;
-                              
-                            });
-                          }
-                        },
-                        child: Text(LocaleKeys.updateProfile.tr()),
+                        onPressed:
+                            _isEdited
+                                ? () async {
+                                  if (formKey.currentState!.validate()) {
+                                    final updatedUser = UpdatedUserModel(
+                                      firstName:
+                                          firstNameController.text.trim(),
+                                      lastName: lastNameController.text.trim(),
+                                      email: emailController.text.trim(),
+                                      phone: phoneNumberController.text.trim(),
+                                      gender: selectedGender,
+                                    );
+                                    if (selectedImage != null) {
+                                      await cubit.uploadProfilePhoto(
+                                        selectedImage,
+                                      );
+                                    }
+                                    await cubit.editProfile(updatedUser);
+                                    Navigator.pop(context);
+                                  } else {
+                                    setState(() {
+                                      autoValidateMode =
+                                          AutovalidateMode.always;
+                                    });
+                                  }
+                                }
+                                : null, // Disabled if not edited
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor:
+                              _isEdited ? Colors.pink : Colors.grey,
+                        ),
+                        child: Text(LocaleKeys.update.tr()),
                       ),
                   ],
                 ),

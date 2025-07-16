@@ -3,8 +3,15 @@ class UpdatedUserModel {
   final String? lastName;
   final String? email;
   final String? phone;
+  final String? gender;
 
-  UpdatedUserModel({this.firstName, this.lastName, this.email, this.phone});
+  UpdatedUserModel({
+    this.firstName,
+    this.lastName,
+    this.email,
+    this.phone,
+    this.gender,
+  });
 
   factory UpdatedUserModel.fromJson(Map<String, dynamic> json) {
     return UpdatedUserModel(
@@ -12,6 +19,7 @@ class UpdatedUserModel {
       lastName: json['lastName'] as String?,
       email: json['email'] as String?,
       phone: json['phone'] as String?,
+      gender: json['gender'] as String?,
     );
   }
 
@@ -21,6 +29,7 @@ class UpdatedUserModel {
       'lastName': lastName,
       'email': email,
       'phone': phone,
+      'gender': gender,
     };
   }
 }
