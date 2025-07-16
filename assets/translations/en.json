@@ -116,5 +116,6 @@
     "language": "Language",
     "english": "English",
     "arabic": "Arabic",
-    "logOut": "Log Out"
+    "logOut": "Log Out",
+    "continueText": "Continue"
 }

@@ -38,9 +38,9 @@ class CustomTextFormFieled extends StatelessWidget {
       validator: validator,
       controller: textEditingController,
       obscureText: isObsecureText,
-      obscuringCharacter: "*",
+      obscuringCharacter: "★",
       style: ApplicationTheme.themeData.textTheme.bodyMedium?.copyWith(
-        color: PalletsColors.white70,
+        color: PalletsColors.black100,
       ),
       decoration: InputDecoration(
         labelText: labelText,

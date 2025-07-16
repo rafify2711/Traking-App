@@ -132,7 +132,8 @@ class CodegenLoader extends AssetLoader{
   "language": "Language",
   "english": "English",
   "arabic": "Arabic",
-  "logOut": "Log Out"
+  "logOut": "Log Out",
+  "continueText": "Continue"
 };
 static const Map<String,dynamic> _ar = {
   "local": "ar",
@@ -248,7 +249,8 @@ static const Map<String,dynamic> _ar = {
   "language": "اللغة",
   "english": "الانجليزية",
   "arabic": "العربية",
-  "logOut": "تسجيل الخروج"
+  "logOut": "تسجيل الخروج",
+  "continueText": "متابعة"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": _en, "ar": _ar};
 }
