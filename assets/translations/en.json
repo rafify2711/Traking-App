@@ -44,8 +44,7 @@
     "uploadIdImage": "Upload ID image",
     "enterPassword": "Enter password",
     "gender": "Gender",
-    "female": "Female",
-    "male": "Male",
+    
     "validationRequiredField": "This field is required",
     "validationEmailEmpty": "Enter your email address",
     "validationEmailInvalid": "Email is invalid (e.g., example@example.com)",
@@ -117,5 +116,7 @@
     "english": "English",
     "arabic": "Arabic",
     "logOut": "Log Out",
-    "continueText": "Continue"
+    "continueText": "Continue",
+    "female": "Female",
+    "male": "Male"
 }

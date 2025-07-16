@@ -44,8 +44,7 @@
     "uploadIdImage": "رفع صورة الهوية",
     "enterPassword": "أدخل كلمة المرور",
     "gender": "الجنس",
-    "female": "أنثى",
-    "male": "ذكر",
+
     "validationRequiredField": "هذا الحقل مطلوب",
     "validationEmailEmpty": "أدخل عنوان البريد الإلكتروني الخاص بك",
     "validationEmailInvalid": "البريد الإلكتروني غير صالح (مثال: example@example.com)",
@@ -113,5 +112,7 @@
     "english": "الانجليزية",
     "arabic": "العربية",
     "logOut": "تسجيل الخروج",
-    "continueText": "متابعة"
+    "continueText": "متابعة",
+    "female": "أنثى",
+    "male": "ذكر"
 }

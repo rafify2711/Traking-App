@@ -2,11 +2,12 @@
 
 // ignore_for_file: constant_identifier_names
 
-abstract class  LocaleKeys {
+abstract class LocaleKeys {
   static const local = 'local';
   static const WelcomeToFloweryRiderApp = 'WelcomeToFloweryRiderApp';
   static const forgetPassword = 'forgetPassword';
-  static const pleaseEnterYourEmailAssociatedToYourAccount = 'pleaseEnterYourEmailAssociatedToYourAccount';
+  static const pleaseEnterYourEmailAssociatedToYourAccount =
+      'pleaseEnterYourEmailAssociatedToYourAccount';
   static const email = 'email';
   static const confirm = 'confirm';
   static const enterYourEmail = 'enterYourEmail';
@@ -54,7 +55,8 @@ abstract class  LocaleKeys {
   static const validationNumbersOnly = 'validationNumbersOnly';
   static const validationPasswordInvalid = 'validationPasswordInvalid';
   static const validationPasswordMismatch = 'validationPasswordMismatch';
-  static const validationVehicleNumberInvalid = 'validationVehicleNumberInvalid';
+  static const validationVehicleNumberInvalid =
+      'validationVehicleNumberInvalid';
   static const validationIdNumberInvalid = 'validationIdNumberInvalid';
   static const applicationSubmittedTitle = 'applicationSubmittedTitle';
   static const applicationSubmittedBody = 'applicationSubmittedBody';
@@ -80,7 +82,8 @@ abstract class  LocaleKeys {
   static const yourLocation = 'yourLocation';
   static const locationServiceDisabled = 'locationServiceDisabled';
   static const locationPermissionIsDeied = 'locationPermissionIsDeied';
-  static const locationPermissionIsPermanentlyDenied = 'locationPermissionIsPermanentlyDenied';
+  static const locationPermissionIsPermanentlyDenied =
+      'locationPermissionIsPermanentlyDenied';
   static const done = 'done';
   static const orderDeliveredSuccess = 'orderDeliveredSuccess';
   static const thankYou = 'thankYou';
@@ -121,5 +124,6 @@ abstract class  LocaleKeys {
   static const arabic = 'arabic';
   static const logOut = 'logOut';
   static const continueText = 'continueText';
-
+  static const male = 'male';
+  static const female = 'female';
 }

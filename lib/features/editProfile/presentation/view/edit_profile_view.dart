@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:easy_localization/easy_localization.dart';
@@ -34,7 +33,7 @@ class _EditProfileViewState extends State<EditProfileView> {
   late final TextEditingController phoneNumberController;
 
   File? selectedImage;
-  String? selectedGender; // 'Male' or 'Female'
+  String? selectedGender;
 
   @override
   void initState() {
@@ -271,7 +270,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                         Expanded(
                           child: RadioListTile<String>(
                             title: Text(
-                              "male",
+                              LocaleKeys.male.tr(),
                               style: AppTextStyles.instance.textStyle14,
                             ),
                             value: 'Male',
@@ -290,7 +289,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                         Expanded(
                           child: RadioListTile<String>(
                             title: Text(
-                              "female",
+                              LocaleKeys.female.tr(),
                               style: AppTextStyles.instance.textStyle14,
                             ),
 

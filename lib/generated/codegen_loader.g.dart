@@ -60,8 +60,6 @@ class CodegenLoader extends AssetLoader{
   "uploadIdImage": "Upload ID image",
   "enterPassword": "Enter password",
   "gender": "Gender",
-  "female": "Female",
-  "male": "Male",
   "validationRequiredField": "This field is required",
   "validationEmailEmpty": "Enter your email address",
   "validationEmailInvalid": "Email is invalid (e.g., example@example.com)",
@@ -133,7 +131,9 @@ class CodegenLoader extends AssetLoader{
   "english": "English",
   "arabic": "Arabic",
   "logOut": "Log Out",
-  "continueText": "Continue"
+  "continueText": "Continue",
+  "female": "Female",
+  "male": "Male"
 };
 static const Map<String,dynamic> _ar = {
   "local": "ar",
@@ -181,8 +181,6 @@ static const Map<String,dynamic> _ar = {
   "uploadIdImage": "رفع صورة الهوية",
   "enterPassword": "أدخل كلمة المرور",
   "gender": "الجنس",
-  "female": "أنثى",
-  "male": "ذكر",
   "validationRequiredField": "هذا الحقل مطلوب",
   "validationEmailEmpty": "أدخل عنوان البريد الإلكتروني الخاص بك",
   "validationEmailInvalid": "البريد الإلكتروني غير صالح (مثال: example@example.com)",
@@ -250,7 +248,9 @@ static const Map<String,dynamic> _ar = {
   "english": "الانجليزية",
   "arabic": "العربية",
   "logOut": "تسجيل الخروج",
-  "continueText": "متابعة"
+  "continueText": "متابعة",
+  "female": "أنثى",
+  "male": "ذكر"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": _en, "ar": _ar};
 }
