@@ -313,7 +313,9 @@ class _EditProfileViewState extends State<EditProfileView> {
 
                     // Save Button
                     if (state.status == EditProfileStatus.loading)
-                      const CircularProgressIndicator()
+                      const CircularProgressIndicator(
+                        color: PalletsColors.mainColorBase,
+                      )
                     else
                       ElevatedButton(
                         onPressed:
@@ -326,7 +328,6 @@ class _EditProfileViewState extends State<EditProfileView> {
                                       lastName: lastNameController.text.trim(),
                                       email: emailController.text.trim(),
                                       phone: phoneNumberController.text.trim(),
-                                      gender: selectedGender,
                                     );
                                     if (selectedImage != null) {
                                       await cubit.uploadProfilePhoto(
