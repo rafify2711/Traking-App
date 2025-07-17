@@ -18,26 +18,41 @@ class _OnBoardingViewState extends State<OnBoardingView> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.only(right: 10, left: 16, top: 100),
+          padding: const EdgeInsets.only(right: 10, left: 16, top: 8),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
-              // mainAxisAlignment: MainAxisAlignment.center,
+
               children: [
-                Container(
-                  child: Lottie.asset(
-                    'assets/json/on_boarding.json',
-                    fit: BoxFit.fill,
+                SizedBox(
+                  height: 450,
+                  child: FittedBox(
+                    fit: BoxFit.cover,
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 100),
+                      child: SizedBox(
+                        width: 2000,
+                        height: 900,
+                        child: Lottie.asset('assets/json/on_boarding.json'),
+                      ),
+                    ),
                   ),
                 ),
 
                 const SizedBox(height: 16),
                 Text(
-                  LocaleKeys.WelcomeToFloweryRiderApp.tr(),
+                  LocaleKeys.welcomeTo.tr(),
                   style: AppTextStyles.instance.textStyle20.copyWith(
                     fontWeight: FontWeight.w500,
                   ),
                 ),
+                Text(
+                  LocaleKeys.floweryRiderApp.tr(),
+                  style: AppTextStyles.instance.textStyle20.copyWith(
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+
                 const SizedBox(height: 24),
                 ElevatedButton(
                   onPressed: () {

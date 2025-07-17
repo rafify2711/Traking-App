@@ -24,7 +24,8 @@
     "errorOccurred": "حدث خطأ ما",
     "loggedInSuccessfully": "تم تسجيل الدخول بنجاح",
     "remmemberMe": "تذكرني",
-    "welcomeToFloweryRiderApp": "مرحبًا بك في تطبيق فلوراي رايدر",
+    "welcomeTo": "مرحبًا في",
+    "floweryRiderApp": "تطبيق فلاوري رايدر",
     "country": "البلد",
     "firstLegalName": "الاسم القانوني الأول",
     "enterFirstLegalName": "أدخل الاسم القانوني الأول",
@@ -43,8 +44,7 @@
     "uploadIdImage": "رفع صورة الهوية",
     "enterPassword": "أدخل كلمة المرور",
     "gender": "الجنس",
-    "female": "أنثى",
-    "male": "ذكر",
+
     "validationRequiredField": "هذا الحقل مطلوب",
     "validationEmailEmpty": "أدخل عنوان البريد الإلكتروني الخاص بك",
     "validationEmailInvalid": "البريد الإلكتروني غير صالح (مثال: example@example.com)",
@@ -104,12 +104,15 @@
     "changePassword": "تغيير كلمة المرور",
     "currentPassword": "كلمة المرور الحالية",
     "myOrders": "طلباتي",
-    "recentOrders":"طلبات حديثة",
+    "recentOrders": "طلبات حديثة",
     "flowerOrder": "طلب ورد",
     "editVehicle": "تعديل المركبة",
     "vehicleInfo": "معلومات المركبة",
     "language": "اللغة",
     "english": "الانجليزية",
     "arabic": "العربية",
-    "logOut": "تسجيل الخروج"
+    "logOut": "تسجيل الخروج",
+    "continueText": "متابعة",
+    "female": "أنثى",
+    "male": "ذكر"
 }

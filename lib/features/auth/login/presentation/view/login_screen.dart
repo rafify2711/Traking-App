@@ -205,7 +205,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       color: PalletsColors.white10,
                                     ),
                                   )
-                                  : Text(LocaleKeys.login.tr()),
+                                  : Text(LocaleKeys.continueText.tr()),
                         ),
                       );
                     },

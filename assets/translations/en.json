@@ -24,7 +24,8 @@
     "errorOccurred": "An error occurred",
     "loggedInSuccessfully": "Logged in successfully",
     "remmemberMe": "Remember Me",
-    "welcomeToFloweryRiderApp": "Welcome to Flowery Rider App",
+    "welcomeTo": "Welcome to",
+    "floweryRiderApp": "Flowery Rider App",
     "country": "Country",
     "firstLegalName": "First Legal Name",
     "enterFirstLegalName": "Enter first legal name",
@@ -43,8 +44,7 @@
     "uploadIdImage": "Upload ID image",
     "enterPassword": "Enter password",
     "gender": "Gender",
-    "female": "Female",
-    "male": "Male",
+    
     "validationRequiredField": "This field is required",
     "validationEmailEmpty": "Enter your email address",
     "validationEmailInvalid": "Email is invalid (e.g., example@example.com)",
@@ -102,8 +102,8 @@
     "updateFailed": "Update failed",
     "updateProfile": "Update profile",
     "logout": "Logout",
-    "LOGOUT":"LOGOUT",
-    "logoutConfirmation":"Confirm Logout !",
+    "LOGOUT": "LOGOUT",
+    "logoutConfirmation": "Confirm Logout !",
     "cancel": "Cancel",
     "changePassword": "Change Password",
     "currentPassword": "Current Password",
@@ -115,5 +115,8 @@
     "language": "Language",
     "english": "English",
     "arabic": "Arabic",
-    "logOut": "Log Out"
+    "logOut": "Log Out",
+    "continueText": "Continue",
+    "female": "Female",
+    "male": "Male"
 }
