@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:tracking_app/core/config/routes_name.dart';
 import 'package:tracking_app/core/utils/app_text_styles.dart';
-import 'package:tracking_app/core/utils/colors.dart';
 import 'package:tracking_app/generated/locale_keys.g.dart';
 
 class OnBoardingView extends StatefulWidget {
@@ -19,7 +18,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.only(right: 10, left: 16, top: 37),
+          padding: const EdgeInsets.only(right: 10, left: 16, top: 8),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
