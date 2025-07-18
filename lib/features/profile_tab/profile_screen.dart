@@ -133,49 +133,52 @@ class ProfileScreen extends StatelessWidget {
                           ),
                         );
                       },
-                      child: Container(
-                        margin: const EdgeInsets.all(10),
-                        padding: const EdgeInsets.all(5),
-                        decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.shade300,
-                              blurRadius: 4,
-                            ),
-                          ],
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.white,
-                        ),
-                        child: ListTile(
-                          title: Column(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: [
-                              Text(
-                                LocaleKeys.vehicleInfo.tr(),
-
-                                style: AppTextStyles.instance.textStyle18
-                                    .copyWith(fontWeight: FontWeight.w500),
-                              ),
-                              const SizedBox(height: 5),
-                              Text(
-                                state.getVehicle?.vehicle?.type ??
-                                    driverData?.driver?.vehicleType ??
-                                    "",
-                                style: AppTextStyles.instance.textStyle14
-                                    .copyWith(color: PalletsColors.blackBase),
-                              ),
-                              Text(
-                                driverData?.driver?.vehicleNumber ?? "",
-                                style: AppTextStyles.instance.textStyle14
-                                    .copyWith(color: PalletsColors.blackBase),
+                      child: InkWell(
+                        onTap: () {},
+                        child: Container(
+                          margin: const EdgeInsets.all(10),
+                          padding: const EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.shade300,
+                                blurRadius: 4,
                               ),
                             ],
+                            borderRadius: BorderRadius.circular(20),
+                            color: Colors.white,
                           ),
+                          child: ListTile(
+                            title: Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                Text(
+                                  LocaleKeys.vehicleInfo.tr(),
 
-                          trailing: const Icon(
-                            Icons.arrow_forward_ios,
+                                  style: AppTextStyles.instance.textStyle18
+                                      .copyWith(fontWeight: FontWeight.w500),
+                                ),
+                                const SizedBox(height: 5),
+                                Text(
+                                  state.getVehicle?.vehicle?.type ??
+                                      driverData?.driver?.vehicleType ??
+                                      "",
+                                  style: AppTextStyles.instance.textStyle14
+                                      .copyWith(color: PalletsColors.blackBase),
+                                ),
+                                Text(
+                                  driverData?.driver?.vehicleNumber ?? "",
+                                  style: AppTextStyles.instance.textStyle14
+                                      .copyWith(color: PalletsColors.blackBase),
+                                ),
+                              ],
+                            ),
 
-                            color: PalletsColors.gray,
+                            trailing: const Icon(
+                              Icons.arrow_forward_ios,
+
+                              color: PalletsColors.gray,
+                            ),
                           ),
                         ),
                       ),
