@@ -77,8 +77,8 @@ abstract class ApiService {
   Future<String> logout();
   @PUT(Constants.editProfileEndPoint)
   Future<UserResponse> editProfile(@Body() UpdatedUserModel user);
-
-  @PUT(Constants.uploadPhoto)
-  @MultiPart()
-  Future<String> uploadPhoto(@Part(name: "photo") File image);
+  //
+  // @PUT(Constants.uploadPhoto)
+  // @MultiPart()
+  // Future<String> uploadPhoto(@Part(name: "photo") File image);
 }
