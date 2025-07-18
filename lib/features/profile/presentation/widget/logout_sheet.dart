@@ -10,17 +10,17 @@ void showLogoutDialog(BuildContext context, VoidCallback onPressed) {
     builder: (BuildContext context) {
       return AlertDialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        title:  Center(
+        title: Center(
           child: Text(
-            LocaleKeys.LOGOUT.tr(),
+            LocaleKeys.logOut.tr(),
             style: AppTextStyles.instance.textStyle18.copyWith(
               fontWeight: FontWeight.bold,
             ),
           ),
         ),
-        content:  Text(
+        content: Text(
           LocaleKeys.logoutConfirmation.tr(),
-          style:  AppTextStyles.instance.textStyle16,
+          style: AppTextStyles.instance.textStyle16,
           textAlign: TextAlign.center,
         ),
         contentPadding: const EdgeInsets.fromLTRB(24, 20, 24, 10),
@@ -35,18 +35,23 @@ void showLogoutDialog(BuildContext context, VoidCallback onPressed) {
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                
-                  child:  Text(LocaleKeys.cancel.tr(), style: AppTextStyles.instance.textStyle14),
+
+                  child: Text(
+                    LocaleKeys.cancel.tr(),
+                    style: AppTextStyles.instance.textStyle14,
+                  ),
                 ),
               ),
-              const SizedBox(width: 12), 
+              const SizedBox(width: 12),
               SizedBox(
                 width: 100,
                 child: ElevatedButton(
                   onPressed: onPressed,
-                
-                  
-                  child:  Text(LocaleKeys.logout.tr(), style: AppTextStyles.instance.textStyle14),
+
+                  child: Text(
+                    LocaleKeys.logOut.tr(),
+                    style: AppTextStyles.instance.textStyle14,
+                  ),
                 ),
               ),
             ],

@@ -101,9 +101,7 @@
     "profileUpdatedSuccessfully": "Profile updated successfully",
     "updateFailed": "Update failed",
     "updateProfile": "Update profile",
-    "logout": "Logout",
-    "LOGOUT":"LOGOUT",
-    "logoutConfirmation":"Confirm Logout !",
+    "logoutConfirmation": "Confirm Logout !",
     "cancel": "Cancel",
     "changePassword": "Change Password",
     "currentPassword": "Current Password",
@@ -115,5 +113,7 @@
     "language": "Language",
     "english": "English",
     "arabic": "Arabic",
-    "logOut": "Log Out"
+    "logOut": "Log Out",
+    "completed": "Completed",
+    "canceled": "Canceled"
 }

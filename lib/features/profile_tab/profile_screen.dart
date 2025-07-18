@@ -85,13 +85,13 @@ class ProfileScreen extends StatelessWidget {
                               ),
                               radius: 25,
                             ),
-                        
+
                             title: Column(
                               crossAxisAlignment: CrossAxisAlignment.stretch,
                               children: [
                                 Text(
                                   "${driverData?.driver?.firstName} ${driverData?.driver?.lastName}",
-                        
+
                                   style: AppTextStyles.instance.textStyle18
                                       .copyWith(fontWeight: FontWeight.w500),
                                 ),
@@ -108,10 +108,10 @@ class ProfileScreen extends StatelessWidget {
                                 ),
                               ],
                             ),
-                        
+
                             trailing: const Icon(
                               Icons.arrow_forward_ios,
-                        
+
                               color: PalletsColors.gray,
                             ),
                           ),
@@ -133,48 +133,52 @@ class ProfileScreen extends StatelessWidget {
                           ),
                         );
                       },
-                      child: Container(
-                        margin: const EdgeInsets.all(10),
-                        padding: const EdgeInsets.all(5),
-                        decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.shade300,
-                              blurRadius: 4,
-                            ),
-                          ],
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.white,
-                        ),
-                        child: ListTile(
-                          title: Column(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: [
-                              Text(
-                                LocaleKeys.vehicleInfo.tr(),
-
-                                style: AppTextStyles.instance.textStyle18
-                                    .copyWith(fontWeight: FontWeight.w500),
-                              ),
-                              const SizedBox(height: 5),
-                              Text(
-                                state.getVehicle?.vehicle?.type ??
-                                    driverData?.driver?.vehicleType ??"",
-                                style: AppTextStyles.instance.textStyle14
-                                    .copyWith(color: PalletsColors.blackBase),
-                              ),
-                              Text(
-                                driverData?.driver?.vehicleNumber ?? "",
-                                style: AppTextStyles.instance.textStyle14
-                                    .copyWith(color: PalletsColors.blackBase),
+                      child: InkWell(
+                        onTap: () {},
+                        child: Container(
+                          margin: const EdgeInsets.all(10),
+                          padding: const EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.shade300,
+                                blurRadius: 4,
                               ),
                             ],
+                            borderRadius: BorderRadius.circular(20),
+                            color: Colors.white,
                           ),
+                          child: ListTile(
+                            title: Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                Text(
+                                  LocaleKeys.vehicleInfo.tr(),
 
-                          trailing: const Icon(
-                            Icons.arrow_forward_ios,
+                                  style: AppTextStyles.instance.textStyle18
+                                      .copyWith(fontWeight: FontWeight.w500),
+                                ),
+                                const SizedBox(height: 5),
+                                Text(
+                                  state.getVehicle?.vehicle?.type ??
+                                      driverData?.driver?.vehicleType ??
+                                      "",
+                                  style: AppTextStyles.instance.textStyle14
+                                      .copyWith(color: PalletsColors.blackBase),
+                                ),
+                                Text(
+                                  driverData?.driver?.vehicleNumber ?? "",
+                                  style: AppTextStyles.instance.textStyle14
+                                      .copyWith(color: PalletsColors.blackBase),
+                                ),
+                              ],
+                            ),
 
-                            color: PalletsColors.gray,
+                            trailing: const Icon(
+                              Icons.arrow_forward_ios,
+
+                              color: PalletsColors.gray,
+                            ),
                           ),
                         ),
                       ),
@@ -190,7 +194,7 @@ class ProfileScreen extends StatelessWidget {
                           const SizedBox(width: 10),
                           Expanded(
                             child: Text(
-                              LocaleKeys.language,
+                              LocaleKeys.language.tr(),
                               style: AppTextStyles.instance.textStyle16
                                   .copyWith(
                                     color: PalletsColors.blackBase,
@@ -199,9 +203,13 @@ class ProfileScreen extends StatelessWidget {
                             ),
                           ),
                           InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              _showLanguageBottomSheet(context);
+                            },
                             child: Text(
-                              LocaleKeys.english,
+                              context.locale.languageCode == 'en'
+                                  ? 'English'
+                                  : 'العربية',
                               style: AppTextStyles.instance.textStyle13
                                   .copyWith(color: PalletsColors.mainColorBase),
                             ),
@@ -220,7 +228,7 @@ class ProfileScreen extends StatelessWidget {
                           const SizedBox(width: 10),
                           Expanded(
                             child: Text(
-                              LocaleKeys.logout,
+                              LocaleKeys.logOut.tr(),
                               style: AppTextStyles.instance.textStyle16
                                   .copyWith(
                                     color: PalletsColors.blackBase,
@@ -232,7 +240,10 @@ class ProfileScreen extends StatelessWidget {
                             onTap: () {
                               showLogoutDialog(context, () {
                                 context.read<ProfileCubit>().logOut();
-                                Navigator.pushNamed(context,RoutesName.loginScreen );
+                                Navigator.pushNamed(
+                                  context,
+                                  RoutesName.loginScreen,
+                                );
                               });
                             },
                             child: const Icon(Icons.logout),
@@ -249,4 +260,43 @@ class ProfileScreen extends StatelessWidget {
       ),
     );
   }
+}
+
+void _showLanguageBottomSheet(BuildContext context) {
+  showModalBottomSheet(
+    context: context,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+    ),
+    builder: (_) {
+      return Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Choose Language',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 16),
+            ListTile(
+              title: Text('English'),
+              onTap: () {
+                context.setLocale(Locale('en'));
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: Text('العربية'),
+              onTap: () {
+                context.setLocale(Locale('ar'));
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
+      );
+    },
+  );
 }
