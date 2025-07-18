@@ -113,5 +113,7 @@
     "language": "اللغة",
     "english": "الإنجليزية",
     "arabic": "العربية",
-    "logOut": "تسجيل الخروج"
+    "logOut": "تسجيل الخروج",
+    "completed": "مكتمل",
+    "canceled": "ملغي"
 }

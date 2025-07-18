@@ -116,5 +116,7 @@ abstract class  LocaleKeys {
   static const english = 'english';
   static const arabic = 'arabic';
   static const logOut = 'logOut';
+  static const completed = 'completed';
+  static const canceled = 'canceled';
 
 }

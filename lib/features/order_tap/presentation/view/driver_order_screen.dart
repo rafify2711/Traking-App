@@ -58,7 +58,7 @@ class DriverOrderScreen extends StatelessWidget {
                         children: [
                           const Spacer(flex: 1),
                           Container(
-                            margin: const EdgeInsets.all(10),
+                            // margin: const EdgeInsets.all(10),
                             padding: const EdgeInsets.only(
                               right: 70,
                               top: 15,
@@ -75,14 +75,14 @@ class DriverOrderScreen extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text("${state.canceledCount}"),
-                                const Row(
+                                Row(
                                   children: [
                                     Icon(
                                       Icons.cancel_outlined,
                                       color: Colors.red,
                                     ),
 
-                                    Text("Canceled"),
+                                    Text(LocaleKeys.canceled.tr()),
                                   ],
                                 ),
                               ],
@@ -107,13 +107,13 @@ class DriverOrderScreen extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text("${state.completedCount}"),
-                                const Row(
+                                Row(
                                   children: [
                                     Icon(
                                       Icons.check_circle_outline,
                                       color: Colors.green,
                                     ),
-                                    Text("Completed"),
+                                    Text(LocaleKeys.completed.tr()),
                                   ],
                                 ),
                               ],
@@ -126,7 +126,7 @@ class DriverOrderScreen extends StatelessWidget {
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
                           LocaleKeys.recentOrders.tr(),
-                          style: const TextStyle(fontSize: 22),
+                          style: const TextStyle(fontSize: 18),
                         ),
                       ),
                       const SizedBox(height: 20),
@@ -135,7 +135,7 @@ class DriverOrderScreen extends StatelessWidget {
                           itemCount: driverOrderData.length,
                           itemBuilder: (context, index) {
                             return Container(
-                              margin: const EdgeInsets.all(10),
+                              // margin: const EdgeInsets.all(10),
                               padding: const EdgeInsets.all(5),
                               decoration: BoxDecoration(
                                 boxShadow: [
@@ -154,7 +154,7 @@ class DriverOrderScreen extends StatelessWidget {
                                     padding: const EdgeInsets.all(8.0),
                                     child: Text(
                                       LocaleKeys.flowerOrder.tr(),
-                                      style: TextStyle(fontSize: 18),
+                                      style: const TextStyle(fontSize: 18),
                                     ),
                                   ),
                                   driverOrderData[index].order!.state ==
