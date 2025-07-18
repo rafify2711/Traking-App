@@ -12,7 +12,7 @@ void showLogoutDialog(BuildContext context, VoidCallback onPressed) {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         title: Center(
           child: Text(
-            LocaleKeys.logout.tr(),
+            LocaleKeys.logOut.tr(),
             style: AppTextStyles.instance.textStyle18.copyWith(
               fontWeight: FontWeight.bold,
             ),
@@ -49,7 +49,7 @@ void showLogoutDialog(BuildContext context, VoidCallback onPressed) {
                   onPressed: onPressed,
 
                   child: Text(
-                    LocaleKeys.logout.tr(),
+                    LocaleKeys.logOut.tr(),
                     style: AppTextStyles.instance.textStyle14,
                   ),
                 ),

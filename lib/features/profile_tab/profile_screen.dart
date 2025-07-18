@@ -225,7 +225,7 @@ class ProfileScreen extends StatelessWidget {
                           const SizedBox(width: 10),
                           Expanded(
                             child: Text(
-                              LocaleKeys.logout.tr(),
+                              LocaleKeys.logOut.tr(),
                               style: AppTextStyles.instance.textStyle16
                                   .copyWith(
                                     color: PalletsColors.blackBase,
