@@ -59,9 +59,7 @@ class _EditProfileViewState extends State<EditProfileView> {
   Future<void> pickImage() async {
     final picked = await ImagePicker().pickImage(source: ImageSource.gallery);
     if (picked != null) {
-      setState(() {
         selectedImage = File(picked.path);
-      });
     } else {
       selectedImage = File(widget.driver.driver?.photo ?? '');
     }
