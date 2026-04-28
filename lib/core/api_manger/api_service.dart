@@ -52,16 +52,17 @@ abstract class ApiService {
 
   @PUT('${Constants.updateOrderStatusEndPoint}/{id}')
   Future<String> updateOrderStatus(
-    @Query('id') String id,
+    @Path('id') String id,
     @Body() Map<String, dynamic> newState,
-    @Header('Authorization') String token,
   );
 
   @GET(Constants.getAllPendingOrdersEndPoint)
   Future<PendingOrderResponse> getAllPendingOrders(@Query("page") int page);
 
-  @PUT((Constants.startOrderEndPoint))
-  Future<PendingOrderResponse> startOrder(@Path() String id);
+    @PUT(Constants.startOrderEndPoint)
+  Future<void> acceptOrder({
+    @Path("id") required String orderId,
+  });
 
   @GET(Constants.getLoggedDriverDataEndPoint)
   Future<GetLoggedDriverDataResponse> getLoggedDriverData();

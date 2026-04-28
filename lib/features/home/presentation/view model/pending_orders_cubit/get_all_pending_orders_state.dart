@@ -1,40 +1,8 @@
-import 'package:equatable/equatable.dart';
-import 'package:tracking_app/core/base/base_state.dart';
+// import 'package:equatable/equatable.dart';
+// import 'package:tracking_app/core/base/base_state.dart';
 
-import 'package:tracking_app/features/home/data/models/order_response.dart';
+// import 'package:tracking_app/features/home/data/models/order_response.dart';
 
-class GetAllPendingOrdersState extends Equatable {
-  final BaseState? pendingOrdersState;
-  final List<OrderResponse> allOrders;
-  final int currentPage;
-  final int totalPages;
+// class GetAllPendingOrdersState extends Equatable {
 
-  const GetAllPendingOrdersState({
-    this.pendingOrdersState,
-    this.allOrders = const [],
-    this.currentPage = 1,
-    this.totalPages = 1,
-  });
-
-  GetAllPendingOrdersState copyWith({
-    BaseState? pendingOrdersState,
-    List<OrderResponse>? allOrders,
-    int? currentPage,
-    int? totalPages,
-  }) {
-    return GetAllPendingOrdersState(
-      pendingOrdersState: pendingOrdersState ?? this.pendingOrdersState,
-      allOrders: allOrders ?? this.allOrders,
-      currentPage: currentPage ?? this.currentPage,
-      totalPages: totalPages ?? this.totalPages,
-    );
-  }
-
-  @override
-  List<Object?> get props => [
-    pendingOrdersState,
-    allOrders,
-    currentPage,
-    totalPages,
-  ];
-}
+// }

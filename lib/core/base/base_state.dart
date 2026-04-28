@@ -1,22 +1,22 @@
 sealed class BaseState<T> {
-  BaseState();
+const  BaseState();
 }
 
 class BaseInitial<T> extends BaseState<T> {
-  BaseInitial();
+const  BaseInitial();
 }
 
 class BaseLoading<T> extends BaseState<T> {
-  BaseLoading();
+const  BaseLoading();
 }
 
 class BaseError<T> extends BaseState<T> {
   final String? errorMessage;
 
-  BaseError({this.errorMessage});
+  const BaseError({this.errorMessage});
 }
 
 class BaseSuccess<T> extends BaseState<T> {
   final T? data;
-  BaseSuccess({this.data});
+  const BaseSuccess({this.data});
 }

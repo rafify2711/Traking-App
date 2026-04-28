@@ -2,13 +2,13 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:tracking_app/features/home/data/models/order_response.dart';
-import 'package:tracking_app/features/home/domain/repo/home_screen_repo.dart';
+import 'package:tracking_app/features/home/domain/repo/home_repo.dart';
 import 'package:tracking_app/features/home/domain/use_case/get_orderdetails_from_firebase.dart';
 
 import 'get_all_pending_orders_use_case_test.mocks.dart';
 
 
-@GenerateMocks([HomeScreenRepo])
+@GenerateMocks([HomeRepo])
 void main() {
   late MockHomeScreenRepo mockRepo;
   late GetOrderdetailsFromFirebase useCase;
@@ -67,14 +67,15 @@ void main() {
           }
         });
 
-        when(mockRepo.getOrderDetailsFromFireBase())
+        const orderId = '678ab51c3ca006b9c3b0eeb4';
+        when(mockRepo.getOrderDetailsFromFireBase(orderId))
             .thenAnswer((_) async => expected);
 
         // act
-        final result = await useCase.invoke();
+        final result = await useCase.invoke(orderId);
 
         // assert
-        verify(mockRepo.getOrderDetailsFromFireBase()).called(1);
+        verify(mockRepo.getOrderDetailsFromFireBase(orderId)).called(1);
         expect(result, expected);
       },
     );
@@ -83,15 +84,16 @@ void main() {
       'should throw exception when repo throws',
           () async {
         // arrange
-        when(mockRepo.getOrderDetailsFromFireBase())
+        const orderId = '678ab51c3ca006b9c3b0eeb4';
+        when(mockRepo.getOrderDetailsFromFireBase(orderId))
             .thenThrow(Exception('Firebase error'));
 
         // act & assert
         expect(
-              () async => await useCase.invoke(),
+          () async => await useCase.invoke(orderId),
           throwsException,
         );
-        verify(mockRepo.getOrderDetailsFromFireBase()).called(1);
+        verify(mockRepo.getOrderDetailsFromFireBase(orderId)).called(1);
       },
     );
   });

@@ -30,13 +30,9 @@ class OrderRemoteDataSourceImpl implements OrderStatusRemoteDataSource {
   @override
   Future<String> updateOrderStatusApi(String orderId, String status) async {
     final body = {'state': status};
-    String? token = await secureStorageService.readSecureData('jwt_token');
-
-    print("Token :$token");
     final response = await apiService.updateOrderStatus(
       orderId,
       body,
-      token ?? "",
     );
     return response;
   }

@@ -225,10 +225,10 @@ class _LoginScreenState extends State<LoginScreen> {
       Constants.userToken,
       state.data?.token ?? "",
     );
-    final String? token = await SecureStorageService().readSecureData(
-      Constants.userToken,
-    );
-    log("user token is $token");
+    // final String? token = await SecureStorageService().readSecureData(
+    //   Constants.userToken,
+    // );
+    // log("user token is $token");
   }
 
   Future<void> _saveRememberMeState() async {

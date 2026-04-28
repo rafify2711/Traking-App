@@ -44,8 +44,6 @@ void showLogoutDialog(BuildContext context, VoidCallback onPressed) {
                 width: 100,
                 child: ElevatedButton(
                   onPressed: onPressed,
-                
-                  
                   child:  Text(LocaleKeys.logout.tr(), style: AppTextStyles.instance.textStyle14),
                 ),
               ),

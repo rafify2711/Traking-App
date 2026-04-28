@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:tracking_app/core/base/api_result.dart';
 import 'package:tracking_app/core/base/base_state.dart';
@@ -49,10 +51,7 @@ class DriverOrderCubit extends Cubit<DriverOrderState> {
         }
       case ApiError<DriverOrdersResponse>():
         {
-          print(result.failure?.toString());print(result.message?.toString());
-          print(result.failure?.errorMessage.toString());
-
-
+          log(result.failure!.errorMessage.toString());
           emit(
             state.copyWith(
               driverOrderState: BaseError<DriverOrdersResponse>(

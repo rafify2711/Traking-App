@@ -27,8 +27,6 @@ void main() {
     final driverData = GetLoggedDriverDataResponse();
     final vehicleData = GetVehicleResponse();
     const vehicleId = '676b64279f3884b3405c14c5';
-
-
     blocTest<ProfileCubit, ProfileState>(
       'emits [Loading, Success] when getLoggedDriverData succeeds',
       build: () {

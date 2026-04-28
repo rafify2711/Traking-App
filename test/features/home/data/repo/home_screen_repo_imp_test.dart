@@ -8,20 +8,20 @@ import 'package:tracking_app/features/home/data/data%20source/home_screen_data_s
 import 'package:tracking_app/features/home/data/models/order_response.dart';
 
 import 'package:tracking_app/features/home/data/models/pending_orders_response.dart';
-import 'package:tracking_app/features/home/data/repo/home_screen_repo_imp.dart';
-import 'package:tracking_app/features/home/domain/repo/home_screen_repo.dart';
+import 'package:tracking_app/features/home/data/repo/home_repo_impl.dart';
+import 'package:tracking_app/features/home/domain/repo/home_repo.dart';
 import 'package:tracking_app/features/orders/data/model/orders_firebase_model.dart';
 
 import 'home_screen_repo_imp_test.mocks.dart';
 
-@GenerateMocks([HomeScreenDataSource])
+@GenerateMocks([HomeDataSource])
 void main() {
   late MockHomeScreenDataSource mockDataSource;
-  late HomeScreenRepo repo;
+  late HomeRepo repo;
 
   setUp(() {
     mockDataSource = MockHomeScreenDataSource();
-    repo = HomeScreenRepoImp(mockDataSource);
+    repo = HomeRepoImpl(mockDataSource);
   });
 
   group('HomeScreenRepoImp Tests', () {
@@ -122,14 +122,15 @@ void main() {
 
         provideDummy<OrderResponse>(expectedOrderResponse );
 
-        when(mockDataSource.getOrderDetailsFireBase())
+        const orderId = '681bd6741433a666c8da31c7';
+        when(mockDataSource.getOrderDetailsFireBase(orderId))
             .thenAnswer((_) async => fakeOrdersFirebaseModel);
 
         // act
-        final actual = await repo.getOrderDetailsFromFireBase();
+        final actual = await repo.getOrderDetailsFromFireBase(orderId);
 
         // assert
-        verify(mockDataSource.getOrderDetailsFireBase()).called(1);
+        verify(mockDataSource.getOrderDetailsFireBase(orderId)).called(1);
         expect(actual, expectedOrderResponse);
       },
     );
@@ -137,16 +138,17 @@ void main() {
       'should throw an exception when getOrderDetailsFromFireBase fails',
           () async {
         // arrange
-        when(mockDataSource.getOrderDetailsFireBase())
+        const orderId = '681bd6741433a666c8da31c7';
+        when(mockDataSource.getOrderDetailsFireBase(orderId))
             .thenThrow(Exception('Firebase error'));
 
         // act & assert
         expect(
-              () async => await repo.getOrderDetailsFromFireBase(),
+          () async => await repo.getOrderDetailsFromFireBase(orderId),
           throwsException,
         );
 
-        verify(mockDataSource.getOrderDetailsFireBase()).called(1);
+        verify(mockDataSource.getOrderDetailsFireBase(orderId)).called(1);
       },
     );
 

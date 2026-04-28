@@ -5,6 +5,7 @@ import 'package:mockito/mockito.dart';
 import 'package:tracking_app/core/api_manger/api_service.dart';
 import 'package:tracking_app/core/base/api_result.dart';
 import 'package:tracking_app/core/utils/Errors/error_handler.dart';
+import 'package:tracking_app/core/utils/constants.dart';
 import 'package:tracking_app/features/home/data/data%20source/home_screen_data_source_imp.dart';
 import 'package:tracking_app/features/home/data/models/pending_orders_response.dart';
 import 'package:tracking_app/features/orders/data/model/orders_firebase_model.dart';
@@ -17,12 +18,12 @@ import 'home_screen_data_source_imp_test.mocks.dart';
 void main() {
   late ApiService apiService;
   late FirebaseFirestore firestore;
-  late HomeScreenDataSourceImp dataSource;
+  late HomeDataSourceImpl dataSource;
 
   setUp(() {
     apiService = MockApiService();
     firestore = MockFirebaseFirestore();
-    dataSource = HomeScreenDataSourceImp(apiService, firestore);
+    dataSource = HomeDataSourceImpl(apiService, firestore);
 
   });
 
@@ -115,14 +116,16 @@ void main() {
             "latLong": "37.7749,-122.4194"
           }
         };
-        when(firestore.collection('orders')).thenReturn(mockCollection);
+        when(firestore.collection(Constants.firestoreOrdersCollection))
+            .thenReturn(mockCollection);
         when(mockCollection.doc("681bd6741433a666c8da31c7")).thenReturn(mockDocRef);
         when(mockDocRef.get()).thenAnswer((_) async => mockDocSnapshot);
         when(mockDocSnapshot.exists).thenReturn(true);
         when(mockDocSnapshot.data()).thenReturn({'order': expectedMap,'driver':expectedMap});
 
         // Act
-        final result = await dataSource.getOrderDetailsFireBase();
+        final result = await dataSource
+            .getOrderDetailsFireBase("681bd6741433a666c8da31c7");
 
         // Assert
         expect(result, isA<OrdersFirebaseModel>());
@@ -155,14 +158,16 @@ void main() {
         final mockDocSnapshot = MockDocumentSnapshot<Map<String, dynamic>>();
 
 
-        when(firestore.collection('orders')).thenReturn(mockCollection);
+        when(firestore.collection(Constants.firestoreOrdersCollection))
+            .thenReturn(mockCollection);
         when(mockCollection.doc("681bd6741433a666c8da31c7")).thenReturn(mockDocRef);
         when(mockDocRef.get()).thenAnswer((_) async => mockDocSnapshot);
         when(mockDocSnapshot.exists).thenReturn(false);
 
         // Act & Assert
         expect(
-              () async => await dataSource.getOrderDetailsFireBase(),
+          () async => await dataSource
+              .getOrderDetailsFireBase("681bd6741433a666c8da31c7"),
           throwsException,
         );
       },

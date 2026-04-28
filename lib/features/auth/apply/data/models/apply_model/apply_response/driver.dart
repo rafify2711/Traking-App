@@ -16,6 +16,8 @@ class Driver extends Equatable {
   final String? role;
   final String? id;
   final DateTime? createdAt;
+final  num? latitude;
+final  num? longitude;
 
   const Driver({
     this.country,
@@ -33,6 +35,8 @@ class Driver extends Equatable {
     this.role,
     this.id,
     this.createdAt,
+    this.latitude,
+    this.longitude, 
   });
 
   factory Driver.fromJson(Map<String, dynamic> json) => Driver(
@@ -54,6 +58,8 @@ class Driver extends Equatable {
         json['createdAt'] == null
             ? null
             : DateTime.parse(json['createdAt'] as String),
+    latitude: json['DriverLatitude'] as num?,
+    longitude: json['DriverLongitude'] as num?,
   );
 
   Map<String, dynamic> toJson() => {
@@ -72,6 +78,8 @@ class Driver extends Equatable {
     'role': role,
     '_id': id,
     'createdAt': createdAt?.toIso8601String(),
+    'DriverLatitude': latitude,
+    'DriverLongitude': longitude,
   };
 
   @override
@@ -92,6 +100,8 @@ class Driver extends Equatable {
       role,
       id,
       createdAt,
+      latitude,
+      longitude,
     ];
   }
 }

@@ -2,13 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tracking_app/core/base/base_state.dart';
 import 'package:tracking_app/core/di/di.dart';
-import 'package:tracking_app/features/home/domain/use_case/get_all_pending_orders_use_case.dart';
-import 'package:tracking_app/features/home/domain/use_case/start_order_use_case.dart';
-import 'package:tracking_app/features/home/presentation/view%20model/orders_cubit.dart';
-import 'package:tracking_app/features/home/presentation/view%20model/pending_orders_cubit/get_all_pending_orders_cubit.dart';
-import 'package:tracking_app/features/home/presentation/view%20model/pending_orders_cubit/get_all_pending_orders_state.dart';
+import 'package:tracking_app/features/home/data/models/pending_orders_response.dart';
+import 'package:tracking_app/features/home/presentation/cubit/home_cubit.dart';
 import 'package:tracking_app/features/home/presentation/views/widgets/flower_order_card.dart';
-import 'package:tracking_app/features/orders/domain/use_case/save_order_to_firebase_use_case.dart';
 
 class HomeScreenBody extends StatefulWidget {
   const HomeScreenBody({super.key});
@@ -19,27 +15,15 @@ class HomeScreenBody extends StatefulWidget {
 
 class _HomeScreenBodyState extends State<HomeScreenBody> {
   final ScrollController _scrollController = ScrollController();
-  late OrdersCubit _ordersCubit;
-  late GetAllPendingOrdersCubit _getAllPendingOrdersCubit;
 
   @override
   void initState() {
     super.initState();
-    _ordersCubit = OrdersCubit(
-      getIt.get<GetAllPendingOrdersUseCase>(),
-      getIt.get<StartOrderUseCase>(),
-      getIt.get<SaveOrderToFirebaseUseCase>(),
-    );
-    _getAllPendingOrdersCubit = GetAllPendingOrdersCubit(
-      getIt.get<GetAllPendingOrdersUseCase>(),
-    );
-
-    _getAllPendingOrdersCubit.getAllPendingOrders();
-
+    context.read<HomeCubit>().getAllPendingOrders();
     _scrollController.addListener(() {
       if (_scrollController.position.pixels >=
           _scrollController.position.maxScrollExtent - 100) {
-        _getAllPendingOrdersCubit.loadNextPage();
+        context.read<HomeCubit>().loadNextPage();
       }
     });
   }
@@ -51,49 +35,41 @@ class _HomeScreenBodyState extends State<HomeScreenBody> {
   }
 
   @override
-  @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider.value(value: _ordersCubit),
-        BlocProvider.value(value: _getAllPendingOrdersCubit),
-      ],
-      child: BlocBuilder<GetAllPendingOrdersCubit, GetAllPendingOrdersState>(
-        builder: (context, state) {
-          final status = state.pendingOrdersState;
-          final orders = state.allOrders ?? [];
+    return BlocBuilder<HomeCubit, HomeState>(
+      builder: (context, state) {
+        final status = state.pendingOrdersState;
+        final orders = state.allOrders;
 
-          if (status is BaseLoading && orders.isEmpty) {
-            return const Center(child: CircularProgressIndicator());
-          }
+        if (status is BaseLoading<PendingOrderResponse> && orders.isEmpty) {
+          return const Center(child: CircularProgressIndicator());
+        }
 
-          if (status is BaseError && orders.isEmpty) {
-            return Center(child: Text(status.errorMessage ?? 'Unknown error'));
-          }
+        // Show error if no orders and error occurred
+        if (status is BaseError<PendingOrderResponse> && orders.isEmpty) {
+          return Center(child: Text(status.errorMessage ?? 'Unknown error'));
+        }
 
+        if (status is BaseSuccess<PendingOrderResponse>) {
           return ListView.builder(
             controller: _scrollController,
-            itemCount: orders.length + 1,
+            itemCount:
+                orders.length + (state.currentPage < state.totalPages ? 1 : 0),
             itemBuilder: (context, index) {
               if (index < orders.length) {
                 return FlowerOrderCard(order: orders[index]);
               } else {
-                final currentPage = state.currentPage;
-                final totalPages = state.totalPages;
-
-                if (currentPage < totalPages) {
-                  return const Padding(
-                    padding: EdgeInsets.symmetric(vertical: 16),
-                    child: Center(child: CircularProgressIndicator()),
-                  );
-                } else {
-                  return const SizedBox.shrink();
-                }
+                // Only reached if there are more pages to load
+                return const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 16),
+                  child: Center(child: CircularProgressIndicator()),
+                );
               }
             },
           );
-        },
-      ),
+        }
+        return const SizedBox.shrink();
+      },
     );
   }
 }

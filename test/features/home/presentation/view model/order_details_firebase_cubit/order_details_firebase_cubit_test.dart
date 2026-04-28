@@ -63,13 +63,15 @@ void main() {
       }
     });// Add other fields if needed
 
+    const testOrderId = '678ab51c3ca006b9c3b0eeb4';
+
     blocTest<OrderDetailsFirebaseCubit, OrderDetailsFirebaseState>(
       'emits [Loading, Success] when fetchOrderDetails succeeds',
       build: () {
-        when(mockUseCase.invoke()).thenAnswer((_) async => order);
+        when(mockUseCase.invoke(testOrderId)).thenAnswer((_) async => order);
         return OrderDetailsFirebaseCubit(mockUseCase);
       },
-      act: (cubit) => cubit.fetchOrderDetails(),
+      act: (cubit) => cubit.fetchOrderDetails(testOrderId),
       expect: () => [
         isA<OrderDetailsFirebaseState>()
             .having((s) => s.orderState, 'loading', isA<BaseLoading<OrderResponse>>()),
@@ -78,17 +80,18 @@ void main() {
             .having((s) => (s.orderState as BaseSuccess).data, 'order', order),
       ],
       verify: (_) {
-        verify(mockUseCase.invoke()).called(1);
+        verify(mockUseCase.invoke(testOrderId)).called(1);
       },
     );
 
     blocTest<OrderDetailsFirebaseCubit, OrderDetailsFirebaseState>(
       'emits [Loading, Error] when fetchOrderDetails fails',
       build: () {
-        when(mockUseCase.invoke()).thenThrow(Exception('Firebase error'));
+        when(mockUseCase.invoke(testOrderId))
+            .thenThrow(Exception('Firebase error'));
         return OrderDetailsFirebaseCubit(mockUseCase);
       },
-      act: (cubit) => cubit.fetchOrderDetails(),
+      act: (cubit) => cubit.fetchOrderDetails(testOrderId),
       expect: () => [
         isA<OrderDetailsFirebaseState>()
             .having((s) => s.orderState, 'loading', isA<BaseLoading<OrderResponse>>()),
@@ -97,7 +100,7 @@ void main() {
             .having((s) => (s.orderState as BaseError).errorMessage, 'error', contains('Firebase error')),
       ],
       verify: (_) {
-        verify(mockUseCase.invoke()).called(1);
+        verify(mockUseCase.invoke(testOrderId)).called(1);
       },
     );
   });

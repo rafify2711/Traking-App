@@ -4,14 +4,14 @@ import 'package:mockito/mockito.dart';
 import 'package:tracking_app/core/base/api_result.dart';
 import 'package:tracking_app/core/utils/Errors/error_handler.dart';
 import 'package:tracking_app/features/home/data/models/pending_orders_response.dart';
-import 'package:tracking_app/features/home/domain/repo/home_screen_repo.dart';
+import 'package:tracking_app/features/home/domain/repo/home_repo.dart';
 import 'package:tracking_app/features/home/domain/use_case/get_all_pending_orders_use_case.dart';
 
 import 'get_all_pending_orders_use_case_test.mocks.dart';
 
-@GenerateMocks([HomeScreenRepo])
+@GenerateMocks([HomeRepo])
 void main() {
-  late HomeScreenRepo repo;
+  late HomeRepo repo;
   late GetAllPendingOrdersUseCase useCase;
 
   setUp(() {

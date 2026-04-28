@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tracking_app/core/config/routes_name.dart';
 import 'package:tracking_app/core/di/di.dart';
-import 'package:tracking_app/features/auth/apply/data/models/apply_model/apply_response/driver.dart';
 import 'package:tracking_app/features/auth/forget_password/presentation/view/forget_password_screen.dart';
 import 'package:tracking_app/features/auth/forget_password/presentation/view/reset_password_screen.dart';
 import 'package:tracking_app/features/auth/forget_password/presentation/view/verification_screen.dart';
@@ -11,6 +10,9 @@ import 'package:tracking_app/features/auth/apply/presentation/view/apply_screen.
 import 'package:tracking_app/features/change_password_screen.dart';
 import 'package:tracking_app/features/editProfile/presentation/view/edit_profile_view.dart';
 import 'package:tracking_app/features/editProfile/presentation/viewModel/cubit/edit_profile_cubit.dart';
+import 'package:tracking_app/features/home/domain/use_case/accept_order_use_case.dart';
+import 'package:tracking_app/features/home/domain/use_case/get_all_pending_orders_use_case.dart';
+import 'package:tracking_app/features/home/presentation/cubit/home_cubit.dart';
 import 'package:tracking_app/features/home/presentation/views/home_screen.dart';
 import 'package:tracking_app/features/home/presentation/views/order_details_screen.dart';
 import 'package:tracking_app/features/home/presentation/views/pickup_location_screen.dart';
@@ -24,7 +26,6 @@ import 'package:tracking_app/features/profile/data/model/get_logged_driver_data_
 import 'package:tracking_app/features/profile_tab/profile_screen.dart';
 import 'package:tracking_app/features/profile_tab/profile_view.dart';
 import 'package:tracking_app/features/success_screen/success_screen.dart';
-
 
 class RouteGenerator {
   static Route<dynamic>? onGenerator(RouteSettings settings) {
@@ -74,7 +75,14 @@ class RouteGenerator {
 
       case RoutesName.home:
         return MaterialPageRoute(
-          builder: (context) => const HomeScreen(),
+          builder:
+              (context) => BlocProvider(
+                create: (context) => HomeCubit(
+                  getIt.get<GetAllPendingOrdersUseCase>(),
+                  getIt.get<AcceptOrderUseCase>(),
+                ),
+                child: const HomeScreen(),
+              ),
           settings: settings,
         );
 

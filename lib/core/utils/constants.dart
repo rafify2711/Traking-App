@@ -19,5 +19,20 @@ class Constants {
   static const String changePasswordEndPoint = "drivers/change-password";
   static const String editProfileEndPoint = "drivers/editProfile";
   static const String uploadPhoto = "drivers/upload-photo";
-  static const String logoutEndPoint ="drivers/logout";
+  static const String logoutEndPoint = "drivers/logout";
+
+  // ─── Firebase / shared bridge (Flowery `Orders` collection, flat fields) ───
+  static const String firestoreOrdersCollection = "Orders";
+  /// Top-level status string on the order doc (synced with API `orderStatus`).
+  static const String firestoreOrderStateField = "Status";
+  static const String firestoreDriverLatitudeField = "DriverLatitude";
+  static const String firestoreDriverLongitudeField = "DriverLongitude";
+  static const String firestoreOrderAcceptedAtField = "OrderAcceptedAt";
+  static const String firestoreEstimatedArrivalField = "EstimatedArrival";
+  static const String firestorePreparingYourOrderAtField = "PreparingYourOrderAt";
+  static const String firestoreOutForDeliveryAtField = "OutForDeliveryAt";
+  static const String firestoreArrivedAtField = "ArrivedAt";
+  static const String firestoreDeliveredAtField = "DeliveredAt";
+  static const String firestoreDriverNameField = "DriverName";
+  static const String firestoreDriverPhoneField = "DriverPhone";
 }
